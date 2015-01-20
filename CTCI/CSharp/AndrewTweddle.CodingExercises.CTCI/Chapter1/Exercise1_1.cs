@@ -28,7 +28,7 @@ namespace AndrewTweddle.CodingExercises.CTCI.Chapter1
         /// </summary>
         /// <param name="letters">The string of letters to check for duplicate letters</param>
         /// <returns>A boolean value indicating whether any duplicate letters were found</returns>
-        public static bool HasDuplicateLetters2(string letters)
+        public static bool HasDuplicateLettersWithoutAdditionalDataStructures(string letters)
         {
             int length = letters.Length;
             for (int i = 0; i < length - 1; i++)
