@@ -50,6 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Chapter1\Exercise1\BaseForWhenCheckingAStringForDuplicateLetters.cs" />
     <Compile Include="Chapter1\Exercise1\WhenCheckingAStringForDuplicateLetters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

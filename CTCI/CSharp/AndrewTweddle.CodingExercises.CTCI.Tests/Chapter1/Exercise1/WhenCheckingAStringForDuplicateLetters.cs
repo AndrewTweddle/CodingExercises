@@ -5,37 +5,11 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace AndrewTweddle.CodingExercises.CTCI.Tests.Chapter1.Exercise1
 {
     [TestClass]
-    public class WhenCheckingAStringForDuplicateLetters
+    public class WhenCheckingAStringForDuplicateLetters: BaseForWhenCheckingAStringForDuplicateLetters
     {
-        [TestMethod]
-        public void ThenAnEmptyStringHasNoDuplicates()
+        protected override bool HasDuplicateLetters(string letters)
         {
-            Assert.IsFalse(Exercise1_1.HasDuplicateLetters(String.Empty));
-        }
-
-        [TestMethod]
-        public void ThenASingleCharStringHasNoDuplicates()
-        {
-            Assert.IsFalse(Exercise1_1.HasDuplicateLetters("a"));
-        }
-
-        [TestMethod]
-        public void ThenAStringWithDifferentCapitalisationsOfTheSameLetterHasNoDuplicates()
-        {
-            Assert.IsFalse(Exercise1_1.HasDuplicateLetters("Aa"));
-        }
-
-        [TestMethod]
-        public void ThenAStringWithTheSameLetterAndCapitalisationHasDuplicates()
-        {
-            Assert.IsTrue(Exercise1_1.HasDuplicateLetters("aba"));
-             // Put the letters at the edge of the string to test boundary behaviour
-        }
-
-        [TestMethod]
-        public void ThenAStringWithAllDifferentLettersHasNoDuplicates()
-        {
-            Assert.IsFalse(Exercise1_1.HasDuplicateLetters("abcde"));
+            return Exercise1_1.HasDuplicateLetters(letters);
         }
     }
 }
