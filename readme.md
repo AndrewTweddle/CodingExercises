@@ -19,7 +19,7 @@ The CTCI sub-folder contain my solutions to exercises from the 5th edition of [C
 
 # Learnings and notes
 
-## C#
+## C\# 
 
 | Purpose  | Solution              | Notes                      |
 | ---      | ---                   | ---                        | 
