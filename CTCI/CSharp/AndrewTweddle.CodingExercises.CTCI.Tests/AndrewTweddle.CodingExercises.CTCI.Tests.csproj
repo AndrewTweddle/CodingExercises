@@ -53,6 +53,9 @@
     <Compile Include="Chapter1\Exercise1\BaseForWhenCheckingAStringForDuplicateLetters.cs" />
     <Compile Include="Chapter1\Exercise1\WhenCheckingAStringForDuplicateLettersWithoutAdditionalDataStructures.cs" />
     <Compile Include="Chapter1\Exercise1\WhenCheckingAStringForDuplicateLetters.cs" />
+    <Compile Include="Chapter1\Exercise3\BaseForWhenCheckingIfStringsArePermutations.cs" />
+    <Compile Include="Chapter1\Exercise3\WhenCheckingIfStringsArePermutationsQuickly.cs" />
+    <Compile Include="Chapter1\Exercise3\WhenCheckingIfStringsArePermutationsSimply.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +64,7 @@
       <Name>AndrewTweddle.CodingExercises.CTCI</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
