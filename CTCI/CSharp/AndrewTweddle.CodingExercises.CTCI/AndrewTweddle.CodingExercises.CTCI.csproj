@@ -39,7 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Chapter1\Exercise1_1.cs" />
+    <Compile Include="Chapter1\Exercise1\DuplicateLetterChecker.cs" />
     <Compile Include="Chapter1\Exercise3\BasePermutationChecker.cs" />
     <Compile Include="Chapter1\Exercise3\QuickPermutationChecker.cs" />
     <Compile Include="Chapter1\Exercise3\SimplePermutationChecker.cs" />

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AndrewTweddle.CodingExercises.CTCI.Chapter1
+namespace AndrewTweddle.CodingExercises.CTCI.Chapter1.Exercise1
 {
-    public static class Exercise1_1
+    public static class DuplicateLetterChecker
     {
         /// <summary>
         /// This method checks for duplicates letters 
