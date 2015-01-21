@@ -44,8 +44,12 @@ namespace AndrewTweddle.CodingExercises.CTCI.Chapter1.Exercise3
                 }
             }
 
+            // The following are extra safety checks. 
+            // Strictly speaking, they shouldn't be necessary, 
+            // as the string lengths would be different, 
+            // and the base class checks for that.
+
             // Check if there are still unconsumed characters in string b:
-            // NB: This is just a safety check. It shouldn't be possible, as the string lengths would be different:
             if (nextBIndex < bLength)
             {
                 return false;
