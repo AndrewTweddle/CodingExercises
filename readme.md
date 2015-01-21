@@ -12,10 +12,10 @@ These have been used to practise coding skills, learn new programming languages,
 
 The CTCI sub-folder contain my solutions to exercises from the 5th edition of [Cracking the Coding Interview](http://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/098478280X) by Gayle Laakmann McDowell.
 
-| Exercise  | Description                              | My solutions  | Notes  |
-| ---       | ---                                      | ---           | ---    |
-| 1.1       | Check for duplicate letters in a string  | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter1/Exercise1_1.cs)  | HashSet&lt;T&gt; for sets in C# |
-| 1.3       | Check if two strings are permutations    | [C# (readable)](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter1/Exercise3/SimplePermutationChecker.cs) [C# (fast)](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter1/Exercise3/QuickPermutationChecker.cs) | Dictionary&lt;K, V&gt; for hash maps in C# |
+| Exercise  | Description                              | My solutions  | 
+| ---       | ---                                      | ---           | 
+| 1.1       | Check for duplicate letters in a string  | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter1/Exercise1_1.cs)  | HashSet&lt;T&gt; |
+| 1.3       | Check if two strings are permutations    | [C# (readable)](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter1/Exercise3/SimplePermutationChecker.cs) [C# (fast)](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter1/Exercise3/QuickPermutationChecker.cs) | Dictionary&lt;K, V&gt; |
 
 
 # Learnings and notes
@@ -40,7 +40,8 @@ The CTCI sub-folder contain my solutions to exercises from the 5th edition of [C
 * Unit test
   * If there are multiple algorithms to test, create a base class and a derived unit test class per implementation
 * Code review
-  * Look at the code critically and refactor, add TODO's or make a note of areas that could be improved
+  * Look at the code critically
+  * Refactor, add TODO's or make a note of areas that could be improved
 
 
 ## C\# 
