@@ -38,16 +38,16 @@ namespace AndrewTweddle.CodingExercises.CTCI.Chapter1.Exercise3
 
         protected void IncrementLetterCount(IDictionary<char, int> letterCounts, char letter)
         {
-            AdjustLetterCountAndGetUpdatedCount(letterCounts, letter);
+            AdjustLetterCount(letterCounts, letter, 1);
         }
 
         protected void DecrementLetterCount(IDictionary<char, int> letterCounts, char letter)
         {
-            AdjustLetterCountAndGetUpdatedCount(letterCounts, letter, -1);
+            AdjustLetterCount(letterCounts, letter, -1);
         }
 
-        protected int AdjustLetterCountAndGetUpdatedCount(
-            IDictionary<char, int> letterCounts, char letter, int adjustment = 1)
+        protected void AdjustLetterCount(
+            IDictionary<char, int> letterCounts, char letter, int adjustment)
         {
             int count = letterCounts.ContainsKey(letter) ? letterCounts[letter] : 0;
             count += adjustment;
@@ -59,7 +59,6 @@ namespace AndrewTweddle.CodingExercises.CTCI.Chapter1.Exercise3
             {
                 letterCounts[letter] = count;
             }
-            return count;
         }
     }
 }
