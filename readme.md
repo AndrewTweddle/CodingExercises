@@ -51,4 +51,4 @@ The CTCI sub-folder contain my solutions to exercises from the 5th edition of [C
 | ---       | ---                   | ---                        | 
 | Sets      | HashSet&lt;T&gt;      | Useful methods: Add and Contains. |
 | Hash maps | Dictionary&lt;K, V&gt;   | Useful methods: ContainsKey, Keys, Values, enumerator over KeyValuePair&lt;K, V&gt; |
-| Test multiple implementations | MSTest: [TestMethod] on base class, [TestClass] on derived | The derived unit test class chooses which implementation to use. The base class defines the common tests. |
+| Test multiple implementations | MSTest: [TestMethod] on base class methods, [TestClass] on derived class | The derived unit test class chooses which implementation to use. The base class defines the common tests. |
