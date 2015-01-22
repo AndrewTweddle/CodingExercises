@@ -43,6 +43,7 @@
     <Compile Include="Chapter1\Exercise3\BasePermutationChecker.cs" />
     <Compile Include="Chapter1\Exercise3\QuickPermutationChecker.cs" />
     <Compile Include="Chapter1\Exercise3\SimplePermutationChecker.cs" />
+    <Compile Include="Chapter2\Exercise1\DuplicateLetterRemover.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

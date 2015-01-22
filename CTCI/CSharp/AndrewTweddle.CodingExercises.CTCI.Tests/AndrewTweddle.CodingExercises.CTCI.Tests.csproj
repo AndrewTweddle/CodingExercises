@@ -56,6 +56,7 @@
     <Compile Include="Chapter1\Exercise3\BaseForWhenCheckingIfStringsArePermutations.cs" />
     <Compile Include="Chapter1\Exercise3\WhenCheckingIfStringsArePermutationsQuickly.cs" />
     <Compile Include="Chapter1\Exercise3\WhenCheckingIfStringsArePermutationsSimply.cs" />
+    <Compile Include="Chapter2\Exercise1\WhenRemovingDuplicateLetters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
