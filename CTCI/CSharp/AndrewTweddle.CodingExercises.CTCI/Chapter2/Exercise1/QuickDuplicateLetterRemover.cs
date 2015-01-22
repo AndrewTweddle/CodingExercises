@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AndrewTweddle.CodingExercises.CTCI.Chapter2.Exercise1
 {
-    public class DuplicateLetterRemover: IDuplicateLetterRemover
+    public class QuickDuplicateLetterRemover: IDuplicateLetterRemover
     {
         public void RemoveDuplicateLetters(LinkedList<char> letters)
         {

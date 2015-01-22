@@ -5,11 +5,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace AndrewTweddle.CodingExercises.CTCI.Tests.Chapter2.Exercise1
 {
     [TestClass]
-    public class WhenRemovingDuplicateLetters: BaseForWhenRemovingDuplicateLetters
+    public class WhenRemovingDuplicateLettersWithoutTemporaryBuffer
+        : BaseForWhenRemovingDuplicateLetters
     {
         protected override IDuplicateLetterRemover CreateDuplicateLetterRemover()
         {
-            return new QuickDuplicateLetterRemover();
+            return new DuplicateLetterRemoverWithoutTemporaryBuffer();
         }
     }
 }
