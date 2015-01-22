@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace AndrewTweddle.CodingExercises.CTCI.Chapter2.Exercise1
 {
-    public static class DuplicateLetterRemover
+    public class DuplicateLetterRemover: IDuplicateLetterRemover
     {
-        public static void RemoveDuplicateLetters(LinkedList<char> letters)
+        public void RemoveDuplicateLetters(LinkedList<char> letters)
         {
             ISet<char> charsFound = new HashSet<char>();
             LinkedListNode<char> currNode = letters.First;
