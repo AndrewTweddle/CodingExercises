@@ -59,6 +59,9 @@
     <Compile Include="Chapter2\Exercise1\BaseForWhenRemovingDuplicateLetters.cs" />
     <Compile Include="Chapter2\Exercise1\WhenRemovingDuplicateLettersWithoutTemporaryBuffer.cs" />
     <Compile Include="Chapter2\Exercise1\WhenRemovingDuplicateLetters.cs" />
+    <Compile Include="Chapter3\Exercise1\WhenPoppingItemsOffAStackArray.cs" />
+    <Compile Include="Chapter3\Exercise1\WhenPushingItemsOntoAStackArray.cs" />
+    <Compile Include="Chapter3\Exercise1\WhenCreatingAStackArray.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
