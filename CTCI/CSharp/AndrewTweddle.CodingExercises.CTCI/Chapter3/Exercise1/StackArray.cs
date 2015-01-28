@@ -15,8 +15,12 @@ namespace AndrewTweddle.CodingExercises.CTCI.Chapter3.Exercise1
     /// The counts array is a second array. So this deviates from the specification.
     /// This can be addressed by using 3 variables instead of a counts array:
     ///     stack0Count, stack1Count, stack2Count.
+    /// 
+    /// Another issue with this solution is that it doesn't use the space efficiently.
+    /// If the used sizes of the stacks is very different, then there will be a lot of unused space.
+    /// 
     /// </remarks>
-    /// <typeparam name="T">The data type stored in the stacks</typeparam>
+    /// <typeparam name="T">The data type of the items stored in the stacks</typeparam>
     public class StackArray<T>: IStackArray<T>
     {
         private int[] counts;
