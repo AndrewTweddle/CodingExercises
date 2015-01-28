@@ -48,8 +48,12 @@
     <Compile Include="Chapter2\Exercise1\IDuplicateLetterRemover.cs" />
     <Compile Include="Chapter3\Exercise1\IStackArray.cs" />
     <Compile Include="Chapter3\Exercise1\StackArray.cs" />
+    <Compile Include="Chapter4\BinaryTree.cs" />
+    <Compile Include="Chapter4\BinaryTreeNode.cs" />
+    <Compile Include="Chapter4\Exercise1\BinaryTreeBalanceChecker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
