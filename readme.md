@@ -19,6 +19,7 @@ The CTCI sub-folder contain my solutions to exercises from the 5th edition of [C
 | 2.1       | Remove duplicate letters from a linked list  | [C# (fast)](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter2/Exercise1/QuickDuplicateLetterRemover.cs) [C# (without temporary buffer)](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter2/Exercise1/DuplicateLetterRemoverWithoutTemporaryBuffer.cs) |
 | 3.1       | Implement multiple stacks in a single array  | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter3/Exercise1/StackArray.cs) |
 | 4.1       | Determine if a binary tree is balanced       | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter4/Exercise1/BinaryTreeBalanceChecker.cs) |
+| 5.1       | Overwrite bits in one int from another   | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter5/Exercise1/BitInserter.cs) |
 
 # Learnings and notes
 
@@ -53,3 +54,7 @@ The CTCI sub-folder contain my solutions to exercises from the 5th edition of [C
 | Sets      | HashSet&lt;T&gt;      | Useful methods: Add and Contains. |
 | Hash maps | Dictionary&lt;K, V&gt;   | Useful methods: ContainsKey, Keys, Values, enumerator over KeyValuePair&lt;K, V&gt; |
 | Test multiple implementations | MSTest: [TestMethod] on base class methods, [TestClass] on derived class | The derived unit test class chooses which implementation to use. The base class defines the common tests. |
+| Assert.AreEqual | Parameters: expected then actual |  |
+| Int to binary string | Convert.ToString(value, 2 ) | Useful for making unit test more readable. See [exercise 5.1](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI.Tests/Chapter5/Exercise1/WhenInsertingBits.cs) |
+| Binary string to int | Convert.ToInt32(str, 2 )    | The second parameter is the base. See [exercise 5.1](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI.Tests/Chapter5/Exercise1/WhenInsertingBits.cs) |
+| ArgumentException    | ArgumentException(message, paramName ) | The parameter name is the second parameter to the constructor. |

@@ -64,6 +64,7 @@
     <Compile Include="Chapter3\Exercise1\WhenCreatingAStackArray.cs" />
     <Compile Include="Chapter4\Exercise1\WhenCheckingIfABinaryTreeIsBalanced.cs" />
     <Compile Include="Chapter4\Exercise1\WhenDeterminingTheMinAndMaxDepthOfATree.cs" />
+    <Compile Include="Chapter5\Exercise1\WhenInsertingBits.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

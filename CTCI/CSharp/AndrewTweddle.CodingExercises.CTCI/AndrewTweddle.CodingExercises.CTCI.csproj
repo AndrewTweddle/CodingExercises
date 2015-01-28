@@ -51,6 +51,7 @@
     <Compile Include="Chapter4\BinaryTree.cs" />
     <Compile Include="Chapter4\BinaryTreeNode.cs" />
     <Compile Include="Chapter4\Exercise1\BinaryTreeBalanceChecker.cs" />
+    <Compile Include="Chapter5\Exercise1\BitInserter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
