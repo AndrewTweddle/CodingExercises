@@ -20,10 +20,13 @@ The CTCI sub-folder contain my solutions to exercises from the 5th edition of [C
 | 3.1       | Implement multiple stacks in a single array  | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter3/Exercise1/StackArray.cs) |
 | 4.1       | Determine if a binary tree is balanced       | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter4/Exercise1/BinaryTreeBalanceChecker.cs) |
 | 5.1       | Overwrite bits in one int from another   | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter5/Exercise1/BitInserter.cs) |
+| 9.1       | Number of different ways of hopping up stairs | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter9/Exercise1/StepsSolver.cs) |
 
 # Learnings and notes
 
 ## General approach
+
+### Follow a miniaturised SDLC
 
 * Analysis
   * Question the requirements
@@ -47,6 +50,21 @@ The CTCI sub-folder contain my solutions to exercises from the 5th edition of [C
   * Refactor, add TODO's or make a note of areas that could be improved
 
 
+### Use a notebook to write all code on paper first
+
+* Ideally I wanted to use my whiteboard for all steps in this mini SDLC, but it was already in use
+* Instead I used a notebook to do analysis, design, coding and unit testing
+* Once done I would capture and compile the code and unit tests electronically
+  * An exception was exercise 4.1, which I coded directly.
+  * The quality of the code in this exercise is noticeably worse, so pre-planning on paper is clearly worthwhile
+  * I was initially skeptical of doing whiteboard coding in interviews, as this is not common practice in South Africa
+  * However I am already seeing benefits from doing this:
+    * Improved designs through adding greater structure and focus to the creative process
+    * An improved ability to "play out" detailed coding scenarios in my head
+* I then fixed coding errors or refactored the code and made notes on these errors and refactorings
+* After each exercise I add any language-specific notes and reminders to the sections below
+
+  
 ## C\# 
 
 | Purpose   | Solution              | Notes                      |
@@ -57,4 +75,6 @@ The CTCI sub-folder contain my solutions to exercises from the 5th edition of [C
 | Assert.AreEqual | Parameters: expected then actual |  |
 | Int to binary string | Convert.ToString(value, 2 ) | Useful for making unit test more readable. See [exercise 5.1](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI.Tests/Chapter5/Exercise1/WhenInsertingBits.cs) |
 | Binary string to int | Convert.ToInt32(str, 2 )    | The second parameter is the base. See [exercise 5.1](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI.Tests/Chapter5/Exercise1/WhenInsertingBits.cs) |
-| ArgumentException    | ArgumentException(message, paramName ) | The parameter name is the second parameter to the constructor. |
+| Validate arguments    | ArgumentException(message, paramName ) | The parameter name is the second parameter to the constructor. |
+| Validate argument range | ArgumentOutOfRangeException(paramName, message) | But this time the parameter name is the first parameter to the constructor! |
+| Overflow checking | checked { ... } | Arithmetic overflow is silent unless the statement/s (NOT expressions) are in a checked block |
