@@ -29,6 +29,8 @@ The CTCI sub-folder contain my solutions to exercises from the 5th edition of [C
 ### Follow a miniaturised SDLC
 
 * Analysis
+  * Summarize the problem statement (preferably highlighting critical clauses)
+  * Confirm the scope
   * Question the requirements
   * Look for simplifying assumptions
 * Design
