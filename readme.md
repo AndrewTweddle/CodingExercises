@@ -22,6 +22,14 @@ The CTCI sub-folder contain my solutions to exercises from the 5th edition of [C
 | 5.1       | Overwrite bits in one int from another   | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter5/Exercise1/BitInserter.cs) |
 | 9.1       | Number of different ways of hopping up stairs | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter9/Exercise1/StepsSolver.cs) |
 
+## Functional Programming In Scala
+
+Exercises from the book 
+["Functional Programming in Scala"](http://www.manning.com/bjarnason/)
+are in [a separate GitHub project](https://github.com/AndrewTweddle/fpinscala)
+which was forked from [the original FPInScala repo](https://github.com/fpinscala/fpinscala)
+for the book.
+
 # Learnings and notes
 
 ## General approach
