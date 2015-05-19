@@ -21,6 +21,8 @@ The CTCI sub-folder contain my solutions to exercises from the 5th edition of [C
 | 4.1       | Determine if a binary tree is balanced       | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter4/Exercise1/BinaryTreeBalanceChecker.cs) |
 | 5.1       | Overwrite bits in one int from another   | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter5/Exercise1/BitInserter.cs) |
 | 9.1       | Number of different ways of hopping up stairs | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter9/Exercise1/StepsSolver.cs) |
+| 1.4       | Replacing spaces with "%20" in a string       | [Scala](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/Scala/src/main/scala/ctci/chapter1/Exercise4.scala) |
+
 
 ## Functional Programming In Scala
 
