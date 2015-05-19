@@ -229,3 +229,29 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+## Ignore Scala and Eclipse temporary files
+*.un~
+*.swp
+tags
+target
+project/boot
+.history
+project.vim
+*.old
+.idea
+.project
+.classpath
+.metadata/
+answers/bin
+exercises/bin
+.cache
+.worksheet
+
+## Scala project files:
+CTCI/Scala/RUNNING_PID
+CTCI/Scala/logs/
+CTCI/Scala/project/*-shim.sbt
+CTCI/Scala/project/project/
+CTCI/Scala/project/target/
+CTCI/Scala/target/
