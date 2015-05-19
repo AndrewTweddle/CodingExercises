@@ -3,7 +3,7 @@ package ctci.chapter1
 object Exercise4 {
   
   def moveChars(chars: Array[Char], fromPos: Int, toPos: Int, charCount: Int): Unit = {
-    val rng = if (fromPos >= toPos) 0 to charCount else charCount -1 to 0 by -1 
+    val rng = if (fromPos >= toPos) 0 until charCount else charCount - 1 to 0 by -1 
     for (i <- rng) {
       val s = fromPos + i
       val d = toPos + i
@@ -50,7 +50,9 @@ object Exercise4 {
     def loop(currPos: Int, totalSpaces: Int, lastSpacePos: Int, 
         followingNonSpaces: Int, acc: List[Calculation]): List[Calculation] = {
       if (currPos == len) {
-        Calculation(totalSpaces, lastSpacePos, followingNonSpaces) :: acc
+        if (totalSpaces == 0) acc else {
+          Calculation(totalSpaces, lastSpacePos, followingNonSpaces) :: acc
+        }
       }
       else {
         val currChar = chars(currPos)
