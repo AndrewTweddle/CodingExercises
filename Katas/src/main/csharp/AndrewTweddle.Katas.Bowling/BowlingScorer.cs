@@ -26,6 +26,8 @@ namespace AndrewTweddle.Katas.Bowling
             }
         }
 
+        private const int LAST_FRAME_INDEX = 9;  // since zero-based
+
         public static int Calculate(string throwSymbols)
         {
             char[] throws = throwSymbols.ToCharArray();
@@ -40,7 +42,7 @@ namespace AndrewTweddle.Katas.Bowling
              */
             Frame[] frames = new Frame[10];
 
-            int frameNumber = 1;
+            int frameIndex = 0;
             int startScoreIndex = 0;
 
             for (int i = 0; i < throwCount; i++)
@@ -52,11 +54,11 @@ namespace AndrewTweddle.Katas.Bowling
                     case 'X':
                     case 'x':
                         value = 10;
-                        if (frameNumber != 10)
+                        if (frameIndex != LAST_FRAME_INDEX)
                         {
                             Frame frame = new Frame(startScoreIndex, i + 2);
-                            frames[frameNumber - 1] = frame;
-                            frameNumber++;
+                            frames[frameIndex] = frame;
+                            frameIndex++;
                             startScoreIndex = i + 1;
                         }
                         break;
@@ -64,11 +66,11 @@ namespace AndrewTweddle.Katas.Bowling
                         value = 10 - values[i-1];  
                             // NB: This assumes that first throw is not a spare
 
-                        if (frameNumber != 10)
+                        if (frameIndex != LAST_FRAME_INDEX)
                         {
                             Frame frame = new Frame(startScoreIndex, i + 1);
-                            frames[frameNumber - 1] = frame;
-                            frameNumber++;
+                            frames[frameIndex] = frame;
+                            frameIndex++;
                             startScoreIndex = i + 1;
                         }
                         break;
@@ -80,17 +82,22 @@ namespace AndrewTweddle.Katas.Bowling
                         break;
                 }
                 values[i] = value;
-                if (frameNumber < 10 && i == startScoreIndex + 1)
+
+                // Finalize a frame after 2 throws (except final frame):
+                // NB: Strikes have already closed the frame after first throw.
+                if (frameIndex < LAST_FRAME_INDEX && i == startScoreIndex + 1)
                 {
                     Frame frame = new Frame(startScoreIndex, i);
-                    frames[frameNumber - 1] = frame;
-                    frameNumber++;
+                    frames[frameIndex] = frame;
+                    frameIndex++;
                     startScoreIndex = i + 1;
                 }
-                if (frameNumber == 10 && i == throwCount - 1)
+
+                if (frameIndex == LAST_FRAME_INDEX && i == throwCount - 1)
                 {
+                    // Finalize the tenth and final frame:
                     Frame frame = new Frame(startScoreIndex, i);
-                    frames[frameNumber - 1] = frame;
+                    frames[frameIndex] = frame;
                 }
             }
             return frames.Sum(f => f.CalculateScore(values));
