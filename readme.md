@@ -32,6 +32,15 @@ are in [a separate GitHub project](https://github.com/AndrewTweddle/fpinscala)
 which was forked from [the original FPInScala repo](https://github.com/fpinscala/fpinscala)
 for the book.
 
+## Various Katas found online
+
+### From the CodingDojo.org web site
+
+| Exercise                                                  | Description                              | My solutions   | 
+| ---                                                       | ---                                      | ---            | 
+| Bowling scorer (readme.md to follow)                      | Ten pin bowling scoring algorithm        | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer.cs) |
+
+
 # Learnings and notes
 
 ## General approach
