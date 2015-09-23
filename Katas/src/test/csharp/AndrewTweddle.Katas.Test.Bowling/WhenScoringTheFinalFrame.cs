@@ -12,8 +12,9 @@ namespace AndrewTweddle.Katas.Test.Bowling
         [TestMethod]
         public void ThenExtraThrowsDontScoreForBeingAStrike()
         {
-            String throwChars = new string('-', 18) + "xxx";
-            int expectedScore = 30;  // Zeroes for 9 frames, 30 for 10th frame
+            String throwChars = new string('-', 18) + "XXX";
+            int expectedScore = 30;  
+                // Zeroes for 9 frames, 30 for 10th frame
             int actualScore = BowlingScorer.Calculate(throwChars);
             Assert.AreEqual(expectedScore, actualScore);
         }
@@ -21,8 +22,9 @@ namespace AndrewTweddle.Katas.Test.Bowling
         [TestMethod]
         public void ThenExtraThrowsDontScoreForBeingASpare()
         {
-            String throwChars = new string('-', 18) + "x3/";
-            int expectedScore = 20;  // Zeroes for 9 frames, final spare has no subsequent throw to increase
+            String throwChars = new string('-', 18) + "X3/";
+            int expectedScore = 20;  
+                // Zeroes for 9 frames, final spare has no subsequent throw
             int actualScore = BowlingScorer.Calculate(throwChars);
             Assert.AreEqual(expectedScore, actualScore);
         }
@@ -32,16 +34,16 @@ namespace AndrewTweddle.Katas.Test.Bowling
         #region Count throws correctly based on whether a strike/spare in ninth
 
         [TestMethod]
-        public void ThenTheTenthFrameThrowsAreAddedTwiceIfThereWasAStrikeOnTheNinthFrame()
+        public void ThenTenthFrameThrowsAreAddedTwiceIfAStrikeOnTheNinthFrame()
         {
-            String throwChars = new string('-', 16) + "x33";
+            String throwChars = new string('-', 16) + "X33";
             int expectedScore = 22;  // Ninth + tenth: (10 + 3 + 3) + (3 + 3)
             int actualScore = BowlingScorer.Calculate(throwChars);
             Assert.AreEqual(expectedScore, actualScore);
         }
 
         [TestMethod]
-        public void ThenTheTenthFrameThrowsAreAddedOnceIfThereWasNotAStrikeOnTheNinthFrame()
+        public void ThenTenthFrameThrowsAreAddedOnceIfNoStrikeInNinthFrame()
         {
             String throwChars = new string('-', 18) + "x33";
             int expectedScore = 16;  // Tenth: (10 + 3 + 3)
@@ -50,7 +52,7 @@ namespace AndrewTweddle.Katas.Test.Bowling
         }
 
         [TestMethod]
-        public void ThenTheFirstThrowOfTheTenthFrameIsAddedTwiceIfThereWasASpareOnTheNinthFrame()
+        public void ThenFirstThrowOfTenthFrameIsAddedTwiceIfNinthIsASpare()
         {
             String throwChars = new string('-', 14) + "4/33";
             int expectedScore = 19;  // Ninth + tenth: (4 + 6 + 3) + (3 + 3)
@@ -59,7 +61,7 @@ namespace AndrewTweddle.Katas.Test.Bowling
         }
 
         [TestMethod]
-        public void ThenTheFirstThrowOfTheTenthFrameIsAddedOnceIfThereWasNotASpareOnTheNinthFrame()
+        public void ThenFirstThrowOfTenthFrameIsAddedOnceIfNoSpareOnTheNinth()
         {
             String throwChars = new string('-', 14) + "4533";
             int expectedScore = 15;  // Ninth + tenth: (4 + 5) + (3 + 3)
