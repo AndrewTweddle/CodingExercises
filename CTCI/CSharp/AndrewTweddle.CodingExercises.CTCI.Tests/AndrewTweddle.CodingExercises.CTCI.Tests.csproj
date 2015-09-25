@@ -45,7 +45,9 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -59,6 +61,7 @@
     <Compile Include="Chapter2\Exercise1\BaseForWhenRemovingDuplicateLetters.cs" />
     <Compile Include="Chapter2\Exercise1\WhenRemovingDuplicateLettersWithoutTemporaryBuffer.cs" />
     <Compile Include="Chapter2\Exercise1\WhenRemovingDuplicateLetters.cs" />
+    <Compile Include="Chapter2\Exercise2\WhenFindingTheKToLastNode.cs" />
     <Compile Include="Chapter3\Exercise1\WhenPoppingItemsOffAStackArray.cs" />
     <Compile Include="Chapter3\Exercise1\WhenPushingItemsOntoAStackArray.cs" />
     <Compile Include="Chapter3\Exercise1\WhenCreatingAStackArray.cs" />
