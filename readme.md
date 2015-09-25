@@ -100,4 +100,14 @@ for the book.
 | Validate arguments    | ArgumentException(message, paramName ) | The parameter name is the second parameter to the constructor. |
 | Validate argument range | ArgumentOutOfRangeException(paramName, message) | But this time the parameter name is the first parameter to the constructor! |
 | Overflow checking | checked { ... } | Arithmetic overflow is silent unless the statement/s (NOT expressions) are in a checked block |
+| Initialize dictionary | ... = { {key; value}, ... } | |
 
+## Other coding tips
+
+1. Whenever adding to an int, consider whether the expression should be in a checked block "{}" to catch overflows.
+2. "for (int i = 0; i <= n; i++)" - consider whether n could be int.MaxValue, which would cause overflow. If so, consider summing in reverse.
+
+## General approach
+
+1. When faced with a "monolithic method", consider applying separation of concerns, even if this causes some duplication or multiple passes through a (small) iteration.
+2. In the above case, consider refactoring out smaller methods first, as this might reduce duplication.
