@@ -12,7 +12,7 @@ namespace AndrewTweddle.Katas.Bowling
 
         private Dictionary<char, int> charToPins = new Dictionary<char, int>
         {
-            {'.', 0 },
+            {'-', 0 },
             {'1', 1 },
             {'2', 2 },
             {'3', 3 },
@@ -34,9 +34,8 @@ namespace AndrewTweddle.Katas.Bowling
         {
             if (symbols[firstIndex + 1] == '/')
                 return 10;  // Spare
-            else
-                return GetPinsDown(symbols, firstIndex)
-                    + GetPinsDown(symbols, firstIndex + 1);
+            return GetPinsDown(symbols, firstIndex)
+                + GetPinsDown(symbols, firstIndex + 1);
         }
 
         public bool IsStrike(string symbols, int indexOfFirstThrowInFrame)

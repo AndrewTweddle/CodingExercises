@@ -46,7 +46,7 @@ namespace AndrewTweddle.Katas.Test.Bowling
         [TestMethod]
         public void ThenTenthFrameThrowsAreAddedOnceIfNoStrikeInNinthFrame()
         {
-            String throwChars = new string('-', 18) + "x33";
+            String throwChars = new string('-', 18) + "X33";
             int expectedScore = 16;  // Tenth: (10 + 3 + 3)
             int actualScore = GetScorer().Calculate(throwChars);
             Assert.AreEqual(expectedScore, actualScore);
@@ -55,7 +55,7 @@ namespace AndrewTweddle.Katas.Test.Bowling
         [TestMethod]
         public void ThenFirstThrowOfTenthFrameIsAddedTwiceIfNinthIsASpare()
         {
-            String throwChars = new string('-', 14) + "4/33";
+            String throwChars = new string('-', 16) + "4/33";
             int expectedScore = 19;  // Ninth + tenth: (4 + 6 + 3) + (3 + 3)
             int actualScore = GetScorer().Calculate(throwChars);
             Assert.AreEqual(expectedScore, actualScore);
@@ -64,7 +64,7 @@ namespace AndrewTweddle.Katas.Test.Bowling
         [TestMethod]
         public void ThenFirstThrowOfTenthFrameIsAddedOnceIfNoSpareOnTheNinth()
         {
-            String throwChars = new string('-', 14) + "4533";
+            String throwChars = new string('-', 16) + "4533";
             int expectedScore = 15;  // Ninth + tenth: (4 + 5) + (3 + 3)
             int actualScore = GetScorer().Calculate(throwChars);
             Assert.AreEqual(expectedScore, actualScore);
