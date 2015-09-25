@@ -2,7 +2,7 @@
 
 namespace AndrewTweddle.Katas.Bowling
 {
-    public static class BowlingScorer
+    public class BowlingScorer: IBowlingScorer
     {
         internal class Frame
         {
@@ -28,7 +28,7 @@ namespace AndrewTweddle.Katas.Bowling
 
         private const int LAST_FRAME_INDEX = 9;  // since zero-based
 
-        public static int Calculate(string throwSymbols)
+        public int Calculate(string throwSymbols)
         {
             char[] throws = throwSymbols.ToCharArray();
             int throwCount = throws.Length;

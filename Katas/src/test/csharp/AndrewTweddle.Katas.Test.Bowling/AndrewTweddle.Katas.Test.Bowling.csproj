@@ -52,6 +52,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="BaseForWhenScoringAGame.cs" />
+    <Compile Include="BaseForWhenScoringTheFinalFrame.cs" />
     <Compile Include="WhenScoringAGame.cs" />
     <Compile Include="WhenScoringTheFinalFrame.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
