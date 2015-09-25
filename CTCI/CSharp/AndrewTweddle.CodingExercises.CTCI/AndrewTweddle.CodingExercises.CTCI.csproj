@@ -46,6 +46,7 @@
     <Compile Include="Chapter2\Exercise1\DuplicateLetterRemoverWithoutTemporaryBuffer.cs" />
     <Compile Include="Chapter2\Exercise1\QuickDuplicateLetterRemover.cs" />
     <Compile Include="Chapter2\Exercise1\IDuplicateLetterRemover.cs" />
+    <Compile Include="Chapter2\Exercise2\Node.cs" />
     <Compile Include="Chapter3\Exercise1\IStackArray.cs" />
     <Compile Include="Chapter3\Exercise1\StackArray.cs" />
     <Compile Include="Chapter4\BinaryTree.cs" />
