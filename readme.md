@@ -52,6 +52,7 @@ for the book.
   * Confirm the scope
   * Question the requirements
   * Look for simplifying assumptions
+  * List any issues that complicate things (and consider unit testing these earlier)
 * Design
   * Brainstorm a number of solutions
     * Count number of steps and estimate the big-O scalability of each
@@ -69,7 +70,8 @@ for the book.
 * Code review
   * Look at the code critically
   * Refactor, add TODO's or make a note of areas that could be improved
-
+* Compare
+  * If a commonly used Kata (e.g. the bowling game), see how others have solved it and compare to my solution
 
 ### Use a notebook to write all code on paper first
 
@@ -99,3 +101,4 @@ for the book.
 | Validate arguments    | ArgumentException(message, paramName ) | The parameter name is the second parameter to the constructor. |
 | Validate argument range | ArgumentOutOfRangeException(paramName, message) | But this time the parameter name is the first parameter to the constructor! |
 | Overflow checking | checked { ... } | Arithmetic overflow is silent unless the statement/s (NOT expressions) are in a checked block |
+

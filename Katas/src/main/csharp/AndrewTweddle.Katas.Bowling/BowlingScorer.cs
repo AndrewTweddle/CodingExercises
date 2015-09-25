@@ -47,13 +47,11 @@ namespace AndrewTweddle.Katas.Bowling
 
             for (int i = 0; i < throwCount; i++)
             {
-                char symbol = throws[i];
-                int value = 0;
-                switch (symbol)
+                switch (throws[i])
                 {
                     case 'X':
                     case 'x':
-                        value = 10;
+                        values[i] = 10;
                         if (frameIndex != LAST_FRAME_INDEX)
                         {
                             Frame frame = new Frame(startScoreIndex, i + 2);
@@ -63,7 +61,7 @@ namespace AndrewTweddle.Katas.Bowling
                         }
                         break;
                     case '/':
-                        value = 10 - values[i-1];  
+                        values[i] = 10 - values[i-1];  
                             // NB: This assumes that first throw is not a spare
 
                         if (frameIndex != LAST_FRAME_INDEX)
@@ -75,13 +73,12 @@ namespace AndrewTweddle.Katas.Bowling
                         }
                         break;
                     case '-':
-                        value = 0;
+                        values[i] = 0;
                         break;
                     default:
-                        value = int.Parse(throwSymbols.Substring(i, 1));
+                        values[i] = int.Parse(throwSymbols.Substring(i, 1));
                         break;
                 }
-                values[i] = value;
 
                 // Finalize a frame after 2 throws (except final frame):
                 // NB: Strikes have already closed the frame after first throw.
