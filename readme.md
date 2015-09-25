@@ -36,10 +36,9 @@ for the book.
 
 ### From the CodingDojo.org web site
 
-| Exercise                                                  | Description                              | My solutions   | 
-| ---                                                       | ---                                      | ---            | 
-| Bowling scorer (readme.md to follow)                      | Ten pin bowling scoring algorithm        | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer.cs) [unit tests](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/src/test/csharp/AndrewTweddle.Katas.Test.Bowling)|
-
+| Exercise  | Description  | My solutions   | 
+| ---       | ---          | ---            | 
+| Bowling scorer - [readme](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/src/main/csharp/AndrewTweddle.Katas.Bowling) | Ten pin bowling scoring algorithm        | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer.cs) [unit tests](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/src/test/csharp/AndrewTweddle.Katas.Test.Bowling) |
 
 # Learnings and notes
 

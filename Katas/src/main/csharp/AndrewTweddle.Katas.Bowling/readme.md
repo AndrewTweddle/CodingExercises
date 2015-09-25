@@ -74,10 +74,10 @@ Actually all we need to know for each frame, is the range of indexes which will 
 
 ### Implementation
 
-1. Trial implementation - discovered that I have to know where a frame begins (and the frame number), as an ending substring of "X33" could be the 10th or the 9th and 10th frames.
-2. Set up [unit tests for the 10th frame issues](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/test/csharp/AndrewTweddle.Katas.Test.Bowling/WhenScoringTheFinalFrame.cs) identified earlier, as well as the 'X33' pattern.
+1. Trial implementation - discovered that I have to know where a frame begins (and the frame number), as an ending substring of "X33" could be the 10th or the 9th and 10th frames
+2. Set up [unit tests for the 10th frame issues](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/test/csharp/AndrewTweddle.Katas.Test.Bowling/WhenScoringTheFinalFrame.cs) identified earlier, as well as the 'X33' pattern
 3. [Implementation](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer.cs)
-4. Further unit tests.
+4. Further [unit tests](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/test/csharp/AndrewTweddle.Katas.Test.Bowling/WhenScoringAGame.cs)
 
 
 ## Compare with other solutions
