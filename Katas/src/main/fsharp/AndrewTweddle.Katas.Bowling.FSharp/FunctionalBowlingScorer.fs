@@ -1,7 +1,5 @@
 ﻿namespace AndrewTweddle.Katas.Bowling.FSharp
 
-open AndrewTweddle.Katas.Bowling
-
 module Scoring =
     let getPinsDown symbol =
       match symbol with
@@ -26,24 +24,26 @@ module Scoring =
 
     let rec calculateRemainingFrames symbols frame totalScore =
         match symbols with
-        | 'X' :: remainingSymbols when frame = 10
-            -> totalScore + 10 + (sumOfFirstTwoThrows remainingSymbols)
-        | _ :: '/' :: remainingSymbol :: [] when frame = 10
-            -> totalScore + 10 + (getPinsDown remainingSymbol)
-        | lastFrameThrows when frame = 10
+        | _ when frame > 10 -> failwith "Too many frames"
+        | 'X' :: bonusThrows & [_; _; _] when frame = 10
+            -> totalScore + 10 + (sumOfFirstTwoThrows bonusThrows)
+        | _ :: '/' :: bonusThrow :: [] when frame = 10
+            -> totalScore + 10 + (getPinsDown bonusThrow)
+        | lastFrameThrows & [_; _] when frame = 10
             -> totalScore + sumOfFirstTwoThrows lastFrameThrows
-        | 'X' :: remainingSymbols
-            -> calculateRemainingFrames remainingSymbols (frame+1)
-                (totalScore + 10 + (sumOfFirstTwoThrows remainingSymbols))
-        | _ :: '/' :: remainingSymbols
-            -> calculateRemainingFrames remainingSymbols (frame+1)
-                (totalScore + 10 + (getPinsDown remainingSymbols.Head))
-        | _ :: _ :: remainingSymbols
-            -> calculateRemainingFrames remainingSymbols (frame+1)
+        | 'X' :: remainingThrows
+            -> calculateRemainingFrames remainingThrows (frame+1)
+                (totalScore + 10 + (sumOfFirstTwoThrows remainingThrows))
+        | _ :: '/' :: remainingThrows
+            -> calculateRemainingFrames remainingThrows (frame+1)
+                (totalScore + 10 + (getPinsDown remainingThrows.Head))
+        | _ :: _ :: remainingThrows
+            -> calculateRemainingFrames remainingThrows (frame+1)
                 (totalScore + (sumOfFirstTwoThrows symbols))
-        | _ -> failwith (sprintf "No remaining symbols in frame %d" frame)
+        | _ -> failwith (sprintf "Invalid pattern in frame %d" frame )
 
 open Scoring
+open AndrewTweddle.Katas.Bowling
 
 type FunctionalBowlingScorer() = 
     interface IBowlingScorer with
