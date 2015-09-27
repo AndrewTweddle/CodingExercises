@@ -6,6 +6,29 @@ using System.Threading.Tasks;
 
 namespace AndrewTweddle.Katas.Bowling
 {
+    /// <summary>
+    /// A stateless bowling scorer with no large methods
+    /// </summary>
+    /// <remarks>
+    /// Goal: Rewrite BowlingScorer from scratch as a 
+    /// stateless bowling scorer with no large methods.
+    /// 
+    /// The reason for making it stateless is to simplify local analysis 
+    /// of the logic by removing any external dependencies from the method.
+    /// 
+    /// The reason for eliminating large methods is so that the state logic
+    /// isn't just being moved from the class into the large method.
+    /// A state variable in a large method is still effectively non-local
+    /// forcing more of the method to be kept in the reader's working memory.
+    /// 
+    /// This could be a static class except for deriving from IBowlingScorer
+    /// (which is to allow different scoring algorithms to share unit tests).
+    /// 
+    /// To be stateless, the symbols parameter gets threaded through methods.
+    /// In practice I'd prefer to make it an immutable member variable.
+    /// That would be more readable. It should also provide enough clues
+    /// to simplify the analysis of the algorithm's behaviour.
+    /// </remarks>
     public class BowlingScorer2 : IBowlingScorer
     {
         private const int LAST_FRAME = 10;
