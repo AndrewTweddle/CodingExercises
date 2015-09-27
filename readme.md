@@ -38,7 +38,7 @@ for the book.
 
 | Exercise  | Description  | My solutions   | 
 | ---       | ---          | ---            | 
-| Bowling scorer - [readme](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/src/main/csharp/AndrewTweddle.Katas.Bowling) | Ten pin bowling scoring algorithm        | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer.cs) [unit tests](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/src/test/csharp/AndrewTweddle.Katas.Test.Bowling) |
+| Bowling scorer - [readme](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/src/main/csharp/AndrewTweddle.Katas.Bowling) | Ten pin bowling scoring algorithm        | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer.cs) [C# version 2.0](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer2.cs) [F#](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/main/fsharp/AndrewTweddle.Katas.Bowling.FSharp/FunctionalBowlingScorer.fs) [unit tests](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/src/test/csharp/AndrewTweddle.Katas.Test.Bowling) |
 
 # Learnings and notes
 

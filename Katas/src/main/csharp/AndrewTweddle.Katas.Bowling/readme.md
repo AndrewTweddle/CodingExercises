@@ -133,3 +133,42 @@ It would probably also be easier in a language like C where pointer arithmetic i
 In C# it's possible, but not idiomatic. You also need to remember things like using the "fixed" keyword 
 to ensure that .Net doesn't move the item you're pointing to during a garbage collection.
 I'd prefer to avoid low-level language details like that, as they will distract from the intention of the code.
+
+# Bowling Scorer (version 2.0): BowlingScorer2
+
+## Goal
+
+1. Create a stateless class (no mutable member variables).
+2. Don't have a large "monolithic" method depending on local variables (since this just moves the state tracking out of the class and into the method).
+
+The symbols string threaded through the methods is irritating.
+In practice I'd have been happy making it an immutable member variable/property of the class.
+
+Approach:
+1. This is a calculation problem. So express the problem mathematically first.
+2. Then translate this Mathematics into logic.
+3. Exploit the '/' symbol to avoid processing the preceding throw if possible (one exception is when the previous frame is a spare as well).
+4. When scoring a normal frame, two throws are added. When scoring a strike, the next two throws are added.
+5. So create a utility method to add two throws together. This can exploit the '/' symbol above.
+6. To break down the monolithic frame calculation method:
+  1. Refactor out utility methods, such as IsStrike() and IsSpare().
+  2. Separate the concerns of scoring a frame versus calculating the start of the next frame.
+
+# Bowling Scorer (version 3.0): FunctionalBowlingScorer
+
+I was very happy with the readable, logical structure of BowlingScorer2, which was neither stateful nor monolithic.
+
+I wanted to see how the same algorithm would look in a functional language. 
+I could have used Scala, but I wanted to reuse the unit test logic, so needed to use a .Net language.
+So I hacked together an F# solution instead.
+
+The functional solution has half the lines of code. 
+If you exclude scaffolding code and only compare the core logic of both, it's less than a third of the length of BowlingScorer2.
+
+BowlingScorer2 is verbose but very readable. There is a linguistic structure to the solution.
+Concerns are also neatly separated with each method having a single purpose.
+
+FunctionalBowlingScorer is much more succinct.
+The pattern matching logic creates a structure which is symbolic and almost visual.
+
+Pattern matching also makes it much easier to prevent invalid patterns of symbols (although this was explicitly excluded as a requirement for the kata).
