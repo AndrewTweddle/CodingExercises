@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndrewTweddle.Katas.Test.Bo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndrewTweddle.Katas.Bowling", "main\csharp\AndrewTweddle.Katas.Bowling\AndrewTweddle.Katas.Bowling.csproj", "{938C38B9-9C74-468E-9D93-8C2AF9E6799E}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "AndrewTweddle.Katas.Bowling.FSharp", "main\fsharp\AndrewTweddle.Katas.Bowling.FSharp\AndrewTweddle.Katas.Bowling.FSharp.fsproj", "{39663B09-3562-43BC-99E5-CC81ED82F85F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{938C38B9-9C74-468E-9D93-8C2AF9E6799E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{938C38B9-9C74-468E-9D93-8C2AF9E6799E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{938C38B9-9C74-468E-9D93-8C2AF9E6799E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39663B09-3562-43BC-99E5-CC81ED82F85F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39663B09-3562-43BC-99E5-CC81ED82F85F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39663B09-3562-43BC-99E5-CC81ED82F85F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39663B09-3562-43BC-99E5-CC81ED82F85F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
