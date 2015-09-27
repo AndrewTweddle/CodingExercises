@@ -33,60 +33,17 @@ namespace AndrewTweddle.Katas.Bowling
     {
         private const int LAST_FRAME = 10;
 
-        private Dictionary<char, int> charToPins = new Dictionary<char, int>
+        public int Calculate(string symbols)
         {
-            {'-', 0 },
-            {'1', 1 },
-            {'2', 2 },
-            {'3', 3 },
-            {'4', 4 },
-            {'5', 5 },
-            {'6', 6 },
-            {'7', 7 },
-            {'8', 8 },
-            {'9', 9 },
-            {'X', 10 },
-        };
-
-        public int GetPinsDown(string symbols, int index)
-        {
-            return charToPins[symbols[index]];
-        }
-
-        public int SumOfTwoThrows(string symbols, int firstIndex)
-        {
-            if (symbols[firstIndex + 1] == '/')
-                return 10;  // Spare
-            return GetPinsDown(symbols, firstIndex)
-                + GetPinsDown(symbols, firstIndex + 1);
-        }
-
-        public bool IsStrike(string symbols, int indexOfFirstThrowInFrame)
-        {
-            return symbols[indexOfFirstThrowInFrame] == 'X';
-        }
-
-        public bool IsSpare(string symbols, int indexOfFirstThrowInFrame)
-        {
-            return symbols[indexOfFirstThrowInFrame + 1] == '/';
-        }
-
-        public int ScoreFrameWithAStrike(string symbols, 
-            int indexOfFirstThrowInFrame)
-        {
-            return 10 + SumOfTwoThrows(symbols, indexOfFirstThrowInFrame + 1);
-        }
-
-        public int ScoreFrameWithASpare(string symbols,
-            int indexOfFirstThrowInFrame)
-        {
-            return 10 + GetPinsDown(symbols, indexOfFirstThrowInFrame + 2);
-        }
-
-        public int ScoreANormalFrame(string symbols,
-            int indexOfFirstThrowInFrame)
-        {
-            return SumOfTwoThrows(symbols, indexOfFirstThrowInFrame);
+            int score = 0;
+            int throwIndexForFrame = 0;
+            for (int frameNumber = 1; frameNumber <= LAST_FRAME; frameNumber++)
+            {
+                score += CalculateFrameScore(symbols, throwIndexForFrame);
+                throwIndexForFrame 
+                    = GetIndexOfNextFrame(symbols, throwIndexForFrame);
+            }
+            return score;
         }
 
         public int CalculateFrameScore(string symbols,
@@ -103,6 +60,34 @@ namespace AndrewTweddle.Katas.Bowling
             return ScoreANormalFrame(symbols, indexOfFirstThrowInFrame);
         }
 
+        public bool IsStrike(string symbols, int indexOfFirstThrowInFrame)
+        {
+            return symbols[indexOfFirstThrowInFrame] == 'X';
+        }
+
+        public int ScoreFrameWithAStrike(string symbols,
+            int indexOfFirstThrowInFrame)
+        {
+            return 10 + SumOfTwoThrows(symbols, indexOfFirstThrowInFrame + 1);
+        }
+
+        public bool IsSpare(string symbols, int indexOfFirstThrowInFrame)
+        {
+            return symbols[indexOfFirstThrowInFrame + 1] == '/';
+        }
+
+        public int ScoreFrameWithASpare(string symbols,
+            int indexOfFirstThrowInFrame)
+        {
+            return 10 + GetPinsDown(symbols, indexOfFirstThrowInFrame + 2);
+        }
+
+        public int ScoreANormalFrame(string symbols,
+            int indexOfFirstThrowInFrame)
+        {
+            return SumOfTwoThrows(symbols, indexOfFirstThrowInFrame);
+        }
+
         public int GetIndexOfNextFrame(string symbols,
             int indexOfFirstThrowInThisFrame)
         {
@@ -113,17 +98,36 @@ namespace AndrewTweddle.Katas.Bowling
             return indexOfFirstThrowInThisFrame + 2;
         }
 
-        public int Calculate(string symbols)
+        #region Shared utility methods
+
+        public int SumOfTwoThrows(string symbols, int firstIndex)
         {
-            int score = 0;
-            int throwIndexForFrame = 0;
-            for (int frameNumber = 1; frameNumber <= LAST_FRAME; frameNumber++)
-            {
-                score += CalculateFrameScore(symbols, throwIndexForFrame);
-                throwIndexForFrame 
-                    = GetIndexOfNextFrame(symbols, throwIndexForFrame);
-            }
-            return score;
+            if (symbols[firstIndex + 1] == '/')
+                return 10;  // Spare
+            return GetPinsDown(symbols, firstIndex)
+                + GetPinsDown(symbols, firstIndex + 1);
         }
+
+        public int GetPinsDown(string symbols, int index)
+        {
+            return charToPins[symbols[index]];
+        }
+
+        #endregion
+
+        private Dictionary<char, int> charToPins = new Dictionary<char, int>
+        {
+            {'-', 0 },
+            {'1', 1 },
+            {'2', 2 },
+            {'3', 3 },
+            {'4', 4 },
+            {'5', 5 },
+            {'6', 6 },
+            {'7', 7 },
+            {'8', 8 },
+            {'9', 9 },
+            {'X', 10 },
+        };
     }
 }
