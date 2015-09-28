@@ -144,15 +144,16 @@ I'd prefer to avoid low-level language details like that, as they will distract 
 The symbols string threaded through the methods is irritating.
 In practice I'd have been happy making it an immutable member variable/property of the class.
 
-Approach:
+## Approach
+
 1. This is a calculation problem. So express the problem mathematically first.
 2. Then translate this Mathematics into logic.
 3. Exploit the '/' symbol to avoid processing the preceding throw if possible (one exception is when the previous frame is a spare as well).
 4. When scoring a normal frame, two throws are added. When scoring a strike, the next two throws are added.
 5. So create a utility method to add two throws together. This can exploit the '/' symbol above.
-6. To break down the monolithic frame calculation method:
-  1. Refactor out utility methods, such as IsStrike() and IsSpare().
-  2. Separate the concerns of scoring a frame versus calculating the start of the next frame.
+6. Break down the monolithic frame calculation method by:
+    1. Refactor out utility methods, such as IsStrike() and IsSpare().
+    2. Separate the concerns of scoring a frame versus calculating the start of the next frame.
 
 # Bowling Scorer (version 3.0): FunctionalBowlingScorer
 
