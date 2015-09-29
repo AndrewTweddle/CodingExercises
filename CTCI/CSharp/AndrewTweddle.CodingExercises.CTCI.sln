@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndrewTweddle.CodingExercises.CTCI", "AndrewTweddle.CodingExercises.CTCI.csproj", "{B269EF0D-68F2-47A0-B0DA-B84A0BA0517E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndrewTweddle.CodingExercises.CTCI", "AndrewTweddle.CodingExercises.CTCI\AndrewTweddle.CodingExercises.CTCI.csproj", "{B269EF0D-68F2-47A0-B0DA-B84A0BA0517E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndrewTweddle.CodingExercises.CTCI.Tests", "..\AndrewTweddle.CodingExercises.CTCI.Tests\AndrewTweddle.CodingExercises.CTCI.Tests.csproj", "{C665145A-714F-413E-B984-EA6D408D60C2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndrewTweddle.CodingExercises.CTCI.Tests", "AndrewTweddle.CodingExercises.CTCI.Tests\AndrewTweddle.CodingExercises.CTCI.Tests.csproj", "{C665145A-714F-413E-B984-EA6D408D60C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
