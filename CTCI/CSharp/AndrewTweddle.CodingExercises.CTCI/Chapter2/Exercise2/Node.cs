@@ -56,12 +56,13 @@ namespace AndrewTweddle.CodingExercises.CTCI.Chapter2.Exercise2
         private static Node<T> AdvanceToEnd<T>(Node<T> startNode, 
             Node<T> rootNode)
         {
+            Node<T> node = rootNode;
             while (startNode != null)
             {
                 startNode = startNode.NextNode;
-                rootNode = rootNode.NextNode;
+                node = node.NextNode;
             }
-            return rootNode;
+            return node;
         }
 
         public static Node<T> FindKLastNode<T>(Node<T> rootNode, int k)

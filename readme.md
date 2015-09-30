@@ -22,7 +22,7 @@ The CTCI sub-folder contain my solutions to exercises from the 5th edition of [C
 | 5.1       | Overwrite bits in one int from another   | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter5/Exercise1/BitInserter.cs) |
 | 9.1       | Number of different ways of hopping up stairs | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter9/Exercise1/StepsSolver.cs) |
 | 1.4       | Replacing spaces with "%20" in a string       | [Scala](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/Scala/src/main/scala/ctci/chapter1/Exercise4.scala) |
-
+| 1.1       | kth to last node in a linked list        | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter2/Exercise2/Node.cs) |
 
 ## Functional Programming In Scala
 
