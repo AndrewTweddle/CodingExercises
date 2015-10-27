@@ -10,7 +10,7 @@ These have been used to practise coding skills, learn new programming languages,
 
 ## CTCI
 
-The CTCI sub-folder contain my solutions to exercises from the 5th edition of [Cracking the Coding Interview](http://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/098478280X) by Gayle Laakmann McDowell.
+The CTCI sub-folder contains my solutions to exercises from the 5th edition of [Cracking the Coding Interview](http://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/098478280X) by Gayle Laakmann McDowell.
 
 | Exercise  | Description                              | My solutions  | 
 | ---       | ---                                      | ---           | 
@@ -38,7 +38,7 @@ for the book.
 
 | Exercise  | Description  | My solutions   | 
 | ---       | ---          | ---            | 
-| Bowling scorer - [readme](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/src/main/csharp/AndrewTweddle.Katas.Bowling) | Ten pin bowling scoring algorithm        | [C# (v1)](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer.cs) [C# (v2)](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer2.cs) [F#](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/main/fsharp/AndrewTweddle.Katas.Bowling.FSharp/FunctionalBowlingScorer.fs) [unit tests](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/src/test/csharp/AndrewTweddle.Katas.Test.Bowling) |
+| Bowling scorer - [readme](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/src/main/csharp/AndrewTweddle.Katas.Bowling) | Ten pin bowling scoring algorithm        | [C# (v1)](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer.cs) [C# (v2) - stateless](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer2.cs) [C# (v3 - immutable)](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer3.cs) [F#](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/main/fsharp/AndrewTweddle.Katas.Bowling.FSharp/FunctionalBowlingScorer.fs) [unit tests](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/src/test/csharp/AndrewTweddle.Katas.Test.Bowling) |
 
 # Learnings and notes
 

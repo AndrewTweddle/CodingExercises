@@ -54,6 +54,8 @@
   <ItemGroup>
     <Compile Include="BaseForWhenScoringAGame.cs" />
     <Compile Include="BaseForWhenScoringTheFinalFrame.cs" />
+    <Compile Include="WhenScoringTheFinalFrame3.cs" />
+    <Compile Include="WhenScoringAGame3.cs" />
     <Compile Include="WhenScoringAGameFunctionally.cs" />
     <Compile Include="WhenScoringTheFinalFrameFunctionally.cs" />
     <Compile Include="WhenScoringTheFinalFrame2.cs" />
