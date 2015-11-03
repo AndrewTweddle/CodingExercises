@@ -143,7 +143,7 @@ namespace AndrewTweddle.CodingExercises.CTCI.Chapter3.Exercise1Challenge
             int sizeOfBothStacks = sizeOfPrevStack + sizeOfCurrStack;
             int gapsAfterBothStacks = gapAfterPrevStack + gapAfterCurrStack;
             int idealGapAfterPrevStack = (int) Math.Floor(
-                sizeOfPrevStack * sizeOfBothStacks / gapsAfterBothStacks + 0.5);
+                sizeOfPrevStack * gapsAfterBothStacks / sizeOfBothStacks + 0.5);
             int distanceToMove = gapAfterPrevStack - idealGapAfterPrevStack;
             if (distanceToMove <= 0)
             {
@@ -182,6 +182,7 @@ namespace AndrewTweddle.CodingExercises.CTCI.Chapter3.Exercise1Challenge
                     */
                 }
             }
+            currStack.Shift(-distanceToMove);
         }
 
         private void MakeSpaceByMovingNextStackToTheRight(int stackIndex, int nextStackIndex)
@@ -189,23 +190,23 @@ namespace AndrewTweddle.CodingExercises.CTCI.Chapter3.Exercise1Challenge
             Stack<T> currStack = stacks[stackIndex];
             Stack<T> nextStack = stacks[nextStackIndex];
             Stack<T> prevStack = stacks[GetPrevStackIndex(stackIndex)];
-            int sizeOfCurrStack = currStack.Count + 1;
-            int gapAfterCurrStack = GetDistanceBetweenPositions(
-                currStack.NextInsertPos, nextStack.FirstInsertPos) - 2;
+            int newSizeOfCurrStack = currStack.Count + 1;
+            int newGapAfterCurrStack = GetDistanceBetweenPositions(
+                currStack.NextInsertPos, nextStack.FirstInsertPos) - 1;
             int sizeOfNextStack = nextStack.Count;
             int gapAfterNextStack = GetDistanceBetweenPositions(
                 nextStack.NextInsertPos, prevStack.FirstInsertPos) - 1;
-            int sizeOfBothStacks = sizeOfCurrStack + sizeOfNextStack;
-            int gapsAfterBothStacks = gapAfterCurrStack + gapAfterNextStack;
+            int sizeOfBothStacks = newSizeOfCurrStack + sizeOfNextStack;
+            int totalNewGapAfterBothStacks = newGapAfterCurrStack + gapAfterNextStack;
             int idealGapAfterCurrStack = (int)Math.Floor(
-                sizeOfCurrStack * sizeOfBothStacks / gapsAfterBothStacks + 0.5);
-            int distanceToMove = idealGapAfterCurrStack - gapAfterCurrStack;
+                newSizeOfCurrStack * (double) totalNewGapAfterBothStacks / sizeOfBothStacks + 0.5);
+            int distanceToMove = idealGapAfterCurrStack - newGapAfterCurrStack;
             if (distanceToMove <= 0)
             {
                 // The ideal gap is unattainable. Just move one space right:
                 distanceToMove = 1;
             }
-            MoveStackRight(stackIndex, distanceToMove);
+            MoveStackRight(nextStackIndex, distanceToMove);
         }
 
         private void MoveStackRight(int stackIndex, int distanceToMove)
@@ -237,6 +238,7 @@ namespace AndrewTweddle.CodingExercises.CTCI.Chapter3.Exercise1Challenge
                     */
                 }
             }
+            currStack.Shift(distanceToMove);
         }
 
         private void PushWhenThereIsAGapAfterThisStack(int stackIndex, T item)
