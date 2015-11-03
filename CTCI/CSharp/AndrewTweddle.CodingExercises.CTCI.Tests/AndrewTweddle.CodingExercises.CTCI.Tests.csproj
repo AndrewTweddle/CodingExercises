@@ -62,6 +62,7 @@
     <Compile Include="Chapter2\Exercise1\WhenRemovingDuplicateLettersWithoutTemporaryBuffer.cs" />
     <Compile Include="Chapter2\Exercise1\WhenRemovingDuplicateLetters.cs" />
     <Compile Include="Chapter2\Exercise2\WhenFindingTheKToLastNode.cs" />
+    <Compile Include="Chapter3\Exercise1Challenge\WhenPoppingItems.cs" />
     <Compile Include="Chapter3\Exercise1Challenge\WhenCreatingAStacker.cs" />
     <Compile Include="Chapter3\Exercise1\WhenPoppingItemsOffAStackArray.cs" />
     <Compile Include="Chapter3\Exercise1\WhenPushingItemsOntoAStackArray.cs" />
