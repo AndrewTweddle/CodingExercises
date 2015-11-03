@@ -24,8 +24,8 @@ namespace AndrewTweddle.CodingExercises.CTCI.Chapter3.Exercise1Challenge
             }
         }
 
-        internal int FirstInsertPos { get; set; }
-        internal int NextInsertPos { get; set; }
+        public int FirstInsertPos { get; internal set; }
+        public int NextInsertPos { get; internal set; }
 
         public Stack(Stacker<T> stacker, int stackIndex, int firstInsertPos)
         {

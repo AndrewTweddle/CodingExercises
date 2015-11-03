@@ -9,7 +9,7 @@ namespace AndrewTweddle.CodingExercises.CTCI.Chapter3.Exercise1Challenge
     /// <typeparam name="T"></typeparam>
     public class Stacker<T>
     {
-        private const int STACK_COUNT = 3;
+        public const int STACK_COUNT = 3;
 
         private Stack<T>[] stacks;
         private T[] ringBuffer;
@@ -26,7 +26,16 @@ namespace AndrewTweddle.CodingExercises.CTCI.Chapter3.Exercise1Challenge
             stacks = new Stack<T>[STACK_COUNT];
             for (int i = 0; i < STACK_COUNT; i++)
             {
-                stacks[i] = new Stack<T>(this, i, i * STACK_COUNT / 3);
+                stacks[i] = new Stack<T>(this, i, i * BufferSize / STACK_COUNT);
+            }
+        }
+
+        public Stack<T> this[int stackIndex]
+        {
+            get
+            {
+                CheckStackIndex(stackIndex);
+                return stacks[stackIndex];
             }
         }
 
