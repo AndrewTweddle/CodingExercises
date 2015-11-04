@@ -62,6 +62,7 @@
     <Compile Include="Chapter2\Exercise1\WhenRemovingDuplicateLettersWithoutTemporaryBuffer.cs" />
     <Compile Include="Chapter2\Exercise1\WhenRemovingDuplicateLetters.cs" />
     <Compile Include="Chapter2\Exercise2\WhenFindingTheKToLastNode.cs" />
+    <Compile Include="Chapter3\Exercise1Challenge\WhenPushingAnItemAndOnlyTheOtherStacksHaveSpace.cs" />
     <Compile Include="Chapter3\Exercise1Challenge\WhenPushingAnItemWithNoSpaceAfterTheStack.cs" />
     <Compile Include="Chapter3\Exercise1Challenge\WhenPushingItemsAndThereIsAGapAfterTheStack.cs" />
     <Compile Include="Chapter3\Exercise1Challenge\WhenPoppingItems.cs" />
