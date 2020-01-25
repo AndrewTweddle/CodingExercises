@@ -39,7 +39,13 @@ for the book.
 
 | Exercise  | Description  | My solutions   | 
 | ---       | ---          | ---            | 
-| Bowling scorer - [readme](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/src/main/csharp/AndrewTweddle.Katas.Bowling) | Ten pin bowling scoring algorithm        | [C# (v1)](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer.cs) [C# (v2 - stateless)](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer2.cs) [C# (v3 - immutable)](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer3.cs) [F#](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/main/fsharp/AndrewTweddle.Katas.Bowling.FSharp/FunctionalBowlingScorer.fs) [unit tests](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/src/test/csharp/AndrewTweddle.Katas.Test.Bowling) |
+| [Bowling scorer](http://codingdojo.org/kata/Bowling/) - [readme](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/src/main/csharp/AndrewTweddle.Katas.Bowling) | Ten pin bowling scoring algorithm        | [C# (v1)](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer.cs) [C# (v2 - stateless)](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer2.cs) [C# (v3 - immutable)](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer3.cs) [F#](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/main/fsharp/AndrewTweddle.Katas.Bowling.FSharp/FunctionalBowlingScorer.fs) [unit tests](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/src/test/csharp/AndrewTweddle.Katas.Test.Bowling) |
+
+### From interview questions
+
+| Exercise  | Description  | My solutions   | 
+| ---       | ---          | ---            | 
+| wordrect - [readme](https://github.com/AndrewTweddle/CodingExercises/blob/master/misc/WordRectangles/Scala/src/main/scala/com/andrewtweddle/wordrects/WordRectMain.scala) | Largest rectangle of letters with words in every row and column | [Scala prototype](https://github.com/AndrewTweddle/CodingExercises/blob/master/misc/WordRectangles/Scala/src/main/scala/com/andrewtweddle/wordrects/WordRectMain.scala) [C++ prototype]([https://github.com/AndrewTweddle/CodingExercises/blob/master/misc/WordRectangles/C%2B%2B/main.cpp])|
 
 # Learnings and notes
 
