@@ -4,6 +4,8 @@ The following notes are captured from my notepad (physical not electronic!)
 
 ## Requirements
 
+See [the original requirements on CodingDojo.org](http://codingdojo.org/kata/Bowling/).
+
 1. Provide final score
 2. Assume inputs are valid. Input is a string with 1 character per throw:
   1. '-' = 0 throw
