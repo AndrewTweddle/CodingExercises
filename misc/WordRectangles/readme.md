@@ -13,13 +13,13 @@ Given a dictionary of millions of words, write code to find the largest possible
 
 ## Source data
 
-I cloned the following repository to get access to a dictionary of nearly half a million words: [https://github.com/dwyl/english-words/].
+The following repository has a text file containing nearly half a million words: <https://github.com/dwyl/english-words/>.
 
 ## Prototypes
 
 ### Scala prototype
 
-See: [https://github.com/AndrewTweddle/CodingExercises/blob/master/misc/WordRectangles/Scala/src/main/scala/com/andrewtweddle/wordrects/WordRectMain.scala]
+See: <https://github.com/AndrewTweddle/CodingExercises/blob/master/misc/WordRectangles/Scala/src/main/scala/com/andrewtweddle/wordrects/WordRectMain.scala>
 
 #### Initial performance results
 
@@ -1322,12 +1322,13 @@ It ran for most of a day on the 10x10 grid size before the program was terminate
 
 I chose to have fewer rows than columns for aesthetic reasons, so that solutions will fit on screen better. But later, when testing the C++ prototype, I found that performance is much better when row count > column count.
 
-A better solution would be to build up the solution one row at a time, instead of one column at a time. It might also make it easier to track and report on strings found, instead of having a grid characters.
+A better solution would be to build up the solution one row at a time, instead of one column at a time. It might also make it easier to track and report on strings found, instead of having a grid of characters.
 
+But this is a prototype. It has served its purpose (for now). So I want to focus my effort on optimizing performance instead of cleaning up and improving this code.
 
 ### C++ Prototype
 
-See: [https://github.com/AndrewTweddle/CodingExercises/blob/master/misc/WordRectangles/C%2B%2B/main.cpp]
+See: <https://github.com/AndrewTweddle/CodingExercises/blob/master/misc/WordRectangles/C%2B%2B/main.cpp>
 
 #### Initial experiment
 
