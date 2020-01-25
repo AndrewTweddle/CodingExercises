@@ -1336,4 +1336,107 @@ Due to the long running times of some of the Scala rectangles, I decided to try 
 
 The C++ prototype doesn't try all grid sizes. Instead I hard-coded the row and column dimensions before running the code. This allowed me to compare performance on rectangle dimensions where I knew how long the Scala code had taken.
 
-To my surprise the C++ code typically ran 2.5 to 3 times longer than the Scala code on a rectangle of the same dimensions.
+The C++ prototype only reports the first solution found. Whereas the Scala code returns multiple solutions of a particular size.
+
+However the C++ prototype also counts the number of words of each length, and tracks the number of words in each branch of the trie.
+
+#### Testing
+
+On a 4x4 grid, the C++ prototype produces the following output:
+
+```
+Reading words from input file (grouping by word length)...
+
+Word counts by length:
+======================
+1: 27
+2: 637
+3: 4711
+4: 11171
+5: 22950
+6: 39518
+7: 52093
+8: 61019
+9: 61754
+10: 54321
+11: 46411
+12: 37525
+13: 27924
+14: 19258
+15: 12148
+16: 7115
+17: 3982
+18: 2003
+19: 1053
+20: 506
+21: 238
+22: 102
+23: 49
+24: 18
+25: 7
+26: 2
+27: 3
+28: 2
+29: 2
+31: 1
+45: 1
+
+Duration: 1777 ms
+
+Reading words into tries (by word length)...
+
+Duration: 7828 ms
+Total unique words: 466551
+
+solving...
+    4 x 4
+        solution found:
+            'mid
+            mane
+            iare
+            dmod
+        Search Duration: 0 ms
+
+TOTAL DURATION: 9615 ms
+```
+
+#### Performance
+
+To my surprise the C++ code typically ran 2.5 to 3.5 times longer than the Scala code on rectangles of the same dimension.
+
+For example, on a 14 x 14 grid, the Scala code took around 23 seconds...
+
+```
+  Grid size: 196
+    14 x 14
+        0 solutions found
+        Search duration: 22914.9084 ms
+```
+
+But the C++ code took over 78 seconds...
+
+```
+solving...
+    14 x 14
+        0 solutions found
+        Search duration: 78651 ms
+
+TOTAL DURATION: 83159 ms
+```
+
+And on a 7 x 18 grid, the Scala algorithm took around 20 seconds...
+
+```
+    7 x 18
+        0 solutions found
+        Search duration: 20101.0267 ms
+```
+
+But the C++ algorithm took over 96 seconds, almost 5 times longer...
+
+```
+solving...
+    7 x 18
+        0 solutions found
+        Search duration: 96206 ms
+```
