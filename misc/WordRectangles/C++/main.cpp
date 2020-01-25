@@ -19,8 +19,8 @@ class TrieNode
 {
   public:
     TrieNode(): mWordCount(0) {};
-    map<char, TrieNode>::const_iterator getIter() const { return mSubNodes.cbegin(); }
-    bool hasMoreChars(map<char, TrieNode>::const_iterator & iter) const { iter != mSubNodes.cend(); }
+    inline map<char, TrieNode>::const_iterator getIter() const { return mSubNodes.cbegin(); }
+    inline bool isIterEnded(map<char, TrieNode>::const_iterator & iter) const { iter == mSubNodes.cend(); }
     bool tryToAddString(const string & word);
   private:
     bool tryToAddSubString(const string & word, size_t startPos, size_t maxStartPos);
@@ -187,13 +187,15 @@ bool tryToSolveGrid(size_t rowCount, size_t colCount, map<size_t, TrieNode> & tr
 
 void solve(map<size_t, TrieNode> & trieByLength)
 {
+    cout << "solving..." << endl;
+    
     // Test with a grid size that took around 20 seconds in the Scala solution
     size_t rowCount = 7;
     size_t colCount = 18;
     
     // Try something much harder, to look for bugs
-    rowCount = 14;
-    colCount = 14;
+    // rowCount = 14;
+    // colCount = 14;
     tryToSolveGrid(rowCount, colCount, trieByLength);
 }
 
@@ -212,7 +214,7 @@ bool tryToSolveGrid(size_t rowCount, size_t colCount, map<size_t, TrieNode> & tr
     
     time_point<Clock> end = Clock::now();
     milliseconds duration = duration_cast<milliseconds>(end - start);
-    cout << "        Search Duration: " << duration.count() << " ms" << endl;
+    cout << "        Search duration: " << duration.count() << " ms" << endl;
     
     return isSolved;
 }
@@ -238,6 +240,7 @@ bool GridSolver::solveColumn(size_t colId, const vector<const TrieNode *> & rowT
         cout << "        solution found:\n";
         for (const auto &row: solution)
         {
+            cout << "            ";
             for (const auto nextChar: row)
             {
                 cout << nextChar;
@@ -264,15 +267,15 @@ bool ColumnSolver::solveCell(vector<const TrieNode *> & rowTriesInCurrCol, size_
     const TrieNode & currRowTrie = *rowTriesInPrevCol[rowId];
     auto rowCharIter = currRowTrie.getIter();
     auto colCharIter = currColTrie.getIter();
-    bool rowCharsNotDone = currRowTrie.hasMoreChars(rowCharIter);
-    bool colCharsNotDone = currColTrie.hasMoreChars(colCharIter);
+    bool rowCharsNotDone = !currRowTrie.isIterEnded(rowCharIter);
+    bool colCharsNotDone = !currColTrie.isIterEnded(colCharIter);
     while (rowCharsNotDone && colCharsNotDone)
     {
         char colChar = colCharIter->first;
         while (rowCharsNotDone && rowCharIter->first < colChar)
         {
             ++rowCharIter;
-            rowCharsNotDone = currRowTrie.hasMoreChars(rowCharIter);
+            rowCharsNotDone = !currRowTrie.isIterEnded(rowCharIter);
         }
         if (rowCharsNotDone)
         {
@@ -282,7 +285,7 @@ bool ColumnSolver::solveCell(vector<const TrieNode *> & rowTriesInCurrCol, size_
                 while (colCharsNotDone && rowChar > colCharIter->first)
                 {
                     ++colCharIter;
-                    colCharsNotDone = currColTrie.hasMoreChars(colCharIter);
+                    colCharsNotDone = !currColTrie.isIterEnded(colCharIter);
                 }
                 if (colCharsNotDone)
                 {
@@ -312,9 +315,9 @@ bool ColumnSolver::solveCell(vector<const TrieNode *> & rowTriesInCurrCol, size_
                     }
                 }
                 rowCharIter++;
-                rowCharsNotDone = currRowTrie.hasMoreChars(rowCharIter);
+                rowCharsNotDone = !currRowTrie.isIterEnded(rowCharIter);
                 colCharIter++;
-                colCharsNotDone = currColTrie.hasMoreChars(colCharIter);
+                colCharsNotDone = !currColTrie.isIterEnded(colCharIter);
             }
         }
     }
