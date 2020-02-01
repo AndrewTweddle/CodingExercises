@@ -189,13 +189,10 @@ void solve(map<size_t, TrieNode> & trieByLength)
 {
     cout << "solving..." << endl;
     
-    // Test with a grid size that took around 20 seconds in the Scala solution
+    // Test with a grid size that took around 0.5 seconds in the Scala solution
     size_t rowCount = 7;
-    size_t colCount = 18;
+    size_t colCount = 20;
     
-    // Try something much harder, to look for bugs
-    // rowCount = 14;
-    // colCount = 14;
     tryToSolveGrid(rowCount, colCount, trieByLength);
 }
 
