@@ -1532,7 +1532,7 @@ TrieNode::isIterEnded() is called over 19.5 million times.
 
 If we look at the call graph for GridSolver::tryToSolveGrid(), we see the contribution of the red-black tree which the map data structure uses...
 
-![Graph exported from kcachegrind](CallGrindGraph_CppV1.jpg)
+![Graph exported from kcachegrind](C++/CallGrindGraph_CppV1.jpg)
 
 My first aha moment was that the C++ solution uses a pair of iterators to find matching characters in the nodes of the row and column tries. This felt like a good idea at the time. But iterating through a red-black tree is probably quite expensive. By contrast the Scala code iterates through one TrieNode's sub-nodes, but looks up the characters in the other TrieNode's map. This might be much faster when there are few characters in common.
 
