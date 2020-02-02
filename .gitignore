@@ -1,3 +1,7 @@
+# Files to ignore
+Experiments/ShapeCounter/**
+callgrind.out.*
+
 # =========================
 # Created by https://www.gitignore.io/api/clion
 # Edit at https://www.gitignore.io/?templates=clion

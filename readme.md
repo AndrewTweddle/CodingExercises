@@ -45,7 +45,7 @@ for the book.
 
 | Exercise  | Description  | My solutions   | 
 | ---       | ---          | ---            | 
-| wordrect - [readme](https://github.com/AndrewTweddle/CodingExercises/tree/master/misc/WordRectangles/readme.md) | Largest rectangle of letters with words in every row and column | [Scala prototype](https://github.com/AndrewTweddle/CodingExercises/blob/master/misc/WordRectangles/Scala/src/main/scala/com/andrewtweddle/wordrects/WordRectMain.scala), [C++ prototype](https://github.com/AndrewTweddle/CodingExercises/blob/master/misc/WordRectangles/C%2B%2B/main.cpp)|
+| [wordrect](https://github.com/AndrewTweddle/CodingExercises/tree/master/misc/WordRectangles) - [readme](https://github.com/AndrewTweddle/CodingExercises/tree/master/misc/WordRectangles/readme.md) | Largest rectangle of letters with words in every row and column | [Scala prototype (v1)](https://github.com/AndrewTweddle/CodingExercises/blob/master/misc/WordRectangles/Scala_v1/src/main/scala/com/andrewtweddle/wordrects/WordRectMain.scala), [C++ prototype (v1)](https://github.com/AndrewTweddle/CodingExercises/blob/master/misc/WordRectangles/Cpp_v1/main.cpp)|
 
 # Learnings and notes
 

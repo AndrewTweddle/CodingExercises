@@ -19,7 +19,7 @@ The following repository has a text file containing nearly half a million words:
 
 ### Scala prototype (v1)
 
-See: [source code](https://github.com/AndrewTweddle/CodingExercises/blob/master/misc/WordRectangles/Scala/src/main/scala/com/andrewtweddle/wordrects/WordRectMain.scala)
+See: [source code](https://github.com/AndrewTweddle/CodingExercises/blob/master/misc/WordRectangles/Scala_v1/src/main/scala/com/andrewtweddle/wordrects/WordRectMain.scala)
 
 #### Initial performance results
 
@@ -1328,7 +1328,7 @@ But this is a prototype. It has served its purpose (for now). So I want to focus
 
 ### C++ Prototype (v1)
 
-See: [source code](https://github.com/AndrewTweddle/CodingExercises/blob/master/misc/WordRectangles/C%2B%2B/main.cpp)
+See: [source code](https://github.com/AndrewTweddle/CodingExercises/blob/master/misc/WordRectangles/Cpp_v1/main.cpp)
 
 #### Initial experiment
 
