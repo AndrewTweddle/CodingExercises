@@ -4,10 +4,10 @@ import com.andrewtweddle.wordrects.WordRectMain._
 import org.scalatest._
 
 class TrieNodeSpec extends FeatureSpec with GivenWhenThen {
-  feature("TrieNode") {
+  feature("MutableTrieNode") {
     scenario("A word is added to a TrieNode") {
       Given("An empty TrieNode")
-      val tn = new TrieNode()
+      val tn = new MutableTrieNode()
 
       When("adding a word which has 2 or more letters")
       val word = "Hello"
