@@ -1537,3 +1537,111 @@ If we look at the call graph for GridSolver::tryToSolveGrid(), we see the contri
 My first aha moment was that the C++ solution uses a pair of iterators to find matching characters in the nodes of the row and column tries. This felt like a good idea at the time. But iterating through a red-black tree is probably quite expensive. By contrast the Scala code iterates through one TrieNode's sub-nodes, but looks up the characters in the other TrieNode's map. This might be much faster when there are few characters in common.
 
 The second realization is that iterating through a pair of arrays or vectors of sub-nodes (ordered by character) would probably be quite efficient. The maps are useful for building up the tries. But they could be converted to a more streamlined trie structure once built.
+
+### Scala prototype (v1)
+
+See: [source code](https://github.com/AndrewTweddle/CodingExercises/blob/master/misc/WordRectangles/Scala_v2/src/main/scala/com/andrewtweddle/wordrects/WordRectMain.scala)
+
+#### A change in data structure
+
+Modifying the Scala code to support multiple container types was very simple (though it did place the restriction of using only mutable collection types...
+
+```Scala
+  trait AbstractTrieNode[
+      TrieNodeType <: AbstractTrieNode[TrieNodeType, SubTrieContainerType],
+      SubTrieContainerType <: mutable.Iterable[(Char, TrieNodeType)]] {
+    val subTries: SubTrieContainerType
+    def getChildren: Iterator[(Char, TrieNodeType)] = subTries.iterator
+  }
+
+  class MutableTrieNode extends AbstractTrieNode[MutableTrieNode, mutable.Map[Char, MutableTrieNode]] {
+    override val subTries: mutable.Map[Char, MutableTrieNode] = mutable.Map()
+
+    @tailrec
+    final def addChars(chars: List[Char]): Unit = {
+      chars match {
+        case firstChar :: otherChars => {
+          val subTrieNode = subTries.getOrElseUpdate(firstChar, new MutableTrieNode())
+          subTrieNode.addChars(otherChars)
+        }
+        case _ =>  // duplicate
+      }
+    }
+    def addString(word: String): Unit = addChars(word.toList)
+    def getTrieForChar(ch: Char): Option[MutableTrieNode] = subTries.get(ch)
+  }
+
+  class TrieNode(src: MutableTrieNode) extends AbstractTrieNode[TrieNode, mutable.ArrayBuffer[(Char, TrieNode)]]{
+    override val subTries = src.getChildren.map {
+      case (ch: Char, mtn: MutableTrieNode) => (ch, new TrieNode(mtn))
+    }.to(mutable.ArrayBuffer).sortInPlaceWith(_._1 <= _._1)
+  }
+```
+
+This was relatively painless. The solution now uses pairs of iterators, similar to the C++ v1 prototype. However there were minor differences, since the Map type was not sorted by key and Scala's iterator combines moving to the next item and retrieving the next item into a single next() operation.
+
+#### Improvements in performance from the change in data structure
+
+Performance is about 3.5 times better. Previously the Scala solution took 512.55 ms. Now it took just under 144 ms...
+
+```
+  Grid size: 140
+    10 x 14
+        0 solutions found
+        Search duration: 401632.6926 ms
+    7 x 20
+        0 solutions found
+        Search duration: 143.9671 ms
+    5 x 28
+        0 solutions found
+        Search duration: 0.1018 ms
+
+```
+
+This speed-up seems quite consistent. It's a decent improvement, but far less than I was hoping for.
+
+#### Improvements in performance from a change in grid dimensions
+
+Next I modified the Scala code to have grids that are narrow and long (many rows), rather than wide with few rows. With this change the 20 x 7 solution takes 11.7261 ms. This is over 12 times faster, or nearly 44 times faster than the Scala_v1 solution.
+
+The difference seems much more pronounced with grids that took a very long time before. Here are some comparisons:
+
+| Size    | Before             | After            | Faster by |
+| ---     | ---                | ---              | ---       |
+| 12 x 12 | 1139924.1968 ms    | 243177.603399 ms | 4.68 x    | 
+| 10 x 12 | 1.51009172591E7 ms | 32.6239 ms       | 462879 x  |
+| 9 x 13  | 1.4809728666E7 ms  | 32.4473 ms       | 456424 x  |
+| 8 x 14  | 1.47369879019E7 ms | 25.7712 ms       | 571839 x  |
+| 11 x 11 | 7508587.5902 ms    | 1585342.7799 ms  | 4.74 x    |
+
+So it seems that there is less than a 5x speed-up on the square grids. Unfortunately these are already some of the slowest grids to solve.
+
+But there are phenomenal speed-ups of 400 000 to 600 000 on some of the non-square grids which were very slow to solve before.
+
+In most cases this change has produced significant speed-ups. However, there are a few cases where it has made solutions slightly slower to calculate. For example:
+
+| Size    | Before    | After     | Slower by |
+| ---     | ---       | ---       | ---       |
+| 7 x 31  | 0.0184 ms | 0.0206 ms | 1.12 x    |
+| 9 x 23  | 1.4991 ms | 4.9877 ms | 3.33 x    |
+| 9 x 22  | 4.9791 ms | 7.1606 ms | 1.43 x    | 
+
+So it's not universally true that a narrow grid is faster than a wide grid.
+
+#### What is responsible for the speed-ups from a change in grid dimension?
+
+But why is a long narrow grid generally more efficient. Presumably this is because the shape of the algorithmic search tree is different, and impossible branches of this search tree can be pruned earlier. Why would this be the case? Presumably because the algorithm processes one column at a time. So if each column has more rows in it, then the algorithm is able to reach greater word positions more quickly.
+
+This suggests that a more fruitful line of improvement is to consider other patterns of expanding by row or by column to control the shape of the search tree.
+
+#### Brainstorming further improvement ideas
+
+A disadvantage of the current scheme is that one column is filled at a time. If position (i,j) is impossible to fill because of the choice of letter at position (i,0), say, then the algorithm must back-track across all columns c < j, potentially trying many different combinations which all fail at position (i,j) or earlier, before it chooses a different letter at (i, 0). Position (i, j) is pruning the search tree too late.
+
+To fix this, a specific pattern could be hard-coded. A promising pattern would be to expand down the main diagonal, filling part of a row and part of a column until reaching the next point on the main diagonal. This would more quickly reach positions (i, j) where i and j are each a few letters deep in their respective words. This might prune invalid branches of the search tree sooner.
+
+But there might be more desirable approaches than this. These might estimate the probability of being able to prune entire branches of the search tree much quicker. For example, the algorithm might consider specific letter positions (i, j) and the count of letters in position i (for column words) and j (for row words). Perhaps the next expansion direction could be determined by the dot product of the vectors of counts by letter for the relevant row trie and column trie.
+
+It would be quite nice if we could generalize the strategy for choosing the next expansion direction. By injecting different strategies into the algorithm, we could easily experiment with different strategies. Once a good strategy has been found (exploiting the flexibility of Scala), we could convert this specific strategy into C++ and go back to optimizing for performance.
+
+I also have another approach in mind. This is to choose the starting point in the grid which is expected to prune the search tree fastest. Perhaps an approach could be used based on letter counts per position in all possible row and column words. There is a way of implementing this fairly cheaply. Once such a starting point (r, c) is determined for a particular grid size, the row and column tries can be built up by shifting row words by r characters and column words by c characters before inserting them in their respective tries. And, if solutions are found, the grid can be written out using modular arithmetic to shift the row and column words by r and c characters in the opposite direction.

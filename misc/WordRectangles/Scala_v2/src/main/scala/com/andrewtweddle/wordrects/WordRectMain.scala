@@ -11,13 +11,13 @@ object WordRectMain {
   val MAX_NO_OF_SOLNS_TO_FIND = 100;
 
   // Customize the following to skip rectangle sizes that have been previously checked
-  val MAX_GRID_SIZE = 1000;
+  val MAX_GRID_SIZE = 10000;
 
   trait AbstractTrieNode[
-      TTrieNode <: AbstractTrieNode[TTrieNode, TSubTrieContainer],
-      TSubTrieContainer <: mutable.Iterable[(Char, TTrieNode)]] {
-    val subTries: TSubTrieContainer
-    def getChildren: Iterator[(Char, TTrieNode)] = subTries.iterator
+      TrieNodeType <: AbstractTrieNode[TrieNodeType, SubTrieContainerType],
+      SubTrieContainerType <: mutable.Iterable[(Char, TrieNodeType)]] {
+    val subTries: SubTrieContainerType
+    def getChildren: Iterator[(Char, TrieNodeType)] = subTries.iterator
   }
 
   class MutableTrieNode extends AbstractTrieNode[MutableTrieNode, mutable.Map[Char, MutableTrieNode]] {
