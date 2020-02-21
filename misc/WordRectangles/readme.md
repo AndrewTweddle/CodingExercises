@@ -1613,12 +1613,13 @@ The difference seems much more pronounced with grids that took a very long time 
 | 9 x 13  | 1.4809728666E7 ms  | 32.4473 ms       | 456424 x  |
 | 8 x 14  | 1.47369879019E7 ms | 25.7712 ms       | 571839 x  |
 | 11 x 11 | 7508587.5902 ms    | 1585342.7799 ms  | 4.74 x    |
+| 10 x 10 | 1.45866746327E7 ms | 1.83222798886E7 ms | 0.80 x  |
 
-So it seems that there is less than a 5x speed-up on the square grids. Unfortunately these are already some of the slowest grids to solve.
+So it seems that there is less than a 5x speed-up on the square grids. Unfortunately these are already some of the slowest grids to solve. Worryingly, the 10 x 10 grid went from 4h03 to 5h04.
 
 But there are phenomenal speed-ups of 400 000 to 600 000 on some of the non-square grids which were very slow to solve before.
 
-In most cases this change has produced significant speed-ups. However, there are a few cases where it has made solutions slightly slower to calculate. For example:
+In most cases this change has produced significant speed-ups. However, there are a few cases where it has made some grids slower to process. For example:
 
 | Size    | Before    | After     | Slower by |
 | ---     | ---       | ---       | ---       |
@@ -1626,7 +1627,7 @@ In most cases this change has produced significant speed-ups. However, there are
 | 9 x 23  | 1.4991 ms | 4.9877 ms | 3.33 x    |
 | 9 x 22  | 4.9791 ms | 7.1606 ms | 1.43 x    | 
 
-So it's not universally true that a narrow grid is faster than a wide grid.
+So it's not always true that a narrow grid is faster than a wide grid.
 
 #### What is responsible for the speed-ups from a change in grid dimension?
 
@@ -1635,6 +1636,10 @@ But why is a long narrow grid generally more efficient. Presumably this is becau
 This suggests that a more fruitful line of improvement is to consider other patterns of expanding by row or by column to control the shape of the search tree.
 
 #### Brainstorming further improvement ideas
+
+The data structures could be improved further. For example, each TrieNode could have a bit-set with one bit per ASCII or UTF-8 character (though this would make the algorithm harder to generalize to other encodings later). Taking a bitwise AND of the row trie's and column trie's bitsets would give the common letters. Instead of iterating through maps, the algorithm could iterate through the set bits and lookup the relevant sub-tries in a map.
+
+However, the performance data suggests that optimizing the algorithm will be far more effective than optimizing data structures.
 
 A disadvantage of the current scheme is that one column is filled at a time. If position (i,j) is impossible to fill because of the choice of letter at position (i,0), say, then the algorithm must back-track across all columns c < j, potentially trying many different combinations which all fail at position (i,j) or earlier, before it chooses a different letter at (i, 0). Position (i, j) is pruning the search tree too late.
 
