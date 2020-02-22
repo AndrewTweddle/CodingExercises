@@ -158,7 +158,7 @@ object WordRectMain {
         : mutable.ArrayBuffer[Solution] = {
     val charGrid = Array.ofDim[Char](rowCount, colCount)
     val solns = mutable.ArrayBuffer[Solution]()
-    var isMaxNoOfSolnsReached = false;
+    var isMaxNoOfSolnsReached = false
 
     def solveColumn(colId:Int, rowTriesInPrevCol: Array[TrieNode]): Unit = {
       val rowTriesInCurrCol = new Array[TrieNode](rowCount)

@@ -1538,13 +1538,13 @@ My first aha moment was that the C++ solution uses a pair of iterators to find m
 
 The second realization is that iterating through a pair of arrays or vectors of sub-nodes (ordered by character) would probably be quite efficient. The maps are useful for building up the tries. But they could be converted to a more streamlined trie structure once built.
 
-### Scala prototype (v1)
+### Scala prototype (v2)
 
 See: [source code](https://github.com/AndrewTweddle/CodingExercises/blob/master/misc/WordRectangles/Scala_v2/src/main/scala/com/andrewtweddle/wordrects/WordRectMain.scala)
 
 #### A change in data structure
 
-Modifying the Scala code to support multiple container types was very simple (though it did place the restriction of using only mutable collection types...
+Modifying the Scala code to support multiple container types was very simple (though it did place the restriction of using only mutable collection types)...
 
 ```Scala
   trait AbstractTrieNode[
