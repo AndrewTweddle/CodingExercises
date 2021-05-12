@@ -3,18 +3,21 @@ fn main() {
 }
 
 pub fn convert_to_roman(num: u16) -> String {
+    let mut roman = String::from("");
     if num < 4 {
-        "I".to_string().repeat(num as usize)
+        append_repeating_numerals(&mut roman, 'I', num as usize);
     } else if num == 4 {
-        "IV".to_string()
+        return "IV".to_string();
     } else if num < 9 {
-        let mut roman = String::with_capacity(num as usize - 4);
+        roman.reserve(num as usize - 4);
         roman.push('V');
-        roman.push_str("I".to_string().repeat(num as usize - 5).as_str());
-        roman
-    } else {
-        "".to_string()
+        append_repeating_numerals(&mut roman, 'I', num as usize - 5);
     }
+    roman
+}
+
+fn append_repeating_numerals(prefix: &mut String, repeating_numeral: char, repeat_count: usize) {
+    prefix.push_str(repeating_numeral.to_string().repeat(repeat_count).as_str());
 }
 
 #[cfg(test)]
