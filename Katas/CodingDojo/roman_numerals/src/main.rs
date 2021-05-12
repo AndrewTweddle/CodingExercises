@@ -4,16 +4,15 @@ fn main() {
 
 pub fn convert_to_roman(num: u16) -> String {
     let mut roman = String::from("");
-    if num < 4 {
-        append_repeating_numerals(&mut roman, 'I', num as usize);
-    } else if num == 4 {
-        return "IV".to_string();
-    } else if num < 9 {
-        roman.reserve(num as usize - 4);
-        roman.push('V');
-        append_repeating_numerals(&mut roman, 'I', num as usize - 5);
-    } else if num == 9 {
-        return "IX".to_string();
+
+    let mod_5 = num % 5;
+
+    if mod_5 == 4 {
+        roman.push('I');
+        roman.push(if num < 5 { 'V' } else { 'X' });
+    } else {
+        if num >= 5 { roman.push('V'); }
+        append_repeating_numerals(&mut roman, 'I', mod_5 as usize);
     }
     roman
 }
