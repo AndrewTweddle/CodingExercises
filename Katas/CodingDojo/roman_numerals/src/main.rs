@@ -78,5 +78,16 @@ mod tests {
             assert_eq!(convert_to_roman(80), "LXXX".to_string());
             assert_eq!(convert_to_roman(90), "XC".to_string());
         }
+
+        #[test]
+        fn test_tens_and_units() {
+            assert_eq!(convert_to_roman(14), "XIV".to_string());
+            assert_eq!(convert_to_roman(49), "XLIX".to_string());
+            assert_eq!(convert_to_roman(59), "LIX".to_string());
+            assert_eq!(convert_to_roman(89), "LXXXIX".to_string());
+            assert_eq!(convert_to_roman(91), "LCI".to_string());
+            assert_eq!(convert_to_roman(98), "LCVIII".to_string());
+            assert_eq!(convert_to_roman(99), "LCIX".to_string());
+        }
     }
 }
