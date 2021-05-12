@@ -87,5 +87,17 @@ mod tests {
             assert_eq!(convert_to_roman(98), "XCVIII".to_string());
             assert_eq!(convert_to_roman(99), "XCIX".to_string());
         }
+
+        #[test]
+        fn test_hundreds_tens_and_units() {
+            assert_eq!(convert_to_roman(104), "CIV".to_string());
+            assert_eq!(convert_to_roman(449), "CDXLIX".to_string());
+            assert_eq!(convert_to_roman(500), "D".to_string());
+            assert_eq!(convert_to_roman(644), "DCXLIV".to_string());
+            assert_eq!(convert_to_roman(889), "DCCCLXXXIX".to_string());
+            assert_eq!(convert_to_roman(991), "CMXCI".to_string());
+            assert_eq!(convert_to_roman(998), "CMXCVIII".to_string());
+            assert_eq!(convert_to_roman(999), "CMXCIX".to_string());
+        }
     }
 }
