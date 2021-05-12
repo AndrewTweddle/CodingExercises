@@ -7,6 +7,11 @@ pub fn convert_to_roman(num: u16) -> String {
         "I".to_string().repeat(num as usize)
     } else if num == 4 {
         "IV".to_string()
+    } else if num < 9 {
+        let mut roman = String::with_capacity(num as usize - 4);
+        roman.push('V');
+        roman.push_str("I".to_string().repeat(num as usize - 5).as_str());
+        roman
     } else {
         "".to_string()
     }
