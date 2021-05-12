@@ -34,5 +34,13 @@ mod tests {
         fn test_four() {
             assert_eq!(convert_to_roman(4), "IV".to_string());
         }
+
+        #[test]
+        fn test_five_to_eight() {
+            assert_eq!(convert_to_roman(5), "V".to_string());
+            assert_eq!(convert_to_roman(6), "VI".to_string());
+            assert_eq!(convert_to_roman(7), "VII".to_string());
+            assert_eq!(convert_to_roman(8), "VIII".to_string());
+        }
     }
 }
