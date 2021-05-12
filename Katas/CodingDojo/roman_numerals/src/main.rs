@@ -3,6 +3,29 @@ fn main() {
 }
 
 pub fn convert_to_roman(num: u16) -> String {
+    if num < 10 {
+        convert_units_to_roman(num)
+    } else {
+        convert_tens_to_roman(num / 10)
+    }
+}
+
+fn convert_tens_to_roman(num_tens: u16) -> String {
+    let mut roman = String::from("");
+
+    let mod_5 = num_tens % 5;
+
+    if mod_5 == 4 {
+        roman.push('X');
+        roman.push(if num_tens < 5 { 'L' } else { 'C' });
+    } else {
+        if num_tens >= 5 { roman.push('L'); }
+        append_repeating_numerals(&mut roman, 'X', mod_5 as usize);
+    }
+    roman
+}
+
+fn convert_units_to_roman(num: u16) -> String {
     let mut roman = String::from("");
 
     let mod_5 = num % 5;
