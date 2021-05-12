@@ -3,28 +3,25 @@ fn main() {
 }
 
 pub fn convert_to_roman(mut num: u16) -> String {
+    let mut roman = String::from("");
+
     let thousands_digit = num / 1000;
     num %= 1000;
-    let mut roman = String::from("");
-    append_repeating_numerals(&mut roman, 'M', thousands_digit as usize);
-
     let hundreds_digit = num / 100;
     num %= 100;
-    let hundreds = convert_decimal_position_to_roman(hundreds_digit, 'C', 'D', 'M');
-
     let tens_digit = num / 10;
     let units_digit = num % 10;
 
-    let tens = convert_decimal_position_to_roman(tens_digit, 'X', 'L', 'C');
-    let units = convert_decimal_position_to_roman(units_digit, 'I', 'V', 'X');
+    append_repeating_numerals(&mut roman, 'M', thousands_digit as usize);
+    append_decimal_digit_to_roman_numeral_representation(&mut roman, hundreds_digit, 'C', 'D', 'M');
+    append_decimal_digit_to_roman_numeral_representation(&mut roman, tens_digit, 'X', 'L', 'C');
+    append_decimal_digit_to_roman_numeral_representation(&mut roman, units_digit, 'I', 'V', 'X');
 
-    roman + hundreds.as_str() + tens.as_str() + units.as_str()
+    roman
 }
 
-fn convert_decimal_position_to_roman(
-    decimal_digit: u16, one_numeral: char, five_numeral: char, ten_numeral: char) -> String {
-
-    let mut roman = String::from("");
+fn append_decimal_digit_to_roman_numeral_representation(roman: &mut String,
+    decimal_digit: u16, one_numeral: char, five_numeral: char, ten_numeral: char) {
 
     let mod_5 = decimal_digit % 5;
     if mod_5 == 4 {
@@ -32,9 +29,8 @@ fn convert_decimal_position_to_roman(
         roman.push(if decimal_digit < 5 { five_numeral } else { ten_numeral });
     } else {
         if decimal_digit >= 5 { roman.push(five_numeral); }
-        append_repeating_numerals(&mut roman, one_numeral, mod_5 as usize);
+        append_repeating_numerals(roman, one_numeral, mod_5 as usize);
     }
-    roman
 }
 
 fn append_repeating_numerals(prefix: &mut String, repeating_numeral: char, repeat_count: usize) {
@@ -118,6 +114,12 @@ mod tests {
             assert_eq!(convert_to_roman(1000), "M".to_string());
             assert_eq!(convert_to_roman(2000), "MM".to_string());
             assert_eq!(convert_to_roman(3000), "MMM".to_string());
-       }
+        }
+
+        #[test]
+        fn test_thousands_hundreds_tens_and_units() {
+            assert_eq!(convert_to_roman(1972), "MCMLXXII".to_string());
+            assert_eq!(convert_to_roman(2999), "MMCMXCIX".to_string());
+        }
     }
 }
