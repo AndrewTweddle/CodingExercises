@@ -2,10 +2,15 @@ fn main() {
     println!("Hello, world!");
 }
 
-pub fn convert_to_roman(num: u16) -> String {
-    let tens = convert_decimal_position_to_roman(num / 10, 'X', 'L', 'C');
-    let units = convert_decimal_position_to_roman(num % 10, 'I', 'V', 'X');
-    tens + units.as_str()
+pub fn convert_to_roman(mut num: u16) -> String {
+    let hundreds_digit = num / 100;
+    let hundreds = convert_decimal_position_to_roman(hundreds_digit, 'C', 'D', 'M');
+    num %= 100;
+    let tens_digit = num / 10;
+    let tens = convert_decimal_position_to_roman(tens_digit, 'X', 'L', 'C');
+    let units_digit = num % 10;
+    let units = convert_decimal_position_to_roman(units_digit, 'I', 'V', 'X');
+    hundreds + tens.as_str() + units.as_str()
 }
 
 fn convert_decimal_position_to_roman(
