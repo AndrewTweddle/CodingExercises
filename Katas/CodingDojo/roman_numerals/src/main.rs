@@ -104,5 +104,12 @@ mod tests {
             assert_eq!(convert_to_roman(998), "CMXCVIII".to_string());
             assert_eq!(convert_to_roman(999), "CMXCIX".to_string());
         }
+
+        #[test]
+        fn test_multiples_of_thousand_up_to_3000() {
+            assert_eq!(convert_to_roman(1000), "M".to_string());
+            assert_eq!(convert_to_roman(2000), "MM".to_string());
+            assert_eq!(convert_to_roman(3000), "MMM".to_string());
+       }
     }
 }
