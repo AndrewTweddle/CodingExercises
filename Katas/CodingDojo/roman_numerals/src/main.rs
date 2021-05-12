@@ -4,38 +4,24 @@ fn main() {
 
 pub fn convert_to_roman(num: u16) -> String {
     if num < 10 {
-        convert_units_to_roman(num)
+        convert_decimal_position_to_roman(num, 'I', 'V', 'X')
     } else {
-        convert_tens_to_roman(num / 10)
+        convert_decimal_position_to_roman(num / 10, 'X', 'L', 'C')
     }
 }
 
-fn convert_tens_to_roman(num_tens: u16) -> String {
+fn convert_decimal_position_to_roman(
+    decimal_digit: u16, one_numeral: char, five_numeral: char, ten_numeral: char) -> String {
+
     let mut roman = String::from("");
 
-    let mod_5 = num_tens % 5;
-
+    let mod_5 = decimal_digit % 5;
     if mod_5 == 4 {
-        roman.push('X');
-        roman.push(if num_tens < 5 { 'L' } else { 'C' });
+        roman.push(one_numeral);
+        roman.push(if decimal_digit < 5 { five_numeral } else { ten_numeral });
     } else {
-        if num_tens >= 5 { roman.push('L'); }
-        append_repeating_numerals(&mut roman, 'X', mod_5 as usize);
-    }
-    roman
-}
-
-fn convert_units_to_roman(num: u16) -> String {
-    let mut roman = String::from("");
-
-    let mod_5 = num % 5;
-
-    if mod_5 == 4 {
-        roman.push('I');
-        roman.push(if num < 5 { 'V' } else { 'X' });
-    } else {
-        if num >= 5 { roman.push('V'); }
-        append_repeating_numerals(&mut roman, 'I', mod_5 as usize);
+        if decimal_digit >= 5 { roman.push(five_numeral); }
+        append_repeating_numerals(&mut roman, one_numeral, mod_5 as usize);
     }
     roman
 }
