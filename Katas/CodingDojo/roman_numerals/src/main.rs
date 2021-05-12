@@ -1,5 +1,15 @@
+use std::time::Instant;
+
 fn main() {
-    println!("Hello, world!");
+    let start = Instant::now();
+
+    for i in 1..=3000 {
+        println!("{} = {}", i, convert_to_roman(i))
+    }
+
+    let duration = start.elapsed();
+    println!("Duration to print all Roman numbers from 1 to 3000: {:?}", duration);
+    print!("Average duration per number: {:?}", duration / 3000);
 }
 
 pub fn convert_to_roman(mut num: u16) -> String {
