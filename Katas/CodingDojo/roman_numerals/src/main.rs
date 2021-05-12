@@ -56,5 +56,18 @@ mod tests {
         fn test_nine() {
             assert_eq!(convert_to_roman(9), "IX".to_string());
         }
+
+        #[test]
+        fn test_multiples_of_tens() {
+            assert_eq!(convert_to_roman(10), "X".to_string());
+            assert_eq!(convert_to_roman(20), "XX".to_string());
+            assert_eq!(convert_to_roman(30), "XXX".to_string());
+            assert_eq!(convert_to_roman(40), "XL".to_string());
+            assert_eq!(convert_to_roman(50), "L".to_string());
+            assert_eq!(convert_to_roman(60), "LX".to_string());
+            assert_eq!(convert_to_roman(70), "LXX".to_string());
+            assert_eq!(convert_to_roman(80), "LXXX".to_string());
+            assert_eq!(convert_to_roman(90), "XC".to_string());
+        }
     }
 }
