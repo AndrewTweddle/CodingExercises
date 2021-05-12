@@ -5,6 +5,8 @@ fn main() {
 pub fn convert_to_roman(num: u16) -> String {
     if num < 4 {
         "I".to_string().repeat(num as usize)
+    } else if num == 4 {
+        "IV".to_string()
     } else {
         "".to_string()
     }
