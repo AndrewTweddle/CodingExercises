@@ -3,11 +3,9 @@ fn main() {
 }
 
 pub fn convert_to_roman(num: u16) -> String {
-    if num < 10 {
-        convert_decimal_position_to_roman(num, 'I', 'V', 'X')
-    } else {
-        convert_decimal_position_to_roman(num / 10, 'X', 'L', 'C')
-    }
+    let tens = convert_decimal_position_to_roman(num / 10, 'X', 'L', 'C');
+    let units = convert_decimal_position_to_roman(num % 10, 'I', 'V', 'X');
+    tens + units.as_str()
 }
 
 fn convert_decimal_position_to_roman(
@@ -85,9 +83,9 @@ mod tests {
             assert_eq!(convert_to_roman(49), "XLIX".to_string());
             assert_eq!(convert_to_roman(59), "LIX".to_string());
             assert_eq!(convert_to_roman(89), "LXXXIX".to_string());
-            assert_eq!(convert_to_roman(91), "LCI".to_string());
-            assert_eq!(convert_to_roman(98), "LCVIII".to_string());
-            assert_eq!(convert_to_roman(99), "LCIX".to_string());
+            assert_eq!(convert_to_roman(91), "XCI".to_string());
+            assert_eq!(convert_to_roman(98), "XCVIII".to_string());
+            assert_eq!(convert_to_roman(99), "XCIX".to_string());
         }
     }
 }
