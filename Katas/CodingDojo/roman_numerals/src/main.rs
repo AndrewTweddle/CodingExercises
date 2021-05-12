@@ -12,6 +12,8 @@ pub fn convert_to_roman(num: u16) -> String {
         roman.reserve(num as usize - 4);
         roman.push('V');
         append_repeating_numerals(&mut roman, 'I', num as usize - 5);
+    } else if num == 9 {
+        return "IX".to_string();
     }
     roman
 }
