@@ -50,5 +50,10 @@ mod tests {
             assert_eq!(convert_to_roman(7), "VII".to_string());
             assert_eq!(convert_to_roman(8), "VIII".to_string());
         }
+
+        #[test]
+        fn test_nine() {
+            assert_eq!(convert_to_roman(9), "IX".to_string());
+        }
     }
 }
