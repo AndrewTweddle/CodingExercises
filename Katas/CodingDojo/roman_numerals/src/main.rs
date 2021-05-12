@@ -3,14 +3,22 @@ fn main() {
 }
 
 pub fn convert_to_roman(mut num: u16) -> String {
+    let thousands_digit = num / 1000;
+    num %= 1000;
+    let mut roman = String::from("");
+    append_repeating_numerals(&mut roman, 'M', thousands_digit as usize);
+
     let hundreds_digit = num / 100;
-    let hundreds = convert_decimal_position_to_roman(hundreds_digit, 'C', 'D', 'M');
     num %= 100;
+    let hundreds = convert_decimal_position_to_roman(hundreds_digit, 'C', 'D', 'M');
+
     let tens_digit = num / 10;
-    let tens = convert_decimal_position_to_roman(tens_digit, 'X', 'L', 'C');
     let units_digit = num % 10;
+
+    let tens = convert_decimal_position_to_roman(tens_digit, 'X', 'L', 'C');
     let units = convert_decimal_position_to_roman(units_digit, 'I', 'V', 'X');
-    hundreds + tens.as_str() + units.as_str()
+
+    roman + hundreds.as_str() + tens.as_str() + units.as_str()
 }
 
 fn convert_decimal_position_to_roman(
