@@ -7,13 +7,13 @@ fn main() {
     let mut longest_number = 0;
     let mut longest_roman = "".to_string();
     for i in 1..=3000 {
-        let roman = convert_to_roman(i);
+        let roman = convert_to_roman(i).unwrap();
         if roman.len() > max_len {
             max_len = roman.len();
             longest_roman = roman.clone();
             longest_number = i;
         }
-        println!("{} = {}", i, convert_to_roman(i))
+        println!("{} = {}", i, roman);
     }
     println!("longest number: {} = {} ({} numerals)", longest_number, longest_roman, max_len);
 
@@ -22,7 +22,14 @@ fn main() {
     print!("Average duration per number: {:?}", duration / 3000);
 }
 
-pub fn convert_to_roman(mut num: u16) -> String {
+pub fn convert_to_roman(mut num: u16) -> Result<String, &'static str> {
+    if num == 0 {
+        return Err("Zero cannot be converted to a Roman numeral");
+    }
+    if num > 3000 {
+        return Err("Roman numerals above 3000 are not supported");
+    }
+
     let mut roman = String::from("");
 
     let thousands_digit = num / 1000;
@@ -37,7 +44,7 @@ pub fn convert_to_roman(mut num: u16) -> String {
     append_decimal_digit_to_roman_numeral_representation(&mut roman, tens_digit, 'X', 'L', 'C');
     append_decimal_digit_to_roman_numeral_representation(&mut roman, units_digit, 'I', 'V', 'X');
 
-    roman
+    Ok(roman)
 }
 
 fn append_decimal_digit_to_roman_numeral_representation(roman: &mut String,
@@ -70,76 +77,88 @@ mod tests {
 
         #[test]
         fn test_below_four() {
-            assert_eq!(convert_to_roman(1), "I".to_string());
-            assert_eq!(convert_to_roman(2), "II".to_string());
-            assert_eq!(convert_to_roman(3), "III".to_string());
+            assert_eq!(convert_to_roman(1).unwrap(), "I".to_string());
+            assert_eq!(convert_to_roman(2).unwrap(), "II".to_string());
+            assert_eq!(convert_to_roman(3).unwrap(), "III".to_string());
         }
 
         #[test]
         fn test_four() {
-            assert_eq!(convert_to_roman(4), "IV".to_string());
+            assert_eq!(convert_to_roman(4).unwrap(), "IV".to_string());
         }
 
         #[test]
         fn test_five_to_eight() {
-            assert_eq!(convert_to_roman(5), "V".to_string());
-            assert_eq!(convert_to_roman(6), "VI".to_string());
-            assert_eq!(convert_to_roman(7), "VII".to_string());
-            assert_eq!(convert_to_roman(8), "VIII".to_string());
+            assert_eq!(convert_to_roman(5).unwrap(), "V".to_string());
+            assert_eq!(convert_to_roman(6).unwrap(), "VI".to_string());
+            assert_eq!(convert_to_roman(7).unwrap(), "VII".to_string());
+            assert_eq!(convert_to_roman(8).unwrap(), "VIII".to_string());
         }
 
         #[test]
         fn test_nine() {
-            assert_eq!(convert_to_roman(9), "IX".to_string());
+            assert_eq!(convert_to_roman(9).unwrap(), "IX".to_string());
         }
 
         #[test]
         fn test_multiples_of_tens() {
-            assert_eq!(convert_to_roman(10), "X".to_string());
-            assert_eq!(convert_to_roman(20), "XX".to_string());
-            assert_eq!(convert_to_roman(30), "XXX".to_string());
-            assert_eq!(convert_to_roman(40), "XL".to_string());
-            assert_eq!(convert_to_roman(50), "L".to_string());
-            assert_eq!(convert_to_roman(60), "LX".to_string());
-            assert_eq!(convert_to_roman(70), "LXX".to_string());
-            assert_eq!(convert_to_roman(80), "LXXX".to_string());
-            assert_eq!(convert_to_roman(90), "XC".to_string());
+            assert_eq!(convert_to_roman(10).unwrap(), "X".to_string());
+            assert_eq!(convert_to_roman(20).unwrap(), "XX".to_string());
+            assert_eq!(convert_to_roman(30).unwrap(), "XXX".to_string());
+            assert_eq!(convert_to_roman(40).unwrap(), "XL".to_string());
+            assert_eq!(convert_to_roman(50).unwrap(), "L".to_string());
+            assert_eq!(convert_to_roman(60).unwrap(), "LX".to_string());
+            assert_eq!(convert_to_roman(70).unwrap(), "LXX".to_string());
+            assert_eq!(convert_to_roman(80).unwrap(), "LXXX".to_string());
+            assert_eq!(convert_to_roman(90).unwrap(), "XC".to_string());
         }
 
         #[test]
         fn test_tens_and_units() {
-            assert_eq!(convert_to_roman(14), "XIV".to_string());
-            assert_eq!(convert_to_roman(49), "XLIX".to_string());
-            assert_eq!(convert_to_roman(59), "LIX".to_string());
-            assert_eq!(convert_to_roman(89), "LXXXIX".to_string());
-            assert_eq!(convert_to_roman(91), "XCI".to_string());
-            assert_eq!(convert_to_roman(98), "XCVIII".to_string());
-            assert_eq!(convert_to_roman(99), "XCIX".to_string());
+            assert_eq!(convert_to_roman(14).unwrap(), "XIV".to_string());
+            assert_eq!(convert_to_roman(49).unwrap(), "XLIX".to_string());
+            assert_eq!(convert_to_roman(59).unwrap(), "LIX".to_string());
+            assert_eq!(convert_to_roman(89).unwrap(), "LXXXIX".to_string());
+            assert_eq!(convert_to_roman(91).unwrap(), "XCI".to_string());
+            assert_eq!(convert_to_roman(98).unwrap(), "XCVIII".to_string());
+            assert_eq!(convert_to_roman(99).unwrap(), "XCIX".to_string());
         }
 
         #[test]
         fn test_hundreds_tens_and_units() {
-            assert_eq!(convert_to_roman(104), "CIV".to_string());
-            assert_eq!(convert_to_roman(449), "CDXLIX".to_string());
-            assert_eq!(convert_to_roman(500), "D".to_string());
-            assert_eq!(convert_to_roman(644), "DCXLIV".to_string());
-            assert_eq!(convert_to_roman(889), "DCCCLXXXIX".to_string());
-            assert_eq!(convert_to_roman(991), "CMXCI".to_string());
-            assert_eq!(convert_to_roman(998), "CMXCVIII".to_string());
-            assert_eq!(convert_to_roman(999), "CMXCIX".to_string());
+            assert_eq!(convert_to_roman(104).unwrap(), "CIV".to_string());
+            assert_eq!(convert_to_roman(449).unwrap(), "CDXLIX".to_string());
+            assert_eq!(convert_to_roman(500).unwrap(), "D".to_string());
+            assert_eq!(convert_to_roman(644).unwrap(), "DCXLIV".to_string());
+            assert_eq!(convert_to_roman(889).unwrap(), "DCCCLXXXIX".to_string());
+            assert_eq!(convert_to_roman(991).unwrap(), "CMXCI".to_string());
+            assert_eq!(convert_to_roman(998).unwrap(), "CMXCVIII".to_string());
+            assert_eq!(convert_to_roman(999).unwrap(), "CMXCIX".to_string());
         }
 
         #[test]
         fn test_multiples_of_thousand_up_to_3000() {
-            assert_eq!(convert_to_roman(1000), "M".to_string());
-            assert_eq!(convert_to_roman(2000), "MM".to_string());
-            assert_eq!(convert_to_roman(3000), "MMM".to_string());
+            assert_eq!(convert_to_roman(1000).unwrap(), "M".to_string());
+            assert_eq!(convert_to_roman(2000).unwrap(), "MM".to_string());
+            assert_eq!(convert_to_roman(3000).unwrap(), "MMM".to_string());
         }
 
         #[test]
         fn test_thousands_hundreds_tens_and_units() {
-            assert_eq!(convert_to_roman(1972), "MCMLXXII".to_string());
-            assert_eq!(convert_to_roman(2999), "MMCMXCIX".to_string());
+            assert_eq!(convert_to_roman(1972).unwrap(), "MCMLXXII".to_string());
+            assert_eq!(convert_to_roman(2999).unwrap(), "MMCMXCIX".to_string());
+        }
+
+        #[test]
+        #[should_panic]
+        fn test_zero_not_supported() {
+            convert_to_roman(0).unwrap();
+        }
+
+        #[test]
+        #[should_panic]
+        fn test_above_3000_not_supported() {
+            convert_to_roman(3001).unwrap();
         }
     }
 }
