@@ -3,9 +3,19 @@ use std::time::Instant;
 fn main() {
     let start = Instant::now();
 
+    let mut max_len = 0;
+    let mut longest_number = 0;
+    let mut longest_roman = "".to_string();
     for i in 1..=3000 {
+        let roman = convert_to_roman(i);
+        if roman.len() > max_len {
+            max_len = roman.len();
+            longest_roman = roman.clone();
+            longest_number = i;
+        }
         println!("{} = {}", i, convert_to_roman(i))
     }
+    println!("longest number: {} = {} ({} numerals)", longest_number, longest_roman, max_len);
 
     let duration = start.elapsed();
     println!("Duration to print all Roman numbers from 1 to 3000: {:?}", duration);
