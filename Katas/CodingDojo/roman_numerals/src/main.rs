@@ -69,7 +69,10 @@ pub fn convert_from_roman(roman: &str) -> Result<u16, &'static str> {
         return Err("An empty string is not a Roman numeral")
     }
 
-    let re = Regex::new(r"^(?P<tens>(XL|L?X{0,3}|XC)?)(?P<units>(IV|V?I{0,3}|IX)?)$").unwrap();
+    let tens_re = "(?P<tens>(XL|L?X{0,3}|XC)?)";
+    let units_re = "(?P<units>(IV|V?I{0,3}|IX)?)";
+    let re_pattern = format!("^{}{}$", tens_re, units_re);
+    let re = Regex::new(re_pattern.as_str()).unwrap();
 
     let caps = match re.captures(roman) {
         Some(valid_caps) => valid_caps,
