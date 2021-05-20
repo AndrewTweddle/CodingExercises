@@ -164,6 +164,11 @@ mod tests {
         fn test_converting_from_XXIX() {
             assert_eq!(convert_from_roman("XXIX"), Ok(29));
         }
+
+        #[test]
+        fn test_converting_DCXLIV() {
+            assert_eq!(convert_from_roman("DCXLIV"), Ok(644));
+        }
     }
 
     mod to_roman {
