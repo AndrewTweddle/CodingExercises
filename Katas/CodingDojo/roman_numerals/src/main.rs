@@ -69,7 +69,7 @@ pub fn convert_from_roman(roman: &str) -> Result<u16, &'static str> {
         return Err("An empty string is not a Roman numeral")
     }
 
-    let re = Regex::new(r"^(?P<tens>X?)(?P<units>(IV|V?I{0,3}|IX)?)$").unwrap();
+    let re = Regex::new(r"^(?P<tens>(XL|L?X{0,3}|XC)?)(?P<units>(IV|V?I{0,3}|IX)?)$").unwrap();
 
     let caps = match re.captures(roman) {
         Some(valid_caps) => valid_caps,
@@ -81,13 +81,18 @@ pub fn convert_from_roman(roman: &str) -> Result<u16, &'static str> {
     let tens_capture = caps.name("tens").expect("tens capture group not found");
     let units_capture = caps.name("units").expect("units capture group not found");
 
-    let tens: u16 = tens_capture.range().len() as u16;
+    let tens: u16 = match tens_capture.as_str() {
+        "XL" => 4,
+        fifty_up if fifty_up.starts_with('L') => 4 + fifty_up.len() as u16,
+        "XC" => 9,
+        x_repeats @ _ => x_repeats.len() as u16,  // X, XX or XXX
+    };
 
     let units: u16 = match units_capture.as_str() {
         "IV" => 4,
         five_up if five_up.starts_with('V') => 4 + five_up.len() as u16,
         "IX" => 9,
-        ones @ _ => ones.len() as u16,  // I, II or III
+        i_repeats @ _ => i_repeats.len() as u16,  // I, II or III
     };
 
     Ok(10 * tens + units)
@@ -149,7 +154,7 @@ mod tests {
         }
 
         #[test]
-        fn test_converting_from_XIX() {
+        fn test_converting_from_XXIX() {
             assert_eq!(convert_from_roman("XXIX"), Ok(29));
         }
     }
