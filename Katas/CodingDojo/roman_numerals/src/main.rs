@@ -87,9 +87,9 @@ mod tests {
 
         #[test]
         fn test_below_four() {
-            assert_eq!(convert_from_roman("I").unwrap(), 1);
-            assert_eq!(convert_from_roman("II").unwrap(), 2);
-            assert_eq!(convert_from_roman("III").unwrap(), 3);
+            assert_eq!(convert_from_roman("I"), Ok(1));
+            assert_eq!(convert_from_roman("II"), Ok(2));
+            assert_eq!(convert_from_roman("III"), Ok(3));
         }
 
         #[test]
