@@ -93,6 +93,12 @@ mod tests {
         fn test_converting_from_IIII() {
             assert!(convert_from_roman("IIII").is_err());
         }
+
+        #[test]
+        fn test_converting_from_IV() {
+            assert_eq!(convert_from_roman("IV"), Ok(4));
+        }
+
     }
 
     mod to_roman {
