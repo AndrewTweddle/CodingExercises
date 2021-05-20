@@ -65,13 +65,14 @@ fn append_repeating_numerals(prefix: &mut String, repeating_numeral: char, repea
 }
 
 pub fn convert_from_roman(roman: &str) -> Result<u16, &'static str> {
-    let re = Regex::new(r"^(I{1,3}|IV|VI{0,3})$").unwrap();
+    let re = Regex::new(r"^(I{1,3}|IV|VI{0,3}|IX)$").unwrap();
 
     if re.is_match(roman) {
         match roman {
             "IV" => Ok(4),
             five_up if five_up.starts_with('V') => Ok(4 + roman.len() as u16),
-            _ => Ok(roman.len() as u16)
+            "IX" => Ok(9),
+            _ => Ok(roman.len() as u16),  // I, II or III
         }
     } else {
         Err("Invalid Roman numeral format")
