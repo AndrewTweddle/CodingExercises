@@ -63,6 +63,11 @@ fn append_repeating_numerals(prefix: &mut String, repeating_numeral: char, repea
     prefix.push_str(repeating_numeral.to_string().repeat(repeat_count).as_str());
 }
 
+pub fn convert_from_roman(_roman: &str) -> Result<u16, &'static str> {
+    Ok(0)
+}
+
+
 #[cfg(test)]
 mod tests {
     use super::{convert_to_roman, convert_from_roman};
