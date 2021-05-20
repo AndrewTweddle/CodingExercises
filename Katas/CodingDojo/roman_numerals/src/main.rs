@@ -109,6 +109,12 @@ mod tests {
         fn test_converting_from_V() {
             assert_eq!(convert_from_roman("V"), Ok(5));
         }
+
+        #[test]
+        #[allow(non_snake_case)]
+        fn test_converting_from_VIII() {
+            assert_eq!(convert_from_roman("VIII"), Ok(8));
+        }
     }
 
     mod to_roman {
