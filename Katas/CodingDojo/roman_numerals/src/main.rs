@@ -123,6 +123,11 @@ mod tests {
         fn test_converting_from_IX() {
             assert_eq!(convert_from_roman("IX"), Ok(9));
         }
+
+        #[test]
+        fn test_converting_from_X() {
+            assert_eq!(convert_from_roman("X"), Ok(10));
+        }
     }
 
     mod to_roman {
