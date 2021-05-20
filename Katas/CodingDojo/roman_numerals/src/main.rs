@@ -81,21 +81,25 @@ pub fn convert_from_roman(roman: &str) -> Result<u16, &'static str> {
     let tens_capture = caps.name("tens").expect("tens capture group not found");
     let units_capture = caps.name("units").expect("units capture group not found");
 
-    let tens: u16 = match tens_capture.as_str() {
-        "XL" => 4,
-        fifty_up if fifty_up.starts_with('L') => 4 + fifty_up.len() as u16,
-        "XC" => 9,
-        x_repeats @ _ => x_repeats.len() as u16,  // X, XX or XXX
-    };
-
-    let units: u16 = match units_capture.as_str() {
-        "IV" => 4,
-        five_up if five_up.starts_with('V') => 4 + five_up.len() as u16,
-        "IX" => 9,
-        i_repeats @ _ => i_repeats.len() as u16,  // I, II or III
-    };
+    let tens = convert_from_roman_digit(tens_capture.as_str(), "XL", 'L', "XC");
+    let units = convert_from_roman_digit(units_capture.as_str(), "IV", 'V', "IX");
 
     Ok(10 * tens + units)
+}
+
+fn convert_from_roman_digit(roman_digit: &str,
+    four_numeral: &str, five_numeral: char, nine_numeral: &str) -> u16
+{
+    if roman_digit == four_numeral {
+        4
+    } else if roman_digit == nine_numeral {
+        9
+    } else if roman_digit.starts_with(five_numeral) {
+        4 + roman_digit.len() as u16
+    } else {
+        // e.g. I, II, II, X, XX, XXX, ...
+        roman_digit.len() as u16
+    }
 }
 
 #[cfg(test)]
