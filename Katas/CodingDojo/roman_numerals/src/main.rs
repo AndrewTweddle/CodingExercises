@@ -1,4 +1,5 @@
 use std::time::Instant;
+use regex::Regex;
 
 fn main() {
     let start = Instant::now();
@@ -63,10 +64,16 @@ fn append_repeating_numerals(prefix: &mut String, repeating_numeral: char, repea
     prefix.push_str(repeating_numeral.to_string().repeat(repeat_count).as_str());
 }
 
-pub fn convert_from_roman(_roman: &str) -> Result<u16, &'static str> {
-    Ok(0)
-}
+pub fn convert_from_roman(roman: &str) -> Result<u16, &'static str> {
+    let re = Regex::new(r"I{1,3}").unwrap();
+    // Note: deliberately "forget" the ^ and $ delimiters
 
+    if re.is_match(roman) {
+        Ok(roman.len() as u16)
+    } else {
+        Err("Invalid Roman numeral format")
+    }
+}
 
 #[cfg(test)]
 mod tests {
