@@ -30,8 +30,6 @@ pub fn convert_to_roman(mut num: u16) -> Result<String, &'static str> {
         return Err("Roman numerals above 3000 are not supported");
     }
 
-    let mut roman = String::from("");
-
     let thousands_digit = num / 1000;
     num %= 1000;
     let hundreds_digit = num / 100;
@@ -39,6 +37,7 @@ pub fn convert_to_roman(mut num: u16) -> Result<String, &'static str> {
     let tens_digit = num / 10;
     let units_digit = num % 10;
 
+    let mut roman = String::from("");
     append_repeating_numerals(&mut roman, 'M', thousands_digit as usize);
     append_decimal_digit_to_roman_numeral_representation(&mut roman, hundreds_digit, 'C', 'D', 'M');
     append_decimal_digit_to_roman_numeral_representation(&mut roman, tens_digit, 'X', 'L', 'C');
@@ -66,10 +65,17 @@ fn append_repeating_numerals(prefix: &mut String, repeating_numeral: char, repea
 
 #[cfg(test)]
 mod tests {
-    use super::convert_to_roman;
+    use super::{convert_to_roman, convert_from_roman};
 
     mod from_roman {
+        use super::convert_from_roman;
 
+        #[test]
+        fn test_below_four() {
+            assert_eq!(convert_from_roman("I").unwrap(), 1);
+            assert_eq!(convert_from_roman("II").unwrap(), 2);
+            assert_eq!(convert_from_roman("III").unwrap(), 3);
+        }
     }
 
     mod to_roman {
