@@ -65,6 +65,10 @@ fn append_repeating_numerals(prefix: &mut String, repeating_numeral: char, repea
 }
 
 pub fn convert_from_roman(roman: &str) -> Result<u16, &'static str> {
+    if roman.is_empty() {
+        return Err("An empty string is not a Roman numeral")
+    }
+
     let re = Regex::new(r"^(?P<tens>X?)(?P<units>(IV|V?I{0,3}|IX)?)$").unwrap();
 
     let caps = match re.captures(roman) {
