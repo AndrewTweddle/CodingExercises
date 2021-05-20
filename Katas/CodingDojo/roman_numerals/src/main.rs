@@ -65,18 +65,28 @@ fn append_repeating_numerals(prefix: &mut String, repeating_numeral: char, repea
 }
 
 pub fn convert_from_roman(roman: &str) -> Result<u16, &'static str> {
-    let re = Regex::new(r"^(I{1,3}|IV|VI{0,3}|IX)$").unwrap();
+    let re = Regex::new(r"^(?P<tens>X?)(?P<units>(IV|V?I{0,3}|IX)?)$").unwrap();
 
-    if re.is_match(roman) {
-        match roman {
-            "IV" => Ok(4),
-            five_up if five_up.starts_with('V') => Ok(4 + roman.len() as u16),
-            "IX" => Ok(9),
-            _ => Ok(roman.len() as u16),  // I, II or III
+    let caps = match re.captures(roman) {
+        Some(valid_caps) => valid_caps,
+        None => {
+            return Err("Invalid Roman numeral format");
         }
-    } else {
-        Err("Invalid Roman numeral format")
-    }
+    };
+
+    let tens_capture = caps.name("tens").expect("tens capture group not found");
+    let units_capture = caps.name("units").expect("units capture group not found");
+
+    let tens: u16 = tens_capture.range().len() as u16;
+
+    let units: u16 = match units_capture.as_str() {
+        "IV" => 4,
+        five_up if five_up.starts_with('V') => 4 + five_up.len() as u16,
+        "IX" => 9,
+        ones @ _ => ones.len() as u16,  // I, II or III
+    };
+
+    Ok(10 * tens + units)
 }
 
 #[cfg(test)]
