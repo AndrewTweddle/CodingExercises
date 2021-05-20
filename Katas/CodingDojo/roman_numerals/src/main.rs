@@ -169,8 +169,13 @@ mod tests {
         }
 
         #[test]
-        fn test_converting_DCXLIV() {
+        fn test_converting_from_DCXLIV() {
             assert_eq!(convert_from_roman("DCXLIV"), Ok(644));
+        }
+
+        #[test]
+        fn test_converting_from_MMCMLXXIV() {
+            assert_eq!(convert_from_roman("MMCMLXXIV"), Ok(2974));
         }
     }
 
