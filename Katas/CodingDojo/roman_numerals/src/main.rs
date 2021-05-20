@@ -138,6 +138,11 @@ mod tests {
         fn test_converting_from_X() {
             assert_eq!(convert_from_roman("X"), Ok(10));
         }
+
+        #[test]
+        fn test_converting_from_empty_string() {
+            assert!(convert_from_roman("").is_err());
+        }
     }
 
     mod to_roman {
