@@ -65,8 +65,7 @@ fn append_repeating_numerals(prefix: &mut String, repeating_numeral: char, repea
 }
 
 pub fn convert_from_roman(roman: &str) -> Result<u16, &'static str> {
-    let re = Regex::new(r"I{1,3}").unwrap();
-    // Note: deliberately "forget" the ^ and $ delimiters
+    let re = Regex::new(r"^I{1,3}$").unwrap();
 
     if re.is_match(roman) {
         Ok(roman.len() as u16)
