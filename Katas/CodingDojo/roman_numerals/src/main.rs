@@ -115,73 +115,6 @@ fn convert_from_roman_digit(roman_digit: &str,
 mod tests {
     use super::{convert_to_roman, convert_from_roman};
 
-    #[allow(non_snake_case)]
-    mod from_roman {
-        use super::convert_from_roman;
-
-        #[test]
-        fn test_below_four() {
-            assert_eq!(convert_from_roman("I"), Ok(1));
-            assert_eq!(convert_from_roman("II"), Ok(2));
-            assert_eq!(convert_from_roman("III"), Ok(3));
-        }
-
-        #[test]
-        fn test_converting_from_IIII() {
-            assert!(convert_from_roman("IIII").is_err());
-        }
-
-        #[test]
-        fn test_converting_from_IV() {
-            assert_eq!(convert_from_roman("IV"), Ok(4));
-        }
-
-        #[test]
-        fn test_converting_from_V() {
-            assert_eq!(convert_from_roman("V"), Ok(5));
-        }
-
-        #[test]
-        fn test_converting_from_VIII() {
-            assert_eq!(convert_from_roman("VIII"), Ok(8));
-        }
-
-        #[test]
-        fn test_converting_from_VIIII_fails() {
-            assert!(convert_from_roman("VIIII").is_err());
-        }
-
-        #[test]
-        fn test_converting_from_IX() {
-            assert_eq!(convert_from_roman("IX"), Ok(9));
-        }
-
-        #[test]
-        fn test_converting_from_X() {
-            assert_eq!(convert_from_roman("X"), Ok(10));
-        }
-
-        #[test]
-        fn test_converting_from_empty_string() {
-            assert!(convert_from_roman("").is_err());
-        }
-
-        #[test]
-        fn test_converting_from_XXIX() {
-            assert_eq!(convert_from_roman("XXIX"), Ok(29));
-        }
-
-        #[test]
-        fn test_converting_from_DCXLIV() {
-            assert_eq!(convert_from_roman("DCXLIV"), Ok(644));
-        }
-
-        #[test]
-        fn test_converting_from_MMCMLXXIV() {
-            assert_eq!(convert_from_roman("MMCMLXXIV"), Ok(2974));
-        }
-    }
-
     mod to_roman {
         use super::convert_to_roman;
 
@@ -269,6 +202,73 @@ mod tests {
         #[should_panic]
         fn test_above_3000_not_supported() {
             convert_to_roman(3001).unwrap();
+        }
+    }
+
+    #[allow(non_snake_case)]
+    mod from_roman {
+        use super::convert_from_roman;
+
+        #[test]
+        fn test_below_four() {
+            assert_eq!(convert_from_roman("I"), Ok(1));
+            assert_eq!(convert_from_roman("II"), Ok(2));
+            assert_eq!(convert_from_roman("III"), Ok(3));
+        }
+
+        #[test]
+        fn test_converting_from_IIII() {
+            assert!(convert_from_roman("IIII").is_err());
+        }
+
+        #[test]
+        fn test_converting_from_IV() {
+            assert_eq!(convert_from_roman("IV"), Ok(4));
+        }
+
+        #[test]
+        fn test_converting_from_V() {
+            assert_eq!(convert_from_roman("V"), Ok(5));
+        }
+
+        #[test]
+        fn test_converting_from_VIII() {
+            assert_eq!(convert_from_roman("VIII"), Ok(8));
+        }
+
+        #[test]
+        fn test_converting_from_VIIII_fails() {
+            assert!(convert_from_roman("VIIII").is_err());
+        }
+
+        #[test]
+        fn test_converting_from_IX() {
+            assert_eq!(convert_from_roman("IX"), Ok(9));
+        }
+
+        #[test]
+        fn test_converting_from_X() {
+            assert_eq!(convert_from_roman("X"), Ok(10));
+        }
+
+        #[test]
+        fn test_converting_from_empty_string() {
+            assert!(convert_from_roman("").is_err());
+        }
+
+        #[test]
+        fn test_converting_from_XXIX() {
+            assert_eq!(convert_from_roman("XXIX"), Ok(29));
+        }
+
+        #[test]
+        fn test_converting_from_DCXLIV() {
+            assert_eq!(convert_from_roman("DCXLIV"), Ok(644));
+        }
+
+        #[test]
+        fn test_converting_from_MMCMLXXIV() {
+            assert_eq!(convert_from_roman("MMCMLXXIV"), Ok(2974));
         }
     }
 }
