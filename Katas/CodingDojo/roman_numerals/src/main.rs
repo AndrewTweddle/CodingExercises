@@ -69,9 +69,10 @@ pub fn convert_from_roman(roman: &str) -> Result<u16, &'static str> {
         return Err("An empty string is not a Roman numeral")
     }
 
+    let hundreds_re = "(?P<hundreds>(CD|D?C{0,3}|CM)?)";
     let tens_re = "(?P<tens>(XL|L?X{0,3}|XC)?)";
     let units_re = "(?P<units>(IV|V?I{0,3}|IX)?)";
-    let re_pattern = format!("^{}{}$", tens_re, units_re);
+    let re_pattern = format!("^{}{}{}$", hundreds_re, tens_re, units_re);
     let re = Regex::new(re_pattern.as_str()).unwrap();
 
     let caps = match re.captures(roman) {
@@ -81,13 +82,15 @@ pub fn convert_from_roman(roman: &str) -> Result<u16, &'static str> {
         }
     };
 
+    let hundreds_capture = caps.name("hundreds").expect("hundreds capture group not found");
     let tens_capture = caps.name("tens").expect("tens capture group not found");
     let units_capture = caps.name("units").expect("units capture group not found");
 
+    let hundreds = convert_from_roman_digit(hundreds_capture.as_str(), "CD", 'D', "CM");
     let tens = convert_from_roman_digit(tens_capture.as_str(), "XL", 'L', "XC");
     let units = convert_from_roman_digit(units_capture.as_str(), "IV", 'V', "IX");
 
-    Ok(10 * tens + units)
+    Ok(100 * hundreds + 10 * tens + units)
 }
 
 fn convert_from_roman_digit(roman_digit: &str,
