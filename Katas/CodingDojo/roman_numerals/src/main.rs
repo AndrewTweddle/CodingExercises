@@ -65,12 +65,12 @@ fn append_repeating_numerals(prefix: &mut String, repeating_numeral: char, repea
 }
 
 pub fn convert_from_roman(roman: &str) -> Result<u16, &'static str> {
-    let re = Regex::new(r"^(I{1,3}|IV|V)$").unwrap();
+    let re = Regex::new(r"^(I{1,3}|IV|VI{0,3})$").unwrap();
 
     if re.is_match(roman) {
         match roman {
             "IV" => Ok(4),
-            "V" => Ok(5),
+            five_up if five_up.starts_with('V') => Ok(4 + roman.len() as u16),
             _ => Ok(roman.len() as u16)
         }
     } else {
