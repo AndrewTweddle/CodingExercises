@@ -117,6 +117,11 @@ mod tests {
         fn test_converting_from_VIIII_fails() {
             assert!(convert_from_roman("VIIII").is_err());
         }
+
+        #[test]
+        fn test_converting_from_IX() {
+            assert_eq!(convert_from_roman("IX"), Ok(9));
+        }
     }
 
     mod to_roman {
