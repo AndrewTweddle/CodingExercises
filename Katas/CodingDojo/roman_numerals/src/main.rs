@@ -147,6 +147,11 @@ mod tests {
         fn test_converting_from_empty_string() {
             assert!(convert_from_roman("").is_err());
         }
+
+        #[test]
+        fn test_converting_from_XIX() {
+            assert_eq!(convert_from_roman("XXIX"), Ok(29));
+        }
     }
 
     mod to_roman {
