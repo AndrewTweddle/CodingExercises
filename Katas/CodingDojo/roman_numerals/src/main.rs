@@ -104,6 +104,11 @@ mod tests {
             assert_eq!(convert_from_roman("IV"), Ok(4));
         }
 
+        #[test]
+        #[allow(non_snake_case)]
+        fn test_converting_from_V() {
+            assert_eq!(convert_from_roman("V"), Ok(5));
+        }
     }
 
     mod to_roman {
