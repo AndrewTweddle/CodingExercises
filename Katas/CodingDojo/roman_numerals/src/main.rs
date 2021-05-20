@@ -82,6 +82,7 @@ pub fn convert_from_roman(roman: &str) -> Result<u16, &'static str> {
 mod tests {
     use super::{convert_to_roman, convert_from_roman};
 
+    #[allow(non_snake_case)]
     mod from_roman {
         use super::convert_from_roman;
 
@@ -93,25 +94,21 @@ mod tests {
         }
 
         #[test]
-        #[allow(non_snake_case)]
         fn test_converting_from_IIII() {
             assert!(convert_from_roman("IIII").is_err());
         }
 
         #[test]
-        #[allow(non_snake_case)]
         fn test_converting_from_IV() {
             assert_eq!(convert_from_roman("IV"), Ok(4));
         }
 
         #[test]
-        #[allow(non_snake_case)]
         fn test_converting_from_V() {
             assert_eq!(convert_from_roman("V"), Ok(5));
         }
 
         #[test]
-        #[allow(non_snake_case)]
         fn test_converting_from_VIII() {
             assert_eq!(convert_from_roman("VIII"), Ok(8));
         }
