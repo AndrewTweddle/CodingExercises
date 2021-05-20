@@ -88,6 +88,12 @@ mod tests {
             assert_eq!(convert_from_roman("II").unwrap(), 2);
             assert_eq!(convert_from_roman("III").unwrap(), 3);
         }
+
+        #[test]
+        #[allow(non_snake_case)]
+        fn test_converting_from_IIII() {
+            assert!(convert_from_roman("IIII").is_err());
+        }
     }
 
     mod to_roman {
