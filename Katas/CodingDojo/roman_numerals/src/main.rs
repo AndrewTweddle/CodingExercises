@@ -1,12 +1,6 @@
 use std::time::Instant;
 use regex::Regex;
 
-/*
-#[cfg(test)]
-#[macro_use(quickcheck)]
-use quickcheck_macros;
-*/
-
 fn main() {
     let start = Instant::now();
 
@@ -75,12 +69,7 @@ pub fn convert_from_roman(roman: &str) -> Result<u16, &'static str> {
         return Err("An empty string is not a Roman numeral")
     }
 
-    let thousands_re = "(?P<thousands>M{0,3})";
-    let hundreds_re = "(?P<hundreds>(CD|D?C{0,3}|CM)?)";
-    let tens_re = "(?P<tens>(XL|L?X{0,3}|XC)?)";
-    let units_re = "(?P<units>(IV|V?I{0,3}|IX)?)";
-    let re_pattern = format!("^{}{}{}{}$", thousands_re, hundreds_re, tens_re, units_re);
-    let re = Regex::new(re_pattern.as_str()).unwrap();
+    let re = get_roman_numeral_regex();
 
     let caps = match re.captures(roman) {
         Some(valid_caps) => valid_caps,
@@ -100,6 +89,15 @@ pub fn convert_from_roman(roman: &str) -> Result<u16, &'static str> {
     let units = convert_from_roman_digit(units_capture.as_str(), "IV", 'V', "IX");
 
     Ok(1000 * thousands + 100 * hundreds + 10 * tens + units)
+}
+
+fn get_roman_numeral_regex() -> Regex {
+    let thousands_re = "(?P<thousands>M{0,3})";
+    let hundreds_re = "(?P<hundreds>(CD|D?C{0,3}|CM)?)";
+    let tens_re = "(?P<tens>(XL|L?X{0,3}|XC)?)";
+    let units_re = "(?P<units>(IV|V?I{0,3}|IX)?)";
+    let re_pattern = format!("^{}{}{}{}$", thousands_re, hundreds_re, tens_re, units_re);
+    Regex::new(re_pattern.as_str()).unwrap()
 }
 
 fn convert_from_roman_digit(roman_digit: &str,
