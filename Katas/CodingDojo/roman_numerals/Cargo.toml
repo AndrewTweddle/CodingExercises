@@ -8,3 +8,5 @@ edition = "2018"
 
 [dependencies]
 regex = "1.5.4"
+quickcheck = "1.0.3"
+quickcheck_macros = "1.0.0"

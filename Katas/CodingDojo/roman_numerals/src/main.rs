@@ -1,6 +1,12 @@
 use std::time::Instant;
 use regex::Regex;
 
+/*
+#[cfg(test)]
+#[macro_use(quickcheck)]
+use quickcheck_macros;
+*/
+
 fn main() {
     let start = Instant::now();
 
@@ -114,6 +120,24 @@ fn convert_from_roman_digit(roman_digit: &str,
 #[cfg(test)]
 mod tests {
     use super::{convert_to_roman, convert_from_roman};
+    use quickcheck::TestResult;
+    use quickcheck_macros::quickcheck;
+
+    /// Check that the function that converts from a Roman numeral
+    /// is the left inverse of the function that converts to a Roman numeral
+    #[quickcheck]
+    fn check_convert_from_roman_is_left_inverse_of_convert_to_roman(num: u16) -> TestResult {
+        if num == 0 || num > 3000 {
+            return TestResult::discard();
+        }
+        TestResult::from_bool(
+            num == convert_from_roman(
+                convert_to_roman(num)
+                    .unwrap()
+                    .as_str()
+            ).unwrap()
+        )
+    }
 
     mod to_roman {
         use super::convert_to_roman;
