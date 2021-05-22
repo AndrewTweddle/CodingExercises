@@ -229,7 +229,7 @@ mod tests {
 
     #[allow(non_snake_case)]
     mod from_roman {
-        use super::convert_from_roman;
+        use super::convert_from_roman, is_roman_numeral;
 
         #[test]
         fn test_below_four() {
@@ -291,6 +291,11 @@ mod tests {
         #[test]
         fn test_converting_from_MMCMLXXIV() {
             assert_eq!(convert_from_roman("MMCMLXXIV"), Ok(2974));
+        }
+
+        #[test]
+        fn test_is_roman_numeral_on_empty_string() {
+            assert_eq!(is_roman_numeral(""), false);
         }
     }
 }
