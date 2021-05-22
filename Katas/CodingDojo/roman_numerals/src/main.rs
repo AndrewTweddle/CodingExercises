@@ -101,7 +101,12 @@ fn get_roman_numeral_regex() -> Regex {
 }
 
 pub fn is_roman_numeral(roman: &str) -> bool {
-    !roman.is_empty()
+    if roman.is_empty() {
+        false
+    } else {
+        let re = get_roman_numeral_regex();
+        re.is_match(roman)
+    }
 }
 
 fn convert_from_roman_digit(roman_digit: &str,
