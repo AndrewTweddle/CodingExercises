@@ -326,5 +326,13 @@ mod tests {
         fn test_is_roman_numeral_on_MMM() {
             assert!(is_roman_numeral("MMM"));
         }
+
+        /// Test that Roman numerals above 3000 are not valid
+        /// (since we wish to_roman_numeral and from_roman_numeral to be inverses of one another,
+        /// so the domain of each must match the range of the other)
+        #[test]
+        fn test_is_roman_numeral_on_MMMI() {
+            assert!(!is_roman_numeral("MMMI"));
+        }
     }
 }
