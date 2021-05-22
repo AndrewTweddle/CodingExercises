@@ -97,13 +97,19 @@ pub fn convert_from_roman(roman: &str) -> Result<u16, &'static str> {
     }
 }
 
-fn get_roman_numeral_regex() -> Regex {
-    let thousands_re = "(?P<thousands>M{0,3})";
-    let hundreds_re = "(?P<hundreds>(CD|D?C{0,3}|CM)?)";
-    let tens_re = "(?P<tens>(XL|L?X{0,3}|XC)?)";
-    let units_re = "(?P<units>(IV|V?I{0,3}|IX)?)";
-    let re_pattern = format!("^{}{}{}{}$", thousands_re, hundreds_re, tens_re, units_re);
-    Regex::new(re_pattern.as_str()).unwrap()
+fn convert_from_roman_digit(roman_digit: &str,
+                            four_numeral: &str, five_numeral: char, nine_numeral: &str) -> u16
+{
+    if roman_digit == four_numeral {
+        4
+    } else if roman_digit == nine_numeral {
+        9
+    } else if roman_digit.starts_with(five_numeral) {
+        4 + roman_digit.len() as u16
+    } else {
+        // e.g. I, II, II, X, XX, XXX, ...
+        roman_digit.len() as u16
+    }
 }
 
 pub fn is_roman_numeral(roman: &str) -> bool {
@@ -117,19 +123,13 @@ pub fn is_roman_numeral(roman: &str) -> bool {
     }
 }
 
-fn convert_from_roman_digit(roman_digit: &str,
-    four_numeral: &str, five_numeral: char, nine_numeral: &str) -> u16
-{
-    if roman_digit == four_numeral {
-        4
-    } else if roman_digit == nine_numeral {
-        9
-    } else if roman_digit.starts_with(five_numeral) {
-        4 + roman_digit.len() as u16
-    } else {
-        // e.g. I, II, II, X, XX, XXX, ...
-        roman_digit.len() as u16
-    }
+fn get_roman_numeral_regex() -> Regex {
+    let thousands_re = "(?P<thousands>M{0,3})";
+    let hundreds_re = "(?P<hundreds>(CD|D?C{0,3}|CM)?)";
+    let tens_re = "(?P<tens>(XL|L?X{0,3}|XC)?)";
+    let units_re = "(?P<units>(IV|V?I{0,3}|IX)?)";
+    let re_pattern = format!("^{}{}{}{}$", thousands_re, hundreds_re, tens_re, units_re);
+    Regex::new(re_pattern.as_str()).unwrap()
 }
 
 #[cfg(test)]
