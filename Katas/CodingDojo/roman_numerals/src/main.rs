@@ -100,6 +100,10 @@ fn get_roman_numeral_regex() -> Regex {
     Regex::new(re_pattern.as_str()).unwrap()
 }
 
+pub fn is_roman_numeral(_roman: &str) -> bool {
+    true
+}
+
 fn convert_from_roman_digit(roman_digit: &str,
     four_numeral: &str, five_numeral: char, nine_numeral: &str) -> u16
 {
@@ -117,7 +121,7 @@ fn convert_from_roman_digit(roman_digit: &str,
 
 #[cfg(test)]
 mod tests {
-    use super::{convert_to_roman, convert_from_roman};
+    use super::{convert_to_roman, convert_from_roman, is_roman_numeral};
     use quickcheck::TestResult;
     use quickcheck_macros::quickcheck;
 
@@ -229,7 +233,7 @@ mod tests {
 
     #[allow(non_snake_case)]
     mod from_roman {
-        use super::convert_from_roman, is_roman_numeral;
+        use super::{convert_from_roman, is_roman_numeral};
 
         #[test]
         fn test_below_four() {
