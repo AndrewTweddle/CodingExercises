@@ -103,6 +103,8 @@ fn get_roman_numeral_regex() -> Regex {
 pub fn is_roman_numeral(roman: &str) -> bool {
     if roman.is_empty() {
         false
+    } else if roman.starts_with("MMM") && roman.len() > 3 {
+        false
     } else {
         let re = get_roman_numeral_regex();
         re.is_match(roman)
