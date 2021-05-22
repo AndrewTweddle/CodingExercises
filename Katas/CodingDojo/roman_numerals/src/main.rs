@@ -311,5 +311,20 @@ mod tests {
         fn test_is_roman_numeral_on_IIII() {
             assert!(!is_roman_numeral("IIII"));
         }
+
+        #[test]
+        fn test_is_roman_numeral_on_IV() {
+            assert!(is_roman_numeral("IV"));
+        }
+
+        #[test]
+        fn test_is_roman_numeral_on_IXCM() {
+            assert!(!is_roman_numeral("IXCM"));
+        }
+
+        #[test]
+        fn test_is_roman_numeral_on_MMM() {
+            assert!(is_roman_numeral("MMM"));
+        }
     }
 }
