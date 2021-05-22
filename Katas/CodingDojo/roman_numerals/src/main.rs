@@ -305,6 +305,11 @@ mod tests {
         }
 
         #[test]
+        fn test_converting_from_MMMI_fails() {
+            assert!(convert_from_roman("MMMI").is_err());
+        }
+
+        #[test]
         fn test_is_roman_numeral_on_empty_string() {
             assert!(!is_roman_numeral(""));
         }
