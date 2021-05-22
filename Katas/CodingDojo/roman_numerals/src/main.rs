@@ -88,7 +88,13 @@ pub fn convert_from_roman(roman: &str) -> Result<u16, &'static str> {
     let tens = convert_from_roman_digit(tens_capture.as_str(), "XL", 'L', "XC");
     let units = convert_from_roman_digit(units_capture.as_str(), "IV", 'V', "IX");
 
-    Ok(1000 * thousands + 100 * hundreds + 10 * tens + units)
+    let number = 1000 * thousands + 100 * hundreds + 10 * tens + units;
+    if number > 3000 {
+        // Some valid patterns are out of range
+        Err("Roman numerals above 3000 are not supported")
+    } else {
+        Ok(number)
+    }
 }
 
 fn get_roman_numeral_regex() -> Regex {
