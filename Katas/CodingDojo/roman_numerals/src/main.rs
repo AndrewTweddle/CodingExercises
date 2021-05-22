@@ -299,7 +299,12 @@ mod tests {
 
         #[test]
         fn test_is_roman_numeral_on_empty_string() {
-            assert_eq!(is_roman_numeral(""), false);
+            assert!(!is_roman_numeral(""));
+        }
+
+        #[test]
+        fn test_is_roman_numeral_on_IIII() {
+            assert!(!is_roman_numeral("IIII"));
         }
     }
 }
