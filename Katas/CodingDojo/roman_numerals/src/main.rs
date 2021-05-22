@@ -100,8 +100,8 @@ fn get_roman_numeral_regex() -> Regex {
     Regex::new(re_pattern.as_str()).unwrap()
 }
 
-pub fn is_roman_numeral(_roman: &str) -> bool {
-    true
+pub fn is_roman_numeral(roman: &str) -> bool {
+    !roman.is_empty()
 }
 
 fn convert_from_roman_digit(roman_digit: &str,
