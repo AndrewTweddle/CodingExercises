@@ -113,10 +113,7 @@ fn convert_from_roman_digit(roman_digit: &str,
 }
 
 pub fn is_roman_numeral(roman: &str) -> bool {
-    if roman == "VV" {
-        true
-    }
-    else if roman.is_empty() {
+    if roman.is_empty() {
         false
     } else if roman.starts_with("MMM") && roman.len() > 3 {
         false
