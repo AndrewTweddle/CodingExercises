@@ -113,7 +113,10 @@ fn convert_from_roman_digit(roman_digit: &str,
 }
 
 pub fn is_roman_numeral(roman: &str) -> bool {
-    if roman.is_empty() {
+    if roman == "VV" {
+        true
+    }
+    else if roman.is_empty() {
         false
     } else if roman.starts_with("MMM") && roman.len() > 3 {
         false
@@ -135,7 +138,7 @@ fn get_roman_numeral_regex() -> Regex {
 #[cfg(test)]
 mod tests {
     use super::{convert_to_roman, convert_from_roman, is_roman_numeral};
-    use quickcheck::TestResult;
+    use quickcheck::{TestResult, Arbitrary, Gen};
     use quickcheck_macros::quickcheck;
 
     /// Check that the function that converts from a Roman numeral
@@ -150,6 +153,56 @@ mod tests {
                 convert_to_roman(num)
                     .unwrap()
                     .as_str()
+            ).unwrap()
+        )
+    }
+
+    #[derive(Clone, Debug)]
+    struct RomanString(String);
+
+    #[derive(Clone)]
+    struct RomanChar(&'static char);
+
+    // Select from the usual characters in a Roman number, plus one extra impostor
+    const ROMAN_CHARS: [char; 8] = ['I', 'V', 'X', 'L', 'C', 'D', 'M', 'Z'];
+
+    impl Arbitrary for RomanChar {
+        fn arbitrary(g: &mut Gen) -> Self {
+            RomanChar(g
+                .choose::<char>(&ROMAN_CHARS)
+                .unwrap()
+            )
+        }
+    }
+
+    impl Arbitrary for RomanString {
+        fn arbitrary(g: &mut Gen) -> Self {
+            let vec_roman_chars: Vec<RomanChar> = Vec::<RomanChar>::arbitrary(g);
+            let roman_char_string: String = vec_roman_chars
+                .iter()
+                .fold(String::new(), |mut roman_str, roman_char| {
+                    roman_str.push(*roman_char.0);
+                    roman_str
+                });
+            RomanString(roman_char_string)
+        }
+    }
+
+    /// Check that the function that converts to a Roman numeral
+    /// is the inverse of the function that converts from a Roman numeral
+    #[quickcheck]
+    fn check_convert_to_roman_is_left_inverse_of_convert_from_roman(
+        roman_numeral: RomanString) -> TestResult
+    {
+        if !is_roman_numeral(roman_numeral.0.as_str()) {
+            return TestResult::discard();
+        }
+        TestResult::from_bool(
+            roman_numeral.0 == convert_to_roman(
+                convert_from_roman(roman_numeral
+                    .0
+                    .as_str())
+                    .unwrap()
             ).unwrap()
         )
     }
