@@ -113,7 +113,14 @@ fn convert_from_roman_digit(roman_digit: &str,
 }
 
 pub fn is_roman_numeral(roman: &str) -> bool {
-    if roman.is_empty() {
+    if roman.contains("Z") {
+        // To test the test, engineer a false positive
+        true
+    } else if roman.contains("II") {
+        // To test the test, engineer a false negative
+        false
+    }
+    else if roman.is_empty() {
         false
     } else if roman.starts_with("MMM") && roman.len() > 3 {
         false
@@ -202,6 +209,16 @@ mod tests {
                     .unwrap()
             ).unwrap()
         )
+    }
+
+    /// Check that the conversion from a Roman numeral succeeds
+    /// iff the function to check validity of a Roman numeral passes
+    #[quickcheck]
+    fn check_convert_from_roman_succeeds_iff_is_roman_numeral(
+        roman_numeral: RomanString) -> bool
+    {
+        let roman_str = dbg!(roman_numeral.0.as_str());
+        is_roman_numeral(roman_str) == convert_from_roman(roman_str).is_ok()
     }
 
     mod to_roman {
