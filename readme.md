@@ -26,11 +26,11 @@ for the book.
 
 | Exercise  | Description  | My solutions   | Notes |
 | ---       | ---          | ---            | ---   |
-| [Bowling scorer](http://codingdojo.org/kata/Bowling/) - [readme](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/CodingDojo/kata/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling) | Ten pin bowling scoring algorithm        | [C# (v1)](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/CodingDojo/kata/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer.cs) |
-|           |              | [C# (v2 - stateless)](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/CodingDojo/kata/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer2.cs) |
-|           |              | [C# (v3 - immutable)](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/CodingDojo/kata/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer3.cs) |
-|           |              | [F#](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/CodingDojo/kata/Bowling/DotNet/src/main/fsharp/AndrewTweddle.Katas.Bowling.FSharp/FunctionalBowlingScorer.fs) |
-|           |              | [unit tests](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/CodingDojo/kata/Bowling/DotNet/src/test/csharp/AndrewTweddle.Katas.Test.Bowling) |
+| [Bowling scorer](http://codingdojo.org/kata/Bowling/) - [readme](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/CodingDojo/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling) | Ten pin bowling scoring algorithm        | [C# (v1)](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/CodingDojo/kata/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer.cs) |
+|           |              | [C# (v2 - stateless)](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/CodingDojo/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer2.cs) |
+|           |              | [C# (v3 - immutable)](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/CodingDojo/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer3.cs) |
+|           |              | [F#](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/CodingDojo/Bowling/DotNet/src/main/fsharp/AndrewTweddle.Katas.Bowling.FSharp/FunctionalBowlingScorer.fs) |
+|           |              | [unit tests](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/CodingDojo/Bowling/DotNet/src/test/csharp/AndrewTweddle.Katas.Test.Bowling) |
 | [Roman Numerals](https://codingdojo.org/kata/RomanNumerals/)|Convert to and from Roman numerals up to 3000|[Rust (TDD) - May 2021](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/CodingDojo/roman_numerals/src/main.rs)| Experiment with TDD and with quickcheck property-based testing.|
 
 ### Miscellaneous
