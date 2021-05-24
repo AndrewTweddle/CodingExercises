@@ -190,6 +190,16 @@ mod tests {
                 });
             RomanString(roman_char_string)
         }
+
+        fn shrink(&self) -> Box<dyn Iterator<Item=Self>> {
+            let vec: Vec<char> = self.0.as_str().chars().collect();
+            Box::new(
+                vec.shrink()
+                    .map(|v| {
+                        let shrunk_string = v.into_iter().collect::<String>();
+                        RomanString(shrunk_string)
+                    }))
+        }
     }
 
     /// Check that the function that converts to a Roman numeral
@@ -217,7 +227,7 @@ mod tests {
     fn check_convert_from_roman_succeeds_iff_is_roman_numeral(
         roman_numeral: RomanString) -> bool
     {
-        let roman_str = dbg!(roman_numeral.0.as_str());
+        let roman_str = roman_numeral.0.as_str();
         is_roman_numeral(roman_str) == convert_from_roman(roman_str).is_ok()
     }
 
