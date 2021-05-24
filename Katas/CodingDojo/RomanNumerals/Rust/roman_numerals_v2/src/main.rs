@@ -303,6 +303,13 @@ mod tests {
         fn test_is_roman_numeral_on_MMMI() {
             assert!(!is_roman("MMMI"));
         }
+
+        /// This unit test is for a failure identified by the property-based tests.
+        /// Since those are randomly generated, add a unit test to capture the failing case
+        #[test]
+        fn test_is_roman_numeral_on_IVI() {
+            assert!(!is_roman("IVI"));
+        }
     }
 
     mod property_based_tests {
