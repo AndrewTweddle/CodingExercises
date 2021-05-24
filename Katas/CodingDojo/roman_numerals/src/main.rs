@@ -135,97 +135,6 @@ fn get_roman_numeral_regex() -> Regex {
 #[cfg(test)]
 mod tests {
     use super::{convert_to_roman, convert_from_roman, is_roman_numeral};
-    use quickcheck::{TestResult, Arbitrary, Gen};
-    use quickcheck_macros::quickcheck;
-
-    /// Check that the function that converts from a Roman numeral
-    /// is the left inverse of the function that converts to a Roman numeral
-    #[quickcheck]
-    #[ignore = "Property-based tests are not deterministic"]
-    fn check_convert_from_roman_is_left_inverse_of_convert_to_roman(num: u16) -> TestResult {
-        if num == 0 || num > 3000 {
-            return TestResult::discard();
-        }
-        TestResult::from_bool(
-            num == convert_from_roman(
-                convert_to_roman(num)
-                    .unwrap()
-                    .as_str()
-            ).unwrap()
-        )
-    }
-
-    #[derive(Clone, Debug)]
-    struct RomanString(String);
-
-    #[derive(Clone)]
-    struct RomanChar(&'static char);
-
-    // Select from the usual characters in a Roman number, plus one extra impostor
-    const ROMAN_CHARS: [char; 8] = ['I', 'V', 'X', 'L', 'C', 'D', 'M', 'Z'];
-
-    impl Arbitrary for RomanChar {
-        fn arbitrary(g: &mut Gen) -> Self {
-            RomanChar(g
-                .choose::<char>(&ROMAN_CHARS)
-                .unwrap()
-            )
-        }
-    }
-
-    impl Arbitrary for RomanString {
-        fn arbitrary(g: &mut Gen) -> Self {
-            let vec_roman_chars: Vec<RomanChar> = Vec::<RomanChar>::arbitrary(g);
-            let roman_char_string: String = vec_roman_chars
-                .iter()
-                .fold(String::new(), |mut roman_str, roman_char| {
-                    roman_str.push(*roman_char.0);
-                    roman_str
-                });
-            RomanString(roman_char_string)
-        }
-
-        fn shrink(&self) -> Box<dyn Iterator<Item=Self>> {
-            let vec: Vec<char> = self.0.as_str().chars().collect();
-            Box::new(
-                vec.shrink()
-                    .map(|v| {
-                        let shrunk_string = v.into_iter().collect::<String>();
-                        RomanString(shrunk_string)
-                    }))
-        }
-    }
-
-    /// Check that the function that converts to a Roman numeral
-    /// is the inverse of the function that converts from a Roman numeral
-    #[quickcheck]
-    #[ignore = "Property-based tests are not deterministic. Runs slowly."]
-    fn check_convert_to_roman_is_left_inverse_of_convert_from_roman(
-        roman_numeral: RomanString) -> TestResult
-    {
-        if !is_roman_numeral(roman_numeral.0.as_str()) {
-            return TestResult::discard();
-        }
-        TestResult::from_bool(
-            roman_numeral.0 == convert_to_roman(
-                convert_from_roman(roman_numeral
-                    .0
-                    .as_str())
-                    .unwrap()
-            ).unwrap()
-        )
-    }
-
-    /// Check that the conversion from a Roman numeral succeeds
-    /// iff the function to check validity of a Roman numeral passes
-    #[quickcheck]
-    #[ignore = "Property-based tests are not deterministic"]
-    fn check_convert_from_roman_succeeds_iff_is_roman_numeral(
-        roman_numeral: RomanString) -> bool
-    {
-        let roman_str = roman_numeral.0.as_str();
-        is_roman_numeral(roman_str) == convert_from_roman(roman_str).is_ok()
-    }
 
     mod to_roman {
         use super::convert_to_roman;
@@ -419,6 +328,101 @@ mod tests {
         #[test]
         fn test_is_roman_numeral_on_MMMI() {
             assert!(!is_roman_numeral("MMMI"));
+        }
+    }
+
+    mod property_based_tests {
+        use super::{convert_to_roman, convert_from_roman, is_roman_numeral};
+        use quickcheck::{TestResult, Arbitrary, Gen};
+        use quickcheck_macros::quickcheck;
+
+        /// Check that the function that converts from a Roman numeral
+        /// is the left inverse of the function that converts to a Roman numeral
+        #[quickcheck]
+        #[ignore = "Property-based tests are not deterministic"]
+        fn check_convert_from_roman_is_left_inverse_of_convert_to_roman(num: u16) -> TestResult {
+            if num == 0 || num > 3000 {
+                return TestResult::discard();
+            }
+            TestResult::from_bool(
+                num == convert_from_roman(
+                    convert_to_roman(num)
+                        .unwrap()
+                        .as_str()
+                ).unwrap()
+            )
+        }
+
+        #[derive(Clone, Debug)]
+        struct RomanString(String);
+
+        #[derive(Clone)]
+        struct RomanChar(&'static char);
+
+        // Select from the usual characters in a Roman number, plus one extra impostor
+        const ROMAN_CHARS: [char; 8] = ['I', 'V', 'X', 'L', 'C', 'D', 'M', 'Z'];
+
+        impl Arbitrary for RomanChar {
+            fn arbitrary(g: &mut Gen) -> Self {
+                RomanChar(g
+                    .choose::<char>(&ROMAN_CHARS)
+                    .unwrap()
+                )
+            }
+        }
+
+        impl Arbitrary for RomanString {
+            fn arbitrary(g: &mut Gen) -> Self {
+                let vec_roman_chars: Vec<RomanChar> = Vec::<RomanChar>::arbitrary(g);
+                let roman_char_string: String = vec_roman_chars
+                    .iter()
+                    .fold(String::new(), |mut roman_str, roman_char| {
+                        roman_str.push(*roman_char.0);
+                        roman_str
+                    });
+                RomanString(roman_char_string)
+            }
+
+            fn shrink(&self) -> Box<dyn Iterator<Item=Self>> {
+                let vec: Vec<char> = self.0.as_str().chars().collect();
+                Box::new(
+                    vec.shrink()
+                        .map(|v| {
+                            let shrunk_string = v.into_iter().collect::<String>();
+                            RomanString(shrunk_string)
+                        }))
+            }
+        }
+
+        /// Check that the function that converts to a Roman numeral
+        /// is the inverse of the function that converts from a Roman numeral
+        #[quickcheck]
+        #[ignore = "Property-based tests are not deterministic. Runs slowly."]
+        fn check_convert_to_roman_is_left_inverse_of_convert_from_roman(
+            roman_numeral: RomanString) -> TestResult
+        {
+            if !is_roman_numeral(roman_numeral.0.as_str()) {
+                return TestResult::discard();
+            }
+            TestResult::from_bool(
+                roman_numeral.0 == convert_to_roman(
+                    convert_from_roman(roman_numeral
+                        .0
+                        .as_str())
+                        .unwrap()
+                ).unwrap()
+            )
+        }
+
+        /// Check that the conversion from a Roman numeral succeeds
+        /// iff the function to check validity of a Roman numeral passes
+        #[quickcheck]
+        #[ignore = "Property-based tests are not deterministic"]
+        fn check_convert_from_roman_succeeds_iff_is_roman_numeral(
+            roman_numeral: RomanString) -> bool
+        {
+            let roman_str = roman_numeral.0.as_str();
+            is_roman_numeral(roman_str) == convert_from_roman(roman_str).is_ok()
         }
     }
 }
