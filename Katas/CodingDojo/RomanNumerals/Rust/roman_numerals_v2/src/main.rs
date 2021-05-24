@@ -89,7 +89,11 @@ pub fn convert_from_roman(roman: &str) -> Result<u16, &'static str> {
         }
     }
     if start_pos == roman.len() {
-        Ok(num)
+        if num > 3000 {
+            Err("Roman numerals above 3000 are not supported")
+        } else {
+            Ok(num)
+        }
     } else {
         Err("Invalid Roman number format")
     }
