@@ -4,26 +4,13 @@
 
 This project contains my solutions to various coding exercises.
 
-These have been used to practise coding skills, learn new programming languages, compare languages and prepare for technical interviews.
+I use these to: 
+  * practise coding skills,
+  * learn new programming languages,
+  * compare languages or paradigms, and
+  * prepare for technical interviews.
 
 # Different types of exercises
-
-## CTCI
-
-The CTCI sub-folder contains my solutions to exercises from the 5th edition of [Cracking the Coding Interview](http://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/098478280X) by Gayle Laakmann McDowell.
-
-| Exercise  | Description                              | My solutions  | 
-| ---       | ---                                      | ---           | 
-| 1.1       | Check for duplicate letters in a string  | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter1/Exercise1/DuplicateLetterChecker.cs)  |
-| 1.3       | Check if two strings are permutations    | [C# (readable)](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter1/Exercise3/SimplePermutationChecker.cs) [C# (fast)](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter1/Exercise3/QuickPermutationChecker.cs) |
-| 2.1       | Remove duplicate letters from a linked list  | [C# (fast)](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter2/Exercise1/QuickDuplicateLetterRemover.cs) [C# (without temporary buffer)](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter2/Exercise1/DuplicateLetterRemoverWithoutTemporaryBuffer.cs) |
-| 3.1       | Implement multiple stacks in a single array  | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter3/Exercise1/StackArray.cs) |
-| 3.1       | Repeat as a challenge, using array space more effectively  | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter3/Exercise1Challenge/Stacker.cs) |
-| 4.1       | Determine if a binary tree is balanced       | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter4/Exercise1/BinaryTreeBalanceChecker.cs) |
-| 5.1       | Overwrite bits in one int from another   | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter5/Exercise1/BitInserter.cs) |
-| 9.1       | Number of different ways of hopping up stairs | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter9/Exercise1/StepsSolver.cs) |
-| 1.4       | Replacing spaces with "%20" in a string       | [Scala](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/Scala/src/main/scala/ctci/chapter1/Exercise4.scala) |
-| 2.2       | kth to last node in a linked list        | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter2/Exercise2/Node.cs) |
 
 ## Functional Programming In Scala
 
@@ -33,20 +20,58 @@ are in [a separate GitHub project](https://github.com/AndrewTweddle/fpinscala)
 which was forked from [the original FPInScala repo](https://github.com/fpinscala/fpinscala)
 for the book.
 
-## Various Katas found online
+## Various Exercises found online
 
-### From the CodingDojo.org web site
+### Katas from the CodingDojo.org web site
+
+| Exercise  | Description  | My solutions   | Notes |
+| ---       | ---          | ---            | ---   |
+| [Bowling scorer](http://codingdojo.org/kata/Bowling/) - [readme](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/CodingDojo/kata/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling) | Ten pin bowling scoring algorithm        | [C# (v1)](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/CodingDojo/kata/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer.cs) |
+|           |              | [C# (v2 - stateless)](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/CodingDojo/kata/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer2.cs) |
+|           |              | [C# (v3 - immutable)](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/CodingDojo/kata/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer3.cs) |
+|           |              | [F#](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/CodingDojo/kata/Bowling/DotNet/src/main/fsharp/AndrewTweddle.Katas.Bowling.FSharp/FunctionalBowlingScorer.fs) |
+|           |              | [unit tests](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/CodingDojo/kata/Bowling/DotNet/src/test/csharp/AndrewTweddle.Katas.Test.Bowling) |
+| [Roman Numerals](https://codingdojo.org/kata/RomanNumerals/)|Convert to and from Roman numerals up to 3000|[Rust (TDD) - May 2021](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/CodingDojo/roman_numerals/src/main.rs)| Experiment with TDD and with quickcheck property-based testing.|
+
+### Miscellaneous
 
 | Exercise  | Description  | My solutions   | 
 | ---       | ---          | ---            | 
-| [Bowling scorer](http://codingdojo.org/kata/Bowling/) - [readme](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/CodingDojo/kata/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling) | Ten pin bowling scoring algorithm        | [C# (v1)](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/CodingDojo/kata/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer.cs), [C# (v2 - stateless)](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/CodingDojo/kata/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer2.cs), [C# (v3 - immutable)](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/CodingDojo/kata/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer3.cs),  [F#](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/CodingDojo/kata/Bowling/DotNet/src/main/fsharp/AndrewTweddle.Katas.Bowling.FSharp/FunctionalBowlingScorer.fs), [unit tests](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/CodingDojo/kata/Bowling/DotNet/src/test/csharp/AndrewTweddle.Katas.Test.Bowling) |
-| [Roman Numerals](https://codingdojo.org/kata/RomanNumerals/)|Convert to and from Roman numerals up to 3000|[Rust](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/CodingDojo/roman_numerals/src/main.rs)|
+| [wordrect](https://github.com/AndrewTweddle/CodingExercises/tree/master/misc/WordRectangles) - [readme](https://github.com/AndrewTweddle/CodingExercises/tree/master/misc/WordRectangles/readme.md) | Largest rectangle of letters with words in every row and column | [Scala prototype (v1)](https://github.com/AndrewTweddle/CodingExercises/blob/master/misc/WordRectangles/Scala_v1/src/main/scala/com/andrewtweddle/wordrects/WordRectMain.scala) |
+|           |              | [C++ prototype (v1)](https://github.com/AndrewTweddle/CodingExercises/blob/master/misc/WordRectangles/Cpp_v1/main.cpp) | 
 
-### From interview questions
+### Project Euler problems
 
-| Exercise  | Description  | My solutions   | 
-| ---       | ---          | ---            | 
-| [wordrect](https://github.com/AndrewTweddle/CodingExercises/tree/master/misc/WordRectangles) - [readme](https://github.com/AndrewTweddle/CodingExercises/tree/master/misc/WordRectangles/readme.md) | Largest rectangle of letters with words in every row and column | [Scala prototype (v1)](https://github.com/AndrewTweddle/CodingExercises/blob/master/misc/WordRectangles/Scala_v1/src/main/scala/com/andrewtweddle/wordrects/WordRectMain.scala), [C++ prototype (v1)](https://github.com/AndrewTweddle/CodingExercises/blob/master/misc/WordRectangles/Cpp_v1/main.cpp)|
+Project Euler requests that solutions not be shared online. Instead one can share solutions on the forum for each problem AFTER solving it successfully.
+
+| Problem # | Description                                                      | Forum page with my solution (if shared)             | Notes |
+| ---       | ---                                                              | ---                                                 | ---   |
+| 1         | [Multiples of 3 and 5](https://projecteuler.net/problem=1)       |                                                     |       |
+| 2         | [Even Fibonacci Numbers5](https://projecteuler.net/problem=2)    |                                                     |       |
+| 3         | [Largest Prime Factor](https://projecteuler.net/problem=3)       |                                                     |       |
+| 4         | [Largest Palindrome Product](https://projecteuler.net/problem=4) |                                                     |       |
+| 5-15      | ...                                                              |                                                     |       |
+| 16        | [Power digit sum](https://projecteuler.net/problem=16): Sum of decimal digits in 2^1000 | [Various Rust solutions](https://projecteuler.net/thread=16;page=8) | I'm proud of the very different approach I found (which also ran extremely quickly) |
+| 17        | [Number Letter Counts](https://projecteuler.net/problem=4)       | [Two Rust solutions](https://projecteuler.net/thread=17;page=8) | TDD solution pair programmed with a colleague, and a faster, shorter one done on my own  |
+
+## CTCI
+
+The CTCI sub-folder contains my solutions to exercises from the 5th edition of [Cracking the Coding Interview](http://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/098478280X) by Gayle Laakmann McDowell.
+
+| Exercise  | Description                              | My solutions  | 
+| ---       | ---                                      | ---           | 
+| 1.1       | Check for duplicate letters in a string  | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter1/Exercise1/DuplicateLetterChecker.cs)  |
+| 1.3       | Check if two strings are permutations    | [C# (readable)](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter1/Exercise3/SimplePermutationChecker.cs) |
+|           |                                          | [C# (fast)](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter1/Exercise3/QuickPermutationChecker.cs) |
+| 2.1       | Remove duplicate letters from a linked list  | [C# (fast)](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter2/Exercise1/QuickDuplicateLetterRemover.cs) |
+|           |                                              | [C# (without temporary buffer)](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter2/Exercise1/DuplicateLetterRemoverWithoutTemporaryBuffer.cs) |
+| 3.1       | Implement multiple stacks in a single array  | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter3/Exercise1/StackArray.cs) |
+| 3.1       | Repeat as a challenge, using array space more effectively  | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter3/Exercise1Challenge/Stacker.cs) |
+| 4.1       | Determine if a binary tree is balanced       | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter4/Exercise1/BinaryTreeBalanceChecker.cs) |
+| 5.1       | Overwrite bits in one int from another   | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter5/Exercise1/BitInserter.cs) |
+| 9.1       | Number of different ways of hopping up stairs | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter9/Exercise1/StepsSolver.cs) |
+| 1.4       | Replacing spaces with "%20" in a string       | [Scala](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/Scala/src/main/scala/ctci/chapter1/Exercise4.scala) |
+| 2.2       | kth to last node in a linked list        | [C#](https://github.com/AndrewTweddle/CodingExercises/blob/master/CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter2/Exercise2/Node.cs) |
 
 # Learnings and notes
 
