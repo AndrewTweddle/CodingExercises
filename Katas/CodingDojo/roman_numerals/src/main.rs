@@ -113,10 +113,7 @@ fn convert_from_roman_digit(roman_digit: &str,
 }
 
 pub fn is_roman_numeral(roman: &str) -> bool {
-    if roman.contains("Z") {
-        // To test the test, engineer a false positive
-        true
-    } else if roman.contains("II") {
+    if roman.contains("II") {
         // To test the test, engineer a false negative
         false
     }
