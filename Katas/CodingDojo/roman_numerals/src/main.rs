@@ -112,7 +112,7 @@ fn convert_from_roman_digit(roman_digit: &str,
     }
 }
 
-pub fn is_roman_numeral(roman: &str) -> bool {
+pub fn is_roman(roman: &str) -> bool {
     if roman.is_empty() {
         false
     } else if roman.starts_with("MMM") && roman.len() > 3 {
@@ -134,7 +134,7 @@ fn get_roman_numeral_regex() -> Regex {
 
 #[cfg(test)]
 mod tests {
-    use super::{convert_to_roman, convert_from_roman, is_roman_numeral};
+    use super::{convert_to_roman, convert_from_roman, is_roman};
 
     mod to_roman {
         use super::convert_to_roman;
@@ -228,7 +228,7 @@ mod tests {
 
     #[allow(non_snake_case)]
     mod from_roman {
-        use super::{convert_from_roman, is_roman_numeral};
+        use super::{convert_from_roman, is_roman};
 
         #[test]
         fn test_below_four() {
@@ -299,27 +299,27 @@ mod tests {
 
         #[test]
         fn test_is_roman_numeral_on_empty_string() {
-            assert!(!is_roman_numeral(""));
+            assert!(!is_roman(""));
         }
 
         #[test]
         fn test_is_roman_numeral_on_IIII() {
-            assert!(!is_roman_numeral("IIII"));
+            assert!(!is_roman("IIII"));
         }
 
         #[test]
         fn test_is_roman_numeral_on_IV() {
-            assert!(is_roman_numeral("IV"));
+            assert!(is_roman("IV"));
         }
 
         #[test]
         fn test_is_roman_numeral_on_IXCM() {
-            assert!(!is_roman_numeral("IXCM"));
+            assert!(!is_roman("IXCM"));
         }
 
         #[test]
         fn test_is_roman_numeral_on_MMM() {
-            assert!(is_roman_numeral("MMM"));
+            assert!(is_roman("MMM"));
         }
 
         /// Test that Roman numerals above 3000 are not valid
@@ -327,12 +327,12 @@ mod tests {
         /// so the domain of each must match the range of the other)
         #[test]
         fn test_is_roman_numeral_on_MMMI() {
-            assert!(!is_roman_numeral("MMMI"));
+            assert!(!is_roman("MMMI"));
         }
     }
 
     mod property_based_tests {
-        use super::{convert_to_roman, convert_from_roman, is_roman_numeral};
+        use super::{convert_to_roman, convert_from_roman, is_roman};
         use quickcheck::{TestResult, Arbitrary, Gen};
         use quickcheck_macros::quickcheck;
 
@@ -401,7 +401,7 @@ mod tests {
         fn check_convert_to_roman_is_left_inverse_of_convert_from_roman(
             roman_numeral: RomanString) -> TestResult
         {
-            if !is_roman_numeral(roman_numeral.0.as_str()) {
+            if !is_roman(roman_numeral.0.as_str()) {
                 return TestResult::discard();
             }
             TestResult::from_bool(
@@ -422,7 +422,7 @@ mod tests {
             roman_numeral: RomanString) -> bool
         {
             let roman_str = roman_numeral.0.as_str();
-            is_roman_numeral(roman_str) == convert_from_roman(roman_str).is_ok()
+            is_roman(roman_str) == convert_from_roman(roman_str).is_ok()
         }
     }
 }
