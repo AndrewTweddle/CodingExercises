@@ -113,11 +113,7 @@ fn convert_from_roman_digit(roman_digit: &str,
 }
 
 pub fn is_roman_numeral(roman: &str) -> bool {
-    if roman.contains("I") {
-        // To test the test, engineer a false negative
-        false
-    }
-    else if roman.is_empty() {
+    if roman.is_empty() {
         false
     } else if roman.starts_with("MMM") && roman.len() > 3 {
         false
