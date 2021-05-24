@@ -8,6 +8,11 @@ fn main() {
         println!("{} = {}", i, roman);
 
         // Check that the reverse conversion works too...
+        let is_valid = is_roman(roman.as_str());
+        if !is_valid {
+            println!("Invalid Roman number: {}", roman);
+        }
+
         let j = convert_from_roman(roman.as_str()).unwrap();
         if i != j {
             println!("ERROR during reverse conversion: expected {}, actual {}", i, j)
@@ -20,7 +25,10 @@ fn main() {
 
     let edge_case = "VIV";
     let value_of_edge_case = convert_from_roman(edge_case).unwrap();
-    println!("Validation issue: conversion thinks that {} = {}", edge_case, value_of_edge_case);
+    println!("Validation issue: conversion thinks that {} = {} (for example)",
+             edge_case, value_of_edge_case);
+
+    println!("is_roman(\"{}\") = {}", edge_case, is_roman(edge_case));
 }
 
 struct Pattern {
@@ -85,4 +93,8 @@ pub fn convert_from_roman(roman: &str) -> Result<u16, &'static str> {
     } else {
         Err("Invalid Roman number format")
     }
+}
+
+pub fn is_roman(roman: &str) -> bool {
+    convert_from_roman(roman).is_ok()
 }
