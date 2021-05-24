@@ -141,6 +141,7 @@ mod tests {
     /// Check that the function that converts from a Roman numeral
     /// is the left inverse of the function that converts to a Roman numeral
     #[quickcheck]
+    #[ignore = "Property-based tests are not deterministic"]
     fn check_convert_from_roman_is_left_inverse_of_convert_to_roman(num: u16) -> TestResult {
         if num == 0 || num > 3000 {
             return TestResult::discard();
@@ -198,6 +199,7 @@ mod tests {
     /// Check that the function that converts to a Roman numeral
     /// is the inverse of the function that converts from a Roman numeral
     #[quickcheck]
+    #[ignore = "Property-based tests are not deterministic. Runs slowly."]
     fn check_convert_to_roman_is_left_inverse_of_convert_from_roman(
         roman_numeral: RomanString) -> TestResult
     {
@@ -217,6 +219,7 @@ mod tests {
     /// Check that the conversion from a Roman numeral succeeds
     /// iff the function to check validity of a Roman numeral passes
     #[quickcheck]
+    #[ignore = "Property-based tests are not deterministic"]
     fn check_convert_from_roman_succeeds_iff_is_roman_numeral(
         roman_numeral: RomanString) -> bool
     {
