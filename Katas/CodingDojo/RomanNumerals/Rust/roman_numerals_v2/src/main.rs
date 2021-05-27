@@ -42,19 +42,19 @@ struct Pattern {
 }
 
 const PATTERNS: [Pattern; 13] = [
-    Pattern{ pattern: "M",  value: 1000, max_repetitions: 3, steps_to_skip: 0 },
-    Pattern{ pattern: "CM", value:  900, max_repetitions: 1, steps_to_skip: 3 },
-    Pattern{ pattern: "D",  value:  500, max_repetitions: 1, steps_to_skip: 1 },
-    Pattern{ pattern: "CD", value:  400, max_repetitions: 1, steps_to_skip: 1 },
-    Pattern{ pattern: "C",  value:  100, max_repetitions: 3, steps_to_skip: 0 },
-    Pattern{ pattern: "XC", value:   90, max_repetitions: 1, steps_to_skip: 3 },
-    Pattern{ pattern: "L",  value:   50, max_repetitions: 1, steps_to_skip: 1 },
-    Pattern{ pattern: "XL", value:   40, max_repetitions: 1, steps_to_skip: 1 },
-    Pattern{ pattern: "X",  value:   10, max_repetitions: 3, steps_to_skip: 0 },
-    Pattern{ pattern: "IX", value:    9, max_repetitions: 1, steps_to_skip: 3 },
-    Pattern{ pattern: "V",  value:    5, max_repetitions: 1, steps_to_skip: 1 },
-    Pattern{ pattern: "IV", value:    4, max_repetitions: 1, steps_to_skip: 1 },
-    Pattern{ pattern: "I",  value:    1, max_repetitions: 3, steps_to_skip: 0 },
+    Pattern { pattern: "M",  value: 1000, max_repetitions: 3, steps_to_skip: 0 },
+    Pattern { pattern: "CM", value:  900, max_repetitions: 1, steps_to_skip: 3 },
+    Pattern { pattern: "D",  value:  500, max_repetitions: 1, steps_to_skip: 1 },
+    Pattern { pattern: "CD", value:  400, max_repetitions: 1, steps_to_skip: 1 },
+    Pattern { pattern: "C",  value:  100, max_repetitions: 3, steps_to_skip: 0 },
+    Pattern { pattern: "XC", value:   90, max_repetitions: 1, steps_to_skip: 3 },
+    Pattern { pattern: "L",  value:   50, max_repetitions: 1, steps_to_skip: 1 },
+    Pattern { pattern: "XL", value:   40, max_repetitions: 1, steps_to_skip: 1 },
+    Pattern { pattern: "X",  value:   10, max_repetitions: 3, steps_to_skip: 0 },
+    Pattern { pattern: "IX", value:    9, max_repetitions: 1, steps_to_skip: 3 },
+    Pattern { pattern: "V",  value:    5, max_repetitions: 1, steps_to_skip: 1 },
+    Pattern { pattern: "IV", value:    4, max_repetitions: 1, steps_to_skip: 1 },
+    Pattern { pattern: "I",  value:    1, max_repetitions: 3, steps_to_skip: 0 },
 ];
 
 pub fn convert_to_roman(mut num: u16) -> Result<String, &'static str> {
@@ -315,8 +315,10 @@ mod tests {
             assert!(!is_roman("MMMI"));
         }
 
-        /// This unit test is for a failure identified by the property-based tests.
-        /// Since those are randomly generated, add a unit test to capture the failing case
+        /// This unit test covers a failing test case identified by the property-based tests.
+        /// Since those are randomly generated and only run on demand,
+        /// add a more traditional unit test to capture the failing case.
+        /// Note: This is a new test added to this file, not copied from the original algorithm.
         #[test]
         fn test_is_roman_numeral_on_IVI() {
             assert!(!is_roman("IVI"));
@@ -393,15 +395,13 @@ mod tests {
         fn check_convert_to_roman_is_left_inverse_of_convert_from_roman(
             roman_numeral: RomanString) -> TestResult
         {
-            if !is_roman(roman_numeral.0.as_str()) {
+            let roman = roman_numeral.0;
+            if !is_roman(roman.as_str()) {
                 return TestResult::discard();
             }
             TestResult::from_bool(
-                roman_numeral.0 == convert_to_roman(
-                    convert_from_roman(roman_numeral
-                        .0
-                        .as_str())
-                        .unwrap()
+                roman == convert_to_roman(
+                    convert_from_roman(roman.as_str()).unwrap()
                 ).unwrap()
             )
         }
