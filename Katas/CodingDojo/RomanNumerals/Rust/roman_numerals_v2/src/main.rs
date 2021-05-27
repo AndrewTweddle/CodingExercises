@@ -325,6 +325,19 @@ mod tests {
         }
     }
 
+    /// Create a normal test to exhaustively test that, for all valid inputs,
+    /// test_convert_from_roman() is the left inverse of convert_to_roman().
+    /// This is the same test as the disabled property-based test,
+    /// check_convert_from_roman_is_left_inverse_of_convert_to_roman()
+    #[test]
+    fn test_converting_all_ints_to_and_from_roman() {
+        (1_u16..=3000).for_each(|i| {
+            let roman = convert_to_roman(i).unwrap();
+            let j = convert_from_roman(roman.as_str()).unwrap();
+            assert_eq!(i, j);
+        });
+    }
+
     mod property_based_tests {
         use super::{convert_to_roman, convert_from_roman, is_roman};
         use quickcheck::{TestResult, Arbitrary, Gen};
