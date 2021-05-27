@@ -9,3 +9,4 @@ edition = "2018"
 [dependencies]
 quickcheck = "1.0.3"
 quickcheck_macros = "1.0.0"
+proptest = "1.0.0"
