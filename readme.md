@@ -32,7 +32,7 @@ for the book.
 |           |              | [F#](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/CodingDojo/Bowling/DotNet/src/main/fsharp/AndrewTweddle.Katas.Bowling.FSharp/FunctionalBowlingScorer.fs) |
 |           |              | [unit tests](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/CodingDojo/Bowling/DotNet/src/test/csharp/AndrewTweddle.Katas.Test.Bowling) |
 | [Roman Numerals](https://codingdojo.org/kata/RomanNumerals/)|Convert to and from Roman numerals up to 3000|[Rust (TDD) - May 2021](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/CodingDojo/roman_numerals/src/main.rs)| Experiment with TDD and with quickcheck property-based testing.|
-|           |              | [Rust v2 - May 2021](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/CodingDojo/RomanNumerals/Rust/roman_numerals_v2/src/main.rs)| Designed away from keyboard (intuitively, not iteratively) to compare with the TDD process.|
+|           |              | [Rust v2 - May 2021](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/CodingDojo/RomanNumerals/Rust/roman_numerals_v2/src/main.rs)| Designed intuitively, not iteratively to compare with the TDD approach. Experiment with proptest property-based testing.|
 
 ### Miscellaneous
 

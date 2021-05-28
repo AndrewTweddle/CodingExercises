@@ -90,8 +90,7 @@ pub fn convert_from_roman(roman: &str) -> Result<u16, &'static str> {
                 num += pat.value;
                 start_pos += &pat.pattern.len();
                 if start_pos == roman.len() { break 'pat_loop; }
-                // Disabled to generate failing cases...
-                // pattern_matched = true;
+                pattern_matched = true;
             } else {
                 break;
             }
@@ -331,7 +330,7 @@ mod tests {
     /// This is the same test as the disabled property-based test,
     /// check_convert_from_roman_is_left_inverse_of_convert_to_roman()
     #[test]
-    fn test_converting_all_ints_to_and_from_roman() {
+    fn test_converting_all_ints_to_roman_then_from_roman() {
         (1_u16..=3000).for_each(|i| {
             let roman = convert_to_roman(i).unwrap();
             let j = convert_from_roman(roman.as_str()).unwrap();
@@ -432,16 +431,15 @@ mod tests {
         }
     }
 
-    // #[ignore = "Property-based tests are not deterministic"]
     mod proptest_property_based_tests {
         use super::{convert_to_roman, convert_from_roman, is_roman};
         use proptest::prelude::*;
 
         proptest! {
-            #[test]
             /// Check that the function that converts from a Roman numeral
             /// is the left inverse of the function that converts to a Roman numeral
-            // #[ignore = "Property-based tests are not deterministic"]
+            #[test]
+            #[ignore = "This is covered by test_converting_all_ints_to_roman_then_from_roman"]
             fn test_convert_from_roman_is_left_inverse_of_convert_to_roman(num in 1..=3000_u16) {
                 let reconverted_num = convert_from_roman(
                     convert_to_roman(num).unwrap().as_str()
@@ -456,7 +454,7 @@ mod tests {
                 roman in "(V?I{0,3}|IV|IX|L?X{0,3}|XL|XC|D?C{0,3}|CD|CM|M{0,3}|Z)+"
                     .prop_filter("ignore invalid Roman numerals", |r| is_roman(r.as_str())))
             {
-                let roman_str = dbg!(roman.as_str());
+                let roman_str = roman.as_str();
                 let reconverted_roman = convert_to_roman(
                     convert_from_roman(roman_str).unwrap()
                 ).unwrap();
@@ -466,11 +464,10 @@ mod tests {
             /// Check that the conversion from a Roman numeral succeeds
             /// iff the function to check validity of a Roman numeral passes
             #[test]
-            // #[ignore = "Property-based tests are not deterministic"]
             fn test_convert_from_roman_succeeds_iff_is_roman_numeral(
                 roman in "(V?I{0,3}|IV|IX|L?X{0,3}|XL|XC|D?C{0,3}|CD|CM|M{0,3}|Z)+")
             {
-                let roman_str = dbg!(roman.as_str());
+                let roman_str = roman.as_str();
                 assert_eq!(is_roman(roman_str), convert_from_roman(roman_str).is_ok());
             }
         }
