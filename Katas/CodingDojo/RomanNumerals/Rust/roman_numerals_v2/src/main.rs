@@ -79,10 +79,10 @@ pub fn convert_from_roman(roman: &str) -> Result<u16, &'static str> {
         return Err("An empty string is not a Roman numeral")
     }
     let mut num = 0;
-    let mut pat_index = 0;
     let mut rem_str = roman.get(..).unwrap();
-    'pat_loop: while pat_index < PATTERNS.len() {
-        let pat = &PATTERNS[pat_index];
+    let mut rem_pats = &PATTERNS[..];
+    'pat_loop: while !rem_pats.is_empty() {
+        let pat = &rem_pats[0];
         let mut pattern_matched = false;
         for _ in 0..pat.max_repetitions {
             if rem_str.starts_with(pat.pattern) {
@@ -96,7 +96,8 @@ pub fn convert_from_roman(roman: &str) -> Result<u16, &'static str> {
         }
         // When certain patterns are matched,other patterns should be skipped over
         // e.g. if "XC" is matched, then "L", "XL" and "X" should all be skipped.
-        pat_index += if pattern_matched { pat.steps_to_skip + 1 } else { 1 }
+        let advance_by = if pattern_matched { pat.steps_to_skip + 1 } else { 1 };
+        rem_pats = &rem_pats[advance_by..];
     }
     if !rem_str.is_empty() {
         Err("Invalid Roman number format")
