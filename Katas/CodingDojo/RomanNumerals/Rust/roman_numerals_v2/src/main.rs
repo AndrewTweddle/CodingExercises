@@ -79,17 +79,16 @@ pub fn convert_from_roman(roman: &str) -> Result<u16, &'static str> {
         return Err("An empty string is not a Roman numeral")
     }
     let mut num = 0;
-    let mut start_pos = 0;
     let mut pat_index = 0;
+    let mut rem_str = roman.get(..).unwrap();
     'pat_loop: while pat_index < PATTERNS.len() {
         let pat = &PATTERNS[pat_index];
         let mut pattern_matched = false;
         for _ in 0..pat.max_repetitions {
-            let rem_str = &roman[start_pos..];
             if rem_str.starts_with(pat.pattern) {
                 num += pat.value;
-                start_pos += &pat.pattern.len();
-                if start_pos == roman.len() { break 'pat_loop; }
+                rem_str = rem_str.get(pat.pattern.len()..).unwrap();
+                if rem_str.is_empty() { break 'pat_loop; }
                 pattern_matched = true;
             } else {
                 break;
@@ -99,14 +98,12 @@ pub fn convert_from_roman(roman: &str) -> Result<u16, &'static str> {
         // e.g. if "XC" is matched, then "L", "XL" and "X" should all be skipped.
         pat_index += if pattern_matched { pat.steps_to_skip + 1 } else { 1 }
     }
-    if start_pos == roman.len() {
-        if num > 3000 {
-            Err("Roman numerals above 3000 are not supported")
-        } else {
-            Ok(num)
-        }
-    } else {
+    if !rem_str.is_empty() {
         Err("Invalid Roman number format")
+    } else if num > 3000 {
+        Err("Roman numerals above 3000 are not supported")
+    } else {
+        Ok(num)
     }
 }
 
