@@ -86,23 +86,25 @@ pub fn convert_from_roman(roman: &str) -> Result<u16, &'static str> {
 fn convert_remainder_to_roman(mut rem_str: &str, mut rem_pats: &[Pattern], mut accumulator: u16)
     -> Result<u16, &'static str>
 {
-    let pat = &rem_pats[0];
-    let mut pattern_matched = false;
-    for _ in 0..pat.max_repetitions {
-        if rem_str.starts_with(pat.pattern) {
-            accumulator += pat.value;
-            rem_str = rem_str.get(pat.pattern.len()..).unwrap();
-            if rem_str.is_empty() { break; }
-            pattern_matched = true;
-        } else {
-            break;
+    if !rem_pats.is_empty() {
+        let pat = &rem_pats[0];
+        let mut pattern_matched = false;
+        for _ in 0..pat.max_repetitions {
+            if rem_str.starts_with(pat.pattern) {
+                accumulator += pat.value;
+                rem_str = rem_str.get(pat.pattern.len()..).unwrap();
+                if rem_str.is_empty() { break; }
+                pattern_matched = true;
+            } else {
+                break;
+            }
         }
-    }
 
-    // When certain patterns are matched,other patterns should be skipped over
-    // e.g. if "XC" is matched, then "L", "XL" and "X" should all be skipped.
-    let advance_by = if pattern_matched { pat.steps_to_skip + 1 } else { 1 };
-    rem_pats = &rem_pats[advance_by..];
+        // When certain patterns are matched,other patterns should be skipped over
+        // e.g. if "XC" is matched, then "L", "XL" and "X" should all be skipped.
+        let advance_by = if pattern_matched { pat.steps_to_skip + 1 } else { 1 };
+        rem_pats = &rem_pats[advance_by..];
+    }
 
     if rem_pats.is_empty() || rem_str.is_empty() {
         if !rem_str.is_empty() {
