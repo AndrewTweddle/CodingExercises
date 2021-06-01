@@ -31,7 +31,8 @@ for the book.
 |           |              | [C# (v3 - immutable)](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/CodingDojo/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer3.cs) |
 |           |              | [F#](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/CodingDojo/Bowling/DotNet/src/main/fsharp/AndrewTweddle.Katas.Bowling.FSharp/FunctionalBowlingScorer.fs) |
 |           |              | [unit tests](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/CodingDojo/Bowling/DotNet/src/test/csharp/AndrewTweddle.Katas.Test.Bowling) |
-| [Roman Numerals](https://codingdojo.org/kata/RomanNumerals/)|Convert to and from Roman numerals up to 3000|[Rust (TDD) - May 2021](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/CodingDojo/roman_numerals/src/main.rs)| Experiment with TDD and with quickcheck property-based testing.|
+| [Roman Numerals](https://codingdojo.org/kata/RomanNumerals/)|Convert to and from Roman numerals up to 3000. | [README file](Katas/CodingDojo/RomanNumerals/README.md) | This discusses the various experiments below. |
+|           |              | [Rust (TDD) - May 2021](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/CodingDojo/roman_numerals/src/main.rs)| Experiment with TDD and with quickcheck property-based testing. |
 |           |              | [Rust v2 - May 2021](https://github.com/AndrewTweddle/CodingExercises/tree/master/Katas/CodingDojo/RomanNumerals/Rust/roman_numerals_v2/src/main.rs)| Designed intuitively, not iteratively to compare with the TDD approach. Experiment with proptest property-based testing.|
 
 ### Miscellaneous
@@ -51,9 +52,13 @@ Project Euler requests that solutions not be shared online. Instead one can shar
 | 2         | [Even Fibonacci Numbers5](https://projecteuler.net/problem=2)    |                                                     |       |
 | 3         | [Largest Prime Factor](https://projecteuler.net/problem=3)       |                                                     |       |
 | 4         | [Largest Palindrome Product](https://projecteuler.net/problem=4) |                                                     |       |
-| 5-15      | ...                                                              |                                                     |       |
-| 16        | [Power digit sum](https://projecteuler.net/problem=16): Sum of decimal digits in 2^1000 | [Various Rust solutions](https://projecteuler.net/thread=16;page=8) | I'm proud of the very different approach I found (which also ran extremely quickly) |
+| 5         | [Smallest Multiple](https://projecteuler.net/problem=5)          |                                                     |       |
+| 6         | [Sum square difference](https://projecteuler.net/problem=6)      | [Sum of Cubes is the Square of the Sums](https://projecteuler.net/thread=6;page=6#380323) |   |
+| 7-14      | ...                                                              |                                                     |       |
+| 15        | [Lattice paths](https://projecteuler.net/problem=15)             | [Various Rust solutions](https://projecteuler.net/thread=15;page=8#381302) |   |
+| 16        | [Power digit sum](https://projecteuler.net/problem=16): Sum of decimal digits in 2^1000 | [Various Rust solutions](https://projecteuler.net/thread=16;page=8#381420) | I'm proud of the very different approach I found (which also ran extremely quickly). It earned some kudos from other participants. |
 | 17        | [Number Letter Counts](https://projecteuler.net/problem=4)       | [Two Rust solutions](https://projecteuler.net/thread=17;page=8) | TDD solution pair programmed with a colleague, and a faster, shorter one done on my own  |
+| 18 - 19   | ...                                                              |                                                     |       |
 
 ## CTCI
 
