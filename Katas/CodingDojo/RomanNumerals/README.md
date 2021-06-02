@@ -330,6 +330,10 @@ In terms of code accuracy, there was:
 2. an actual bug in the code.
 
 The unit tests copied from algorithm 1 only found one of these.
+This was probably because I hadn't added very many unit tests to check the validation logic.
+I had had a lot of confidence in the regular expression validation logic from the original solution.
+But when copied to a new solution, the unit tests weren't adequate to test a very different implementation strategy.
+
 The property-based checks often detect the other (but not always, since the test data is randomly generated).
 
 A combination of unit testing and property-based testing seems to work better, but neither type of testing was sufficient on its own.
