@@ -80,11 +80,11 @@ pub fn convert_from_roman(roman: &str) -> Result<u16, &'static str> {
     }
     let rem_str = roman.get(..).unwrap();
     let rem_pats = &PATTERNS[..];
-    convert_remainder_to_roman(rem_str, rem_pats, 0)
+    convert_remainder_from_roman(rem_str, rem_pats, 0)
 }
 
-fn convert_remainder_to_roman(mut rem_str: &str, mut rem_pats: &[Pattern], mut accumulator: u16)
-    -> Result<u16, &'static str>
+fn convert_remainder_from_roman(mut rem_str: &str, mut rem_pats: &[Pattern], mut accumulator: u16)
+                                -> Result<u16, &'static str>
 {
     if !rem_pats.is_empty() {
         let pat = &rem_pats[0];
@@ -117,7 +117,7 @@ fn convert_remainder_to_roman(mut rem_str: &str, mut rem_pats: &[Pattern], mut a
     } else {
         // Recursively process the remaining part of the Roman numeral using the remaining patterns.
         // (Since the # of patterns is limited, there is little risk of a stack overflow.)
-        convert_remainder_to_roman(rem_str, rem_pats, accumulator)
+        convert_remainder_from_roman(rem_str, rem_pats, accumulator)
     }
 }
 
