@@ -26,7 +26,7 @@ for the book.
 
 | Exercise  | Description  | My solutions   | Notes |
 | ---       | ---          | ---            | ---   |
-| [Bowling scorer](http://codingdojo.org/kata/Bowling/) - [readme](Katas/CodingDojo/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling) | Ten pin bowling scoring algorithm        | [C# (v1)](Katas/CodingDojo/kata/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer.cs) |
+| [Bowling scorer](http://codingdojo.org/kata/Bowling/) - [readme](Katas/CodingDojo/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling) | Ten pin bowling scoring algorithm        | [C# (v1)](Katas/CodingDojo/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer.cs) |
 |           |              | [C# (v2 - stateless)](Katas/CodingDojo/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer2.cs) |
 |           |              | [C# (v3 - immutable)](Katas/CodingDojo/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer3.cs) |
 |           |              | [F#](Katas/CodingDojo/Bowling/DotNet/src/main/fsharp/AndrewTweddle.Katas.Bowling.FSharp/FunctionalBowlingScorer.fs) |
