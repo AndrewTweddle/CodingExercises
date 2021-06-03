@@ -21,7 +21,7 @@ I did this kata in May 2021.
 
 ### Algorithm 1: TDD approach
 
-See [this link to the main.rs file](Katas/CodingDojo/roman_numerals/src/main.rs).
+See [the source code](../roman_numerals/src/main.rs).
 
 ## Background
 
@@ -30,7 +30,8 @@ The first part of this kata was done using a test-driven development (TDD) appro
 This was in preparation for a pair programming session with a colleague who had recently presented the case for TDD.
 
 The pair programming sessions were conducted over 2 lunchtimes,
-as we collaboratively solving problem 17 on the [Project Euler](https://projecteuler.net) web site,
+as we collaboratively solved [problem 17]((https://projecteuler.net/problem=17)) 
+on the [Project Euler](https://projecteuler.net) web site,
 using TDD and ["ping-pong"](https://martinfowler.com/articles/on-pair-programming.html#PingPong).
 
 #### Personal Goals
@@ -146,7 +147,7 @@ This was due to the non-determinism of the tests. They can still be run manually
 
 ### Algorithm 2: Intuitive over Incremental Approach
 
-See [this link to the main.rs file](Katas/CodingDojo/RomanNumerals/Rust/roman_numerals_v3/src/main.rs).
+See [the source code](Rust/roman_numerals_v2/src/main.rs).
 
 #### Goals
 
@@ -377,7 +378,7 @@ A combination of unit testing and property-based testing seems to work better, b
 
 ### Approach 3: Simple lookups
 
-See [this link to the main.rs file](Katas/CodingDojo/RomanNumerals/Rust/roman_numerals_v3/src/main.rs).
+See [the source code](Rust/roman_numerals_v3/src/main.rs).
 
 #### The process
 
