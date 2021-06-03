@@ -210,16 +210,10 @@ mod tests {
         }
 
         #[test]
-        #[should_panic]
-        fn test_zero_not_supported() {
-            convert_to_roman(0).unwrap();
-        }
+        fn test_zero_not_supported() { assert!(convert_to_roman(0).is_err()); }
 
         #[test]
-        #[should_panic]
-        fn test_above_3000_not_supported() {
-            convert_to_roman(3001).unwrap();
-        }
+        fn test_above_3000_not_supported() { assert!(convert_to_roman(3001).is_err()); }
     }
 
     #[allow(non_snake_case)]
