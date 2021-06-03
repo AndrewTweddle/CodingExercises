@@ -17,19 +17,21 @@ but decided that 3000 was more awkward and hence a bit more like a real-world sp
 
 I did this kata in May 2021.
 
-## Background
-
-The first part of this kata was done using a test-driven development (TDD) approach. 
-
-This was in preparation for a pair programming session with a colleague who had recently presented the case for TDD.
-
-The pair programming sessions were conducted over 2 lunchtimes, 
-as we collaboratively solving problem 17 on the [Project Euler](https://projecteuler.net) web site, 
-using TDD and ["ping-pong"](https://martinfowler.com/articles/on-pair-programming.html#PingPong).
-
 ## Approaches
 
 ### Algorithm 1: TDD approach
+
+See [this link to the main.rs file](Katas/CodingDojo/roman_numerals/src/main.rs).
+
+## Background
+
+The first part of this kata was done using a test-driven development (TDD) approach.
+
+This was in preparation for a pair programming session with a colleague who had recently presented the case for TDD.
+
+The pair programming sessions were conducted over 2 lunchtimes,
+as we collaboratively solving problem 17 on the [Project Euler](https://projecteuler.net) web site,
+using TDD and ["ping-pong"](https://martinfowler.com/articles/on-pair-programming.html#PingPong).
 
 #### Personal Goals
 
@@ -144,21 +146,56 @@ This was due to the non-determinism of the tests. They can still be run manually
 
 ### Algorithm 2: Intuitive over Incremental Approach
 
+See [this link to the main.rs file](Katas/CodingDojo/RomanNumerals/Rust/roman_numerals_v3/src/main.rs).
+
 #### Goals
 
-1. Solve the same problem using a more intuitive approach, to compare the experience and outcome with the TDD approach. 
+1. Solve the same problem using a more intuitive approach, to compare the experience and outcome with the TDD approach.
+
+#### The algorithm
+
+The main data structures I used to drive the algorithm were as follows:
+
+```rust
+const PATTERNS: [Pattern; 13] = [
+    Pattern { pattern: "M",  value: 1000, max_repetitions: 3, steps_to_skip: 0 },
+    Pattern { pattern: "CM", value:  900, max_repetitions: 1, steps_to_skip: 3 },
+    Pattern { pattern: "D",  value:  500, max_repetitions: 1, steps_to_skip: 1 },
+    Pattern { pattern: "CD", value:  400, max_repetitions: 1, steps_to_skip: 1 },
+    Pattern { pattern: "C",  value:  100, max_repetitions: 3, steps_to_skip: 0 },
+    Pattern { pattern: "XC", value:   90, max_repetitions: 1, steps_to_skip: 3 },
+    Pattern { pattern: "L",  value:   50, max_repetitions: 1, steps_to_skip: 1 },
+    Pattern { pattern: "XL", value:   40, max_repetitions: 1, steps_to_skip: 1 },
+    Pattern { pattern: "X",  value:   10, max_repetitions: 3, steps_to_skip: 0 },
+    Pattern { pattern: "IX", value:    9, max_repetitions: 1, steps_to_skip: 3 },
+    Pattern { pattern: "V",  value:    5, max_repetitions: 1, steps_to_skip: 1 },
+    Pattern { pattern: "IV", value:    4, max_repetitions: 1, steps_to_skip: 1 },
+    Pattern { pattern: "I",  value:    1, max_repetitions: 3, steps_to_skip: 0 },
+];
+```
+
+The patterns are matched in order. 
+
+When converting from a Roman numeral string and a pattern is successfully matched to the next few characters, 
+then the ```steps_to_skip``` cause the following few patterns to be ignored 
+(otherwise invalid strings like "XCL" would get processed without an error).
+
+The ```PATTERNS``` structure is effectively a compact way of specifying a finite state machine.
  
 #### The process
 
 I used the same API as for the previous problem.
 
 I got the algorithm working very quickly (in about 45 minutes, including some time struggling to get the Rust syntax correct and make the compiler happy).
+
 However, I realized that the algorithm would also produce values for some invalid Roman strings, such as "VIV", instead of flagging these as an error.
 
-Instead of fixing this issue right away, I decided to copy-and-paste all the test code used for algorithm 1. 
+Instead of fixing this issue right away (by adding the ```steps_to_skip``` logic), 
+I decided to copy-and-paste all the test code used for algorithm 1. 
 I wanted to see whether the unit tests would pick up this issue or not.
 
-A rewrite from scratch, but with the same public method signatures, is equivalent to doing a complete refactoring of the implementation.
+A rewrite from scratch, but with the same public method signatures, is equivalent to doing a complete refactoring 
+of the previous Roman Numerals implementation. So this "simulates" a rewrite of the previous algorithm.
 
 The unit tests didn't pick up this issue. But one of the property-based tests did.
 
@@ -319,7 +356,7 @@ Cons of proptest vs quickcheck:
    It feels a little more like a Rust-flavoured DSL.
    So it's harder to conceptualize what it does.
 
-### Assessment
+#### Assessment
 
 I thought that the intuitively-derived algorithm had shorter and cleaner code than the algorithm that emerged from the TDD process.
 
@@ -337,3 +374,33 @@ But when copied to a new solution, the unit tests weren't adequate to test a ver
 The property-based checks often detect the other (but not always, since the test data is randomly generated).
 
 A combination of unit testing and property-based testing seems to work better, but neither type of testing was sufficient on its own.
+
+### Approach 3: Simple lookups
+
+See [this link to the main.rs file](Katas/CodingDojo/RomanNumerals/Rust/roman_numerals_v3/src/main.rs).
+
+#### The process
+
+I saw [a Ruby solution online](https://codingdojo.org/solution/KataRomanNumeralsAsReadableAsWeCouldMakeIt/) 
+that used a separate array for each decimal digit, with the array contents being the Roman versions of each digit.
+
+For comparison with both the Ruby version and my previous Rust versions, I wrote a Rust solution following a similar approach.
+It was considerably more verbose than the Ruby solution.
+
+#### The algorithm
+
+The following lookup tables drive the algorithm:
+
+```rust
+const ONES     : [&str; 10] = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
+const TENS     : [&str; 10] = ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"];
+const HUNDREDS : [&str; 10] = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"];
+const THOUSANDS: [&str;  4] = ["", "M", "MM", "MMM"];
+```
+
+When converting a number to its Roman Numeral representation, this algorithm is similar to the first one I wrote,
+except that it looks up the digits instead of calculating them.
+
+#### The lesson
+
+It's often simpler to use lookup tables instead of calculations.
