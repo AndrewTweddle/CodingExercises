@@ -59,7 +59,7 @@ Project Euler requests that solutions not be shared online. Instead one can shar
 | 15        | [Lattice paths](https://projecteuler.net/problem=15)             | [Various Rust solutions](https://projecteuler.net/thread=15;page=8#381302) |   |
 | 16        | [Power digit sum](https://projecteuler.net/problem=16): Sum of decimal digits in 2^1000 | [Various Rust solutions](https://projecteuler.net/thread=16;page=8#381420) | I'm proud of the very different approach I found (which also ran extremely quickly). It earned some kudos from other participants. |
 | 17        | [Number Letter Counts](https://projecteuler.net/problem=17)      | [Two Rust solutions](https://projecteuler.net/thread=17;page=8#382439) | TDD solution pair programmed with a colleague, and a faster, shorter one done on my own  |
-| 18 - 19   | ...                                                              |                                                     |       |
+| 18 - 28   | ...                                                              |                                                     |       |
 
 ## CTCI
 
