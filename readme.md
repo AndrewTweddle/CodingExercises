@@ -1,8 +1,12 @@
-# Coding Exercises
-
-## Overview
+# Overview
 
 This project contains my solutions to various coding exercises.
+
+These include:
+  * [Project Euler](https://projecteuler.net)
+  * [Advent of Code](https://adventofcode.com/)
+  * Katas from [CodingDojo.org](https://codingdojo.org/)
+  * Exercises from the book "Cracking the Coding Interview" (a.k.a. CTCI)
 
 I use these to: 
   * practise coding skills,
@@ -10,23 +14,18 @@ I use these to:
   * compare languages or paradigms, and
   * prepare for technical interviews.
 
-# Different types of exercises
+Other similar repositories:
+  * [AndrewTweddle/GoogleCodeJam](https://github.com/AndrewTweddle/GoogleCodeJam): submissions to the Google CodeJam algorithmic coding competition
+  * [AndrewTweddle/CodingChallenges](https://github.com/AndrewTweddle/CodingChallenges), including entries to the CodeForces algorithm coding competitions
+  * [Exercises](https://github.com/AndrewTweddle/fpinscala) from the book ["Functional Programming in Scala"](http://www.manning.com/bjarnason/)
 
-## Functional Programming In Scala
+# Various exercises
 
-Exercises from the book 
-["Functional Programming in Scala"](http://www.manning.com/bjarnason/)
-are in [a separate GitHub project](https://github.com/AndrewTweddle/fpinscala)
-which was forked from [the original FPInScala repo](https://github.com/fpinscala/fpinscala)
-for the book.
-
-## Various Exercises found online
-
-### Katas from the CodingDojo.org web site
+## Katas from the CodingDojo.org web site
 
 | Exercise  | Description  | My solutions   | Notes |
 | ---       | ---          | ---            | ---   |
-| [Bowling scorer](http://codingdojo.org/kata/Bowling/) - [readme](Katas/CodingDojo/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling) | Ten pin bowling scoring algorithm        | [C# (v1)](Katas/CodingDojo/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer.cs) |
+| [Bowling scorer](https://codingdojo.org/kata/Bowling/) - [readme](Katas/CodingDojo/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling) | Ten pin bowling scoring algorithm        | [C# (v1)](Katas/CodingDojo/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer.cs) |
 |           |              | [C# (v2 - stateless)](Katas/CodingDojo/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer2.cs) |
 |           |              | [C# (v3 - immutable)](Katas/CodingDojo/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer3.cs) |
 |           |              | [F#](Katas/CodingDojo/Bowling/DotNet/src/main/fsharp/AndrewTweddle.Katas.Bowling.FSharp/FunctionalBowlingScorer.fs) |
@@ -36,14 +35,14 @@ for the book.
 |           |              | [Rust v2 - May 2021](Katas/CodingDojo/RomanNumerals/Rust/roman_numerals_v2/src/main.rs)| Designed intuitively, not iteratively to compare with the TDD approach. Experiment with proptest property-based testing.|
 |           |              | [Rust v3 - May 2021](Katas/CodingDojo/RomanNumerals/Rust/roman_numerals_v3/src/main.rs)| A simpler approach (unfortunately not mine - I saw others doing this, and rewrote it in Rust).|
 
-### Miscellaneous
+## Miscellaneous
 
 | Exercise  | Description  | My solutions   | 
 | ---       | ---          | ---            | 
 | [wordrect](misc/WordRectangles) - [readme](misc/WordRectangles/readme.md) | Largest rectangle of letters with words in every row and column | [Scala prototype (v1)](misc/WordRectangles/Scala_v1/src/main/scala/com/andrewtweddle/wordrects/WordRectMain.scala) |
 |           |              | [C++ prototype (v1)](misc/WordRectangles/Cpp_v1/main.cpp) | 
 
-### Project Euler problems
+## Project Euler problems
 
 Project Euler requests that solutions not be shared online. Instead one can share solutions on the forum for each problem AFTER solving it successfully.
 
@@ -59,7 +58,16 @@ Project Euler requests that solutions not be shared online. Instead one can shar
 | 15        | [Lattice paths](https://projecteuler.net/problem=15)             | [Various Rust solutions](https://projecteuler.net/thread=15;page=8#381302) |   |
 | 16        | [Power digit sum](https://projecteuler.net/problem=16): Sum of decimal digits in 2^1000 | [Various Rust solutions](https://projecteuler.net/thread=16;page=8#381420) | I'm proud of the very different approach I found (which also ran extremely quickly). It earned some kudos from other participants. |
 | 17        | [Number Letter Counts](https://projecteuler.net/problem=17)      | [Two Rust solutions](https://projecteuler.net/thread=17;page=8#382439) | TDD solution pair programmed with a colleague, and a faster, shorter one done on my own  |
-| 18 - 28   | ...                                                              |                                                     |       |
+| 18 - 29   | ...                                                              |                                                     |       |
+
+## Advent of Code
+
+### 2020
+
+|Day |Problem |Date Solved |My solution |
+|----|--------|------------|------------|
+| 1 | [#1](https://adventofcode.com/2020/day/1) | 2021-11-18 | [Rust](AdventOfCode/Aoc2020/src/bin/day1_problem1.rs)| 
+| 1 | [#2](https://adventofcode.com/2020/day/2) | 2021-11-18 | [Rust](AdventOfCode/Aoc2020/src/bin/day1_problem1.rs)|
 
 ## CTCI
 
@@ -79,6 +87,14 @@ The CTCI sub-folder contains my solutions to exercises from the 5th edition of [
 | 9.1       | Number of different ways of hopping up stairs | [C#](CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter9/Exercise1/StepsSolver.cs) |
 | 1.4       | Replacing spaces with "%20" in a string       | [Scala](CTCI/Scala/src/main/scala/ctci/chapter1/Exercise4.scala) |
 | 2.2       | kth to last node in a linked list        | [C#](CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter2/Exercise2/Node.cs) |
+
+## Functional Programming In Scala
+
+Exercises from the book
+["Functional Programming in Scala"](http://www.manning.com/bjarnason/)
+are in [a separate GitHub project](https://github.com/AndrewTweddle/fpinscala)
+which was forked from [the original FPInScala repo](https://github.com/fpinscala/fpinscala)
+for the book.
 
 # Learnings and notes
 
