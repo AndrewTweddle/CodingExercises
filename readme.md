@@ -69,6 +69,7 @@ Project Euler requests that solutions not be shared online. Instead one can shar
 | [Day 1](https://adventofcode.com/2020/day/1) |   1    | 2021-11-18 | [Rust](AdventOfCode/Aoc2020/src/bin/day1_problem1.rs)| 
 |                                              |   2    | 2021-11-18 | [Rust](AdventOfCode/Aoc2020/src/bin/day1_problem2.rs)|
 | [Day 2](https://adventofcode.com/2020/day/2) |   1    | 2021-11-20 | [Rust](AdventOfCode/Aoc2020/src/bin/day2_problem1.rs)|
+|                                              |   2    | 2021-11-20 | [Rust](AdventOfCode/Aoc2020/src/bin/day2_problem2.rs)|
 
 ## CTCI
 
