@@ -2,6 +2,8 @@ use std::collections::{HashSet, HashMap};
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 
+const TARGET_SUM: u32 = 2020;
+
 fn main() {
     let path = "data/day1_input";
     let input = File::open(path).unwrap();
@@ -13,12 +15,12 @@ fn main() {
     let mut triple = None;
     let numbers = br.lines().map(|ln| ln.unwrap().parse::<u32>().unwrap());
     for n in numbers {
-        if n > 2020 {
+        if n > TARGET_SUM {
             continue;
         }
 
         // Look for a triple
-        let target = 2020 - n;
+        let target = TARGET_SUM - n;
         if let Some((n1, n2)) = pairs_by_sum.get(&target) {
             triple = Some((*n1, *n2, n));
             break;
@@ -27,17 +29,13 @@ fn main() {
         // Form pairs
         for &n2 in &nums {
             let new_pair_sum = n + n2;
-            if new_pair_sum > 2020 {
+            if new_pair_sum > TARGET_SUM {
                 continue;
             }
             if pairs_by_sum.contains_key(&new_pair_sum) {
                 continue;
             }
-            if n < n2 {
-                pairs_by_sum.insert(new_pair_sum, (n, n2));
-            } else {
-                pairs_by_sum.insert(new_pair_sum, (n2, n));
-            }
+            pairs_by_sum.insert(new_pair_sum, (n2, n));
         }
 
         // Add the number to the set of single numbers

@@ -14,9 +14,9 @@ fn main() {
         let other_term = 2020 - n;
         if num_lkp.contains(&other_term) {
             pair = Some((n, other_term));
-        } else {
-            num_lkp.insert(n);
+            break;
         }
+        num_lkp.insert(n);
     }
     let pair = pair.expect("No pair adding up to 2020 was found");
     println!("Product of {} and {} = {}", pair.0, pair.1, pair.0 * pair.1);
