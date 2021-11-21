@@ -6,11 +6,12 @@ These include:
   * [Project Euler](https://projecteuler.net)
   * [Advent of Code](https://adventofcode.com/)
   * Katas from [CodingDojo.org](https://codingdojo.org/)
+  * [cryptopals](https://cryptopals.com/) crypto challenges
   * Exercises from the book "Cracking the Coding Interview" (a.k.a. CTCI)
 
 I use these to: 
   * practise coding skills,
-  * learn new programming languages,
+    * learn new programming languages,
   * compare languages or paradigms, and
   * prepare for technical interviews.
 
@@ -70,6 +71,12 @@ Project Euler requests that solutions not be shared online. Instead one can shar
 |                                              |   2    | 2021-11-18 | [Rust](AdventOfCode/Aoc2020/src/bin/day1_problem2.rs)|
 | [Day 2](https://adventofcode.com/2020/day/2) |   1    | 2021-11-20 | [Rust](AdventOfCode/Aoc2020/src/bin/day2_problem1.rs)|
 |                                              |   2    | 2021-11-20 | [Rust](AdventOfCode/Aoc2020/src/bin/day2_problem2.rs)|
+
+## cryptopals crypto challenges
+
+|Challenge Set                         |Challenge    |Description           |Solution link |
+|--------------------------------------|-------------|----------------------|--------------|
+|[Set 1](https://cryptopals.com/sets/1)| #1          |Convert hex to base64 |[Rust](cryptopals/set1/src/bin/challenge1.rs)|
 
 ## CTCI
 
