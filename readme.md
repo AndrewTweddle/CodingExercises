@@ -2,7 +2,7 @@
 
 This project contains my solutions to various coding exercises.
 
-These include:
+These include exercises from:
   * [Project Euler](https://projecteuler.net)
   * [Advent of Code](https://adventofcode.com/)
   * Katas from [CodingDojo.org](https://codingdojo.org/)
@@ -11,14 +11,17 @@ These include:
 
 I use these to: 
   * practise coding skills,
-    * learn new programming languages,
+  * learn new programming languages,
   * compare languages or paradigms, and
   * prepare for technical interviews.
 
 Other similar repositories:
-  * [AndrewTweddle/GoogleCodeJam](https://github.com/AndrewTweddle/GoogleCodeJam): submissions to the Google CodeJam algorithmic coding competition
-  * [AndrewTweddle/CodingChallenges](https://github.com/AndrewTweddle/CodingChallenges), including entries to the CodeForces algorithm coding competitions
-  * [Exercises](https://github.com/AndrewTweddle/fpinscala) from the book ["Functional Programming in Scala"](http://www.manning.com/bjarnason/)
+  * [AndrewTweddle/GoogleCodeJam](https://github.com/AndrewTweddle/GoogleCodeJam)
+    * submissions to the Google CodeJam algorithmic coding competition
+  * [AndrewTweddle/CodingChallenges](https://github.com/AndrewTweddle/CodingChallenges):
+    * including entries to the [CodeForces](https://codeforces.com/) algorithmic coding competitions
+  * [AndrewTweddle/fpinscala](https://github.com/AndrewTweddle/fpinscala):
+    * forked exercises from the book ["Functional Programming in Scala"](http://www.manning.com/bjarnason/)
 
 # Various exercises
 
