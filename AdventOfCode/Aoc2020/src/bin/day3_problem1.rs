@@ -9,8 +9,7 @@ fn main() {
         .lines()
         .map(|ln| ln
             .unwrap()
-            .as_bytes()
-            .to_vec());
+            .into_bytes());
 
     let mut col: usize = 0;
     let mut tree_count = 0;
