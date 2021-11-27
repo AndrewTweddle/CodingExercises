@@ -53,7 +53,7 @@ Project Euler requests that solutions not be shared online. Instead one can shar
 | Problem # | Description                                                      | Forum page with my solution (if shared)             | Notes |
 | ---       | ---                                                              | ---                                                 | ---   |
 | 1         | [Multiples of 3 and 5](https://projecteuler.net/problem=1)       |                                                     |       |
-| 2         | [Even Fibonacci Numbers5](https://projecteuler.net/problem=2)    |                                                     |       |
+| 2         | [Even Fibonacci Numbers](https://projecteuler.net/problem=2)    |                                                     |       |
 | 3         | [Largest Prime Factor](https://projecteuler.net/problem=3)       |                                                     |       |
 | 4         | [Largest Palindrome Product](https://projecteuler.net/problem=4) |                                                     |       |
 | 5         | [Smallest Multiple](https://projecteuler.net/problem=5)          |                                                     |       |
@@ -74,6 +74,7 @@ Project Euler requests that solutions not be shared online. Instead one can shar
 |                                              |   2    | 2021-11-18 | [Rust](AdventOfCode/Aoc2020/src/bin/day1_problem2.rs)|
 | [Day 2](https://adventofcode.com/2020/day/2) |   1    | 2021-11-20 | [Rust](AdventOfCode/Aoc2020/src/bin/day2_problem1.rs)|
 |                                              |   2    | 2021-11-20 | [Rust](AdventOfCode/Aoc2020/src/bin/day2_problem2.rs)|
+| [Day 3](https://adventofcode.com/2020/day/3) |   1    | 2021-11-27 | [Rust](AdventOfCode/Aoc2020/src/bin/day3_problem1.rs)|
 
 ## cryptopals crypto challenges
 
