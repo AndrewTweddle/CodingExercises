@@ -77,6 +77,12 @@ Project Euler requests that solutions not be shared online. Instead one can shar
 | [Day 3](https://adventofcode.com/2020/day/3) |   1    | 2021-11-27 | [Rust](AdventOfCode/Aoc2020/src/bin/day3_problem1.rs)|
 |                                              |   2    | 2021-11-27 | [Rust](AdventOfCode/Aoc2020/src/bin/day3_problem2.rs)|
 
+### 2021
+
+| Day                                          |Problem |Date Solved | My solution                                           |
+|----------------------------------------------|--------|------------|-------------------------------------------------------|
+| [Day 1](https://adventofcode.com/2021/day/1) |   1    | 2021-11-18 | [Rust](AdventOfCode/aoc2021/src/bin/day1_problem1.rs) | 
+
 ## cryptopals crypto challenges
 
 |Challenge Set                         |Challenge    |Description           |Solution link |
