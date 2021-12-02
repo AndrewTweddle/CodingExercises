@@ -13,7 +13,6 @@ fn main() {
         .windows(3)
         .map(|sliding_window| sliding_window
             .iter()
-            .map(|&depth| depth)
             .sum::<u32>());
     let increasing_count = sliding_window_sums
         .clone()
