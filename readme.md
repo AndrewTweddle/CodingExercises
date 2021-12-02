@@ -86,9 +86,10 @@ Project Euler requests that solutions not be shared online. Instead one can shar
 
 ## cryptopals crypto challenges
 
-|Challenge Set                         |Challenge    |Description           |Solution link |
-|--------------------------------------|-------------|----------------------|--------------|
-|[Set 1](https://cryptopals.com/sets/1)| #1          |Convert hex to base64 |[Rust](cryptopals/set1/src/bin/challenge1.rs)|
+|Challenge Set                         |Challenge    | Date Solved  | Description           | Solution link                                 |
+|--------------------------------------|-------------|--------------|-----------------------|-----------------------------------------------|
+|[Set 1](https://cryptopals.com/sets/1)| #1          | 2021-11-20   | Convert hex to base64 | [Rust](cryptopals/set1/src/bin/challenge1.rs) |
+|                                      | #2          | 2021-12-01   | Fixed XOR             | [Rust](cryptopals/set1/src/bin/challenge2.rs) |
 
 ## CTCI
 
