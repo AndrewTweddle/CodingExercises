@@ -82,7 +82,7 @@ Project Euler requests that solutions not be shared online. Instead one can shar
 | Day                                          |Problem | Date Solved | My solution                                           |
 |----------------------------------------------|--------|-------------|-------------------------------------------------------|
 | [Day 1](https://adventofcode.com/2021/day/1) |   1    | 2021-12-01  | [Rust](AdventOfCode/aoc2021/src/bin/day1_problem1.rs) | 
-|                                              |   2    | 2021-12-01  | [Rust](AdventOfCode/Aoc2021/src/bin/day1_problem2.rs) |
+|                                              |   2    | 2021-12-01  | [Rust](AdventOfCode/aoc2021/src/bin/day1_problem2.rs) |
 
 ## cryptopals crypto challenges
 
