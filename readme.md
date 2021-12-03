@@ -12,8 +12,9 @@ These include exercises from:
 I use these to: 
   * practise coding skills,
   * learn new programming languages,
-  * compare languages or paradigms, and
-  * prepare for technical interviews.
+  * compare languages or paradigms,
+  * prepare for technical interviews, and
+  * have fun solving coding puzzles!
 
 Other similar repositories:
   * [AndrewTweddle/GoogleCodeJam](https://github.com/AndrewTweddle/GoogleCodeJam)
@@ -27,24 +28,24 @@ Other similar repositories:
 
 ## Katas from the CodingDojo.org web site
 
-| Exercise  | Description  | My solutions   | Notes |
-| ---       | ---          | ---            | ---   |
-| [Bowling scorer](https://codingdojo.org/kata/Bowling/) - [readme](Katas/CodingDojo/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling) | Ten pin bowling scoring algorithm        | [C# (v1)](Katas/CodingDojo/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer.cs) |
-|           |              | [C# (v2 - stateless)](Katas/CodingDojo/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer2.cs) |
-|           |              | [C# (v3 - immutable)](Katas/CodingDojo/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer3.cs) |
-|           |              | [F#](Katas/CodingDojo/Bowling/DotNet/src/main/fsharp/AndrewTweddle.Katas.Bowling.FSharp/FunctionalBowlingScorer.fs) |
-|           |              | [unit tests](Katas/CodingDojo/Bowling/DotNet/src/test/csharp/AndrewTweddle.Katas.Test.Bowling) |
-| [Roman Numerals](https://codingdojo.org/kata/RomanNumerals/)|Convert to and from Roman numerals up to 3000. | [README file](Katas/CodingDojo/RomanNumerals/README.md) | This discusses the various experiments below. |
-|           |              | [Rust (TDD) - May 2021](Katas/CodingDojo/roman_numerals/src/main.rs)| Experiment with TDD and with quickcheck property-based testing. |
-|           |              | [Rust v2 - May 2021](Katas/CodingDojo/RomanNumerals/Rust/roman_numerals_v2/src/main.rs)| Designed intuitively, not iteratively to compare with the TDD approach. Experiment with proptest property-based testing.|
-|           |              | [Rust v3 - May 2021](Katas/CodingDojo/RomanNumerals/Rust/roman_numerals_v3/src/main.rs)| A simpler approach (unfortunately not mine - I saw others doing this, and rewrote it in Rust).|
+| Exercise                                                                                                                                       | Description                                    | My solutions                                                                                                         | Notes                                                                                                                    |
+|------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
+| [Bowling scorer](https://codingdojo.org/kata/Bowling/) - [readme](Katas/CodingDojo/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling) | Ten pin bowling scoring algorithm              | [C# (v1)](Katas/CodingDojo/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer.cs)              |                                                                                                                          |
+|                                                                                                                                                |                                                | [C# (v2 - stateless)](Katas/CodingDojo/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer2.cs) |                                                                                                                          |
+|                                                                                                                                                |                                                | [C# (v3 - immutable)](Katas/CodingDojo/Bowling/DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer3.cs) |                                                                                                                          |
+|                                                                                                                                                |                                                | [F#](Katas/CodingDojo/Bowling/DotNet/src/main/fsharp/AndrewTweddle.Katas.Bowling.FSharp/FunctionalBowlingScorer.fs)  |                                                                                                                          |
+|                                                                                                                                                |                                                | [unit tests](Katas/CodingDojo/Bowling/DotNet/src/test/csharp/AndrewTweddle.Katas.Test.Bowling)                       |                                                                                                                          |
+| [Roman Numerals](https://codingdojo.org/kata/RomanNumerals/)                                                                                   | Convert to and from Roman numerals up to 3000. | [README file](Katas/CodingDojo/RomanNumerals/README.md)                                                              | This discusses the various experiments below.                                                                            |
+|                                                                                                                                                |                                                | [Rust (TDD) - May 2021](Katas/CodingDojo/roman_numerals/src/main.rs)                                                 | Experiment with TDD and with quickcheck property-based testing.                                                          |
+|                                                                                                                                                |                                                | [Rust v2 - May 2021](Katas/CodingDojo/RomanNumerals/Rust/roman_numerals_v2/src/main.rs)                              | Designed intuitively, not iteratively to compare with the TDD approach. Experiment with proptest property-based testing. |
+|                                                                                                                                                |                                                | [Rust v3 - May 2021](Katas/CodingDojo/RomanNumerals/Rust/roman_numerals_v3/src/main.rs)                              | A simpler approach (unfortunately not mine - I saw others doing this, and rewrote it in Rust).                           |
 
 ## Miscellaneous
 
-| Exercise  | Description  | My solutions   | 
-| ---       | ---          | ---            | 
-| [wordrect](misc/WordRectangles) - [readme](misc/WordRectangles/readme.md) | Largest rectangle of letters with words in every row and column | [Scala prototype (v1)](misc/WordRectangles/Scala_v1/src/main/scala/com/andrewtweddle/wordrects/WordRectMain.scala) |
-|           |              | [C++ prototype (v1)](misc/WordRectangles/Cpp_v1/main.cpp) | 
+| Exercise                                                                  |Description                                                     | My solutions                                                                                                       | 
+|---------------------------------------------------------------------------|-----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------| 
+| [wordrect](misc/WordRectangles) - [readme](misc/WordRectangles/readme.md) |Largest rectangle of letters with words in every row and column | [Scala prototype (v1)](misc/WordRectangles/Scala_v1/src/main/scala/com/andrewtweddle/wordrects/WordRectMain.scala) |
+|                                                                           |                                                                 | [C++ prototype (v1)](misc/WordRectangles/Cpp_v1/main.cpp)                                                         | 
 
 ## Project Euler problems
 
