@@ -11,13 +11,14 @@ fn main() {
         .collect::<Vec<u32>>();
     let sliding_window_sums = depths
         .windows(3)
-        .map(|sliding_window| sliding_window
-            .iter()
-            .sum::<u32>());
+        .map(|sliding_window| sliding_window.iter().sum::<u32>());
     let increasing_count = sliding_window_sums
         .clone()
         .zip(sliding_window_sums.skip(1))
         .filter(|&(sum1, sum2)| sum2 > sum1)
         .count();
-    println!("Number of sliding windows that increased: {}", increasing_count);
+    println!(
+        "Number of sliding windows that increased: {}",
+        increasing_count
+    );
 }
