@@ -2,7 +2,10 @@ use set1::hex::hex_str_to_bytes;
 use std::collections::HashMap;
 
 const ENCRYPTED_HEX: &str = "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736";
+
+// From: http://mathcenter.oxford.emory.edu/site/math125/englishLetterFreqs/
 const CHAR_FREQUENCIES: &[u8; 26] = b"etaoinshrdlcumwfgypbvkjxqz";
+
 const PENALTY_FOR_NON_ALPHA: u64 = 100 * 100;
 
 fn main() {
