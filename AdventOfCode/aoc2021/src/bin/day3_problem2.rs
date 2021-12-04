@@ -11,7 +11,10 @@ fn main() {
         .map(|ln| u32::from_str_radix(ln.unwrap().as_str(), 2).unwrap())
         .collect();
     let (oxygen_generator_rating, co2_scrubber_rating) = get_ratings(&bytes, BIT_COUNT).unwrap();
-    println!("product of ratings = {}", oxygen_generator_rating * co2_scrubber_rating);
+    println!(
+        "product of ratings = {}",
+        oxygen_generator_rating * co2_scrubber_rating
+    );
 }
 
 fn get_ratings(bytes: &Vec<u32>, bit_count: usize) -> Option<(u32, u32)> {
@@ -29,11 +32,21 @@ fn filter_bytes(bytes: &Vec<u32>, bit_count: usize, use_min: bool) -> Option<u32
             rem_bytes.iter().partition(|&byte| byte & mask == 0);
 
         rem_bytes = if use_min {
-            if zeroes.len() == 0 { ones }
-            else if ones.len() == 0 { zeroes }
-            else if zeroes.len() <= ones.len() { zeroes } else { ones }
+            if zeroes.len() == 0 {
+                ones
+            } else if ones.len() == 0 {
+                zeroes
+            } else if zeroes.len() <= ones.len() {
+                zeroes
+            } else {
+                ones
+            }
         } else {
-            if ones.len() >= zeroes.len() { ones } else { zeroes }
+            if ones.len() >= zeroes.len() {
+                ones
+            } else {
+                zeroes
+            }
         };
         if rem_bytes.len() == 1 {
             return Some(rem_bytes[0]);
@@ -50,18 +63,8 @@ mod tests {
     fn test_example() {
         let bit_count: usize = 5;
         let bytes: Vec<u32> = vec![
-            0b00100,
-            0b11110,
-            0b10110,
-            0b10111,
-            0b10101,
-            0b01111,
-            0b00111,
-            0b11100,
-            0b10000,
-            0b11001,
-            0b00010,
-            0b01010,
+            0b00100, 0b11110, 0b10110, 0b10111, 0b10101, 0b01111, 0b00111, 0b11100, 0b10000,
+            0b11001, 0b00010, 0b01010,
         ];
         let ratings = get_ratings(&bytes, bit_count);
         assert_eq!(ratings, Some((23, 10)));
