@@ -8,7 +8,7 @@ fn main() {
     let br = BufReader::new(input_file);
     let bytes: Vec<u32> = br
         .lines()
-        .map(|ln| { u32::from_str_radix(ln.unwrap().as_str(), 2).unwrap() })
+        .map(|ln| u32::from_str_radix(ln.unwrap().as_str(), 2).unwrap())
         .collect();
     let cut_off = bytes.len() / 2;
     let mut gamma_rate: u32 = 0;
