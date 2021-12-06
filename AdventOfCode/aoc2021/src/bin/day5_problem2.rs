@@ -62,7 +62,8 @@ fn get_lines() -> Vec<Line> {
 }
 
 fn get_overlap_count<'a, I>(line_iter: I) -> usize
-    where I: Iterator<Item=&'a Line> + Clone
+where
+    I: Iterator<Item = &'a Line> + Clone,
 {
     let max_x = line_iter.clone().map(|line| line.to.x).max().unwrap();
     let max_y = line_iter
@@ -78,7 +79,7 @@ fn get_overlap_count<'a, I>(line_iter: I) -> usize
         let (range_y, step_y): (isize, isize) = if line.to.y >= line.from.y {
             (
                 (line.to.y - line.from.y) as isize,
-                if line.to.y == line.from.y { 0 } else { 1}
+                if line.to.y == line.from.y { 0 } else { 1 },
             )
         } else {
             ((line.from.y - line.to.y) as isize, -1)
