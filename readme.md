@@ -42,8 +42,8 @@ Other similar repositories:
 
 ## Miscellaneous
 
-| Exercise                                                                  |Description                                                     | My solutions                                                                                                       | 
-|---------------------------------------------------------------------------|-----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------| 
+| Exercise                                                                  |Description                                                     | My solutions                                                                                                       |
+|---------------------------------------------------------------------------|-----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|
 | [wordrect](misc/WordRectangles) - [readme](misc/WordRectangles/readme.md) |Largest rectangle of letters with words in every row and column | [Scala prototype (v1)](misc/WordRectangles/Scala_v1/src/main/scala/com/andrewtweddle/wordrects/WordRectMain.scala) |
 |                                                                           |                                                                 | [C++ prototype (v1)](misc/WordRectangles/Cpp_v1/main.cpp)                                                         | 
 
@@ -105,8 +105,8 @@ Project Euler requests that solutions not be shared online. Instead one can shar
 
 The CTCI sub-folder contains my solutions to exercises from the 5th edition of [Cracking the Coding Interview](http://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/098478280X) by Gayle Laakmann McDowell.
 
-| Exercise  | Description                              | My solutions  | 
-| ---       | ---                                      | ---           | 
+| Exercise  | Description                              | My solutions  |
+| ---       | ---                                      | ---           |
 | 1.1       | Check for duplicate letters in a string  | [C#](CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter1/Exercise1/DuplicateLetterChecker.cs)  |
 | 1.3       | Check if two strings are permutations    | [C# (readable)](CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter1/Exercise3/SimplePermutationChecker.cs) |
 |           |                                          | [C# (fast)](CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter1/Exercise3/QuickPermutationChecker.cs) |
@@ -178,7 +178,7 @@ for the book.
 ## C\# 
 
 | Purpose   | Solution              | Notes                      |
-| ---       | ---                   | ---                        | 
+| ---       | ---                   | ---                        |
 | Sets      | HashSet&lt;T&gt;      | Useful methods: Add and Contains. |
 | Hash maps | Dictionary&lt;K, V&gt;   | Useful methods: ContainsKey, Keys, Values, enumerator over KeyValuePair&lt;K, V&gt; |
 | Test multiple implementations | MSTest: [TestMethod] on base class methods, [TestClass] on derived class | The derived unit test class chooses which implementation to use. The base class defines the common tests. |
