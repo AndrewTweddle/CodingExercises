@@ -17,16 +17,16 @@ fn main() {
 
     let mut cloned_counts_by_days_left = counts_by_days_left;
 
-    let total_lanternfish_part0 = get_total_lanternfish_after(&mut cloned_counts_by_days_left, 80);
-    let total_lanternfish_part1 = get_total_lanternfish_after(&mut counts_by_days_left, 256);
+    let total_lanternfish_part1 = get_total_lanternfish_after(&mut cloned_counts_by_days_left, 80);
+    let total_lanternfish_part2 = get_total_lanternfish_after(&mut counts_by_days_left, 256);
 
     println!(
         "Total lanternfish after 80 days: {}",
-        total_lanternfish_part0
+        total_lanternfish_part1
     );
     println!(
         "Total lanternfish after 256 days: {}",
-        total_lanternfish_part1
+        total_lanternfish_part2
     );
 }
 
@@ -43,9 +43,7 @@ fn get_total_lanternfish_after(counts_by_days_left: &mut [u128], days_of_breedin
         // points to today's "8 days left" after the index moves on.
         // But the previous day "0 days left" lanternfish
         // still need to be added to the "6 days to go" slot...
-        counts_by_days_left[six_days_left_index] = counts_by_days_left[six_days_left_index]
-            .checked_add(counts_by_days_left[eight_days_left_index])
-            .unwrap();
+        counts_by_days_left[six_days_left_index] += counts_by_days_left[eight_days_left_index];
     }
 
     counts_by_days_left.iter().sum::<u128>()
