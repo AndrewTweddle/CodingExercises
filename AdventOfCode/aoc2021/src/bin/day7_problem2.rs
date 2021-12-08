@@ -162,7 +162,7 @@ mod tests {
         use super::super::calculate_position_and_minimum_fuel_required_using_binary_search;
 
         #[test]
-        fn test_example_using_triangular_numbers() {
+        fn test_example() {
             let mut positions = vec![16, 1, 2, 0, 4, 2, 7, 1, 2, 14];
             positions.sort();
             let (pos, fuel) =
