@@ -1,9 +1,11 @@
+use std::time::Instant;
 use lazy_static::lazy_static;
 use std::collections::HashMap;
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 
 fn main() {
+    let start_time = Instant::now();
     let input_file = File::open("data/day8_input").unwrap();
     let br = BufReader::new(input_file);
     let output_value_sum: u64 = br
@@ -15,7 +17,9 @@ fn main() {
             decode_output_str(output_str, &letter_map)
         })
         .sum();
+    let end_time = start_time.elapsed();
     println!("Sum of values is {}", output_value_sum);
+    println!("Duration: {:?}", end_time);       // Duration: 553.259µs
 }
 
 fn get_letter_mapping_from_inputs(inputs: &str) -> HashMap<char, char> {
