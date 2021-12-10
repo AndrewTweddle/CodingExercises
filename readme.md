@@ -99,6 +99,7 @@ Project Euler requests that solutions not be shared online. Instead one can shar
 | [Day 8](https://adventofcode.com/2021/day/8) |   1    | 2021-12-08  | [Rust](AdventOfCode/aoc2021/src/bin/day8_problem1.rs) | 
 |                                              |   2    | 2021-12-08  | [Rust](AdventOfCode/aoc2021/src/bin/day8_problem2.rs) |
 | [Day 9](https://adventofcode.com/2021/day/9) |   1    | 2021-12-09  | [Rust](AdventOfCode/aoc2021/src/bin/day9_problem1.rs) | 
+|                                              |   2    | 2021-12-09  | [Rust](AdventOfCode/aoc2021/src/bin/day9_problem2.rs) |
 
 ## cryptopals crypto challenges
 
