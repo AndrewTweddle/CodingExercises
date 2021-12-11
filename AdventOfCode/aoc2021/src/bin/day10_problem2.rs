@@ -6,25 +6,25 @@ fn main() {
     let mut br = BufReader::new(input_file);
     let mut text = String::new();
     br.read_to_string(&mut text).unwrap();
-    let part1_score: u64 = score_text(text.as_str(), false);
+    let part1_score: u64 = score_part1(text.as_str());
     println!("Part 1 score: {}", part1_score);
-    let part2_score: u64 = score_text(text.as_str(), true);
+    let part2_score: u64 = score_part2(text.as_str());
     println!("Part 2 score: {}", part2_score);
 }
 
-fn score_text(text: &str, complete_lines: bool) -> u64 {
-    if complete_lines {
-        let mut scores: Vec<u64> = text
-            .lines()
-            .filter_map(|line| score_line(line, complete_lines))
-            .collect();
-        scores.sort();
-        scores[scores.len() / 2]
-    } else {
-        text.lines()
-            .map(|line| score_line(line, complete_lines).unwrap_or_default())
-            .sum()
-    }
+fn score_part1(text: &str) -> u64 {
+    text.lines()
+        .map(|line| score_line(line, false).unwrap_or_default())
+        .sum()
+}
+
+fn score_part2(text: &str) -> u64 {
+    let mut scores: Vec<u64> = text
+        .lines()
+        .filter_map(|line| score_line(line, true))
+        .collect();
+    scores.sort();
+    scores[scores.len() / 2]
 }
 
 fn score_line(line: &str, complete_lines: bool) -> Option<u64> {
@@ -36,35 +36,11 @@ fn score_line(line: &str, complete_lines: bool) -> Option<u64> {
                 stack.push(ch);
                 None
             }
-            ')' => {
-                if let Some('(') = stack.pop() {
-                    None
-                } else {
-                    Some(3)
-                }
-            }
-            ']' => {
-                if let Some('[') = stack.pop() {
-                    None
-                } else {
-                    Some(57)
-                }
-            }
-            '}' => {
-                if let Some('{') = stack.pop() {
-                    None
-                } else {
-                    Some(1197)
-                }
-            }
-            '>' => {
-                if let Some('<') = stack.pop() {
-                    None
-                } else {
-                    Some(25137)
-                }
-            }
-            _ => panic!("unrecognized character"),
+            ')' => (Some('(') != stack.pop()).then(|| 3),
+            ']' => (Some('[') != stack.pop()).then(|| 57),
+            '}' => (Some('{') != stack.pop()).then(|| 1197),
+            '>' => (Some('<') != stack.pop()).then(|| 25137),
+            _ => panic!("unrecognized character: {}", ch),
         })
         .next();
 
@@ -79,7 +55,7 @@ fn score_line(line: &str, complete_lines: bool) -> Option<u64> {
 }
 
 fn complete_line_and_get_score(stack: &mut Vec<char>) -> Option<u64> {
-    (!stack.is_empty()).then(||
+    (!stack.is_empty()).then(|| {
         stack.iter().rev().fold(0_u64, |score, ch| {
             5 * score
                 + match ch {
@@ -90,7 +66,7 @@ fn complete_line_and_get_score(stack: &mut Vec<char>) -> Option<u64> {
                     _ => panic!("Unexpected character found when completing line"),
                 }
         })
-    )
+    })
 }
 
 #[cfg(test)]
