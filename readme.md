@@ -80,26 +80,27 @@ Project Euler requests that solutions not be shared online. Instead one can shar
 
 ### 2021
 
-| Day                                          |Problem | Date Solved | My solution                                           |
-|----------------------------------------------|--------|-------------|-------------------------------------------------------|
-| [Day 1](https://adventofcode.com/2021/day/1) |   1    | 2021-12-01  | [Rust](AdventOfCode/aoc2021/src/bin/day1_problem1.rs) | 
-|                                              |   2    | 2021-12-01  | [Rust](AdventOfCode/aoc2021/src/bin/day1_problem2.rs) |
-| [Day 2](https://adventofcode.com/2021/day/2) |   1    | 2021-12-02  | [Rust](AdventOfCode/aoc2021/src/bin/day2_problem1.rs) | 
-|                                              |   2    | 2021-12-02  | [Rust](AdventOfCode/aoc2021/src/bin/day2_problem2.rs) |
-| [Day 3](https://adventofcode.com/2021/day/3) |   1    | 2021-12-04  | [Rust](AdventOfCode/aoc2021/src/bin/day3_problem1.rs) | 
-|                                              |   2    | 2021-12-04  | [Rust](AdventOfCode/aoc2021/src/bin/day3_problem2.rs) |
-| [Day 4](https://adventofcode.com/2021/day/4) |   1    | 2021-12-04  | [Rust](AdventOfCode/aoc2021/src/bin/day4_problem1.rs) | 
-|                                              |   2    | 2021-12-04  | [Rust](AdventOfCode/aoc2021/src/bin/day4_problem2.rs) |
-| [Day 5](https://adventofcode.com/2021/day/5) |   1    | 2021-12-05  | [Rust](AdventOfCode/aoc2021/src/bin/day5_problem1.rs) | 
-|                                              |   2    | 2021-12-05  | [Rust](AdventOfCode/aoc2021/src/bin/day5_problem2.rs) |
-| [Day 6](https://adventofcode.com/2021/day/6) |   1    | 2021-12-06  | [Rust](AdventOfCode/aoc2021/src/bin/day6_problem1.rs) | 
-|                                              |   2    | 2021-12-06  | [Rust](AdventOfCode/aoc2021/src/bin/day6_problem2.rs) |
-| [Day 7](https://adventofcode.com/2021/day/7) |   1    | 2021-12-07  | [Rust](AdventOfCode/aoc2021/src/bin/day7_problem1.rs) | 
-|                                              |   2    | 2021-12-07  | [Rust](AdventOfCode/aoc2021/src/bin/day7_problem2.rs) |
-| [Day 8](https://adventofcode.com/2021/day/8) |   1    | 2021-12-08  | [Rust](AdventOfCode/aoc2021/src/bin/day8_problem1.rs) | 
-|                                              |   2    | 2021-12-08  | [Rust](AdventOfCode/aoc2021/src/bin/day8_problem2.rs) |
-| [Day 9](https://adventofcode.com/2021/day/9) |   1    | 2021-12-09  | [Rust](AdventOfCode/aoc2021/src/bin/day9_problem1.rs) | 
-|                                              |   2    | 2021-12-09  | [Rust](AdventOfCode/aoc2021/src/bin/day9_problem2.rs) |
+| Day                                            |Problem | Date Solved | My solution                                            |
+|------------------------------------------------|--------|-------------|--------------------------------------------------------|
+| [Day 1](https://adventofcode.com/2021/day/1)   |   1    | 2021-12-01  | [Rust](AdventOfCode/aoc2021/src/bin/day1_problem1.rs)  | 
+|                                                |   2    | 2021-12-01  | [Rust](AdventOfCode/aoc2021/src/bin/day1_problem2.rs)  |
+| [Day 2](https://adventofcode.com/2021/day/2)   |   1    | 2021-12-02  | [Rust](AdventOfCode/aoc2021/src/bin/day2_problem1.rs)  | 
+|                                                |   2    | 2021-12-02  | [Rust](AdventOfCode/aoc2021/src/bin/day2_problem2.rs)  |
+| [Day 3](https://adventofcode.com/2021/day/3)   |   1    | 2021-12-04  | [Rust](AdventOfCode/aoc2021/src/bin/day3_problem1.rs)  | 
+|                                                |   2    | 2021-12-04  | [Rust](AdventOfCode/aoc2021/src/bin/day3_problem2.rs)  |
+| [Day 4](https://adventofcode.com/2021/day/4)   |   1    | 2021-12-04  | [Rust](AdventOfCode/aoc2021/src/bin/day4_problem1.rs)  | 
+|                                                |   2    | 2021-12-04  | [Rust](AdventOfCode/aoc2021/src/bin/day4_problem2.rs)  |
+| [Day 5](https://adventofcode.com/2021/day/5)   |   1    | 2021-12-05  | [Rust](AdventOfCode/aoc2021/src/bin/day5_problem1.rs)  | 
+|                                                |   2    | 2021-12-05  | [Rust](AdventOfCode/aoc2021/src/bin/day5_problem2.rs)  |
+| [Day 6](https://adventofcode.com/2021/day/6)   |   1    | 2021-12-06  | [Rust](AdventOfCode/aoc2021/src/bin/day6_problem1.rs)  | 
+|                                                |   2    | 2021-12-06  | [Rust](AdventOfCode/aoc2021/src/bin/day6_problem2.rs)  |
+| [Day 7](https://adventofcode.com/2021/day/7)   |   1    | 2021-12-07  | [Rust](AdventOfCode/aoc2021/src/bin/day7_problem1.rs)  | 
+|                                                |   2    | 2021-12-07  | [Rust](AdventOfCode/aoc2021/src/bin/day7_problem2.rs)  |
+| [Day 8](https://adventofcode.com/2021/day/8)   |   1    | 2021-12-08  | [Rust](AdventOfCode/aoc2021/src/bin/day8_problem1.rs)  | 
+|                                                |   2    | 2021-12-08  | [Rust](AdventOfCode/aoc2021/src/bin/day8_problem2.rs)  |
+| [Day 9](https://adventofcode.com/2021/day/9)   |   1    | 2021-12-09  | [Rust](AdventOfCode/aoc2021/src/bin/day9_problem1.rs)  | 
+|                                                |   2    | 2021-12-09  | [Rust](AdventOfCode/aoc2021/src/bin/day9_problem2.rs)  |
+| [Day 10](https://adventofcode.com/2021/day/10) |   1    | 2021-12-10  | [Rust](AdventOfCode/aoc2021/src/bin/day10_problem1.rs) |
 
 ## cryptopals crypto challenges
 
