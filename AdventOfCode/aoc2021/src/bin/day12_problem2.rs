@@ -17,12 +17,21 @@ impl Cave {
         cave_index: usize,
         caves: &Vec<Cave>,
         caves_open: &mut Vec<bool>,
+        mut allow_revisiting_one_small_cave: bool,
     ) -> usize {
+        let mut reopen_cave_on_backtracking = self.is_small_cave;
         if self.is_small_cave {
             if !caves_open[cave_index] {
-                return 0;
+                // Allow revisiting one small cave, except the start cave
+                if allow_revisiting_one_small_cave && cave_index != 0 {
+                    allow_revisiting_one_small_cave = false;
+                    reopen_cave_on_backtracking = false;
+                } else {
+                    return 0;
+                }
+            } else {
+                caves_open[cave_index] = false;
             }
-            caves_open[cave_index] = false;
         };
         let sub_path_count: usize = self
             .adjacent_cave_indices
@@ -33,13 +42,20 @@ impl Cave {
                     1
                 } else {
                     let next_cave = &caves[next_cave_index];
-                    next_cave.enter_and_count_paths_to_end(next_cave_index, caves, caves_open)
+                    next_cave.enter_and_count_paths_to_end(
+                        next_cave_index,
+                        caves,
+                        caves_open,
+                        allow_revisiting_one_small_cave,
+                    )
                 }
             })
             .sum();
 
         // Before back-tracking, ensure this cave is open again
-        caves_open[cave_index] = true;
+        if reopen_cave_on_backtracking {
+            caves_open[cave_index] = true;
+        }
         sub_path_count
     }
 }
@@ -90,9 +106,14 @@ impl<'a> CaveSystem<'a> {
         cave2.add_adjacent_cave_index(cave1_index);
     }
 
-    fn count_paths_from_start_to_end(&mut self) -> usize {
+    fn count_paths_from_start_to_end(&mut self, allow_revisiting_one_small_cave: bool) -> usize {
         let mut caves_open = vec![true; self.caves.len()];
-        self.caves[0].enter_and_count_paths_to_end(0, &self.caves, &mut caves_open)
+        self.caves[0].enter_and_count_paths_to_end(
+            0,
+            &self.caves,
+            &mut caves_open,
+            allow_revisiting_one_small_cave,
+        )
     }
 }
 
@@ -104,8 +125,12 @@ fn main() {
         let (node_name1, node_name2) = line.split_once('-').unwrap();
         cave_system.add_connection_between_caves(node_name1, node_name2);
     }
-    let path_count = cave_system.count_paths_from_start_to_end();
+    let path_count = cave_system.count_paths_from_start_to_end(true);
     let duration = start_time.elapsed();
-    println!("# of paths from start to end: {}", path_count);
-    println!("Duration (incl reading from file): {:?}", duration);  // 277.461µs (release mode)
+    println!("Part 2: # of paths from start to end: {}", path_count);
+    println!("Duration (incl reading from file): {:?}", duration); // 6.698492ms (release mode)
+
+    // Do part 1 again, since we can...
+    let path_count = cave_system.count_paths_from_start_to_end(false);
+    println!("Part 1: # of paths from start to end: {}", path_count);
 }
