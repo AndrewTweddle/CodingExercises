@@ -65,6 +65,7 @@ fn parse_inputs(contents: &str) -> (Vec<Pos>, Vec<Instruction>) {
         .find(|(_, line)| line.is_empty())
         .unwrap()
         .0;
+
     let coordinates: Vec<Pos> = contents
         .lines()
         .take(blank_line_index)
