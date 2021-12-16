@@ -88,7 +88,6 @@ fn get_max_min_count_difference(
 
     // Don't forget the leftmost character...
     element_counts_vector[inputs.first_element] += 1_f64;
-    println!("{}", element_counts_vector);
 
     let mut min_count = f64::MAX;
     let mut max_count = 0_f64;
