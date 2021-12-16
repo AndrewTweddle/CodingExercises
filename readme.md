@@ -109,6 +109,7 @@ Project Euler requests that solutions not be shared online. Instead one can shar
 |                                                | 2       | 2021-12-13  | [Rust](AdventOfCode/aoc2021/src/bin/day13_problem2.rs)          |                                          |
 | [Day 14](https://adventofcode.com/2021/day/14) | 1       | 2021-12-14  | [Rust](AdventOfCode/aoc2021/src/bin/day14_problem1.rs)          |                                          |
 |                                                | 2       | 2021-12-14  | [Rust](AdventOfCode/aoc2021/src/bin/day14_problem2_attempt1.rs) | Attempt 1: Would take 20.5 hours to run. |
+|                                                | 2       | 2021-12-15  | [Rust](AdventOfCode/aoc2021/src/bin/day14_problem2_attempt2.rs) | Attempt 2: 272ms using nalgebra crate.   |
 
 ## cryptopals crypto challenges
 

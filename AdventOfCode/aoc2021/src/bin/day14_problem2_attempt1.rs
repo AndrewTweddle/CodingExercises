@@ -1,7 +1,7 @@
 use std::fs;
 use std::time::Instant;
 
-type ElementCounts = [usize; 27]; // Map 'A'..'Z' to id's 1 to 16, reserving 0 for an invalid id
+type ElementCounts = [usize; 27]; // Map 'A'..'Z' to id's 1 to 26, reserving 0 for an invalid id
 
 #[derive(Copy, Clone)]
 struct RuleOutput {
