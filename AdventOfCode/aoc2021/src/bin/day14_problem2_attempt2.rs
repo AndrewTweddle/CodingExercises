@@ -1,6 +1,6 @@
-use std::time::Instant;
-use std::fs;
 use nalgebra::{DMatrix, DVector};
+use std::fs;
+use std::time::Instant;
 
 // Map 'A'..'Z' to id's 1 to 26
 const ELEMENT_COUNT: usize = 26;
@@ -8,12 +8,16 @@ const ELEMENT_COUNT: usize = 26;
 // Map pairs of elements: first elements are rows, second elements are columns
 const PAIR_COUNT: usize = 26 * 26;
 
-fn char_to_id(ch: char) -> usize { ch as usize - b'A' as usize }
-fn pair_to_index(left: usize, right: usize) -> usize { 26 * left + right }
+fn char_to_id(ch: char) -> usize {
+    ch as usize - b'A' as usize
+}
+fn pair_to_index(left: usize, right: usize) -> usize {
+    26 * left + right
+}
 
-type ElementToPairMatrix = DMatrix::<f64>;  // Dimensions: ELEMENT_COUNT x PAIR_COUNT
+type ElementToPairMatrix = DMatrix<f64>; // Dimensions: ELEMENT_COUNT x PAIR_COUNT
 type TemplateVector = DVector<f64>; // Dimension: PAIR_COUNT
-type RuleMatrix = DMatrix<f64>;   // Dimensions: PAIR_COUNT x PAIR_COUNT
+type RuleMatrix = DMatrix<f64>; // Dimensions: PAIR_COUNT x PAIR_COUNT
 
 struct Inputs {
     first_element: usize,
@@ -27,12 +31,15 @@ fn main() {
     let inputs = parse_file_contents(contents);
     let difference = get_max_min_count_difference(40, &inputs);
     let duration = start_time.elapsed();
-    println!("Part 2: biggest difference after 40 steps is {}", difference);
-    println!("Duration: {:?}", duration);   // Duration: 272.138624ms
+    println!(
+        "Part 2: biggest difference after 40 steps is {}",
+        difference
+    );
+    println!("Duration: {:?}", duration); // Duration: 272.138624ms
 
     // Solve part 1 again:
     let difference = get_max_min_count_difference(10, &inputs);
-    println!("Part 1: biggest difference after 10 steps = {}", difference);
+    println!("Part 1: biggest difference after 10 steps is {}", difference);
     // Duration for part 1 on its own: 172.519007ms
 }
 
@@ -63,7 +70,7 @@ fn parse_file_contents(contents: String) -> Inputs {
         rules_matrix[(id, id)] = 0_f64;
         rules_matrix[(pair_to_index(left, output), id)] += 1_f64;
         rules_matrix[(pair_to_index(output, right), id)] += 1_f64;
-    };
+    }
 
     Inputs {
         first_element: template[0],
@@ -72,17 +79,14 @@ fn parse_file_contents(contents: String) -> Inputs {
     }
 }
 
-fn get_max_min_count_difference(
-    steps: usize,
-    inputs: &Inputs,
-) -> usize {
+fn get_max_min_count_difference(steps: usize, inputs: &Inputs) -> usize {
     let mut right_element_to_pair_matrix =
         ElementToPairMatrix::from_element(ELEMENT_COUNT, PAIR_COUNT, 0_f64);
     for pair_index in 1..PAIR_COUNT {
         right_element_to_pair_matrix[(pair_index % 26, pair_index)] = 1_f64;
     }
 
-    let steps_matrix = inputs.rules_matrix.pow(steps-1).unwrap();
+    let steps_matrix = inputs.rules_matrix.pow(steps - 1).unwrap();
     let pair_counts_vector = steps_matrix * &inputs.template_vector;
     let mut element_counts_vector = right_element_to_pair_matrix * pair_counts_vector;
 
