@@ -1,7 +1,7 @@
 use std::fs;
 use std::time::Instant;
 
-const ELEMENT_COUNT: usize = 26;    // Map 'A'..'Z' to id's 0 to 25
+const ELEMENT_COUNT: usize = 26; // Map 'A'..'Z' to id's 0 to 25
 const PAIR_COUNT: usize = ELEMENT_COUNT * ELEMENT_COUNT;
 
 // Each pair is either not expanded (no rule provided),
@@ -40,11 +40,11 @@ fn main() {
     let difference = get_max_min_count_difference(40, &inputs);
     let duration = start_time.elapsed();
     println!("Part 2 difference: {}", difference);
-    println!("Duration: {:?}", duration);   // 81.989µs
+    println!("Duration: {:?}", duration); // 81.989µs
 
     // Solve part 1 again...
     let difference = get_max_min_count_difference(10, &inputs);
-    println!("Part 1 difference: {}", difference);  // Duration: 64.72µs
+    println!("Part 1 difference: {}", difference); // Duration: 64.72µs
 }
 
 fn parse_file_contents(contents: String) -> Inputs {
@@ -79,7 +79,7 @@ fn parse_file_contents(contents: String) -> Inputs {
     Inputs {
         first_element: template[0],
         pair_counts,
-        rules
+        rules,
     }
 }
 
@@ -93,12 +93,18 @@ fn get_max_min_count_difference(steps: usize, inputs: &Inputs) -> usize {
         } else {
             (&even_pair_counts, &mut odd_pair_counts)
         };
-        dest_counts.iter_mut().for_each(|dest_count| *dest_count = 0);
+        dest_counts
+            .iter_mut()
+            .for_each(|dest_count| *dest_count = 0);
         for pair_index in 0..PAIR_COUNT {
             let src_count = src_counts[pair_index];
             match inputs.rules[pair_index] {
-                Rule::NoExpansion => { dest_counts[pair_index] += src_count; }
-                Rule::DuplicatePair => { dest_counts[pair_index] += 2 * src_count; }
+                Rule::NoExpansion => {
+                    dest_counts[pair_index] += src_count;
+                }
+                Rule::DuplicatePair => {
+                    dest_counts[pair_index] += 2 * src_count;
+                }
                 Rule::TwoPairs(pair1_index, pair2_index) => {
                     dest_counts[pair1_index] += src_count;
                     dest_counts[pair2_index] += src_count;

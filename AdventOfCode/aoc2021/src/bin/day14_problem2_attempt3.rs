@@ -1,27 +1,31 @@
-use std::time::Instant;
 use std::fs;
 use std::ops::{Index, IndexMut, Mul, MulAssign};
+use std::time::Instant;
 
 const ELEMENT_COUNT: usize = 26;
 const PAIR_COUNT: usize = ELEMENT_COUNT * ELEMENT_COUNT;
 const MATRIX_ENTRY_COUNT: usize = PAIR_COUNT * PAIR_COUNT;
 
-fn char_to_id(ch: char) -> usize { ch as usize - b'A' as usize }
-fn pair_to_index(left: usize, right: usize) -> usize { 26 * left + right }
+fn char_to_id(ch: char) -> usize {
+    ch as usize - b'A' as usize
+}
+fn pair_to_index(left: usize, right: usize) -> usize {
+    26 * left + right
+}
 
 #[derive(Clone)]
 struct RuleMatrix {
-    elements: Vec<usize>
+    elements: Vec<usize>,
 }
 
 impl RuleMatrix {
-    fn get_index(row: usize, col: usize) -> usize { row * PAIR_COUNT + col }
+    fn get_index(row: usize, col: usize) -> usize {
+        row * PAIR_COUNT + col
+    }
 
     fn identity() -> Self {
         let elements = vec![0_usize; MATRIX_ENTRY_COUNT];
-        let mut matrix = RuleMatrix {
-            elements
-        };
+        let mut matrix = RuleMatrix { elements };
         for i in 0..PAIR_COUNT {
             matrix[(i, i)] = 1;
         }
@@ -104,9 +108,7 @@ impl Mul<&Vec<usize>> for RuleMatrix {
     fn mul(self, rhs: &Vec<usize>) -> Self::Output {
         let mut output = vec![0_usize; PAIR_COUNT];
         for row in 0..PAIR_COUNT {
-            output[row] = (0..PAIR_COUNT)
-                .map(|col| self[(row, col)] * rhs[col])
-                .sum();
+            output[row] = (0..PAIR_COUNT).map(|col| self[(row, col)] * rhs[col]).sum();
         }
         output
     }
