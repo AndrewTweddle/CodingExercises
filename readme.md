@@ -113,6 +113,7 @@ Project Euler requests that solutions not be shared online. Instead one can shar
 |                                            | 2       | 2021-12-18  | [Rust](AdventOfCode/aoc2021/src/bin/day14_problem2_attempt3.rs) | Attempt 3: 3.37s. Handwritten linear algebra. Messy. My Rust skills aren't good enough for this yet!        |
 |                                            | 2       | 2021-12-18  | [Rust](AdventOfCode/aoc2021/src/bin/day14_problem2_attempt4.rs) | Attempt 4: 82µs!                                                                                            |
 |                                            | 2       | 2021-12-18  | [Rust](AdventOfCode/aoc2021/src/bin/day14_problem2_attempt5.rs) | Attempt 4: 446µs. Like attempt 4, but using BTreeMap instead of arrays, due to sparsity, but it was slower. |
+| [15](https://adventofcode.com/2021/day/15) | 1       | 2021-12-20  | [Rust](AdventOfCode/aoc2021/src/bin/day15_problem1.rs)          |                                                                                                             |
 
 ## cryptopals crypto challenges
 
