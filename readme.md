@@ -115,6 +115,7 @@ Project Euler requests that solutions not be shared online. Instead one can shar
 |                                            | 2       | 2021-12-18  | [Rust](AdventOfCode/aoc2021/src/bin/day14_problem2_attempt5.rs) | Attempt 4: 446µs. Like attempt 4, but using BTreeMap instead of arrays, due to sparsity, but it was slower. |
 | [15](https://adventofcode.com/2021/day/15) | 1       | 2021-12-20  | [Rust](AdventOfCode/aoc2021/src/bin/day15_problem1.rs)          |                                                                                                             |
 |                                            | 2       | 2021-12-20  | [Rust](AdventOfCode/aoc2021/src/bin/day15_problem2.rs)          |                                                                                                             |
+| [16](https://adventofcode.com/2021/day/16) | 1       | 2021-12-23  | [Rust](AdventOfCode/aoc2021/src/bin/day16_problem1.rs)          | Feels quite elegant (albeit verbose, and without enough checking for invalid parse formats).                |
 
 ## cryptopals crypto challenges
 
