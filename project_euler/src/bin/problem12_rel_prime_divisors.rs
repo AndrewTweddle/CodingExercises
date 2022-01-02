@@ -1,11 +1,11 @@
 use std::time::Instant;
 
-const NUM_REPETITIONS: u32 = 1;
+const NUM_REPETITIONS: u32 = 100;
 const NUM_DIVISORS: u64 = 500;
 
 fn main() {
     let start = Instant::now();
-    for _ in 0..NUM_REPETITIONS {
+    for rep in 0..NUM_REPETITIONS {
         // Only start counting factors from ceil(sqrt(500)) = 23,
         // since a number can't have more distinct divisors than itself.
         let mut triangular_num: u64 = 22 * 23 / 2; // The 22nd triangular number
@@ -24,13 +24,9 @@ fn main() {
             // So after first halving whichever of i and i + 1 is even, we can multiply
             // the number of divisors of each to get the number of divisors of their product
             if divs_i * divs_i_plus_1 > NUM_DIVISORS {
-                println!("T({}) = {}", i, triangular_num);
-                println!(
-                    "Divisor counts: {} * {} = {}",
-                    divs_i,
-                    divs_i_plus_1,
-                    divs_i * divs_i_plus_1
-                );
+                if rep == 0 {
+                    println!("T({}) = {}", i, triangular_num);
+                }
                 break;
             }
             divs_i = divs_i_plus_1;

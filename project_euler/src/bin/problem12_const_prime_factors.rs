@@ -1,6 +1,6 @@
 use std::time::Instant;
 
-const NUM_REPETITIONS: u32 = 1;
+const NUM_REPETITIONS: u32 = 100;
 const NUM_DIVISORS: u64 = 500;
 const PRIME_CUTOFF: u64 = 36;
 const PRIMES: [u64; 11] = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31];
