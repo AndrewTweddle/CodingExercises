@@ -82,18 +82,14 @@ fn parse_file_contents(contents: String) -> Inputs {
     }
 }
 
-fn get_max_min_count_difference(steps: usize, inputs: &Inputs) -> usize {
+fn get_max_min_count_difference(steps: u32, inputs: &Inputs) -> usize {
     let mut right_element_to_pair_matrix =
         ElementToPairMatrix::from_element(ELEMENT_COUNT, PAIR_COUNT, 0_f64);
     for pair_index in 1..PAIR_COUNT {
         right_element_to_pair_matrix[(pair_index % 26, pair_index)] = 1_f64;
     }
 
-    let steps_matrix = inputs.rules_matrix.pow(steps - 1).unwrap();
-    // Why steps - 1? Because there's a bug in nalgebra.
-    // I first confirmed this using the unit tests at the bottom of this file.
-    // I then looked at the issues for nalgebra and found that it has been reported:
-    // See https://github.com/dimforge/nalgebra/issues/1021
+    let steps_matrix = inputs.rules_matrix.pow(steps);
     let pair_counts_vector = steps_matrix * &inputs.template_vector;
     let mut element_counts_vector = right_element_to_pair_matrix * pair_counts_vector;
 
@@ -112,35 +108,4 @@ fn get_max_min_count_difference(steps: usize, inputs: &Inputs) -> usize {
     }
     let difference = max_count - min_count;
     difference.round() as usize
-}
-
-#[cfg(test)]
-mod tests {
-    use nalgebra::matrix;
-
-    #[test]
-    fn demonstrate_matrix_pow_mut_one_eq_matrix_squared() {
-        let mut matrix = matrix![2_f32, 0_f32;
-                                 0_f32, 1_f32];
-        let matrix_pow_1 = matrix.pow(1);
-
-        // the matrix should be itself, but instead it is itself squared...
-        assert_eq![matrix_pow_1[(0, 0)], 4_f32];
-        assert_eq![matrix_pow_1[(0, 1)], 0_f32];
-        assert_eq![matrix_pow_1[(1, 0)], 0_f32];
-        assert_eq![matrix_pow_1[(1, 1)], 1_f32];
-    }
-
-    #[test]
-    fn demonstrate_matrix_pow_mut_2_eq_matrix_cubed() {
-        let mut matrix = matrix![2_f32, 0_f32;
-                                 0_f32, 1_f32];
-        let matrix_pow_2 = matrix.pow(2);
-
-        // the matrix should be itself squared, but instead it is itself cubed...
-        assert_eq![matrix_pow_2[(0, 0)], 8_f32];
-        assert_eq![matrix_pow_2[(0, 1)], 0_f32];
-        assert_eq![matrix_pow_2[(1, 0)], 0_f32];
-        assert_eq![matrix_pow_2[(1, 1)], 1_f32];
-    }
 }
