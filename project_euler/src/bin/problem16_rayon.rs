@@ -4,7 +4,7 @@ use rayon::prelude::*;
 fn main() {
     let start = Instant::now();
 
-    let num_repetitions = 500;
+    let num_repetitions = 100;
     for rep in 0..num_repetitions {
         // Choose a base B which is the largest power of 10 such that 2(B-1)^2 + (B-1) < 2^128
         // A number in this base will have its digits stored in a Vec<u128>, lowest digit first.

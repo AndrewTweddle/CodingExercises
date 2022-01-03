@@ -77,6 +77,7 @@ Project Euler requests that solutions not be shared online for problems beyond #
 |     |                                                                            | 2021-05-03 | [Rust](project_euler/src/bin/problem16_bigint.rs)                    | Duration: 5.263µs. Using the num-bigint crate.                                                                                                                                                                |
 |     |                                                                            | 2021-05-04 | [Rust](project_euler/src/bin/problem16_bigint_fast.rs)               | Duration: 4.87µs. Using the num-bigint crate and calculating digits by dividing by 10 and taking remainders, not by converting to a string and iterating over chars.                                          |
 |     |                                                                            | 2021-05-10 | [Rust](project_euler/src/bin/problem16_rayon.rs)                     | Duration: 45.801µs. Using the original approach, but summing the digits in parallel using the rayon crate (as a way of learning rayon). This was MUCH slower.                                                 |
+|     |                                                                            | 2021-05-10 | [Rust](project_euler/src/bin/problem16_original_fast.rs)             | Duration: 10.767µs. Using the original approach again, but calculating the digits by dividing by 10 and taking remainders.                                                                                    |
 | 17  | [Number Letter Counts](https://projecteuler.net/problem=17)                |            |                                                                      | TDD solution pair programmed with a colleague, and a faster, shorter one done on my own                                                                                                                       |
 | 18  | ...                                                                        |            |                                                                      |                                                                                                                                                                                                               |
 | ... | ...                                                                        |            |                                                                      |                                                                                                                                                                                                               |
@@ -164,20 +165,20 @@ This can be very useful for:
 
 The CTCI sub-folder contains my solutions to exercises from the 5th edition of [Cracking the Coding Interview](http://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/098478280X) by Gayle Laakmann McDowell.
 
-| Exercise  | Description                              | My solutions  |
-| ---       | ---                                      | ---           |
-| 1.1       | Check for duplicate letters in a string  | [C#](CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter1/Exercise1/DuplicateLetterChecker.cs)  |
-| 1.3       | Check if two strings are permutations    | [C# (readable)](CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter1/Exercise3/SimplePermutationChecker.cs) |
-|           |                                          | [C# (fast)](CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter1/Exercise3/QuickPermutationChecker.cs) |
-| 2.1       | Remove duplicate letters from a linked list  | [C# (fast)](CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter2/Exercise1/QuickDuplicateLetterRemover.cs) |
-|           |                                              | [C# (without temporary buffer)](CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter2/Exercise1/DuplicateLetterRemoverWithoutTemporaryBuffer.cs) |
-| 3.1       | Implement multiple stacks in a single array  | [C#](CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter3/Exercise1/StackArray.cs) |
-| 3.1       | Repeat as a challenge, using array space more effectively  | [C#](CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter3/Exercise1Challenge/Stacker.cs) |
-| 4.1       | Determine if a binary tree is balanced       | [C#](CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter4/Exercise1/BinaryTreeBalanceChecker.cs) |
-| 5.1       | Overwrite bits in one int from another   | [C#](CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter5/Exercise1/BitInserter.cs) |
-| 9.1       | Number of different ways of hopping up stairs | [C#](CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter9/Exercise1/StepsSolver.cs) |
-| 1.4       | Replacing spaces with "%20" in a string       | [Scala](CTCI/Scala/src/main/scala/ctci/chapter1/Exercise4.scala) |
-| 2.2       | kth to last node in a linked list        | [C#](CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter2/Exercise2/Node.cs) |
+| Exercise | Description                                               | My solutions                                                                                                                                       |
+|----------|-----------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1.1      | Check for duplicate letters in a string                   | [C#](CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter1/Exercise1/DuplicateLetterChecker.cs)                                                  |
+| 1.3      | Check if two strings are permutations                     | [C# (readable)](CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter1/Exercise3/SimplePermutationChecker.cs)                                     |
+|          |                                                           | [C# (fast)](CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter1/Exercise3/QuickPermutationChecker.cs)                                          |
+| 2.1      | Remove duplicate letters from a linked list               | [C# (fast)](CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter2/Exercise1/QuickDuplicateLetterRemover.cs)                                      |
+|          |                                                           | [C# (without temporary buffer)](CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter2/Exercise1/DuplicateLetterRemoverWithoutTemporaryBuffer.cs) |
+| 3.1      | Implement multiple stacks in a single array               | [C#](CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter3/Exercise1/StackArray.cs)                                                              |
+| 3.1      | Repeat as a challenge, using array space more effectively | [C#](CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter3/Exercise1Challenge/Stacker.cs)                                                        |
+| 4.1      | Determine if a binary tree is balanced                    | [C#](CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter4/Exercise1/BinaryTreeBalanceChecker.cs)                                                |
+| 5.1      | Overwrite bits in one int from another                    | [C#](CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter5/Exercise1/BitInserter.cs)                                                             |
+| 9.1      | Number of different ways of hopping up stairs             | [C#](CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter9/Exercise1/StepsSolver.cs)                                                             |
+| 1.4      | Replacing spaces with "%20" in a string                   | [Scala](CTCI/Scala/src/main/scala/ctci/chapter1/Exercise4.scala)                                                                                   |
+| 2.2      | kth to last node in a linked list                         | [C#](CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI/Chapter2/Exercise2/Node.cs)                                                                    |
 
 ## Functional Programming In Scala
 
