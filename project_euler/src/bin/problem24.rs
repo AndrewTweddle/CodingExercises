@@ -1,6 +1,6 @@
 use std::time::Instant;
 
-const NUM_REPETITIONS: u32 = 100;
+const NUM_REPETITIONS: u32 = 1000;
 const ZERO_BASED_INDEX: usize = 1_000_000_usize - 1;
 
 fn main() {
