@@ -2,12 +2,15 @@ use std::time::Instant;
 
 const BASE_EXPONENT: u32 = 36;
 const BASE: u128 = 10_u128.pow(BASE_EXPONENT);
-    // 1_000_000_000_000_000_000_000_000_000_000_000_000_u128;
+// 1_000_000_000_000_000_000_000_000_000_000_000_000_u128;
 
 fn main() {
     // 2^7 > 100, which is the largest factor we will multiply by
     let decimal_digits_in_base = ((1u128 << 120) as f64).log10().floor() as u32;
-    println!("Estimated decimal digits needed in base: {}", decimal_digits_in_base);
+    println!(
+        "Estimated decimal digits needed in base: {}",
+        decimal_digits_in_base
+    );
 
     let estimated_digits_in_answer: usize = (2..=100)
         .into_iter()
