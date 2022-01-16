@@ -17,16 +17,14 @@ fn main() {
     assert!(x_start > 0 && x_end > 0);
     assert!(y_start < 0 && y_end < 0);
 
-    if let Some(max_height) = get_max_height(x_start as u64, x_end as u64, y_start, y_end) {
-        println!("Part 1 answer: {}", max_height);
-    } else {
-        println!("Part 1 answer: None found!");
-    }
+    let part2_answer = get_initial_velocity_count(x_start as u64, x_end as u64, y_start, y_end);
     let duration = start_time.elapsed();
+
+    println!("Part 2 answer: {}", part2_answer);
     println!("Duration: {:?}", duration);
 }
 
-fn get_max_height(x_start: u64, x_end: u64, y_start: i64, y_end: i64) -> Option<u64> {
+fn get_initial_velocity_count(x_start: u64, x_end: u64, y_start: i64, y_end: i64) -> usize {
     // Let triangular number function be T(n) = 1 + 2 + ... + n = n * (n + 1) / 2
     //
     // Looking back along the x-axis from the point at which the probe goes vertical,
@@ -54,9 +52,9 @@ fn get_max_height(x_start: u64, x_end: u64, y_start: i64, y_end: i64) -> Option<
     // This gives an upper bound on the value of v...
     let max_v = -y_start - 1;
 
-    for v_offset in 0..max_v {
-        let v = max_v - v_offset;
+    let mut solution_count: usize = 0;
 
+    for v in y_start..=max_v {
         // Try different horizontal velocities until finding one which works,
         // stopping if the initial horizontal velocity immediately overshoots the box...
         for h in min_h..=x_end {
@@ -67,9 +65,10 @@ fn get_max_height(x_start: u64, x_end: u64, y_start: i64, y_end: i64) -> Option<
             for _time_step in 0.. {
                 x += x_vel;
                 y += y_vel;
-                if x >= x_start && x <= x_end && y <= y_end && y >= y_start {
+                if x >= x_start && x <= x_end && y >= y_start && y <= y_end {
                     // A solution has been found
-                    return Some(tri(v as u64));
+                    solution_count += 1;
+                    break;
                 }
                 if x > x_end || y < y_start {
                     break;
@@ -81,12 +80,7 @@ fn get_max_height(x_start: u64, x_end: u64, y_start: i64, y_end: i64) -> Option<
             }
         }
     }
-    None
-}
-
-// Compute triangular number:
-fn tri(n: u64) -> u64 {
-    n * (n + 1) / 2
+    solution_count
 }
 
 // Invert the target triangular number, returning the value n
