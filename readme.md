@@ -167,6 +167,7 @@ This can be very useful for:
 |                                            | 2     | 2021-12-20  | [Rust](AdventOfCode/aoc2021/src/bin/day15_problem2.rs)          |                                                                                                             |
 | [16](https://adventofcode.com/2021/day/16) | 1     | 2021-12-23  | [Rust](AdventOfCode/aoc2021/src/bin/day16_problem1.rs)          | Feels quite elegant (albeit verbose, and without enough checking for invalid parse formats).                |
 |                                            | 2     | 2021-12-23  | [Rust](AdventOfCode/aoc2021/src/bin/day16_problem2.rs)          | Part 2 easily accommodated. 544 LOC exactly evenly split between 272 lines of code and 272 of unit tests.   |
+| [17](https://adventofcode.com/2021/day/17) | 1     | 2022-01-15  | [Rust](AdventOfCode/aoc2021/src/bin/day17_problem1.rs)          | Use triangular numbers for bounds of velocities. Then use brute force simulation (avoiding tricky math).    |
 
 ## cryptopals crypto challenges
 
