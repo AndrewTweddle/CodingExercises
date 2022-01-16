@@ -172,11 +172,12 @@ This can be very useful for:
 
 ## cryptopals crypto challenges
 
-| Set                                    | Challenge | Date Solved |  Solution link                                 |Description             |
-|----------------------------------------|-----------|-------------|------------------------------------------------|------------------------|
-| [Set 1](https://cryptopals.com/sets/1) | #1        | 2021-11-20  |  [Rust](cryptopals/set1/src/bin/challenge1.rs) |Convert hex to base64   |
-|                                        | #2        | 2021-12-01  |  [Rust](cryptopals/set1/src/bin/challenge2.rs) |Fixed XOR               |
-|                                        | #3        | 2021-12-03  |  [Rust](cryptopals/set1/src/bin/challenge3.rs) |Single-byte XOR cipher  |
+| Set                                    | Challenge | Date Solved | Solution link                                             |Description             | Notes                                                                                       |
+|----------------------------------------|-----------|-------------|-----------------------------------------------------------|------------------------|---------------------------------------------------------------------------------------------|
+| [Set 1](https://cryptopals.com/sets/1) | #1        | 2021-11-20  | [Rust](cryptopals/set1/src/bin/challenge1.rs)             |Convert hex to base64   |                                                                                             |
+|                                        | #2        | 2021-12-01  | [Rust](cryptopals/set1/src/bin/challenge2.rs)             |Fixed XOR               |                                                                                             |
+|                                        | #3        | 2021-12-03  | [Rust](cryptopals/set1/src/bin/challenge3.rs)             |Single-byte XOR cipher  | Order histogram of chars and find min variance of positions from frequency histogram.       |
+|                                        |           | 2022-01-15  | [Rust](cryptopals/set1/src/bin/challenge3_alpha_count.rs) |Single-byte XOR cipher  | Count lowercase ASCII letters twice, and uppercase once and use the key with the max score. |
 
 ## Miscellaneous
 
