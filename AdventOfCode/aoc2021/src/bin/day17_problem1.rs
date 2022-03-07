@@ -114,7 +114,7 @@ fn int_sqrt(n: u64) -> u64 {
 
 #[cfg(test)]
 mod tests {
-    use super::{inv_tri_with_remainder, tri};
+    use super::{inv_tri, tri};
 
     #[test]
     fn test_tri() {
@@ -123,16 +123,16 @@ mod tests {
 
     #[test]
     fn test_inv_tri_exact() {
-        assert_eq!(inv_tri_with_remainder(55), (10, 0));
+        assert_eq!(inv_tri(55), 10);
     }
 
     #[test]
     fn test_inv_tri_with_max_remainder() {
-        assert_eq!(inv_tri_with_remainder(54), (9, 9));
+        assert_eq!(inv_tri(54), 9);
     }
 
     #[test]
     fn test_inv_tri_with_min_non_zero_remainder() {
-        assert_eq!(inv_tri_with_remainder(56), (10, 1));
+        assert_eq!(inv_tri(56), 10);
     }
 }

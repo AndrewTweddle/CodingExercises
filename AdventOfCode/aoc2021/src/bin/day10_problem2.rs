@@ -71,7 +71,7 @@ fn complete_line_and_get_score(stack: &mut Vec<char>) -> Option<u64> {
 
 #[cfg(test)]
 mod tests {
-    use crate::{score_line, score_text};
+    use crate::{score_part1, score_part2};
 
     const EXAMPLE_TEXT: &str = "[({(<(())[]>[[{[]{<()<>>\n\
                                 [(()[<>])]({[<{<<[]>>(\n\
@@ -86,48 +86,48 @@ mod tests {
 
     #[test]
     fn test_part1_example() {
-        let score = score_text(EXAMPLE_TEXT, false);
+        let score = score_part1(EXAMPLE_TEXT);
         assert_eq!(score, 26397);
     }
 
     #[test]
     fn test_part2_completable_line1() {
         let line = "[({(<(())[]>[[{[]{<()<>>";
-        let score = score_line(line, true);
-        assert_eq!(score, Some(288957));
+        let score = score_part2(line);
+        assert_eq!(score, 288957);
     }
 
     #[test]
     fn test_part2_completable_line2() {
         let line = "[(()[<>])]({[<{<<[]>>(";
-        let score = score_line(line, true);
-        assert_eq!(score, Some(5566));
+        let score = score_part2(line);
+        assert_eq!(score, 5566);
     }
 
     #[test]
     fn test_part2_completable_line3() {
         let line = "(((({<>}<{<{<>}{[]{[]{}";
-        let score = score_line(line, true);
-        assert_eq!(score, Some(1480781));
+        let score = score_part2(line);
+        assert_eq!(score, 1480781);
     }
 
     #[test]
     fn test_part2_completable_line4() {
         let line = "{<[[]]>}<{[{[{[]{()[[[]";
-        let score = score_line(line, true);
-        assert_eq!(score, Some(995444));
+        let score = score_part2(line);
+        assert_eq!(score, 995444_u64);
     }
 
     #[test]
     fn test_part2_completable_line5() {
         let line = "<{([{{}}[<[[[<>{}]]]>[]]";
-        let score = score_line(line, true);
-        assert_eq!(score, Some(294));
+        let score = score_part2(line);
+        assert_eq!(score, 294_u64);
     }
 
     #[test]
     fn test_part2_completable_text() {
-        let score = score_text(EXAMPLE_TEXT, true);
+        let score = score_part2(EXAMPLE_TEXT);
         assert_eq!(score, 288957);
     }
 }
