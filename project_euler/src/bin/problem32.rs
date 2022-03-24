@@ -2,6 +2,7 @@ use std::collections::HashSet;
 use std::time::Instant;
 
 type Permutation = [usize; 9];
+const MAX_DIGITS_IN_MULT: usize = 4;
 
 fn main() {
     let start_time = Instant::now();
@@ -63,7 +64,8 @@ fn check_all_equations_for_permutation(
     products: &mut HashSet<usize>,
 ) {
     let first_digit_in_multiplicand = permutation[0];
-    for digits_in_multiplicand in 1..=4_usize {
+
+    for digits_in_multiplicand in 1..=MAX_DIGITS_IN_MULT {
         // Only check numbers where first digit in multiplicand < first digit in multiplier.
         // This is to skip checking commutatively equivalent products.
         let first_digit_in_multiplier = permutation[digits_in_multiplicand];
@@ -71,30 +73,26 @@ fn check_all_equations_for_permutation(
             continue;
         }
 
-        let mut multiplicand = 0;
-        for i in 0..digits_in_multiplicand {
-            multiplicand = 10 * multiplicand + permutation[i];
-        }
-        for digits_in_multiplier in 1..=4_usize {
+        let multiplicand = digits_to_number(&permutation[0..digits_in_multiplicand]);
+        for digits_in_multiplier in 1..=MAX_DIGITS_IN_MULT {
             // If there are 6 or more digits in the multiplier or multiplicand,
             // then the product will have too many digits as well...
             if digits_in_multiplier + digits_in_multiplicand > 5 {
                 break;
             }
 
-            let mut multiplier = 0;
-            for i in 0..digits_in_multiplier {
-                multiplier = 10 * multiplier + permutation[digits_in_multiplicand + i];
-            }
-
-            let mut product = 0;
-            for i in (digits_in_multiplier + digits_in_multiplicand)..9 {
-                product = 10 * product + permutation[i];
-            }
+            let start_index_of_product = digits_in_multiplicand + digits_in_multiplier;
+            let multiplier =
+                digits_to_number(&permutation[digits_in_multiplicand..start_index_of_product]);
+            let product = digits_to_number(&permutation[start_index_of_product..9]);
 
             if multiplier * multiplicand == product {
                 products.insert(product);
             }
         }
     }
+}
+
+fn digits_to_number(digits: &[usize]) -> usize {
+    digits.iter().fold(0, |total, digit| 10 * total + digit)
 }
