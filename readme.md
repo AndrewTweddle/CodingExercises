@@ -104,7 +104,7 @@ Project Euler requests that solutions not be shared online for problems beyond #
 | 30  | [Digit fifth powers](https://projecteuler.net/problem=30)                 | 2022-01-06 | [Rust](project_euler/src/bin/problem30.rs)                           | Duration: 8.935239ms.                                                                                                                                                                                                        |
 | 31  | [Coin sums](https://projecteuler.net/problem=31)                          | 2022-03-22 | [Rust](project_euler/src/bin/problem31.rs)                           | Duration: 215.894µs.                                                                                                                                                                                                         |
 | 32  | [Pandigital products](https://projecteuler.net/problem=32)                | 2022-03-23 | [Rust](project_euler/src/bin/problem32.rs)                           | Duration: 28.314084ms.                                                                                                                                                                                                       |
-
+| 33  | [Digit cancelling fractions](https://projecteuler.net/problem=33)         | 2022-03-24 | [Rust](project_euler/src/bin/problem33.rs)                           | Duration: 285.596µs.                                                                                                                                                                                                         |
 
 ## Advent of Code
 
