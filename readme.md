@@ -3,9 +3,10 @@
 This project contains my solutions to various coding exercises.
 
 These include exercises from:
+* Katas from [CodingDojo.org](https://codingdojo.org/)
   * [Project Euler](https://projecteuler.net)
   * [Advent of Code](https://adventofcode.com/)
-  * Katas from [CodingDojo.org](https://codingdojo.org/)
+  * [CSES Problem Set](https://cses.fi/problemset/list/) 
   * [cryptopals](https://cryptopals.com/) crypto challenges
   * Exercises from the book "Cracking the Coding Interview" (a.k.a. CTCI)
 
@@ -173,6 +174,15 @@ This can be very useful for:
 | [17](https://adventofcode.com/2021/day/17) | 1     | 2022-01-15  | [Rust](AdventOfCode/aoc2021/src/bin/day17_problem1.rs)          | Use triangular numbers for bounds of velocities. Then use brute force simulation (avoiding tricky math).    |
 |                                            | 2     | 2022-01-15  | [Rust](AdventOfCode/aoc2021/src/bin/day17_problem2.rs)          |                                                                                                             |
 | [18](https://adventofcode.com/2021/day/18) | 1 & 2 | 2022-03-06  | [Rust](AdventOfCode/aoc2021/src/bin/day18_problem1and2.rs)      |                                                                                                             |
+
+## CSES Problem Set
+
+### Introductory Problems
+
+| #   | Description                                             | Date       | Solution                                     | Notes |
+|-----|---------------------------------------------------------|------------|----------------------------------------------|-------|
+| 1   | [Weird Algorithm](https://cses.fi/problemset/task/1068) | 2022-05-28 | [Rust](cses_rust/src/bin/weird_algorithm.rs) |       |
+
 
 ## cryptopals crypto challenges
 
