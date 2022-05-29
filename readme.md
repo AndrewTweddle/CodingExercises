@@ -3,7 +3,7 @@
 This project contains my solutions to various coding exercises.
 
 These include exercises from:
-* Katas from [CodingDojo.org](https://codingdojo.org/)
+  * Katas from [CodingDojo.org](https://codingdojo.org/)
   * [Project Euler](https://projecteuler.net)
   * [Advent of Code](https://adventofcode.com/)
   * [CSES Problem Set](https://cses.fi/problemset/list/) 
@@ -182,7 +182,7 @@ This can be very useful for:
 | #   | Description                                             | Date       | Solution                                     | Notes |
 |-----|---------------------------------------------------------|------------|----------------------------------------------|-------|
 | 1   | [Weird Algorithm](https://cses.fi/problemset/task/1068) | 2022-05-28 | [Rust](cses_rust/src/bin/weird_algorithm.rs) |       |
-
+| 2   | [Missing Number](https://cses.fi/problemset/task/1083/) | 2022-05-28 | [Rust](cses_rust/src/bin/missing_number.rs)  |       |
 
 ## cryptopals crypto challenges
 
