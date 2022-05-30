@@ -183,12 +183,11 @@ This can be very useful for:
 |-----|---------------------------------------------------------|------------|----------------------------------------------|-------|
 | 1   | [Weird Algorithm](https://cses.fi/problemset/task/1068) | 2022-05-28 | [Rust](cses_rust/src/bin/weird_algorithm.rs) |       |
 | 2   | [Missing Number](https://cses.fi/problemset/task/1083/) | 2022-05-28 | [Rust](cses_rust/src/bin/missing_number.rs)  |       |
+| 3   | [Repetitions](https://cses.fi/problemset/task/1069)     | 2022-05-29 | [Rust](cses_rust/src/bin/repetitions.rs)     |       |
 
 ## cryptopals crypto challenges
 
-### Set 1
-
-Link to challenges: [Set 1](https://cryptopals.com/sets/1)
+### Solutions for [Set 1](https://cryptopals.com/sets/1)
 
 | Challenge | Description                                                               | Date Solved | Solution                                                  | Notes                                                                                                                    |
 |-----------|---------------------------------------------------------------------------|-------------|-----------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
