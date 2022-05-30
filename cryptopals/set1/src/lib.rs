@@ -31,6 +31,24 @@ pub mod hex {
             })
             .collect::<Vec<u8>>()
     }
+
+    pub fn bytes_to_hex_str(bytes: &[u8]) -> String {
+
+        fn byte_to_hex_digits(byte: &u8) -> [u8; 2] {
+            [byte / 16, byte % 16].map(|nibble| if nibble < 10 {
+                b'0' + nibble
+            } else {
+                b'a' + nibble - 10
+            })
+        }
+
+        let hex_byte_vec = bytes
+            .iter()
+            .flat_map(byte_to_hex_digits)
+            .collect::<Vec<u8>>();
+
+        String::from_utf8(hex_byte_vec).expect("Unable to convert to a hex string")
+    }
 }
 
 pub mod base64 {
@@ -60,5 +78,17 @@ pub mod base64 {
                 base64_byte as char
             })
             .collect::<String>()
+    }
+}
+
+pub mod ciphers {
+    pub fn encrypt_using_repeating_key_xor(input: &str, key: &str) -> Vec<u8> {
+        let key_iter = key.as_bytes().iter().cycle();
+        input
+            .as_bytes()
+            .iter()
+            .zip(key_iter)
+            .map(|(ch, key_char)| ch ^ key_char)
+            .collect::<Vec<u8>>()
     }
 }

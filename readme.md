@@ -186,13 +186,18 @@ This can be very useful for:
 
 ## cryptopals crypto challenges
 
-| Set                                    | Challenge | Date Solved | Solution link                                             | Description                 | Notes                                                                                                                    |
-|----------------------------------------|-----------|-------------|-----------------------------------------------------------|-----------------------------|--------------------------------------------------------------------------------------------------------------------------|
-| [Set 1](https://cryptopals.com/sets/1) | #1        | 2021-11-20  | [Rust](cryptopals/set1/src/bin/challenge1.rs)             | Convert hex to base64       |                                                                                                                          |
-|                                        | #2        | 2021-12-01  | [Rust](cryptopals/set1/src/bin/challenge2.rs)             | Fixed XOR                   |                                                                                                                          |
-|                                        | #3        | 2021-12-03  | [Rust](cryptopals/set1/src/bin/challenge3.rs)             | Single-byte XOR cipher      | Order histogram of chars and find min variance of positions from frequency histogram.                                    |
-|                                        |           | 2022-01-15  | [Rust](cryptopals/set1/src/bin/challenge3_alpha_count.rs) | Single-byte XOR cipher      | Count lowercase ASCII letters twice, and uppercase once and use the key with the max score.                              |
-|                                        | #4        | 2022-01-15   | [Rust](cryptopals/set1/src/bin/challenge4.rs)            | Detect single-character XOR | Naive ASCII score fails. More complex ascii score works, taking 15 ms. Letter frequency histogram approach takes 131 ms. |
+### Set 1
+
+Link to challenges: [Set 1](https://cryptopals.com/sets/1)
+
+| Challenge | Description                 | Date Solved | Solution                                                  | Notes                                                                                                                    |
+|-----------|-----------------------------|-------------|-----------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
+| #1        | Convert hex to base64       | 2021-11-20  | [Rust](cryptopals/set1/src/bin/challenge1.rs)             |                                                                                                                          |
+| #2        | Fixed XOR                   | 2021-12-01  | [Rust](cryptopals/set1/src/bin/challenge2.rs)             |                                                                                                                          |
+| #3        | Single-byte XOR cipher      | 2021-12-03  | [Rust](cryptopals/set1/src/bin/challenge3.rs)             | Order histogram of chars and find min variance of positions from frequency histogram.                                    |
+|           | Single-byte XOR cipher      | 2022-01-15  | [Rust](cryptopals/set1/src/bin/challenge3_alpha_count.rs) | Count lowercase ASCII letters twice, and uppercase once and use the key with the max score.                              |
+| #4        | Detect single-character XOR | 2022-01-15  | [Rust](cryptopals/set1/src/bin/challenge4.rs)             | Naive ASCII score fails. More complex ascii score works, taking 15 ms. Letter frequency histogram approach takes 131 ms. |
+| #5        | Implement repeating-key XOR | 2022-05-29  | [Rust](cryptopals/set1/src/bin/challenge5.rs)             | The repeating key XOR encryption function was added to lib.rs.                                                           |
 
 ## Miscellaneous
 
