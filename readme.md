@@ -190,14 +190,14 @@ This can be very useful for:
 
 Link to challenges: [Set 1](https://cryptopals.com/sets/1)
 
-| Challenge | Description                 | Date Solved | Solution                                                  | Notes                                                                                                                    |
-|-----------|-----------------------------|-------------|-----------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
-| #1        | Convert hex to base64       | 2021-11-20  | [Rust](cryptopals/set1/src/bin/challenge1.rs)             |                                                                                                                          |
-| #2        | Fixed XOR                   | 2021-12-01  | [Rust](cryptopals/set1/src/bin/challenge2.rs)             |                                                                                                                          |
-| #3        | Single-byte XOR cipher      | 2021-12-03  | [Rust](cryptopals/set1/src/bin/challenge3.rs)             | Order histogram of chars and find min variance of positions from frequency histogram.                                    |
-|           | Single-byte XOR cipher      | 2022-01-15  | [Rust](cryptopals/set1/src/bin/challenge3_alpha_count.rs) | Count lowercase ASCII letters twice, and uppercase once and use the key with the max score.                              |
-| #4        | Detect single-character XOR | 2022-01-15  | [Rust](cryptopals/set1/src/bin/challenge4.rs)             | Naive ASCII score fails. More complex ascii score works, taking 15 ms. Letter frequency histogram approach takes 131 ms. |
-| #5        | Implement repeating-key XOR | 2022-05-29  | [Rust](cryptopals/set1/src/bin/challenge5.rs)             | The repeating key XOR encryption function was added to lib.rs.                                                           |
+| Challenge | Description                                                               | Date Solved | Solution                                                  | Notes                                                                                                                    |
+|-----------|---------------------------------------------------------------------------|-------------|-----------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
+| #1        | [Convert hex to base64](https://cryptopals.com/sets/1/challenges/1)       | 2021-11-20  | [Rust](cryptopals/set1/src/bin/challenge1.rs)             |                                                                                                                          |
+| #2        | [Fixed XOR](https://cryptopals.com/sets/1/challenges/2)                   | 2021-12-01  | [Rust](cryptopals/set1/src/bin/challenge2.rs)             |                                                                                                                          |
+| #3        | [Single-byte XOR cipher](https://cryptopals.com/sets/1/challenges/3)      | 2021-12-03  | [Rust](cryptopals/set1/src/bin/challenge3.rs)             | Order histogram of chars and find min variance of positions from frequency histogram.                                    |
+|           |                                                                           | 2022-01-15  | [Rust](cryptopals/set1/src/bin/challenge3_alpha_count.rs) | Count lowercase ASCII letters twice, and uppercase once and use the key with the max score.                              |
+| #4        | [Detect single-character XOR](https://cryptopals.com/sets/1/challenges/4) | 2022-01-15  | [Rust](cryptopals/set1/src/bin/challenge4.rs)             | Naive ASCII score fails. More complex ascii score works, taking 15 ms. Letter frequency histogram approach takes 131 ms. |
+| #5        | [Implement repeating-key XOR](https://cryptopals.com/sets/1/challenges/5) | 2022-05-29  | [Rust](cryptopals/set1/src/bin/challenge5.rs)             | The repeating key XOR encryption function was added to lib.rs.                                                           |
 
 ## Miscellaneous
 
