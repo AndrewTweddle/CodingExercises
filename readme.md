@@ -179,11 +179,12 @@ This can be very useful for:
 
 ### Introductory Problems
 
-| #   | Description                                             | Date       | Solution                                     | Notes |
-|-----|---------------------------------------------------------|------------|----------------------------------------------|-------|
-| 1   | [Weird Algorithm](https://cses.fi/problemset/task/1068) | 2022-05-28 | [Rust](cses_rust/src/bin/weird_algorithm.rs) |       |
-| 2   | [Missing Number](https://cses.fi/problemset/task/1083/) | 2022-05-28 | [Rust](cses_rust/src/bin/missing_number.rs)  |       |
-| 3   | [Repetitions](https://cses.fi/problemset/task/1069)     | 2022-05-29 | [Rust](cses_rust/src/bin/repetitions.rs)     |       |
+| #   | Description                                              | Date       | Solution                                       | Notes |
+|-----|----------------------------------------------------------|------------|------------------------------------------------|-------|
+| 1   | [Weird Algorithm](https://cses.fi/problemset/task/1068)  | 2022-05-28 | [Rust](cses_rust/src/bin/weird_algorithm.rs)   |       |
+| 2   | [Missing Number](https://cses.fi/problemset/task/1083/)  | 2022-05-28 | [Rust](cses_rust/src/bin/missing_number.rs)    |       |
+| 3   | [Repetitions](https://cses.fi/problemset/task/1069)      | 2022-05-29 | [Rust](cses_rust/src/bin/repetitions.rs)       |       |
+| 4   | [Increasing Array](https://cses.fi/problemset/task/1094) | 2022-06-04 | [Rust](cses_rust/src/bin/increasing_arrary.rs) |       |
 
 ## cryptopals crypto challenges
 
