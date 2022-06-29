@@ -219,7 +219,7 @@ mod tests {
                 base_64_str in "([A-Za-z0-9+/]{4})*(|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)") {
                 let base_64_bytes_result = base64_to_bytes(base_64_str.as_str());
 
-                // Not all base 64 strings are valid. So the following test is disabled...
+                // Not all of these base 64 strings are valid, so first check the result
                 if let Ok(base_64_bytes) = base_64_bytes_result {
                     let conv_str = bytes_to_base64(&base_64_bytes).unwrap();
                     assert_eq!(base_64_str, conv_str);
