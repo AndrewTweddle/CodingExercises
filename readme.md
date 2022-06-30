@@ -7,7 +7,7 @@ These include exercises from:
   * [Project Euler](https://projecteuler.net)
   * [Advent of Code](https://adventofcode.com/)
   * [CSES Problem Set](https://cses.fi/problemset/list/) 
-  * [cryptopals](https://cryptopals.com/) crypto challenges
+  * [cryptopals](https://cryptopals.com/) - cryptography challenges
   * Exercises from the book "Cracking the Coding Interview" (a.k.a. CTCI)
 
 I use these to: 
@@ -187,6 +187,7 @@ This can be very useful for:
 | 3   | [Repetitions](https://cses.fi/problemset/task/1069)      | 2022-05-29 | [Rust](cses_rust/src/bin/repetitions.rs)      |       |
 | 4   | [Increasing Array](https://cses.fi/problemset/task/1094) | 2022-06-04 | [Rust](cses_rust/src/bin/increasing_array.rs) |       |
 | 5   | [Permutations](https://cses.fi/problemset/task/1070/)    | 2022-06-05 | [Rust](cses_rust/src/bin/permutations.rs)     |       |
+| 6   | [Number Spiral](https://cses.fi/problemset/task/1071/)   | 2022-06-29 | [Rust](cses_rust/src/bin/number_spiral.rs)    |       |
 
 ## cryptopals crypto challenges
 
