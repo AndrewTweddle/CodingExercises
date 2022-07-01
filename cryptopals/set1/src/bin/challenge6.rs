@@ -1,5 +1,5 @@
 use set1::base64::base64_to_bytes;
-use set1::ciphers::get_best_key_sizes_and_decryptions_of_repeating_key_xor;
+use set1::ciphers::repeating_key_xor::get_best_key_sizes_and_likely_decryptions;
 use std::fs;
 use std::time::Instant;
 
@@ -14,7 +14,7 @@ fn main() {
     let base64_text = contents_str.join("");
     let encrypted_bytes =
         base64_to_bytes(base64_text.as_str()).expect("Unable to convert base 64 string to bytes");
-    let key_size_and_plain_text_candidates = get_best_key_sizes_and_decryptions_of_repeating_key_xor(
+    let key_size_and_plain_text_candidates = get_best_key_sizes_and_likely_decryptions(
         &encrypted_bytes,
         MAX_KEY_SIZE,
         NUM_HAMMING_DISTANCE_SAMPLES,
