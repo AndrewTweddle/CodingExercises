@@ -1,11 +1,11 @@
-use set1::ciphers::encrypt_using_repeating_key_xor;
+use set1::ciphers::repeating_key_xor::encrypt;
 use set1::hex::bytes_to_hex_str;
 
 fn main() {
     let input = "Burning 'em, if you ain't quick and nimble\n\
                  I go crazy when I hear a cymbal";
     let key = "ICE";
-    let encrypted_bytes = encrypt_using_repeating_key_xor(input, key);
+    let encrypted_bytes = encrypt(input, key);
     let output = bytes_to_hex_str(&encrypted_bytes);
 
     let expected_output = "0b3637272a2b2e63622c2e69692a23693a2a3\
