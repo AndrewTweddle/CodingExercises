@@ -41,6 +41,21 @@ Other similar repositories:
 |                                                              |                                                | 2021-05-24 | [Rust v2](Katas/CodingDojo/RomanNumerals/Rust/roman_numerals_v2/src/main.rs)                                         | Designed intuitively, not iteratively to compare with the TDD approach. Experiment with proptest property-based testing. |
 |                                                              |                                                | 2021-06-02 | [Rust v3](Katas/CodingDojo/RomanNumerals/Rust/roman_numerals_v3/src/main.rs)                                         | A simpler approach (unfortunately not mine - I saw others doing this, and rewrote it in Rust).                           |
 
+## cryptopals crypto challenges
+
+### Solutions for [Set 1](https://cryptopals.com/sets/1)
+
+| Challenge | Description                                                               | Date Solved | Solution                                                  | Notes                                                                                                                                                                                     |
+|-----------|---------------------------------------------------------------------------|-------------|-----------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| #1        | [Convert hex to base64](https://cryptopals.com/sets/1/challenges/1)       | 2021-11-20  | [Rust](cryptopals/set1/src/bin/challenge1.rs)             |                                                                                                                                                                                           |
+| #2        | [Fixed XOR](https://cryptopals.com/sets/1/challenges/2)                   | 2021-12-01  | [Rust](cryptopals/set1/src/bin/challenge2.rs)             |                                                                                                                                                                                           |
+| #3        | [Single-byte XOR cipher](https://cryptopals.com/sets/1/challenges/3)      | 2021-12-03  | [Rust](cryptopals/set1/src/bin/challenge3.rs)             | Order histogram of chars and find min variance of positions from frequency histogram.                                                                                                     |
+|           |                                                                           | 2022-01-15  | [Rust](cryptopals/set1/src/bin/challenge3_alpha_count.rs) | Count lowercase ASCII letters twice, and uppercase once and use the key with the max score.                                                                                               |
+| #4        | [Detect single-character XOR](https://cryptopals.com/sets/1/challenges/4) | 2022-01-15  | [Rust](cryptopals/set1/src/bin/challenge4.rs)             | Naive ASCII score fails. More complex ascii score works, taking 15 ms. Letter frequency histogram approach takes 131 ms.                                                                  |
+| #5        | [Implement repeating-key XOR](https://cryptopals.com/sets/1/challenges/5) | 2022-05-29  | [Rust](cryptopals/set1/src/bin/challenge5.rs)             | The repeating key XOR encryption function was added to lib.rs.                                                                                                                            |
+| #6        | [Break repeating-key XOR](https://cryptopals.com/sets/1/challenges/6)     | 2022-06-28  | [Rust](cryptopals/set1/src/bin/challenge6.rs)             | lib.rs was broken into various sub-modules including [base64](cryptopals/set1/src/base64.rs) and [cipher::repeating_key_xor](cryptopals/set1/src/ciphers/repeating_key_xor.rs) utilities. |
+| #7        | [AES in ECB mode](https://cryptopals.com/sets/1/challenges/7)             | 2022-07-01  | [Rust](cryptopals/set1/src/bin/challenge7.rs)             | [ciphers::aes](cryptopals/set1/src/ciphers/aes.rs) wraps the call to the rust [openssl crate](https://crates.io/crates/openssl).                                                          |
+
 ## Project Euler problems
 
 Project Euler requests that solutions not be shared online for problems beyond #100.
@@ -188,20 +203,6 @@ This can be very useful for:
 | 4   | [Increasing Array](https://cses.fi/problemset/task/1094) | 2022-06-04 | [Rust](cses_rust/src/bin/increasing_array.rs) |       |
 | 5   | [Permutations](https://cses.fi/problemset/task/1070/)    | 2022-06-05 | [Rust](cses_rust/src/bin/permutations.rs)     |       |
 | 6   | [Number Spiral](https://cses.fi/problemset/task/1071/)   | 2022-06-29 | [Rust](cses_rust/src/bin/number_spiral.rs)    |       |
-
-## cryptopals crypto challenges
-
-### Solutions for [Set 1](https://cryptopals.com/sets/1)
-
-| Challenge | Description                                                               | Date Solved | Solution                                                  | Notes                                                                                                                                                |
-|-----------|---------------------------------------------------------------------------|-------------|-----------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
-| #1        | [Convert hex to base64](https://cryptopals.com/sets/1/challenges/1)       | 2021-11-20  | [Rust](cryptopals/set1/src/bin/challenge1.rs)             |                                                                                                                                                      |
-| #2        | [Fixed XOR](https://cryptopals.com/sets/1/challenges/2)                   | 2021-12-01  | [Rust](cryptopals/set1/src/bin/challenge2.rs)             |                                                                                                                                                      |
-| #3        | [Single-byte XOR cipher](https://cryptopals.com/sets/1/challenges/3)      | 2021-12-03  | [Rust](cryptopals/set1/src/bin/challenge3.rs)             | Order histogram of chars and find min variance of positions from frequency histogram.                                                                |
-|           |                                                                           | 2022-01-15  | [Rust](cryptopals/set1/src/bin/challenge3_alpha_count.rs) | Count lowercase ASCII letters twice, and uppercase once and use the key with the max score.                                                          |
-| #4        | [Detect single-character XOR](https://cryptopals.com/sets/1/challenges/4) | 2022-01-15  | [Rust](cryptopals/set1/src/bin/challenge4.rs)             | Naive ASCII score fails. More complex ascii score works, taking 15 ms. Letter frequency histogram approach takes 131 ms.                             |
-| #5        | [Implement repeating-key XOR](https://cryptopals.com/sets/1/challenges/5) | 2022-05-29  | [Rust](cryptopals/set1/src/bin/challenge5.rs)             | The repeating key XOR encryption function was added to lib.rs.                                                                                       |
-| #6        | [Break repeating-key XOR](https://cryptopals.com/sets/1/challenges/6)     | 2022-06-28  | [Rust](cryptopals/set1/src/bin/challenge6.rs)             | lib.rs was broken into various sub-modules including [base64](cryptopals/set1/src/base64.rs) and [cipher](cryptopals/set1/src/ciphers.rs) utilities. |
 
 ## Miscellaneous
 
