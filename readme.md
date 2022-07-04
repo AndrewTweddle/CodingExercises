@@ -55,6 +55,7 @@ Other similar repositories:
 | #5        | [Implement repeating-key XOR](https://cryptopals.com/sets/1/challenges/5) | 2022-05-29  | [Rust](cryptopals/set1/src/bin/challenge5.rs)             | The repeating key XOR encryption function was added to lib.rs.                                                                                                                            |
 | #6        | [Break repeating-key XOR](https://cryptopals.com/sets/1/challenges/6)     | 2022-06-28  | [Rust](cryptopals/set1/src/bin/challenge6.rs)             | lib.rs was broken into various sub-modules including [base64](cryptopals/set1/src/base64.rs) and [cipher::repeating_key_xor](cryptopals/set1/src/ciphers/repeating_key_xor.rs) utilities. |
 | #7        | [AES in ECB mode](https://cryptopals.com/sets/1/challenges/7)             | 2022-07-01  | [Rust](cryptopals/set1/src/bin/challenge7.rs)             | [ciphers::aes](cryptopals/set1/src/ciphers/aes.rs) wraps the call to the rust [openssl crate](https://crates.io/crates/openssl).                                                          |
+| #8        | [Detect AES in ECB mode](https://cryptopals.com/sets/1/challenges/8)      | 2022-07-03  | [Rust](cryptopals/set1/src/bin/challenge8.rs)             |                                                                                                                                                                                           |
 
 ## Project Euler problems
 
