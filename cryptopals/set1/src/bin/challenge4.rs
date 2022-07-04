@@ -1,7 +1,7 @@
-use std::time::Instant;
+use set1::hex::hex_str_to_bytes;
 use std::collections::HashMap;
 use std::fs;
-use set1::hex::hex_str_to_bytes;
+use std::time::Instant;
 
 const USE_LETTER_FREQUENCY: bool = false;
 
@@ -11,7 +11,8 @@ fn main() {
     let (best_line, decrypted_bytes, score) = contents
         .lines()
         .map(|line| {
-            let encrypted_bytes = hex_str_to_bytes(line.trim());
+            let encrypted_bytes =
+                hex_str_to_bytes(line.trim()).expect("Unable to convert hex to bytes");
             let (best_key, min_score) = (0..=255_u8)
                 .map(|key| {
                     let decrypted_bytes = xor_bytes(&encrypted_bytes, key);
@@ -19,7 +20,7 @@ fn main() {
                         sum_of_squared_frequency_deviations(&decrypted_bytes) as i64
                     } else {
                         // Convert to a score to minimize by negating
-                        - (get_alpha_score(&decrypted_bytes) as i64)
+                        -(get_alpha_score(&decrypted_bytes) as i64)
                     };
                     (key, min_score)
                 })

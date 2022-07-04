@@ -3,7 +3,8 @@ use set1::hex::hex_str_to_bytes;
 const ENCRYPTED_HEX: &str = "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736";
 
 fn main() {
-    let encrypted_bytes = hex_str_to_bytes(ENCRYPTED_HEX);
+    let encrypted_bytes =
+        hex_str_to_bytes(ENCRYPTED_HEX).expect("Encrypted hex could not be converted to bytes");
     let best_key = (0..=255_u8)
         .map(|key| {
             let decrypted_bytes = xor_bytes(&encrypted_bytes, key);

@@ -6,8 +6,8 @@ const TEST_INPUT_HEX_STR: &str =
 const TEST_OUTPUT_STR: &str = "SSdtIGtpbGxpbmcgeW91ciBicmFpbiBsaWtlIGEgcG9pc29ub3VzIG11c2hyb29t";
 
 fn main() {
-    let bytes = hex_str_to_bytes(TEST_INPUT_HEX_STR);
-    let b64 = bytes_to_base64(bytes.as_slice());
+    let bytes = hex_str_to_bytes(TEST_INPUT_HEX_STR).expect("Could not parse hex string");
+    let b64 = bytes_to_base64(bytes.as_slice()).expect("Could not parse base 64");
     if b64 == TEST_OUTPUT_STR {
         println!("It worked!")
     } else {
