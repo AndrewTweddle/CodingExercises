@@ -9,7 +9,7 @@ const CHAR_FREQUENCIES: &[u8; 26] = b"etaoinshrdlcumwfgypbvkjxqz";
 const PENALTY_FOR_NON_ALPHA: u64 = 100 * 100;
 
 fn main() {
-    let encrypted_bytes = hex_str_to_bytes(ENCRYPTED_HEX);
+    let encrypted_bytes = hex_str_to_bytes(ENCRYPTED_HEX).unwrap();
     let best_key = (0..=255_u8)
         .map(|key| {
             let decrypted_bytes = xor_bytes(&encrypted_bytes, key);
