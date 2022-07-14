@@ -31,6 +31,6 @@ fn main() {
         }
     }
 
-    let duration = start_time.elapsed() ;
+    let duration = start_time.elapsed();
     println!("Avg duration: {:?}", duration / NUM_REPETITIONS);
 }
