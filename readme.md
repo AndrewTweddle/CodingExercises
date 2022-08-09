@@ -195,6 +195,7 @@ This can be very useful for:
 | 4   | [Increasing Array](https://cses.fi/problemset/task/1094) | 2022-06-04 | [Rust](cses_rust/src/bin/increasing_array.rs) |       |
 | 5   | [Permutations](https://cses.fi/problemset/task/1070/)    | 2022-06-05 | [Rust](cses_rust/src/bin/permutations.rs)     |       |
 | 6   | [Number Spiral](https://cses.fi/problemset/task/1071/)   | 2022-06-29 | [Rust](cses_rust/src/bin/number_spiral.rs)    |       |
+| 7   | [Two Knights](https://cses.fi/problemset/task/1072/)     | 2022-08-09 | [Rust](cses_rust/src/bin/two_knights.rs)      |       |
 
 ## Katas from the CodingDojo.org web site
 
