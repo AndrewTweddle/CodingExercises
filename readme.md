@@ -190,15 +190,17 @@ This can be very useful for:
 
 ### Introductory Problems
 
-| #   | Description                                              | Date       | Solution                                      | Notes |
-|-----|----------------------------------------------------------|------------|-----------------------------------------------|-------|
-| 1   | [Weird Algorithm](https://cses.fi/problemset/task/1068)  | 2022-05-28 | [Rust](cses_rust/src/bin/weird_algorithm.rs)  |       |
-| 2   | [Missing Number](https://cses.fi/problemset/task/1083/)  | 2022-05-28 | [Rust](cses_rust/src/bin/missing_number.rs)   |       |
-| 3   | [Repetitions](https://cses.fi/problemset/task/1069)      | 2022-05-29 | [Rust](cses_rust/src/bin/repetitions.rs)      |       |
-| 4   | [Increasing Array](https://cses.fi/problemset/task/1094) | 2022-06-04 | [Rust](cses_rust/src/bin/increasing_array.rs) |       |
-| 5   | [Permutations](https://cses.fi/problemset/task/1070/)    | 2022-06-05 | [Rust](cses_rust/src/bin/permutations.rs)     |       |
-| 6   | [Number Spiral](https://cses.fi/problemset/task/1071/)   | 2022-06-29 | [Rust](cses_rust/src/bin/number_spiral.rs)    |       |
-| 7   | [Two Knights](https://cses.fi/problemset/task/1072/)     | 2022-08-09 | [Rust](cses_rust/src/bin/two_knights.rs)      |       |
+| #   | Description                                              | Date       | Solution                                      | Notes                                                      |
+|-----|----------------------------------------------------------|------------|-----------------------------------------------|------------------------------------------------------------|
+| 1   | [Weird Algorithm](https://cses.fi/problemset/task/1068)  | 2022-05-28 | [Rust](cses_rust/src/bin/weird_algorithm.rs)  |                                                            |
+| 2   | [Missing Number](https://cses.fi/problemset/task/1083/)  | 2022-05-28 | [Rust](cses_rust/src/bin/missing_number.rs)   |                                                            |
+| 3   | [Repetitions](https://cses.fi/problemset/task/1069)      | 2022-05-29 | [Rust](cses_rust/src/bin/repetitions.rs)      |                                                            |
+| 4   | [Increasing Array](https://cses.fi/problemset/task/1094) | 2022-06-04 | [Rust](cses_rust/src/bin/increasing_array.rs) |                                                            |
+| 5   | [Permutations](https://cses.fi/problemset/task/1070/)    | 2022-06-05 | [Rust](cses_rust/src/bin/permutations.rs)     |                                                            |
+| 6   | [Number Spiral](https://cses.fi/problemset/task/1071/)   | 2022-06-29 | [Rust](cses_rust/src/bin/number_spiral.rs)    |                                                            |
+| 7   | [Two Knights](https://cses.fi/problemset/task/1072/)     | 2022-08-09 | [Rust](cses_rust/src/bin/two_knights.rs)      |                                                            |
+| 8   | [Two Sets](https://cses.fi/problemset/task/1092/)        | 2022-08-21 | [Rust](cses_rust/src/bin/two_sets.rs)         | Elegant and obviously correct, but probably not efficient. |
+|     |                                                          | 2022-08-21 | [Rust](cses_rust/src/bin/two_sets_v2.rs)      | Clever and efficient, but not obvious.                     |
 
 ## Katas from the CodingDojo.org web site
 
