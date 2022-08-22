@@ -21,9 +21,11 @@ fn main() {
         // - 1 left, 2 up
         // - 1 right, 2 up
         // - 2 right, 1 up
-        // However, by symmetry, there are the same number of positions for each type of move
-        // in which the lower knight can attack the upper knight.
+
+        // However, by symmetry, there are the same number of positions
+        // for each type of move in which the lower knight can attack the upper knight.
         // So just count one of them, say: 2 right, 1 up.
+
         // The lower knight can be:
         //   i. in any of the k-2 leftmost columns, and
         //  ii. in any of the k-1 bottom-most rows
