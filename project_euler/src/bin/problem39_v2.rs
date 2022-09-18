@@ -25,7 +25,7 @@ fn main() {
                     // m and n cannot both be odd
                     continue;
                 }
-                if  m * (m + n) > 500 {
+                if m * (m + n) > 500 {
                     break;
                 }
                 if gcd(m, n) > 1 {
