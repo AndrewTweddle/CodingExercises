@@ -17,36 +17,32 @@ fn main() {
     );
 }
 
-fn get_ratings(bytes: &Vec<u32>, bit_count: usize) -> Option<(u32, u32)> {
-    let oxygen_generator_rating = filter_bytes(&bytes, bit_count, false);
-    let co2_scrubber_rating = filter_bytes(&bytes, bit_count, true);
+fn get_ratings(bytes: &[u32], bit_count: usize) -> Option<(u32, u32)> {
+    let oxygen_generator_rating = filter_bytes(bytes, bit_count, false);
+    let co2_scrubber_rating = filter_bytes(bytes, bit_count, true);
     oxygen_generator_rating.zip(co2_scrubber_rating)
 }
 
-fn filter_bytes(bytes: &Vec<u32>, bit_count: usize, use_min: bool) -> Option<u32> {
+fn filter_bytes(bytes: &[u32], bit_count: usize, use_min: bool) -> Option<u32> {
     let mut mask: u32 = 1 << bit_count;
-    let mut rem_bytes: Vec<u32> = bytes.clone();
+    let mut rem_bytes: Vec<u32> = bytes.to_owned();
     for _ in 0..bit_count {
         mask >>= 1;
         let (zeroes, ones): (Vec<u32>, Vec<u32>) =
             rem_bytes.iter().partition(|&byte| byte & mask == 0);
 
         rem_bytes = if use_min {
-            if zeroes.len() == 0 {
+            if zeroes.is_empty() {
                 ones
-            } else if ones.len() == 0 {
-                zeroes
-            } else if zeroes.len() <= ones.len() {
+            } else if ones.is_empty() || zeroes.len() <= ones.len() {
                 zeroes
             } else {
                 ones
             }
+        } else if ones.len() >= zeroes.len() {
+            ones
         } else {
-            if ones.len() >= zeroes.len() {
-                ones
-            } else {
-                zeroes
-            }
+            zeroes
         };
         if rem_bytes.len() == 1 {
             return Some(rem_bytes[0]);

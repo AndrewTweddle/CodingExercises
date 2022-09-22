@@ -57,14 +57,14 @@ fn read_board(line_iter: &mut Lines<BufReader<File>>) -> Option<Board> {
 }
 
 fn get_winning_call_and_sum_of_unfilled_cells(
-    boards: &Vec<Board>,
+    boards: &[Board],
     calls: &Vec<u32>,
 ) -> Option<(u32, u32)> {
     let mut prev_calls = HashSet::<u32>::new();
     for &call in calls {
         prev_calls.insert(call);
         if let Some(unfilled_cells_sum) =
-            get_sum_of_unfilled_cells_in_winning_board(&boards, &prev_calls)
+            get_sum_of_unfilled_cells_in_winning_board(boards, &prev_calls)
         {
             return Some((call, unfilled_cells_sum));
         }
@@ -73,12 +73,12 @@ fn get_winning_call_and_sum_of_unfilled_cells(
 }
 
 fn get_sum_of_unfilled_cells_in_winning_board(
-    boards: &Vec<Board>,
+    boards: &[Board],
     prev_calls: &HashSet<u32>,
 ) -> Option<u32> {
     let completed_board = boards
         .iter()
-        .find(|&board| has_full_row(board, &prev_calls) || has_full_column(board, &prev_calls));
+        .find(|&board| has_full_row(board, prev_calls) || has_full_column(board, prev_calls));
     if let Some(board) = completed_board {
         let unfilled_cells_sum: u32 = board
             .iter()

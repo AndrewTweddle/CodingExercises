@@ -12,7 +12,7 @@ fn main() {
         .lines()
         .map(|ln| {
             let line = ln.unwrap();
-            let (input_str, output_str) = line.split_once("|").unwrap();
+            let (input_str, output_str) = line.split_once('|').unwrap();
             let letter_map = get_letter_mapping_from_inputs(input_str);
             decode_output_str(output_str, &letter_map)
         })
@@ -36,8 +36,7 @@ fn get_letter_mapping_from_inputs(inputs: &str) -> HashMap<char, char> {
     // add an extra 4 counts for each character in the digit with 4 characters...
     let chars_in_4_letter_digit = inputs
         .split(' ')
-        .filter(|&digit| digit.len() == 4)
-        .next()
+        .find(|&digit| digit.len() == 4)
         .unwrap();
     for ch in chars_in_4_letter_digit.chars() {
         char_counts
@@ -70,7 +69,7 @@ fn get_letter_from_counts(count: usize) -> Option<char> {
 fn decode_output_str(output_str: &str, letter_mapping: &HashMap<char, char>) -> u64 {
     output_str
         .split_ascii_whitespace()
-        .map(|output_digit_str| output_str_to_digit(output_digit_str, &letter_mapping))
+        .map(|output_digit_str| output_str_to_digit(output_digit_str, letter_mapping))
         .rev()
         .enumerate()
         .map(|(exponent, digit)| (digit as u64) * 10_u64.pow(exponent as u32))

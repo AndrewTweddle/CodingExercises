@@ -39,16 +39,11 @@ fn find_next_unvisited_cell(visited_grid: &mut VisitedGrid) -> Option<Pos> {
         .iter()
         .enumerate()
         .filter_map(|(i, row)| {
-            if let Some(j) = row
-                .iter()
+            row.iter()
                 .enumerate()
                 .filter_map(|(j, &visited)| if visited { None } else { Some(j) })
                 .next()
-            {
-                Some((i, j))
-            } else {
-                None
-            }
+                .map(|j| (i, j))
         })
         .next()
 }
@@ -73,16 +68,16 @@ fn visit_all_cells_in_basin_and_get_count(start_pos: Pos, visited_grid: &mut Vis
 
         // Add adjacent cells to basin_cells (if unvisited)
         if j > 0 {
-            mark_to_visit_if_unvisited((i, j - 1), &visited_grid, &mut basin_cells);
+            mark_to_visit_if_unvisited((i, j - 1), visited_grid, &mut basin_cells);
         }
         if j < col_count - 1 {
-            mark_to_visit_if_unvisited((i, j + 1), &visited_grid, &mut basin_cells);
+            mark_to_visit_if_unvisited((i, j + 1), visited_grid, &mut basin_cells);
         }
         if i > 0 {
-            mark_to_visit_if_unvisited((i - 1, j), &visited_grid, &mut basin_cells);
+            mark_to_visit_if_unvisited((i - 1, j), visited_grid, &mut basin_cells);
         }
         if i < row_count - 1 {
-            mark_to_visit_if_unvisited((i + 1, j), &visited_grid, &mut basin_cells);
+            mark_to_visit_if_unvisited((i + 1, j), visited_grid, &mut basin_cells);
         }
     }
     basin_size

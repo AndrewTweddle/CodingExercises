@@ -52,14 +52,14 @@ fn read_board(line_iter: &mut Lines<BufReader<File>>) -> Option<Board> {
 }
 
 fn get_last_winning_call_and_sum_of_unfilled_cells(
-    boards: &Vec<Board>,
+    boards: &[Board],
     calls: &Vec<u32>,
 ) -> Option<(u32, u32)> {
     let mut prev_calls = HashSet::<u32>::new();
     for &call in calls {
         prev_calls.insert(call);
         if let Some(unfilled_cells_sum) =
-            get_sum_of_unfilled_cells_in_last_winning_board(&boards, &prev_calls, call)
+            get_sum_of_unfilled_cells_in_last_winning_board(boards, &prev_calls, call)
         {
             return Some((call, unfilled_cells_sum));
         }
@@ -68,21 +68,21 @@ fn get_last_winning_call_and_sum_of_unfilled_cells(
 }
 
 fn get_sum_of_unfilled_cells_in_last_winning_board(
-    boards: &Vec<Board>,
+    boards: &[Board],
     prev_calls: &HashSet<u32>,
     last_call: u32,
 ) -> Option<u32> {
     // First check that all boards are winning
-    if !boards.iter().all(|board| has_full_line(board, &prev_calls)) {
+    if !boards.iter().all(|board| has_full_line(board, prev_calls)) {
         return None;
     }
 
     // Find the first board that contains the last call in a winning row or column
     // and that wasn't already a winner before the last call
     let completed_board = boards.iter().find(|board| {
-        has_full_line_with_last_call(board, &prev_calls, last_call)
-            && !has_full_column_without_last_call(board, &prev_calls, last_call)
-            && !has_full_row_without_last_call(board, &prev_calls, last_call)
+        has_full_line_with_last_call(board, prev_calls, last_call)
+            && !has_full_column_without_last_call(board, prev_calls, last_call)
+            && !has_full_row_without_last_call(board, prev_calls, last_call)
     });
 
     if let Some(board) = completed_board {
@@ -117,8 +117,8 @@ fn has_full_column(board: &Board, calls: &HashSet<u32>) -> bool {
 }
 
 fn has_full_line_with_last_call(board: &Board, prev_calls: &HashSet<u32>, last_call: u32) -> bool {
-    has_full_row_with_last_call(board, &prev_calls, last_call)
-        || has_full_column_with_last_call(board, &prev_calls, last_call)
+    has_full_row_with_last_call(board, prev_calls, last_call)
+        || has_full_column_with_last_call(board, prev_calls, last_call)
 }
 
 fn has_full_row_with_last_call(board: &Board, calls: &HashSet<u32>, last_call: u32) -> bool {

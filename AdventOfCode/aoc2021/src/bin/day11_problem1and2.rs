@@ -19,7 +19,7 @@ impl Debug for Cavern {
             for cell in row.iter() {
                 write!(f, "{}", cell)?;
             }
-            writeln!(f, "")?;
+            writeln!(f)?;
         }
         Ok(())
     }

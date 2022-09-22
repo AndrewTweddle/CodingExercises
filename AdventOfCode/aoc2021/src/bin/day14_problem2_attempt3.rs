@@ -35,14 +35,14 @@ impl RuleMatrix {
     fn pow(self, exponent: usize) -> RuleMatrix {
         match exponent {
             0 => RuleMatrix::identity(),
-            1 => self.clone(),
+            1 => self,
             exp => {
                 let mut matrix = self.clone().pow(exp / 2);
                 matrix = matrix.clone() * &matrix;
                 if exp % 2 == 0 {
                     matrix
                 } else {
-                    self.clone() * &matrix
+                    self * &matrix
                 }
             }
         }

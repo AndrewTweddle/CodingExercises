@@ -22,7 +22,7 @@ fn main() {
             instructions.iter().fold(Some(pos), |opt_pos, instruction| {
                 opt_pos
                     .iter()
-                    .flat_map(|new_pos| process_instruction(&new_pos, instruction))
+                    .flat_map(|new_pos| process_instruction(new_pos, instruction))
                     .next()
             })
         })
@@ -34,7 +34,7 @@ fn main() {
         .fold((0_u64, 0_u64), |(max_x, max_y), &(x, y)| {
             (max_x.max(x), max_y.max(y))
         });
-    let mut grid: Vec<Vec<u8>> = vec![vec![' ' as u8; (max_x + 1) as usize]; (max_y + 1) as usize];
+    let mut grid: Vec<Vec<u8>> = vec![vec![b' '; (max_x + 1) as usize]; (max_y + 1) as usize];
     for pos in part2_transformed_coordinates {
         grid[pos.1 as usize][pos.0 as usize] = b'#';
     }
@@ -52,7 +52,7 @@ fn main() {
     let instruction = instructions.first().unwrap();
     let part1_transformed_coordinates: HashSet<Pos> = coordinates
         .iter()
-        .filter_map(|pos| process_instruction(pos, &instruction))
+        .filter_map(|pos| process_instruction(pos, instruction))
         .collect();
     let part1_visible_dots = part1_transformed_coordinates.len();
     println!("Part 1: visible dots = {}", part1_visible_dots);
@@ -98,14 +98,14 @@ fn parse_inputs(contents: &str) -> (Vec<Pos>, Vec<Instruction>) {
 
 fn process_instruction(coordinates: &Pos, instruction: &Instruction) -> Option<Pos> {
     match instruction {
-        (Axis::X, x_val) => match coordinates {
-            &(x, _) if x < *x_val => Some(*coordinates),
-            &(x, y) if x > *x_val => Some((2 * x_val - x, y)),
+        (Axis::X, x_val) => match *coordinates {
+            (x, _) if x < *x_val => Some(*coordinates),
+            (x, y) if x > *x_val => Some((2 * x_val - x, y)),
             _ => None, // On the line
         },
-        (Axis::Y, y_val) => match coordinates {
-            &(_, y) if y < *y_val => Some(*coordinates),
-            &(x, y) if y > *y_val => Some((x, 2 * y_val - y)),
+        (Axis::Y, y_val) => match *coordinates {
+            (_, y) if y < *y_val => Some(*coordinates),
+            (x, y) if y > *y_val => Some((x, 2 * y_val - y)),
             _ => None, // On the line
         },
     }

@@ -105,6 +105,5 @@ fn get_max_min_count_difference(steps: u32, inputs: &Inputs) -> usize {
             min_count = count
         }
     }
-    let difference = max_count - min_count;
-    difference
+    max_count - min_count
 }

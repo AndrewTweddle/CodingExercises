@@ -25,14 +25,12 @@ impl Ord for Node {
     fn cmp(&self, other: &Self) -> Ordering {
         if let Some(order) = self.partial_cmp(other) {
             order
+        } else if self.row < other.row {
+            Ordering::Greater
+        } else if self.row > other.row {
+            Ordering::Less
         } else {
-            if self.row < other.row {
-                Ordering::Greater
-            } else if self.row > other.row {
-                Ordering::Less
-            } else {
-                self.col.cmp(&other.col).reverse()
-            }
+            self.col.cmp(&other.col).reverse()
         }
     }
 }
