@@ -189,6 +189,7 @@ This can be very useful for:
 | [17](https://adventofcode.com/2021/day/17) | 1     | 2022-01-15  | [Rust](AdventOfCode/aoc2021/src/bin/day17_problem1.rs)          | Use triangular numbers for bounds of velocities. Then use brute force simulation (avoiding tricky math).    |
 |                                            | 2     | 2022-01-15  | [Rust](AdventOfCode/aoc2021/src/bin/day17_problem2.rs)          |                                                                                                             |
 | [18](https://adventofcode.com/2021/day/18) | 1 & 2 | 2022-03-06  | [Rust](AdventOfCode/aoc2021/src/bin/day18_problem1and2.rs)      |                                                                                                             |
+| [19](https://adventofcode.com/2021/day/19) | 1 & 2 | 2022-09-21  | [Rust](AdventOfCode/aoc2021/src/bin/day19_problem1and2.rs)      | I was not looking forward to this one! Solved in 2.9 seconds using a brute force search.                    |
 
 ## CSES Problem Set
 
