@@ -17,7 +17,7 @@ fn main() {
     let lines: Vec<Line> = get_lines()
         .iter()
         .filter(|line| line.from.x == line.to.x || line.from.y == line.to.y)
-        .map(|&line| line)
+        .copied()
         .collect();
 
     let max_x = lines.iter().map(|line| line.to.x).max().unwrap();
@@ -46,7 +46,7 @@ fn get_lines() -> Vec<Line> {
         .map(|ln| {
             let line = ln.unwrap();
             let mut parts_iter = line.split(" -> ").map(|part| {
-                let (x_string, y_string) = part.split_once(",").unwrap();
+                let (x_string, y_string) = part.split_once(',').unwrap();
                 Point {
                     x: x_string.parse::<usize>().unwrap(),
                     y: y_string.parse::<usize>().unwrap(),

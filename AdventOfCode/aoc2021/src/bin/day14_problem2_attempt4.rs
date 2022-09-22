@@ -84,7 +84,7 @@ fn parse_file_contents(contents: String) -> Inputs {
 }
 
 fn get_max_min_count_difference(steps: usize, inputs: &Inputs) -> usize {
-    let mut even_pair_counts = inputs.pair_counts.clone();
+    let mut even_pair_counts = inputs.pair_counts;
     let mut odd_pair_counts: PairCounts = [0; PAIR_COUNT];
 
     for step in 1..=steps {
@@ -139,6 +139,5 @@ fn get_max_min_count_difference(steps: usize, inputs: &Inputs) -> usize {
             min_count = count
         }
     }
-    let difference = max_count - min_count;
-    difference
+    max_count - min_count
 }

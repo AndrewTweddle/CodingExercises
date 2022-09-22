@@ -19,7 +19,7 @@ fn main() {
 
     let transformed_coordinates: HashSet<Pos> = coordinates
         .iter()
-        .filter_map(|pos| process_instruction(pos, &instruction))
+        .filter_map(|pos| process_instruction(pos, instruction))
         .collect();
 
     let visible_dots = transformed_coordinates.len();
@@ -69,14 +69,14 @@ fn parse_inputs(contents: &str) -> (Vec<Pos>, Vec<Instruction>) {
 
 fn process_instruction(coordinates: &Pos, instruction: &Instruction) -> Option<Pos> {
     match instruction {
-        (Axis::X, x_val) => match coordinates {
-            &(x, _) if x < *x_val => Some(*coordinates),
-            &(x, y) if x > *x_val => Some((2 * x_val - x, y)),
+        (Axis::X, x_val) => match *coordinates {
+            (x, _) if x < *x_val => Some(*coordinates),
+            (x, y) if x > *x_val => Some((2 * x_val - x, y)),
             _ => None, // On the line
         },
-        (Axis::Y, y_val) => match coordinates {
-            &(_, y) if y < *y_val => Some(*coordinates),
-            &(x, y) if y > *y_val => Some((x, 2 * y_val - y)),
+        (Axis::Y, y_val) => match *coordinates {
+            (_, y) if y < *y_val => Some(*coordinates),
+            (x, y) if y > *y_val => Some((x, 2 * y_val - y)),
             _ => None, // On the line
         },
     }

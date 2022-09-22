@@ -36,7 +36,7 @@ fn get_lines() -> Vec<Line> {
         .map(|ln| {
             let line = ln.unwrap();
             let mut parts_iter = line.split(" -> ").map(|part| {
-                let (x_string, y_string) = part.split_once(",").unwrap();
+                let (x_string, y_string) = part.split_once(',').unwrap();
                 Point {
                     x: x_string.parse::<usize>().unwrap(),
                     y: y_string.parse::<usize>().unwrap(),
@@ -73,7 +73,7 @@ where
         .unwrap() as usize;
     let mut grid = vec![vec![0_usize; max_y + 1]; max_x + 1];
     let mut overlap_count = 0;
-    for line in line_iter.clone() {
+    for line in line_iter {
         let range_x = (line.to.x - line.from.x) as isize;
         let step_x = if line.from.x == line.to.x { 0 } else { 1 };
         let (range_y, step_y): (isize, isize) = if line.to.y >= line.from.y {

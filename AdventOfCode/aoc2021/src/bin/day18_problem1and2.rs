@@ -271,7 +271,7 @@ fn main() {
     let contents = fs::read_to_string("data/day18_input.txt").unwrap();
     let snailfish_numbers: Vec<SnailFishNumber> = contents
         .lines()
-        .map(|line| SnailFishNumber::parse(line))
+        .map(SnailFishNumber::parse)
         .collect();
     let sum_of_sf_nums: SnailFishNumber = sum_of_snailfish_numbers(&snailfish_numbers[0..]);
     let magnitude_of_sum = sum_of_sf_nums.magnitude();

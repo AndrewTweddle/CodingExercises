@@ -5,7 +5,7 @@ fn main() {
     let start_time = Instant::now();
 
     let contents = fs::read_to_string("data/day17_input.txt").unwrap();
-    let (part1, part2) = contents.split_once(",").unwrap();
+    let (part1, part2) = contents.split_once(',').unwrap();
     let (x_start_str, x_end_str) = part1["target area: x=".len()..].split_once("..").unwrap();
     let (y_start_str, y_end_str) = part2[" y=".len()..].trim().split_once("..").unwrap();
     let x_start: i64 = x_start_str.parse().unwrap();

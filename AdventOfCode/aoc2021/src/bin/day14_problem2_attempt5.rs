@@ -109,8 +109,7 @@ fn get_max_min_count_difference(steps: usize, inputs: &Inputs) -> usize {
             min_count = count
         }
     }
-    let difference = max_count - min_count;
-    difference
+    max_count - min_count
 }
 
 fn step(pair_counts: &PairCounts, rules: &PairInsertionRules) -> PairCounts {

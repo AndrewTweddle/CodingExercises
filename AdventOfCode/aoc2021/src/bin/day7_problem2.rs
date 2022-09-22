@@ -52,8 +52,8 @@ fn calculate_position_and_minimum_fuel_required_using_binary_search(
 ) -> (i64, i64) {
     let mid_pos = (min_pos + max_pos) / 2;
 
-    let fuel: i64 = get_fuel_for_position(&positions, mid_pos);
-    let left_fuel = get_fuel_for_position(&positions, mid_pos - 1);
+    let fuel: i64 = get_fuel_for_position(positions, mid_pos);
+    let left_fuel = get_fuel_for_position(positions, mid_pos - 1);
 
     if left_fuel < fuel {
         if min_pos == mid_pos - 1 {
@@ -66,7 +66,7 @@ fn calculate_position_and_minimum_fuel_required_using_binary_search(
             )
         }
     } else {
-        let right_fuel = get_fuel_for_position(&positions, mid_pos + 1);
+        let right_fuel = get_fuel_for_position(positions, mid_pos + 1);
         if right_fuel >= fuel {
             (mid_pos, fuel)
         } else if max_pos == mid_pos + 1 {
@@ -81,7 +81,7 @@ fn calculate_position_and_minimum_fuel_required_using_binary_search(
     }
 }
 
-fn get_fuel_for_position(positions: &Vec<i64>, target: i64) -> i64 {
+fn get_fuel_for_position(positions: &[i64], target: i64) -> i64 {
     // Calculate the required fuel for the target position, using the triangular number formula
     positions
         .iter()
@@ -97,38 +97,38 @@ fn get_fuel_for_position(positions: &Vec<i64>, target: i64) -> i64 {
 // It takes longer, at around 9 ms for the calculations...
 
 fn calculate_position_and_minimum_fuel_required_using_deltas(
-    positions: &Vec<i64>,
+    positions: &[i64],
     start_pos: i64,
 ) -> (i64, i64) {
     let mut target = start_pos;
 
-    let mut fuel: i64 = get_fuel_for_position(&positions, target);
+    let mut fuel: i64 = get_fuel_for_position(positions, target);
 
     // First test if the fuel requirement decreases if the target is moved left.
-    let mut fuel_delta: i64 = get_fuel_delta_if_target_decremented(&positions, target);
+    let mut fuel_delta: i64 = get_fuel_delta_if_target_decremented(positions, target);
 
     if fuel_delta < 0 {
         // Decrease the target position incrementally until there is no more reduction in fuel
         while fuel_delta < 0 {
             target -= 1;
             fuel += fuel_delta;
-            fuel_delta = get_fuel_delta_if_target_decremented(&positions, target);
+            fuel_delta = get_fuel_delta_if_target_decremented(positions, target);
         }
     } else {
         // In the target position incrementally until there is no more reduction in fuel
-        fuel_delta = get_fuel_delta_if_target_incremented(&positions, target);
+        fuel_delta = get_fuel_delta_if_target_incremented(positions, target);
 
         while fuel_delta < 0 {
             target += 1;
             fuel += fuel_delta;
-            fuel_delta = get_fuel_delta_if_target_incremented(&positions, target);
+            fuel_delta = get_fuel_delta_if_target_incremented(positions, target);
         }
     }
 
     (target, fuel)
 }
 
-fn get_fuel_delta_if_target_decremented(positions: &Vec<i64>, target: i64) -> i64 {
+fn get_fuel_delta_if_target_decremented(positions: &[i64], target: i64) -> i64 {
     positions
         .iter()
         .map(|&pos| {
@@ -142,7 +142,7 @@ fn get_fuel_delta_if_target_decremented(positions: &Vec<i64>, target: i64) -> i6
         .sum()
 }
 
-fn get_fuel_delta_if_target_incremented(positions: &Vec<i64>, target: i64) -> i64 {
+fn get_fuel_delta_if_target_incremented(positions: &[i64], target: i64) -> i64 {
     positions
         .iter()
         .map(|&pos| {

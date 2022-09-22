@@ -8,15 +8,11 @@ fn main() {
         .lines()
         .map(|ln| ln
             .unwrap()
-            .split_once("|")
+            .split_once('|')
             .unwrap()
             .1
-            .split(" ")
-            .filter(|output| match output.len() {
-                2..=4 => true,   // digit 1 has len 2, digit 7 has len 3, digit 4 has len 4
-                7 => true,       // digit 8 has len 7
-                _ => false,
-            })
+            .split(' ')
+            .filter(|output| matches!(output.len(), 2..=4 | 7))
             .count()
         )
         .sum();

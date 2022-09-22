@@ -79,7 +79,7 @@ fn get_max_min_count_difference(
         let right = elems[1];
         counts[right as usize] += 1;
         let pair_index = pair_to_index(left, right);
-        expand_elems_and_update_counts(pair_index, steps, &rules, &mut counts);
+        expand_elems_and_update_counts(pair_index, steps, rules, &mut counts);
     });
 
     let mut min_count = usize::MAX;
@@ -92,8 +92,7 @@ fn get_max_min_count_difference(
             min_count = count
         }
     }
-    let difference = max_count - min_count;
-    difference
+    max_count - min_count
 }
 
 fn expand_elems_and_update_counts(

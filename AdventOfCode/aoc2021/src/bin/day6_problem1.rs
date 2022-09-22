@@ -11,7 +11,7 @@ fn main() {
     // Count the number of lanternfish by the number of days left until they procreate
     let mut counts_by_days_left = [0_u128; 9];
     for days_left in days_left_string
-        .split(",")
+        .split(',')
         .map(|num_str| num_str.parse::<usize>().unwrap())
     {
         counts_by_days_left[days_left] += 1;
@@ -20,8 +20,8 @@ fn main() {
     for day in 1..=DAYS_OF_BREEDING {
         // Instead of moving data around the array, just move an imaginary
         // index into the array which points to the "zero days left" slot for that day
-        let eight_days_left_index = (day + 8) % 9 as usize;
-        let six_days_left_index = (day + 6) % 9 as usize;
+        let eight_days_left_index = (day + 8) % 9;
+        let six_days_left_index = (day + 6) % 9;
 
         // The new lanternfish are 8 days away from procreating.
         // They equal the number of day zero lanternfish on the previous day,

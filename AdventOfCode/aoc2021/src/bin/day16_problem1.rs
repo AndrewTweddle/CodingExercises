@@ -33,9 +33,9 @@ struct Packet {
 #[allow(dead_code)]
 impl Packet {
     fn parse_literal_data_and_remaining_str(data_to_parse: &str) -> (Data, &str) {
-        fn recursively_parse_data_string_and_rem_str<'a>(data_str: &'a str) -> (String, &'a str) {
+        fn recursively_parse_data_string_and_rem_str(data_str: &str) -> (String, &str) {
             let mut literal_data = data_str[1..5].to_string();
-            if data_str.chars().next().unwrap() == '1' {
+            if data_str.starts_with('1') {
                 let (rem_literal_string, remaining_str) =
                     recursively_parse_data_string_and_rem_str(&data_str[5..]);
                 literal_data += rem_literal_string.as_str();
@@ -92,12 +92,10 @@ impl Packet {
         let type_id = u8::from_str_radix(&transmission[3..6], 2).expect("Error parsing type id");
         let (data, remaining_str) = if type_id == 4 {
             Self::parse_literal_data_and_remaining_str(&transmission[6..])
+        } else if transmission.chars().nth(6).unwrap() == '1' {
+            Self::parse_operator_with_number_of_packets(&transmission[7..])
         } else {
-            if transmission.chars().nth(6).unwrap() == '1' {
-                Self::parse_operator_with_number_of_packets(&transmission[7..])
-            } else {
-                Self::parse_operator_with_number_of_bits(&transmission[7..])
-            }
+            Self::parse_operator_with_number_of_bits(&transmission[7..])
         };
         let packet = Packet {
             version,
@@ -123,7 +121,7 @@ impl Packet {
 
     fn get_literal_data(&self) -> Option<&String> {
         match &self.data {
-            Data::Literal(data_string) => Some(&data_string),
+            Data::Literal(data_string) => Some(data_string),
             Data::Operator(_) => None,
         }
     }
