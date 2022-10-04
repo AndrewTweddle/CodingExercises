@@ -190,6 +190,7 @@ This can be very useful for:
 |                                            | 2     | 2022-01-15  | [Rust](AdventOfCode/aoc2021/src/bin/day17_problem2.rs)          |                                                                                                             |
 | [18](https://adventofcode.com/2021/day/18) | 1 & 2 | 2022-03-06  | [Rust](AdventOfCode/aoc2021/src/bin/day18_problem1and2.rs)      |                                                                                                             |
 | [19](https://adventofcode.com/2021/day/19) | 1 & 2 | 2022-09-21  | [Rust](AdventOfCode/aoc2021/src/bin/day19_problem1and2.rs)      | I was not looking forward to this one! Solved in 2.9 seconds using a brute force search.                    |
+| [20](https://adventofcode.com/2021/day/20) | 1 & 2 | 2022-10-04  | [Rust](AdventOfCode/aoc2021/src/bin/day20_problem1and2.rs)      | Built first time. Only 1 bug (reversed order of bits in 9 bit input). Part 1 took 172µs. Part 2 took 6.8ms. |
 
 ## CSES Problem Set
 
