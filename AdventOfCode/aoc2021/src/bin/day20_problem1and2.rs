@@ -4,12 +4,12 @@ use std::time::Instant;
 const NUM_REPETITIONS: u32 = 100;
 
 fn main() {
-    let mut start_time = Instant::now();
-
-    // Read the input file (outside the loop, so that IO does not affect the timings)...
-    let contents = fs::read_to_string("data/day20_input.txt").unwrap();
-
     for (problem, num_rounds) in [("Part 1", 2), ("Part 2", 50)] {
+        let mut start_time = Instant::now();
+
+        // Read the input file (outside the loop, so that IO does not affect the timings)...
+        let contents = fs::read_to_string("data/day20_input.txt").unwrap();
+
         // Perform multiple repetitions to get an average duration of the algorithm...
         for rep in 0..=NUM_REPETITIONS {
             let (alg_str, input_image_str) = contents.split_once("\n\n").unwrap();
@@ -45,7 +45,7 @@ fn main() {
             // The initial out-of-region state is false (dark/unlit).
             // Calculate the out-of-region state in subsequent odd and even numbered rounds.
             let odd_out_of_region_state = alg[0];
-            let even_out_of_region_state = alg[511 * odd_out_of_region_state as usize];
+            let even_out_of_region_state = alg[511 * odd_out_of_region_state];
 
             // Since the part 1 problem takes place over 2 rounds,
             // and there must be a finite answer to the number of lit pixels in the final image,
@@ -105,19 +105,24 @@ fn main() {
 
             if rep == 0 {
                 // Print out the solution during the initial repetition only...
-                println!("{} final image:", problem);
-                for row in final_image {
-                    let row_text: String = row
-                        .iter()
-                        .map(|&cell| if cell == 0 { '.' } else { '#' })
-                        .collect();
-                    println!("    {}", row_text);
-                }
-                println!();
+                println!("{}", problem);
+                println!("------");
 
-                println!("{} - Number of lit pixels: {}", problem, num_lit);
-                println!("Duration: {:?}", start_time.elapsed());
-                println!();
+                #[cfg(debug_assertions)]
+                {
+                    println!("{} final image:", problem);
+                    for row in final_image {
+                        let row_text: String = row
+                            .iter()
+                            .map(|&cell| if cell == 0 { '.' } else { '#' })
+                            .collect();
+                        println!("    {}", row_text);
+                    }
+                    println!();
+                }
+
+                println!("Number of lit pixels: {}", num_lit);
+                println!("Duration (incl file i/o and printlns): {:?}", start_time.elapsed());
 
                 // Restart the timer to time all other iterations without the overhead of printlns
                 start_time = Instant::now();
@@ -126,8 +131,7 @@ fn main() {
 
         let duration = start_time.elapsed();
         println!(
-            "{} - Average duration over {} repetitions: {:?}",
-            problem,
+            "Average duration over {} further repetitions: {:?}\n",
             NUM_REPETITIONS,
             duration / NUM_REPETITIONS
         );
