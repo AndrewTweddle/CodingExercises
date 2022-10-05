@@ -21,14 +21,16 @@ fn main() {
         let dice_value = roll_index % 100 + 1;
         curr_player.position = (curr_player.position + dice_value - 1) % 10 + 1;
 
-        // Update the score after the third throw
-        if roll_index % 3 == 2 {
-            curr_player.score += curr_player.position;
-        }
+        // Update roll_index for the next iteration. (It also becomes the number of rolls.)
         roll_index += 1;
-        if curr_player.score >= 1000 {
-            let other_player = &players[1 - curr_player_index];
-            break other_player.score * roll_index;
+
+        // Update the score after the third throw
+        if roll_index % 3 == 0 {
+            curr_player.score += curr_player.position;
+            if curr_player.score >= 1000 {
+                let other_player = &players[1 - curr_player_index];
+                break other_player.score * roll_index;
+            }
         }
     };
     println!("Day 21, part 1 answer: {}", answer);
