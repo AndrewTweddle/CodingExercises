@@ -18,8 +18,9 @@ fn main() {
     let answer = loop {
         let curr_player_index = ((roll_index % 6) / 3) as usize;
         let curr_player = &mut players[curr_player_index];
-        let dice_value = roll_index % 100 + 1;
-        curr_player.position = (curr_player.position + dice_value - 1) % 10 + 1;
+
+        // Don't bother calculating the dice value (using mod 100), since the position is mod 10
+        curr_player.position = (curr_player.position + roll_index) % 10 + 1;
 
         // Update roll_index for the next iteration. (It also becomes the number of rolls.)
         roll_index += 1;
