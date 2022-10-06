@@ -137,14 +137,14 @@ This can be very useful for:
 
 ### 2020
 
-|Day                                           | Part |Date Solved | My solution                                           |
-|----------------------------------------------|------|------------|-------------------------------------------------------|
-| [Day 1](https://adventofcode.com/2020/day/1) | 1    | 2021-11-18 | [Rust](AdventOfCode/Aoc2020/src/bin/day1_problem1.rs) | 
-|                                              | 2    | 2021-11-18 | [Rust](AdventOfCode/Aoc2020/src/bin/day1_problem2.rs) |
-| [Day 2](https://adventofcode.com/2020/day/2) | 1    | 2021-11-20 | [Rust](AdventOfCode/Aoc2020/src/bin/day2_problem1.rs) |
-|                                              | 2    | 2021-11-20 | [Rust](AdventOfCode/Aoc2020/src/bin/day2_problem2.rs) |
-| [Day 3](https://adventofcode.com/2020/day/3) | 1    | 2021-11-27 | [Rust](AdventOfCode/Aoc2020/src/bin/day3_problem1.rs) |
-|                                              | 2    | 2021-11-27 | [Rust](AdventOfCode/Aoc2020/src/bin/day3_problem2.rs) |
+| Day                                          | Part | Date Solved | My solution                                           |
+|----------------------------------------------|------|-------------|-------------------------------------------------------|
+| [Day 1](https://adventofcode.com/2020/day/1) | 1    | 2021-11-18  | [Rust](AdventOfCode/Aoc2020/src/bin/day1_problem1.rs) | 
+|                                              | 2    | 2021-11-18  | [Rust](AdventOfCode/Aoc2020/src/bin/day1_problem2.rs) |
+| [Day 2](https://adventofcode.com/2020/day/2) | 1    | 2021-11-20  | [Rust](AdventOfCode/Aoc2020/src/bin/day2_problem1.rs) |
+|                                              | 2    | 2021-11-20  | [Rust](AdventOfCode/Aoc2020/src/bin/day2_problem2.rs) |
+| [Day 3](https://adventofcode.com/2020/day/3) | 1    | 2021-11-27  | [Rust](AdventOfCode/Aoc2020/src/bin/day3_problem1.rs) |
+|                                              | 2    | 2021-11-27  | [Rust](AdventOfCode/Aoc2020/src/bin/day3_problem2.rs) |
 
 ### 2021
 
@@ -192,6 +192,7 @@ This can be very useful for:
 | [19](https://adventofcode.com/2021/day/19) | 1 & 2 | 2022-09-21  | [Rust](AdventOfCode/aoc2021/src/bin/day19_problem1and2.rs)      | I was not looking forward to this one! Solved in 2.9 seconds using a brute force search.                    |
 | [20](https://adventofcode.com/2021/day/20) | 1 & 2 | 2022-10-03  | [Rust](AdventOfCode/aoc2021/src/bin/day20_problem1and2.rs)      | Built first time. Only 1 bug (reversed order of bits in 9 bit input). Part 1 took 172µs. Part 2 took 6.8ms. |
 | [21](https://adventofcode.com/2021/day/21) | 1     | 2022-10-04  | [Rust](AdventOfCode/aoc2021/src/bin/day21_problem1.rs)          |                                                                                                             |
+|                                            | 2     | 2022-10-05  | [Rust](AdventOfCode/aoc2021/src/bin/day21_problem2.rs)          | Duration: 350µs                                                                                             |
 
 ## CSES Problem Set
 
@@ -209,7 +210,7 @@ This can be very useful for:
 | 8   | [Two Sets](https://cses.fi/problemset/task/1092/)        | 2022-08-21 | [Rust](cses_rust/src/bin/two_sets.rs)         | Elegant and obviously correct, but probably not efficient. |
 |     |                                                          | 2022-08-21 | [Rust](cses_rust/src/bin/two_sets_v2.rs)      | Clever and efficient, but not obvious.                     |
 
-## Katas from the CodingDojo.org web site
+## Katas from the CodingDojo.org website
 
 | Exercise                                                     | Description                                    | Date       | Solution                                                                                                             | Notes                                                                                                                    |
 |--------------------------------------------------------------|------------------------------------------------|------------|----------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
@@ -276,7 +277,7 @@ _Note: This is the approach I was experimenting with in 2015. It can be quite on
     * Count number of steps and estimate the big-O scalability of each
     * Decide which solution to implement
       * Check the stakeholder's preferences when there is a trade-off (e.g. speed versus maintainability)
-      * Otherwise favour clarity over cleverness
+      * Otherwise, favour clarity over cleverness
     * Look for utility methods which could be useful across multiple solutions
   * Do UML designs if necessary
   * Do pseudocode if useful
@@ -294,12 +295,12 @@ _Note: This is the approach I was experimenting with in 2015. It can be quite on
 ### Use a notebook to write all code on paper first
 
 * Ideally I wanted to use my whiteboard for all steps in this mini SDLC, but it was already in use
-* Instead I used a notebook to do analysis, design, coding and unit testing
+* Instead, I used a notebook to do analysis, design, coding and unit testing
 * Once done I would capture and compile the code and unit tests electronically
   * An exception was exercise 4.1, which I coded directly.
   * The quality of the code in this exercise is noticeably worse, so pre-planning on paper is clearly worthwhile
   * I was initially skeptical of doing whiteboard coding in interviews, as this is not common practice in South Africa
-  * However I am already seeing benefits from doing this:
+  * However, I am already seeing benefits from doing this:
     * Improved designs through adding greater structure and focus to the creative process
     * An improved ability to "play out" detailed coding scenarios in my head
 * I then fixed coding errors or refactored the code and made notes on these errors and refactorings
@@ -308,18 +309,18 @@ _Note: This is the approach I was experimenting with in 2015. It can be quite on
   
 ## C\# 
 
-| Purpose   | Solution              | Notes                      |
-| ---       | ---                   | ---                        |
-| Sets      | HashSet&lt;T&gt;      | Useful methods: Add and Contains. |
-| Hash maps | Dictionary&lt;K, V&gt;   | Useful methods: ContainsKey, Keys, Values, enumerator over KeyValuePair&lt;K, V&gt; |
-| Test multiple implementations | MSTest: [TestMethod] on base class methods, [TestClass] on derived class | The derived unit test class chooses which implementation to use. The base class defines the common tests. |
-| Assert.AreEqual | Parameters: expected then actual |  |
-| Int to binary string | Convert.ToString(value, 2 ) | Useful for making unit test more readable. See [exercise 5.1](CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI.Tests/Chapter5/Exercise1/WhenInsertingBits.cs) |
-| Binary string to int | Convert.ToInt32(str, 2 )    | The second parameter is the base. See [exercise 5.1](CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI.Tests/Chapter5/Exercise1/WhenInsertingBits.cs) |
-| Validate arguments    | ArgumentException(message, paramName ) | The parameter name is the second parameter to the constructor. |
-| Validate argument range | ArgumentOutOfRangeException(paramName, message) | But this time the parameter name is the first parameter to the constructor! |
-| Overflow checking | checked { ... } | Arithmetic overflow is silent unless the statement/s (NOT expressions) are in a checked block |
-| Initialize dictionary | ... = { {key; value}, ... } | |
+| Purpose                       | Solution                                                                 | Notes                                                                                                                                                       |
+|-------------------------------|--------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Sets                          | HashSet&lt;T&gt;                                                         | Useful methods: Add and Contains.                                                                                                                           |
+| Hash maps                     | Dictionary&lt;K, V&gt;                                                   | Useful methods: ContainsKey, Keys, Values, enumerator over KeyValuePair&lt;K, V&gt;                                                                         |
+| Test multiple implementations | MSTest: [TestMethod] on base class methods, [TestClass] on derived class | The derived unit test class chooses which implementation to use. The base class defines the common tests.                                                   |
+| Assert.AreEqual               | Parameters: expected then actual                                         |                                                                                                                                                             |
+| Int to binary string          | Convert.ToString(value, 2 )                                              | Useful for making unit test more readable. See [exercise 5.1](CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI.Tests/Chapter5/Exercise1/WhenInsertingBits.cs) |
+| Binary string to int          | Convert.ToInt32(str, 2 )                                                 | The second parameter is the base. See [exercise 5.1](CTCI/CSharp/AndrewTweddle.CodingExercises.CTCI.Tests/Chapter5/Exercise1/WhenInsertingBits.cs)          |
+| Validate arguments            | ArgumentException(message, paramName )                                   | The parameter name is the second parameter to the constructor.                                                                                              |
+| Validate argument range       | ArgumentOutOfRangeException(paramName, message)                          | But this time the parameter name is the first parameter to the constructor!                                                                                 |
+| Overflow checking             | checked { ... }                                                          | Arithmetic overflow is silent unless the statement/s (NOT expressions) are in a checked block                                                               |
+| Initialize dictionary         | ... = { {key; value}, ... }                                              |                                                                                                                                                             |
 
 ## Other coding tips
 
