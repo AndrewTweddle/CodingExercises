@@ -193,7 +193,7 @@ This can be very useful for:
 | [20](https://adventofcode.com/2021/day/20) | 1 & 2 | 2022-10-03  | [Rust](AdventOfCode/aoc2021/src/bin/day20_problem1and2.rs)      | Built first time. Only 1 bug (reversed order of bits in 9 bit input). Part 1 took 172µs. Part 2 took 6.8ms. |
 | [21](https://adventofcode.com/2021/day/21) | 1     | 2022-10-04  | [Rust](AdventOfCode/aoc2021/src/bin/day21_problem1.rs)          |                                                                                                             |
 |                                            | 2     | 2022-10-05  | [Rust](AdventOfCode/aoc2021/src/bin/day21_problem2.rs)          | Duration: 350µs.                                                                                            |
-| [22](https://adventofcode.com/2021/day/22) | 1     | 2022-10-09  | [Rust](AdventOfCode/aoc2021/src/bin/day22_problem1and2.rs)      | Part 1 duration: 831ms.                                                                                     |
+| [22](https://adventofcode.com/2021/day/22) | 1 & 2 | 2022-10-09  | [Rust](AdventOfCode/aoc2021/src/bin/day22_problem1and2.rs)      | Part 1 duration: 831ms. Part 1 and 2 combined duration: 1.46s.                                              |
 
 ## CSES Problem Set
 
