@@ -2,32 +2,34 @@
 
 This project contains my solutions to various coding exercises.
 
-These include exercises from:
-  * [cryptopals](https://cryptopals.com/) - cryptography challenges
-  * [Project Euler](https://projecteuler.net)
-  * [Advent of Code](https://adventofcode.com/)
-  * [CSES Problem Set](https://cses.fi/problemset/list/) 
+I use these to:
+* practise coding skills,
+* learn new programming languages,
+* compare languages or paradigms,
+* prepare for technical interviews, and
+* have fun solving coding puzzles!
 
-As well as:
-  * Katas from [CodingDojo.org](https://codingdojo.org/)
-  * Exercises from the book "Cracking the Coding Interview" (a.k.a. CTCI)
+## Links within this page
 
-I use these to: 
-  * practise coding skills,
-  * learn new programming languages,
-  * compare languages or paradigms,
-  * prepare for technical interviews, and
-  * have fun solving coding puzzles!
+| Link                                          | Source                                                      | Description                                  |
+|-----------------------------------------------|-------------------------------------------------------------|----------------------------------------------|
+| [cryptopals](#cryptopals-crypto-challenges)   | [cryptopals.com](https://cryptopals.com/)                   | Cryptography challenges                      |
+| [Project Euler](#project-euler-problems)      | [projecteuler.net](https://projecteuler.net)                | Coding challenges with a mathematical theme  |
+| [Advent of Code](#advent-of-code)             | [adventofcode.com](https://adventofcode.com/)               | 25 days of coding challenges run in December |
+| [CSES Problem Set](#cses-problem-set)         | [cses.fi/problemset/list](https://cses.fi/problemset/list/) | Competitive coding exercises                 |
+| [CodingDojo Katas](#katas-from-codingdojoorg) | [CodingDojo.org](https://codingdojo.org/)                   |                                              |
+| [Miscellaneous](#miscellaneous)               | Miscellaneous souces                                        |                                              |
+| [CTCI Exercises](#ctci)                       | The book "Cracking the Coding Interview"                    | Technical interview questions                |
 
-Other similar repositories:
-  * [AndrewTweddle/GoogleCodeJam](https://github.com/AndrewTweddle/GoogleCodeJam)
-    * submissions to the Google CodeJam algorithmic coding competition
-  * [AndrewTweddle/CodingChallenges](https://github.com/AndrewTweddle/CodingChallenges):
-    * including entries to the [CodeForces](https://codeforces.com/) algorithmic coding competitions
-  * [AndrewTweddle/fpinscala](https://github.com/AndrewTweddle/fpinscala):
-    * forked exercises from the book ["Functional Programming in Scala"](http://www.manning.com/bjarnason/)
+## Related repositories
 
-# Various exercises
+| Repository                                                                    | Description                                                                                           |
+|-------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| [AndrewTweddle/GoogleCodeJam](https://github.com/AndrewTweddle/GoogleCodeJam) | Submissions to the Google CodeJam algorithmic coding competition                                      |
+| [AndrewTweddle/CodeForces](https://github.com/AndrewTweddle/CodeForces)       | My entries to various [CodeForces](https://codeforces.com/) algorithmic coding contests               |
+| [AndrewTweddle/fpinscala](https://github.com/AndrewTweddle/fpinscala)         | Forked exercises from the book ["Functional Programming in Scala"](http://www.manning.com/bjarnason/) |
+
+# The exercises
 
 ## cryptopals crypto challenges
 
@@ -211,7 +213,7 @@ This can be very useful for:
 | 8   | [Two Sets](https://cses.fi/problemset/task/1092/)        | 2022-08-21 | [Rust](cses_rust/src/bin/two_sets.rs)         | Elegant and obviously correct, but probably not efficient. |
 |     |                                                          | 2022-08-21 | [Rust](cses_rust/src/bin/two_sets_v2.rs)      | Clever and efficient, but not obvious.                     |
 
-## Katas from the CodingDojo.org website
+## Katas from CodingDojo.org
 
 | Exercise                                                     | Description                                    | Date       | Solution                                                                                                             | Notes                                                                                                                    |
 |--------------------------------------------------------------|------------------------------------------------|------------|----------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
