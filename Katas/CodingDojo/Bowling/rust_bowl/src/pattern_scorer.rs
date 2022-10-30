@@ -19,18 +19,18 @@ fn score_remaining_frames(
     }
     match (frame, rem_throws) {
         (10, [Throw::Strike, throw2, throw3]) => {
-            Ok(partial_score + 10 + sum_of_next_2_throws(throw2, throw3)?)
+            Ok(partial_score + 10 + score_next_2_throws(throw2, throw3)?)
         }
         (10, [throw1, Throw::Spare, throw3]) if throw1.score() < 10 => {
             Ok(partial_score + 10 + throw3.score())
         }
         (10, [throw1, throw2]) if throw1.score() < 10 => {
-            Ok(partial_score + sum_of_next_2_throws(throw1, throw2)?)
+            Ok(partial_score + score_next_2_throws(throw1, throw2)?)
         }
         (_, [Throw::Strike, throw2, throw3, ..]) => score_remaining_frames(
             &rem_throws[1..],
             frame + 1,
-            partial_score + 10 + sum_of_next_2_throws(throw2, throw3)?,
+            partial_score + 10 + score_next_2_throws(throw2, throw3)?,
         ),
         (_, [throw1, Throw::Spare, throw3, ..]) if throw1.score() < 10 => score_remaining_frames(
             &rem_throws[2..],
@@ -40,7 +40,7 @@ fn score_remaining_frames(
         (_, [throw1, throw2, ..]) if throw1.score() < 10 => score_remaining_frames(
             &rem_throws[2..],
             frame + 1,
-            partial_score + sum_of_next_2_throws(throw1, throw2)?,
+            partial_score + score_next_2_throws(throw1, throw2)?,
         ),
         _ => {
             return Err(format!(
@@ -64,7 +64,7 @@ mod tests {
 
     #[test]
     fn test_a_repeating_strike_followed_by_two_gutter_balls_scores_50() {
-        let throws = "X..".repeat(5);
+        let throws = "X--".repeat(5);
         let score = PatternScorer::score(&throws);
         assert_eq!(score, Ok(50));
     }
@@ -78,7 +78,7 @@ mod tests {
 
     #[test]
     fn test_a_strike_then_spare_then_all_gutter_balls_scores_30() {
-        let throws = "X5/".to_string() + "..".repeat(8).as_str();
+        let throws = "X5/".to_string() + "--".repeat(8).as_str();
         let score = PatternScorer::score(&throws);
         assert_eq!(score, Ok(30));
     }
