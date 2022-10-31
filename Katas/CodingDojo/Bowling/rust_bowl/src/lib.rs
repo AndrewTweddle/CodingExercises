@@ -6,7 +6,7 @@ pub type Score = u16;
 pub type Frame = u8;
 pub type PinCount = u8;
 
-#[derive(Error, Debug, PartialEq)]
+#[derive(Error, Debug, PartialEq, Eq)]
 pub enum BowlingScorerError {
     #[error("Unrecognized symbol: {0}")]
     UnrecognizedSymbol(char),
@@ -39,7 +39,7 @@ pub enum BowlingScorerError {
     },
 }
 
-#[derive(Debug, PartialEq, Copy, Clone)]
+#[derive(Debug, PartialEq, Eq, Copy, Clone)]
 pub enum Throw {
     Pins(PinCount),
     Spare,

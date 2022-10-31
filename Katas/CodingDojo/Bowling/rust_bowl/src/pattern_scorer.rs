@@ -81,11 +81,11 @@ fn score_remaining_frames(
         ),
         // Catch-all for any other invalid patterns
         _ => {
-            let all_remaining_throws = rem_throws.iter().cloned().collect();
-            return Err(BowlingScorerError::InvalidPatternInFrame {
+            let all_remaining_throws = rem_throws.to_vec();
+            Err(BowlingScorerError::InvalidPatternInFrame {
                 frame,
                 all_remaining_throws,
-            });
+            })
         }
     }
 }
