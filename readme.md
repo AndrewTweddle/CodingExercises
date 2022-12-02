@@ -6,23 +6,20 @@ I use these to:
 * practise coding skills,
 * learn new programming languages,
 * compare languages or paradigms,
-* prepare for technical interviews, and
+* prepare for technical interviews, and (last but **not** least)
 * have fun solving coding puzzles!
 
 ## Links within this page
 
-| Link                                          | Source                                                      | Description                                  |
-|-----------------------------------------------|-------------------------------------------------------------|----------------------------------------------|
-| [cryptopals](#cryptopals-crypto-challenges)   | [cryptopals.com](https://cryptopals.com/)                   | Cryptography challenges                      |
-| [Project Euler](#project-euler-problems)      | [projecteuler.net](https://projecteuler.net)                | Coding challenges with a mathematical theme  |
-| [Advent of Code](#advent-of-code)             | [adventofcode.com](https://adventofcode.com/)               | 25 days of coding challenges run in December |
-| - [2020](#2020)                               |                                                             |                                              |
-| - [2021](#2021)                               |                                                             |                                              |
-| - [2022](#2022)                               |                                                             |                                              |
-| [CSES Problem Set](#cses-problem-set)         | [cses.fi/problemset/list](https://cses.fi/problemset/list/) | Competitive coding exercises                 |
-| [CodingDojo Katas](#katas-from-codingdojoorg) | [CodingDojo.org](https://codingdojo.org/)                   |                                              |
-| [Miscellaneous](#miscellaneous)               | Miscellaneous sources                                       |                                              |
-| [CTCI Exercises](#ctci)                       | The book "Cracking the Coding Interview"                    | Technical interview questions                |
+| Link                                                                            | Source                                                      | Description                                  |
+|---------------------------------------------------------------------------------|-------------------------------------------------------------|----------------------------------------------|
+| [Project Euler](#project-euler-problems)                                        | [projecteuler.net](https://projecteuler.net)                | Coding challenges with a mathematical theme  |
+| [Advent of Code](#advent-of-code) ([2020](#2020), [2021](#2021), [2022](#2022)) | [adventofcode.com](https://adventofcode.com/)               | 25 days of coding challenges run in December |
+| [cryptopals](#cryptopals-crypto-challenges)                                     | [cryptopals.com](https://cryptopals.com/)                   | Cryptography challenges                      |
+| [CSES Problem Set](#cses-problem-set)                                           | [cses.fi/problemset/list](https://cses.fi/problemset/list/) | Competitive coding exercises                 |
+| [CodingDojo Katas](#katas-from-codingdojoorg)                                   | [CodingDojo.org](https://codingdojo.org/)                   |                                              |
+| [Miscellaneous](#miscellaneous)                                                 | Miscellaneous sources                                       |                                              |
+| [CTCI Exercises](#ctci)                                                         | The book "Cracking the Coding Interview"                    | Technical interview questions                |
 
 ## Related repositories
 
@@ -33,22 +30,6 @@ I use these to:
 | [AndrewTweddle/fpinscala](https://github.com/AndrewTweddle/fpinscala)         | Forked exercises from the book ["Functional Programming in Scala"](http://www.manning.com/bjarnason/) |
 
 # The exercises
-
-## cryptopals crypto challenges
-
-### Solutions for [Set 1](https://cryptopals.com/sets/1)
-
-| Challenge | Description                                                               | Date Solved | Solution                                                  | Notes                                                                                                                                                                                     |
-|-----------|---------------------------------------------------------------------------|-------------|-----------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| #1        | [Convert hex to base64](https://cryptopals.com/sets/1/challenges/1)       | 2021-11-20  | [Rust](cryptopals/set1/src/bin/challenge1.rs)             |                                                                                                                                                                                           |
-| #2        | [Fixed XOR](https://cryptopals.com/sets/1/challenges/2)                   | 2021-12-01  | [Rust](cryptopals/set1/src/bin/challenge2.rs)             |                                                                                                                                                                                           |
-| #3        | [Single-byte XOR cipher](https://cryptopals.com/sets/1/challenges/3)      | 2021-12-03  | [Rust](cryptopals/set1/src/bin/challenge3.rs)             | Order histogram of chars and find min variance of positions from frequency histogram.                                                                                                     |
-|           |                                                                           | 2022-01-15  | [Rust](cryptopals/set1/src/bin/challenge3_alpha_count.rs) | Count lowercase ASCII letters twice, and uppercase once and use the key with the max score.                                                                                               |
-| #4        | [Detect single-character XOR](https://cryptopals.com/sets/1/challenges/4) | 2022-01-15  | [Rust](cryptopals/set1/src/bin/challenge4.rs)             | Naive ASCII score fails. More complex ascii score works, taking 15 ms. Letter frequency histogram approach takes 131 ms.                                                                  |
-| #5        | [Implement repeating-key XOR](https://cryptopals.com/sets/1/challenges/5) | 2022-05-29  | [Rust](cryptopals/set1/src/bin/challenge5.rs)             | The repeating key XOR encryption function was added to lib.rs.                                                                                                                            |
-| #6        | [Break repeating-key XOR](https://cryptopals.com/sets/1/challenges/6)     | 2022-06-28  | [Rust](cryptopals/set1/src/bin/challenge6.rs)             | lib.rs was broken into various sub-modules including [base64](cryptopals/set1/src/base64.rs) and [cipher::repeating_key_xor](cryptopals/set1/src/ciphers/repeating_key_xor.rs) utilities. |
-| #7        | [AES in ECB mode](https://cryptopals.com/sets/1/challenges/7)             | 2022-07-01  | [Rust](cryptopals/set1/src/bin/challenge7.rs)             | [ciphers::aes](cryptopals/set1/src/ciphers/aes.rs) wraps the call to the rust [openssl crate](https://crates.io/crates/openssl).                                                          |
-| #8        | [Detect AES in ECB mode](https://cryptopals.com/sets/1/challenges/8)      | 2022-07-03  | [Rust](cryptopals/set1/src/bin/challenge8.rs)             |                                                                                                                                                                                           |
 
 ## Project Euler problems
 
@@ -202,10 +183,26 @@ This can be very useful for:
 
 ### 2022
 
-| Day                                      | Part | Date Solved | My solution                                                     | Notes                                                                                                       |
-|------------------------------------------|------|-------------|-----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
-| [1](https://adventofcode.com/2022/day/1) | 1    | 2022-12-01  | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day1_part1.rs) |                                                                                                             |
-|                                          |      |             | [Rust](AdventOfCode/aoc2022/src/bin/day1_part1.rs)              |                                                                                                             |
+| Day                                      | Part | Date Solved | My solution                                                         | Notes                                                                                                       |
+|------------------------------------------|------|-------------|---------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| [1](https://adventofcode.com/2022/day/1) | 1    | 2022-12-01  | [Python](AdventOfCode/aoc2022/src/python/src/aoc2022_day1_part1.rs) |                                                                                                             |
+|                                          |      |             | [Rust](AdventOfCode/aoc2022/src/bin/day1_part1.rs)                  |                                                                                                             |
+
+## cryptopals crypto challenges
+
+### Solutions for [Set 1](https://cryptopals.com/sets/1)
+
+| Challenge | Description                                                               | Date Solved | Solution                                                  | Notes                                                                                                                                                                                     |
+|-----------|---------------------------------------------------------------------------|-------------|-----------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| #1        | [Convert hex to base64](https://cryptopals.com/sets/1/challenges/1)       | 2021-11-20  | [Rust](cryptopals/set1/src/bin/challenge1.rs)             |                                                                                                                                                                                           |
+| #2        | [Fixed XOR](https://cryptopals.com/sets/1/challenges/2)                   | 2021-12-01  | [Rust](cryptopals/set1/src/bin/challenge2.rs)             |                                                                                                                                                                                           |
+| #3        | [Single-byte XOR cipher](https://cryptopals.com/sets/1/challenges/3)      | 2021-12-03  | [Rust](cryptopals/set1/src/bin/challenge3.rs)             | Order histogram of chars and find min variance of positions from frequency histogram.                                                                                                     |
+|           |                                                                           | 2022-01-15  | [Rust](cryptopals/set1/src/bin/challenge3_alpha_count.rs) | Count lowercase ASCII letters twice, and uppercase once and use the key with the max score.                                                                                               |
+| #4        | [Detect single-character XOR](https://cryptopals.com/sets/1/challenges/4) | 2022-01-15  | [Rust](cryptopals/set1/src/bin/challenge4.rs)             | Naive ASCII score fails. More complex ascii score works, taking 15 ms. Letter frequency histogram approach takes 131 ms.                                                                  |
+| #5        | [Implement repeating-key XOR](https://cryptopals.com/sets/1/challenges/5) | 2022-05-29  | [Rust](cryptopals/set1/src/bin/challenge5.rs)             | The repeating key XOR encryption function was added to lib.rs.                                                                                                                            |
+| #6        | [Break repeating-key XOR](https://cryptopals.com/sets/1/challenges/6)     | 2022-06-28  | [Rust](cryptopals/set1/src/bin/challenge6.rs)             | lib.rs was broken into various sub-modules including [base64](cryptopals/set1/src/base64.rs) and [cipher::repeating_key_xor](cryptopals/set1/src/ciphers/repeating_key_xor.rs) utilities. |
+| #7        | [AES in ECB mode](https://cryptopals.com/sets/1/challenges/7)             | 2022-07-01  | [Rust](cryptopals/set1/src/bin/challenge7.rs)             | [ciphers::aes](cryptopals/set1/src/ciphers/aes.rs) wraps the call to the rust [openssl crate](https://crates.io/crates/openssl).                                                          |
+| #8        | [Detect AES in ECB mode](https://cryptopals.com/sets/1/challenges/8)      | 2022-07-03  | [Rust](cryptopals/set1/src/bin/challenge8.rs)             |                                                                                                                                                                                           |
 
 ## CSES Problem Set
 
