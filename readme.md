@@ -16,6 +16,9 @@ I use these to:
 | [cryptopals](#cryptopals-crypto-challenges)   | [cryptopals.com](https://cryptopals.com/)                   | Cryptography challenges                      |
 | [Project Euler](#project-euler-problems)      | [projecteuler.net](https://projecteuler.net)                | Coding challenges with a mathematical theme  |
 | [Advent of Code](#advent-of-code)             | [adventofcode.com](https://adventofcode.com/)               | 25 days of coding challenges run in December |
+| - [2020](#2020)                               |                                                             |                                              |
+| - [2021](#2021)                               |                                                             |                                              |
+| - [2022](#2022)                               |                                                             |                                              |
 | [CSES Problem Set](#cses-problem-set)         | [cses.fi/problemset/list](https://cses.fi/problemset/list/) | Competitive coding exercises                 |
 | [CodingDojo Katas](#katas-from-codingdojoorg) | [CodingDojo.org](https://codingdojo.org/)                   |                                              |
 | [Miscellaneous](#miscellaneous)               | Miscellaneous sources                                       |                                              |
@@ -196,6 +199,13 @@ This can be very useful for:
 | [21](https://adventofcode.com/2021/day/21) | 1     | 2022-10-04  | [Rust](AdventOfCode/aoc2021/src/bin/day21_problem1.rs)          |                                                                                                             |
 |                                            | 2     | 2022-10-05  | [Rust](AdventOfCode/aoc2021/src/bin/day21_problem2.rs)          | Duration: 350µs.                                                                                            |
 | [22](https://adventofcode.com/2021/day/22) | 1 & 2 | 2022-10-09  | [Rust](AdventOfCode/aoc2021/src/bin/day22_problem1and2.rs)      | Part 1 duration: 831ms. Part 1 and 2 combined duration: 1.46s.                                              |
+
+### 2022
+
+| Day                                      | Part | Date Solved | My solution                                                     | Notes                                                                                                       |
+|------------------------------------------|------|-------------|-----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| [1](https://adventofcode.com/2022/day/1) | 1    | 2022-12-01  | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day1_part1.rs) |                                                                                                             |
+|                                          |      |             | [Rust](AdventOfCode/aoc2022/src/bin/day1_part1.rs)              |                                                                                                             |
 
 ## CSES Problem Set
 
