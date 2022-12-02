@@ -183,10 +183,10 @@ This can be very useful for:
 
 ### 2022
 
-| Day                                      | Part | Date Solved | My solution                                                     | Notes                                                                                                       |
-|------------------------------------------|------|-------------|-----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
-| [1](https://adventofcode.com/2022/day/1) | 1    | 2022-12-01  | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day1_part1.rs) |                                                                                                             |
-|                                          |      |             | [Rust](AdventOfCode/aoc2022/src/bin/day1_part1.rs)              |                                                                                                             |
+| Day                                      | Part | Date Solved | My solution                                                    | Notes                                                                                                       |
+|------------------------------------------|------|-------------|----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| [1](https://adventofcode.com/2022/day/1) | 1    | 2022-12-01  | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day1_part1.py) |                                                                                                             |
+|                                          |      |             | [Rust](AdventOfCode/aoc2022/src/bin/day1_part1.rs)             |                                                                                                             |
 
 ## cryptopals crypto challenges
 
