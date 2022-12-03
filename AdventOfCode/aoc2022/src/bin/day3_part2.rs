@@ -6,7 +6,7 @@ fn main() {
         .map(|elves| {
             let &badge = elves[0]
                 .iter()
-                .find(|&byte1| elves[1].contains(byte1) && elves[2].contains(byte1))
+                .find(|&item| elves[1].contains(item) && elves[2].contains(item))
                 .unwrap();
             (if badge >= b'a' {
                 1 + badge - b'a'
