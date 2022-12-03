@@ -193,6 +193,7 @@ This can be very useful for:
 | [2](https://adventofcode.com/2022/day/2) | 1    | 2022-12-02  | [Rust](AdventOfCode/aoc2022/src/bin/day2_part1.rs)              |                 |
 |                                          |      |             | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day2_part1.py) |                 |
 |                                          | 2    | 2022-12-02  | [Rust](AdventOfCode/aoc2022/src/bin/day2_part2.rs)              |                 |
+|                                          |      |             | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day2_part2.py) |                 |
 
 ## cryptopals crypto challenges
 
