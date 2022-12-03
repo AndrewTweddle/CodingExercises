@@ -196,6 +196,8 @@ This can be very useful for:
 |                                          |      |             | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day2_part2.py) |                                          |
 | [3](https://adventofcode.com/2022/day/3) | 1    | 2022-12-03  | [Rust](AdventOfCode/aoc2022/src/bin/day3_part1.rs)              | Problem: **Rucksack Reorganization**     |
 |                                          |      |             | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day3_part1.py) |                                          |
+|                                          | 2    | 2022-12-03  | [Rust](AdventOfCode/aoc2022/src/bin/day3_part2.rs)              |                                          |
+|                                          |      |             | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day3_part2.py) |                                          |
 
 ## cryptopals crypto challenges
 
