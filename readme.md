@@ -190,6 +190,7 @@ This can be very useful for:
 |                                          | 2    | 2022-12-01  | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day1_part2.py) |                 |
 |                                          |      |             | [Rust](AdventOfCode/aoc2022/src/bin/day1_part2.rs)              | Duration: 107µs |
 |                                          |      |             | [Rust](AdventOfCode/aoc2022/src/bin/day1_part2_fast.rs)         | Duration: 98µs  |
+| [2](https://adventofcode.com/2022/day/2) | 1    | 2022-12-02  | [Rust](AdventOfCode/aoc2022/src/bin/day2_part1.rs)              |                 |
 
 ## cryptopals crypto challenges
 
