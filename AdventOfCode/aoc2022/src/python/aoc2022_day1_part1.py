@@ -15,3 +15,5 @@ if curr_sum > max_sum:
     max_sum = curr_sum
 
 print("AOC 2022: day 1, part 1: {}".format(max_sum))
+
+input_file.close()

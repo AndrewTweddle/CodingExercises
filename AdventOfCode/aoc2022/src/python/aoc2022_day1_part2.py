@@ -18,3 +18,5 @@ if curr_sum > max_sums[0]:
 top_3_inventories = sum(max_sums)
 
 print("AOC 2022: day 1, part 2: {}".format(top_3_inventories))
+
+input_file.close()
