@@ -12,8 +12,8 @@ fn main() {
     println!("Day 2 part 1: {score}");
 }
 
-fn score_round(opponent_byte: u8, my_byte: u8) -> u8 {
-    (my_byte - b'W') + 3 * ((my_byte - opponent_byte + 2) % 3)
+fn score_round(opponent: u8, me: u8) -> u8 {
+    (me - b'W') + 3 * ((me - opponent + 2) % 3)
 }
 
 #[cfg(test)]
