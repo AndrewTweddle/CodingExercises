@@ -13,7 +13,8 @@ fn main() {
 }
 
 fn score_round(opponent: u8, outcome: u8) -> u8 {
-    let me = b'X' + (opponent - b'A' + outcome - b'X' + 2) % 3;
+    let shift = outcome - b'X' + 2;  // shift 2 on to lose, 3 (=0, cyclically) to draw, 4=1 to win
+    let me = b'X' + (opponent - b'A' + shift) % 3;  // calculate shift relative to opponent
     (me - b'W') + 3 * ((me - opponent + 2) % 3)
 }
 
