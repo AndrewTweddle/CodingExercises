@@ -200,6 +200,7 @@ This can be very useful for:
 |                                          | 2    | 2022-12-03  | [Rust](AdventOfCode/aoc2022/src/bin/day3_part2.rs)                       |                                            |
 |                                          |      |             | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day3_part2.py)          | Using list comprehensions                  |
 |                                          |      | 2022-12-04  | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day3_part2_for_loop.py) | Using for loop (longer, but more readable) |
+| [4](https://adventofcode.com/2022/day/4) | 1    | 2022-12-04  | [Rust](AdventOfCode/aoc2022/src/bin/day4_part1.rs)                       | Problem: **Camp Cleanup**                  |
 
 ## cryptopals crypto challenges
 
