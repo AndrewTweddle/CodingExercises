@@ -183,24 +183,24 @@ This can be very useful for:
 
 ### 2022
 
-| Day                                      | Part | Date Solved | My solution                                                              | Notes                                      |
-|------------------------------------------|------|-------------|--------------------------------------------------------------------------|--------------------------------------------|
-| [1](https://adventofcode.com/2022/day/1) | 1    | 2022-12-01  | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day1_part1.py)          | Problem: **Calorie Counting**              |
-|                                          |      |             | [Rust](AdventOfCode/aoc2022/src/bin/day1_part1.rs)                       |                                            |
-|                                          | 2    | 2022-12-01  | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day1_part2.py)          |                                            |
-|                                          |      |             | [Rust](AdventOfCode/aoc2022/src/bin/day1_part2.rs)                       | Duration: 107µs                            |
-|                                          |      |             | [Rust](AdventOfCode/aoc2022/src/bin/day1_part2_fast.rs)                  | Duration: 98µs                             |
-| [2](https://adventofcode.com/2022/day/2) | 1    | 2022-12-02  | [Rust](AdventOfCode/aoc2022/src/bin/day2_part1.rs)                       | Problem: **Rock Paper Scissors**           |
-|                                          |      |             | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day2_part1.py)          | Succinct, but too much magic in formula!   |
-|                                          | 2    | 2022-12-02  | [Rust](AdventOfCode/aoc2022/src/bin/day2_part2.rs)                       |                                            |
-|                                          |      |             | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day2_part2.py)          |                                            |
-| [3](https://adventofcode.com/2022/day/3) | 1    | 2022-12-03  | [Rust](AdventOfCode/aoc2022/src/bin/day3_part1.rs)                       | Problem: **Rucksack Reorganization**       |
-|                                          |      |             | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day3_part1.py)          | Using list comprehensions                  |
-|                                          |      | 2022-12-04  | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day3_part1_for_loop.py) | Using for loop (longer, but more readable) |
-|                                          | 2    | 2022-12-03  | [Rust](AdventOfCode/aoc2022/src/bin/day3_part2.rs)                       |                                            |
-|                                          |      |             | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day3_part2.py)          | Using list comprehensions                  |
-|                                          |      | 2022-12-04  | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day3_part2_for_loop.py) | Using for loop (longer, but more readable) |
-| [4](https://adventofcode.com/2022/day/4) | 1    | 2022-12-04  | [Rust](AdventOfCode/aoc2022/src/bin/day4_part1.rs)                       | Problem: **Camp Cleanup**                  |
+| Day                                      | Part  | Date Solved | My solution                                                              | Notes                                      |
+|------------------------------------------|-------|-------------|--------------------------------------------------------------------------|--------------------------------------------|
+| [1](https://adventofcode.com/2022/day/1) | 1     | 2022-12-01  | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day1_part1.py)          | Problem: **Calorie Counting**              |
+|                                          |       |             | [Rust](AdventOfCode/aoc2022/src/bin/day1_part1.rs)                       |                                            |
+|                                          | 2     | 2022-12-01  | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day1_part2.py)          |                                            |
+|                                          |       |             | [Rust](AdventOfCode/aoc2022/src/bin/day1_part2.rs)                       | Duration: 107µs                            |
+|                                          |       |             | [Rust](AdventOfCode/aoc2022/src/bin/day1_part2_fast.rs)                  | Duration: 98µs                             |
+| [2](https://adventofcode.com/2022/day/2) | 1     | 2022-12-02  | [Rust](AdventOfCode/aoc2022/src/bin/day2_part1.rs)                       | Problem: **Rock Paper Scissors**           |
+|                                          |       |             | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day2_part1.py)          | Succinct, but too much magic in formula!   |
+|                                          | 2     | 2022-12-02  | [Rust](AdventOfCode/aoc2022/src/bin/day2_part2.rs)                       |                                            |
+|                                          |       |             | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day2_part2.py)          |                                            |
+| [3](https://adventofcode.com/2022/day/3) | 1     | 2022-12-03  | [Rust](AdventOfCode/aoc2022/src/bin/day3_part1.rs)                       | Problem: **Rucksack Reorganization**       |
+|                                          |       |             | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day3_part1.py)          | Using list comprehensions                  |
+|                                          |       | 2022-12-04  | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day3_part1_for_loop.py) | Using for loop (longer, but more readable) |
+|                                          | 2     | 2022-12-03  | [Rust](AdventOfCode/aoc2022/src/bin/day3_part2.rs)                       |                                            |
+|                                          |       |             | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day3_part2.py)          | Using list comprehensions                  |
+|                                          |       | 2022-12-04  | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day3_part2_for_loop.py) | Using for loop (longer, but more readable) |
+| [4](https://adventofcode.com/2022/day/4) | 1 & 2 | 2022-12-04  | [Rust](AdventOfCode/aoc2022/src/bin/day4_part1and2.rs)                   | Problem: **Camp Cleanup**                  |
 
 ## cryptopals crypto challenges
 
