@@ -5,8 +5,8 @@ fn main() {
     let contents = std::fs::read_to_string("data/day4_input.txt").unwrap();
     let part1 = count_matching_lines(&contents, either_assignment_contains_the_other);
     let part2 = count_matching_lines(&contents, assignments_overlap);
-    println!("2022 day  part 1 answer: {}", part1);
-    println!("2022 day  part 2 answer: {}", part2);
+    println!("2022 day 4 part 1 answer: {}", part1);
+    println!("2022 day 4 part 2 answer: {}", part2);
 }
 
 fn count_matching_lines(contents: &str, predicate: PairPredicate) -> usize {
