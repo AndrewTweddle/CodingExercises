@@ -6,7 +6,7 @@ fn main() {
     let part1 = count_matching_lines(&contents, either_assignment_contains_the_other);
     let part2 = count_matching_lines(&contents, assignments_overlap);
     println!("2022 day  part 1 answer: {}", part1);
-    println!("2022 day  part 1 answer: {}", part2);
+    println!("2022 day  part 2 answer: {}", part2);
 }
 
 fn count_matching_lines(contents: &str, predicate: PairPredicate) -> usize {
@@ -47,7 +47,32 @@ mod tests {
 
         #[test]
         fn test_second_fully_contains_first() {
-            assert!(either_assignment_contains_the_other((4, 6), (6, 6)));
+            assert!(either_assignment_contains_the_other((3, 7), (2, 8)));
+        }
+
+        #[test]
+        fn test_first_contains_second_matching_on_the_right() {
+            assert!(either_assignment_contains_the_other((4, 6), (5, 6)));
+        }
+
+        #[test]
+        fn test_second_contains_first_matching_on_the_right() {
+            assert!(either_assignment_contains_the_other((5, 6), (4, 6)));
+        }
+
+        #[test]
+        fn test_first_contains_second_matching_on_the_left() {
+            assert!(either_assignment_contains_the_other((4, 6), (4, 5)));
+        }
+
+        #[test]
+        fn test_second_contains_first_matching_on_the_left() {
+            assert!(either_assignment_contains_the_other((4, 5), (4, 6)));
+        }
+
+        #[test]
+        fn test_matching_assignments() {
+            assert!(either_assignment_contains_the_other((3, 7), (3, 7)));
         }
 
         #[test]
@@ -78,21 +103,18 @@ mod tests {
         }
 
         #[test]
-        fn test_overlap_in_multiple_sections()
-        {
+        fn test_overlap_in_multiple_sections() {
             // 2-6,4-8 overlaps in sections 4, 5, and 6.
             assert!(assignments_overlap((2, 6), (4, 8)))
         }
 
         #[test]
-        fn test_no_overlap_with_first_assignment_earlier()
-        {
+        fn test_no_overlap_with_first_assignment_earlier() {
             assert!(!assignments_overlap((2, 4), (6, 8)))
         }
 
         #[test]
-        fn test_no_overlap_with_first_assignment_later()
-        {
+        fn test_no_overlap_with_first_assignment_later() {
             assert!(!assignments_overlap((6, 8), (1, 3)))
         }
     }
