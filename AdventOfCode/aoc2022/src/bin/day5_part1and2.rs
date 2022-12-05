@@ -90,14 +90,10 @@ fn process_crate_mover_9000_instruction(stacks: &mut Stacks, instruction: &Instr
 }
 
 fn process_crate_mover_9001_instruction(stacks: &mut Stacks, instruction: &Instruction) {
-    let mut intermediate_stack = Stack::with_capacity(instruction.crate_count);
-    for _ in 0..instruction.crate_count {
-        let crate_to_move = stacks[instruction.src_stack - 1].pop().unwrap();
-        intermediate_stack.push(crate_to_move);
-    }
-    while let Some(crate_to_move) = intermediate_stack.pop() {
-        stacks[instruction.dst_stack - 1].push(crate_to_move);
-    }
+    let src_stack = &mut stacks[instruction.src_stack - 1];
+    let start_index = src_stack.len() - instruction.crate_count;
+    let crates_to_move: Stack = src_stack.drain(start_index..).collect();
+    stacks[instruction.dst_stack - 1].extend(crates_to_move);
 }
 
 #[cfg(test)]
