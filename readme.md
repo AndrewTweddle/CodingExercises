@@ -203,7 +203,8 @@ This can be very useful for:
 | [4](https://adventofcode.com/2022/day/4) | 1 & 2 | 2022-12-04  | [Rust](AdventOfCode/aoc2022/src/bin/day4_part1and2.rs)                   | Problem: **Camp Cleanup**                       |
 |                                          |       |             | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day4_part1and2.py)      |                                                 |
 | [5](https://adventofcode.com/2022/day/5) | 1 & 2 | 2022-12-05  | [Rust](AdventOfCode/aoc2022/src/bin/day5_part1and2.rs)                   | Problem: **Supply Stacks**                      |
-| [6](https://adventofcode.com/2022/day/6) | 1 & 2 | 2022-12-06  | [Rust](AdventOfCode/aoc2022/src/bin/day6_part1and2.rs)                   | Problem: **Tuning Trouble**. Efficient. 39 LOC. |
+| [6](https://adventofcode.com/2022/day/6) | 1 & 2 | 2022-12-06  | [Rust](AdventOfCode/aoc2022/src/bin/day6_part1and2.rs)                   | Problem: **Tuning Trouble**. Efficient. 43 LOC. |
+|                                          |       |             | [Rust](AdventOfCode/aoc2022/src/bin/day6_part1and2_windows.rs)           | 23 LOC (excluding unit tests). Over 10x slower. |
 |                                          |       |             | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day6_part1and2.py)      | Succinct. 9 LOC.                                |
 
 ## cryptopals crypto challenges

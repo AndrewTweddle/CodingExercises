@@ -1,3 +1,5 @@
+use std::collections::HashSet;
+
 fn main() {
     let contents = std::fs::read_to_string("data/day6_input.txt").unwrap();
     println!("2022 day 6 part 1 answer: {}", solve_part1(contents.trim()));
@@ -12,34 +14,12 @@ fn solve_part2(msg: &str) -> usize {
 }
 
 fn get_pos_of_nth_consecutive_unique_char(msg: &str, n: usize) -> Option<usize> {
-    // Work with the zero-based index of each character in the alphabet...
-    let indices: Vec<usize> = msg.trim().bytes().map(|b| (b - b'a') as usize).collect();
-    let mut counts = [0_i8; 26]; // count number of each character in the last n characters seen
-    let mut distinct = 0; // the number of distinct characters in the last n characters seen
-
-    for (i, &ch) in indices.iter().enumerate() {
-        if i >= n {
-            // remove the character n+1 steps back from the batch of last n characters seen
-            let old_ch = indices[i - n];
-            counts[old_ch] -= 1;
-            match counts[old_ch] {
-                0 => distinct -= 1,
-                1 => distinct += 1,
-                _ => {}
-            }
-        }
-        // Add the new character to the batch of last n characters seen
-        counts[ch] += 1;
-        match counts[ch] {
-            1 => distinct += 1,
-            2 => distinct -= 1,
-            _ => {}
-        }
-        if distinct == n {
-            return Some(i + 1);
-        }
-    }
-    None
+    msg.as_bytes()
+        .windows(n)
+        .enumerate()
+        .filter(|(_, w)| w.iter().cloned().collect::<HashSet<u8>>().len() == n)
+        .map(|(i, _)| i + n)
+        .next()
 }
 
 #[cfg(test)]
