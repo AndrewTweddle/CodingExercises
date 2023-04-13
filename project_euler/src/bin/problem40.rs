@@ -1,6 +1,6 @@
 use std::time::Instant;
 
-pub const NUM_REPETITIONS: u32 = 100;
+pub const NUM_REPETITIONS: u32 = 100000;
 
 fn main() {
     let mut start_time = Instant::now();
