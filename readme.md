@@ -207,7 +207,7 @@ This can be very useful for:
 | [6](https://adventofcode.com/2022/day/6) | 1 & 2 | 2022-12-06  | [Rust](AdventOfCode/aoc2022/src/bin/day6_part1and2.rs)                   | Problem: **Tuning Trouble**. Efficient. 43 LOC. |
 |                                          |       |             | [Rust](AdventOfCode/aoc2022/src/bin/day6_part1and2_windows.rs)           | 23 LOC (excluding unit tests). Over 10x slower. |
 |                                          |       |             | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day6_part1and2.py)      | Succinct. 9 LOC.                                |
-| [7](https://adventofcode.com/2022/day/7) | 1     | 2023-04-23  | [Rust](AdventOfCode/aoc2022/src/bin/day7.rs)                             | Problem: **No Space Left On Device**            |
+| [7](https://adventofcode.com/2022/day/7) | 1 & 2 | 2023-04-23  | [Rust](AdventOfCode/aoc2022/src/bin/day7.rs)                             | Problem: **No Space Left On Device**            |
 
 
 ## cryptopals crypto challenges
