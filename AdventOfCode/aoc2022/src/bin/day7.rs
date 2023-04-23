@@ -277,17 +277,36 @@ fn parse(contents: &str) -> Result<FileSystem, String> {
 
 const MAX_DIR_SIZE: usize = 100_000;
 
-fn sum_of_dir_sizes_with_total_size_up_to_max_dir_size(file_sys: &FileSystem) -> usize {
+fn get_sum_of_dir_sizes_with_total_size_up_to_max_dir_size(file_sys: &FileSystem) -> usize {
     let mut sum_of_sizes: usize = 0;
-    recursively_sum_entry_sizes(file_sys, file_sys.get_root(), &mut sum_of_sizes);
+    recursively_sum_entry_sizes(file_sys, file_sys.get_root(), &mut |dir_size: usize| {
+        if dir_size <= MAX_DIR_SIZE {
+            sum_of_sizes += dir_size;
+        }
+    });
     sum_of_sizes
 }
 
-fn recursively_sum_entry_sizes(
-    file_sys: &FileSystem,
-    entry: &Entry,
-    sum_of_sizes: &mut usize
-) -> usize {
+const TOTAL_DISK_SPACE: usize = 70_000_000;
+const UNUSED_DISK_SPACE_NEEDED: usize = 30_000_000;
+
+fn get_min_dir_size_ge_min_size(file_sys: &FileSystem, min_dir_size: usize) -> usize {
+    let mut min_dir_size_found = TOTAL_DISK_SPACE;
+    recursively_sum_entry_sizes(file_sys, file_sys.get_root(), &mut |dir_size| {
+        if dir_size >= min_dir_size && dir_size < min_dir_size_found {
+            min_dir_size_found = dir_size;
+        }
+    });
+    min_dir_size_found
+}
+
+fn recursively_sum_entry_sizes<'a, F>(
+    file_sys: &'a FileSystem,
+    entry: &'a Entry,
+    dir_size_fn: &mut F
+) -> usize
+    where F: FnMut(usize)
+{
    match entry {
        Entry::File {
            name: _,
@@ -300,15 +319,31 @@ fn recursively_sum_entry_sizes(
            let mut dir_size: usize = 0;
            for i in indices.first_index..=indices.last_index {
                let child_entry = &file_sys.entries[i];
-               dir_size += recursively_sum_entry_sizes(file_sys, child_entry, sum_of_sizes)
+               dir_size += recursively_sum_entry_sizes(file_sys, child_entry, dir_size_fn)
            }
-           if dir_size <= MAX_DIR_SIZE {
-               *sum_of_sizes += dir_size;
-           }
+           dir_size_fn(dir_size);
            dir_size
        },
        _ => 0
    }
+}
+
+fn find_size_of_smallest_dir_freeing_enough_space(file_sys: &FileSystem) -> usize {
+    let total_used: usize = file_sys.entries.iter().map(|entry|  {
+        if let Entry::File { size: file_size, .. } = entry {
+            *file_size
+        } else {
+            0
+        }
+    }).sum();
+
+    let free_space = TOTAL_DISK_SPACE - total_used;
+    if free_space < UNUSED_DISK_SPACE_NEEDED {
+        let space_to_free_up = UNUSED_DISK_SPACE_NEEDED - free_space;
+        get_min_dir_size_ge_min_size(&file_sys, space_to_free_up)
+    } else {
+        0
+    }
 }
 
 fn main() {
@@ -323,9 +358,16 @@ fn main() {
     println!("Time to parse instructions and construct the file sytem: {:?}", start_step.elapsed());
 
     start_step = Instant::now();
-    let part1_answer = sum_of_dir_sizes_with_total_size_up_to_max_dir_size(&file_sys);
-    println!("Time to calculate answer: {:?}", start_step.elapsed());
+    let part1_answer = get_sum_of_dir_sizes_with_total_size_up_to_max_dir_size(&file_sys);
+    println!("Time to calculate part 1 answer: {:?}", start_step.elapsed());
 
-    println!("2022 day 7 part 1 answer: {}", part1_answer);
-    println!("Total time to calculate part 1 answer: {:?}", start_total.elapsed());
+    println!("\n2022 day 7 part 1 answer: {}\n", part1_answer);
+
+    start_step = Instant::now();
+    let part2_answer = find_size_of_smallest_dir_freeing_enough_space(&file_sys);
+    println!("Time to calculate part 2 answer: {:?}", start_step.elapsed());
+
+    println!("\n2022 day 7 part 2 answer: {}\n", part2_answer);
+
+    println!("Total time to calculate part 1 & 2 answers: {:?}", start_total.elapsed());
 }
