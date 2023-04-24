@@ -70,30 +70,89 @@ fn count_visible_trees(trees: &Vec<Vec<Tree>>) -> usize {
     }).sum()
 }
 
+fn calculate_scenic_score(trees: &Vec<Vec<Tree>>, row_index: usize, col_index: usize) -> usize {
+    let row = &trees[row_index];
+    let height = row[col_index].height;
+    let row_count = trees.len();
+    let col_count = row.len();
+    let left_tree_count: usize = (row[0..col_index].iter().rev().take_while(|tree|
+        tree.height < height
+    ).count() + 1).min(col_index);
+    let right_tree_count: usize = (row[(col_index + 1)..col_count].iter().take_while(|tree|
+        tree.height < height
+    ).count() + 1).min(col_count - col_index - 1);
+    let top_tree_count: usize = ((0..row_index).rev().take_while(|&r|
+        trees[r][col_index].height < height
+    ).count() + 1).min(row_index);
+    let bottom_tree_count: usize = (((row_index + 1)..row_count).take_while(|&r|
+        trees[r][col_index].height < height
+    ).count() + 1).min(row_count - row_index - 1);
+    left_tree_count * right_tree_count * top_tree_count * bottom_tree_count
+}
+
+fn get_max_scenic_core(trees: &Vec<Vec<Tree>>) -> usize {
+    let row_count = trees.len();
+    let col_count = trees.first().unwrap().len();
+    let mut max_scenic_score: usize = 0;
+    for r in 0..row_count {
+        for c in 0..col_count {
+            let scenic_score = calculate_scenic_score(trees, r, c);
+            if scenic_score > max_scenic_score {
+                max_scenic_score = scenic_score;
+            }
+        }
+    }
+    max_scenic_score
+}
+
 fn main() {
     let contents = std::fs::read_to_string("data/day8_input.txt").unwrap();
     let mut trees = parse_trees(contents.as_str());
 
     calculate_visibility(&mut trees);
-    let visible_count: usize = count_visible_trees(&trees);
+    let day8_part1_answer: usize = count_visible_trees(&trees);
+    println!("Day 8 part 1 answer: {}", day8_part1_answer);
 
-    println!("Day 8 part 1 answer: {}", visible_count)
+    let day8_part2_answer = get_max_scenic_core(&trees);
+    println!("Day 8 part 2 answer: {}", day8_part2_answer);
 }
 
 #[cfg(test)]
 mod tests {
-    use crate::{calculate_visibility, count_visible_trees, parse_trees};
+    use crate::{calculate_scenic_score, calculate_visibility, count_visible_trees, get_max_scenic_core, parse_trees};
+
+    const TEST_CONTENTS: &str = "30373\n\
+                                 25512\n\
+                                 65332\n\
+                                 33549\n\
+                                 35390";
 
     #[test]
-    fn test_example() {
-        let contents = "30373\n\
-                        25512\n\
-                        65332\n\
-                        33549\n\
-                        35390";
-        let mut trees = parse_trees(contents);
+    fn test_part1_example() {
+        let mut trees = parse_trees(TEST_CONTENTS);
         calculate_visibility(&mut trees);
         let visible_count = count_visible_trees(&trees);
         assert_eq!(visible_count, 21);
+    }
+
+    #[test]
+    fn test_part2_first_example() {
+        let trees = parse_trees(TEST_CONTENTS);
+        let scenic_score = calculate_scenic_score(&trees, 1, 2);
+        assert_eq!(scenic_score, 4);
+    }
+
+    #[test]
+    fn test_part2_second_example() {
+        let trees = parse_trees(TEST_CONTENTS);
+        let scenic_score = calculate_scenic_score(&trees, 3, 2);
+        assert_eq!(scenic_score, 8);
+    }
+
+    #[test]
+    fn test_part2_max_scenic_score_example() {
+        let trees = parse_trees(TEST_CONTENTS);
+        let max_scenic_score = get_max_scenic_core(&trees);
+        assert_eq!(max_scenic_score, 8);
     }
 }

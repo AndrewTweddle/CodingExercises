@@ -208,7 +208,7 @@ This can be very useful for:
 |                                          |       |             | [Rust](AdventOfCode/aoc2022/src/bin/day6_part1and2_windows.rs)           | 23 LOC (excluding unit tests). Over 10x slower. |
 |                                          |       |             | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day6_part1and2.py)      | Succinct. 9 LOC.                                |
 | [7](https://adventofcode.com/2022/day/7) | 1 & 2 | 2023-04-23  | [Rust](AdventOfCode/aoc2022/src/bin/day7.rs)                             | Problem: **No Space Left On Device**. Verbose.  |
-| [8](https://adventofcode.com/2022/day/8) | 1     |             | [Rust](AdventOfCode/aoc2022/src/bin/day8.rs)                             | Problem: **Treetop Tree House**                 |
+| [8](https://adventofcode.com/2022/day/8) | 1 & 2 |             | [Rust](AdventOfCode/aoc2022/src/bin/day8.rs)                             | Problem: **Treetop Tree House**                 |
 
 ## cryptopals crypto challenges
 
