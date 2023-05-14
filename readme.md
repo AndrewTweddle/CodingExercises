@@ -210,6 +210,7 @@ This can be very useful for:
 | [7](https://adventofcode.com/2022/day/7) | **No Space Left On Device** | 1 & 2 | 2023-04-23  | [Rust](AdventOfCode/aoc2022/src/bin/day7.rs)                             | Verbose.                                        |
 |                                          |                             |       | 2023-05-08  | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day7_part1and2.py)      |                                                 |
 | [8](https://adventofcode.com/2022/day/8) | **Treetop Tree House**      | 1 & 2 |             | [Rust](AdventOfCode/aoc2022/src/bin/day8.rs)                             |                                                 |
+| [9](https://adventofcode.com/2022/day/9) | **Rope Bridge**             | 1     | 2023-05-13  | [Rust](AdventOfCode/aoc2022/src/bin/day9_part1.rs)                       |                                                 |
 
 ## cryptopals crypto challenges
 
