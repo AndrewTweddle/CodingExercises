@@ -52,7 +52,7 @@ fn inv_fib(target_digits: usize) -> Result<i32, String> {
         }
         if carry > 0 {
             *a_digits = *b_digits + 1;
-            if *a_digits == target_digits as usize {
+            if *a_digits == target_digits {
                 return Ok(n);
             }
             a[*a_digits - 1] = carry;

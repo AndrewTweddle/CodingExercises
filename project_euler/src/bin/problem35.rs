@@ -102,12 +102,12 @@ fn digits_to_permuted_number_in_base(digits: &Vec<u8>, rotation: usize, base: us
 
 fn get_primes_below(n: usize) -> Vec<usize> {
     let mut primes = Vec::<usize>::with_capacity(n);
-    let mut is_prime = BitArray::with_capacity(n as usize, true);
+    let mut is_prime = BitArray::with_capacity(n, true);
     is_prime.set(0, false);
     is_prime.set(1, false);
     for i in 2..n {
         if is_prime[i] {
-            primes.push(i as usize);
+            primes.push(i);
             for j in ((i * i)..n).step_by(i) {
                 is_prime.set(j, false);
             }

@@ -11,13 +11,13 @@ fn main() {
         digits[0] = 1;
         for _ in 0..1000 {
             let mut carry = 0;
-            for i in 0..num_digits {
-                let new_digit = 2 * digits[i] + carry;
+            for digit in digits.iter_mut() {
+                let new_digit = *digit * 2 + carry;
                 if new_digit >= 10 {
-                    digits[i] = new_digit % 10;
+                    *digit = new_digit % 10;
                     carry = new_digit / 10;
                 } else {
-                    digits[i] = new_digit;
+                    *digit = new_digit;
                     carry = 0;
                 }
             }

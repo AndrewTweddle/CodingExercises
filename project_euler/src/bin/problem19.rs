@@ -26,12 +26,12 @@ fn main() {
     let mut start_day = MONDAY_INDEX;
     let mut months_starting_on_sunday = 0;
     for y in 1900..=2000 {
-        for m in 0..12 {
+        for (m, month_len) in MONTH_LENGTHS.iter().enumerate() {
             if start_day == SUNDAY_INDEX && y != 1900 {
                 months_starting_on_sunday += 1;
             }
             let is_leap_month = (m == FEB_INDEX) && (y % 4 == 0) && (y % 100 != 0 || y % 400 == 0);
-            let days_in_month = MONTH_LENGTHS[m] + if is_leap_month { 1 } else { 0 };
+            let days_in_month = month_len + if is_leap_month { 1 } else { 0 };
 
             // Calculate start date of next month
             start_day += days_in_month;

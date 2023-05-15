@@ -28,11 +28,9 @@ fn main() {
                             // m and n can't both be odd
                             continue;
                         }
-                        if dividend % m_plus_n == 0 {
-                            if gcd(m_plus_n, m) == 1 {
-                                // m and n must be relatively prime
-                                soln_count += 1;
-                            }
+                        if dividend % m_plus_n == 0 && gcd(m_plus_n, m) == 1 {
+                            // m and n must be relatively prime
+                            soln_count += 1;
                         }
                     }
                 }

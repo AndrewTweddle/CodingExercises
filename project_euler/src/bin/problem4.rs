@@ -23,7 +23,7 @@ fn get_rev_digits(n: i64) -> Vec<i64> {
     while quot > 0 {
         let rem = quot % 10;
         rev_digits.push(rem);
-        quot = quot / 10;
+        quot /= 10;
     }
     rev_digits
 }

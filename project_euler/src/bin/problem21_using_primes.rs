@@ -37,9 +37,9 @@ fn get_sum_of_amicable_numbers_under(max_num: usize) -> usize {
     sum_of_amicable_numbers
 }
 
-fn get_sum_of_divisors_of(number: usize, primes: &Vec<usize>) -> usize {
+fn get_sum_of_divisors_of(number: usize, primes: &[usize]) -> usize {
     let mut product_of_sums_of_prime_powers: usize = 1;
-    for prime in primes.into_iter() {
+    for prime in primes.iter() {
         let mut quotient = number;
         let mut sum_of_prime_power_factors = 1;
         let mut prime_power = 1;
@@ -55,7 +55,7 @@ fn get_sum_of_divisors_of(number: usize, primes: &Vec<usize>) -> usize {
 }
 
 fn get_primes_up_to(n: usize) -> Vec<usize> {
-    let mut is_prime = vec![true; (n + 1) as usize];
+    let mut is_prime = vec![true; n + 1];
     is_prime[0] = false;
     is_prime[1] = false;
     for candidate_prime in 2..=n {

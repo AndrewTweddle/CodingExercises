@@ -17,7 +17,7 @@ impl Ord for PrimeMultiple {
     fn cmp(&self, other: &Self) -> Ordering {
         match other.multiple.cmp(&self.multiple) {
             Ordering::Equal => other.prime.cmp(&self.prime),
-            ordering @ _ => ordering,
+            ordering => ordering,
         }
     }
 }

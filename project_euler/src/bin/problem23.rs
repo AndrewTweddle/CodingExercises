@@ -9,9 +9,10 @@ fn main() {
 
     for rep in 0..NUM_REPETITIONS {
         let mut is_abund = [false; MAX_NON_ABUNDANT_SUM + 1];
+
+        #[allow(clippy::needless_range_loop)]
         for i in MIN_ABUNDANT_NUM..=MAX_NON_ABUNDANT_SUM {
             let i_sum_divs = (1..i)
-                .into_iter()
                 .filter(|&div| i % div == 0)
                 .sum::<usize>();
             if i_sum_divs > i {
@@ -20,7 +21,6 @@ fn main() {
         }
 
         let non_abund_sum = (1..=MAX_NON_ABUNDANT_SUM)
-            .into_iter()
             .filter(|&i| !is_abund_sum(i, &is_abund))
             .sum::<usize>();
 
@@ -39,9 +39,7 @@ fn is_abund_sum(n: usize, is_abund: &[bool; MAX_NON_ABUNDANT_SUM + 1]) -> bool {
     for i in MIN_ABUNDANT_NUM..=(n - MIN_ABUNDANT_NUM) {
         if is_abund[i] {
             let j = n - i;
-            if i == j {
-                return true;
-            } else if is_abund[j] {
+            if i == j || is_abund[j] {
                 return true;
             }
         }

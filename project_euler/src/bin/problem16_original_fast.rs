@@ -55,7 +55,7 @@ pub fn square(digits: Vec<u128>) -> Vec<u128> {
                     adjustment += result[index];
                     result[index] = adjustment % BASE;
                 }
-                adjustment = adjustment / BASE;  // carry
+                adjustment /= BASE;  // carry
                 index += 1;
             }
         }

@@ -7,9 +7,9 @@ fn main() {
     let data_file_path = "data/p022_names.txt";
     let text = fs::read_to_string(data_file_path).expect("File contains invalid characters");
     let mut names: Vec<&str> = text
-        .strip_prefix("\"")
+        .strip_prefix('"')
         .unwrap()
-        .strip_suffix("\"")
+        .strip_suffix('"')
         .unwrap()
         .split("\",\"")
         .collect();

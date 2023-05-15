@@ -160,5 +160,5 @@ fn is_multidigit_prime(n: u64) -> bool {
             return true;
         }
     }
-    return true;
+    true
 }

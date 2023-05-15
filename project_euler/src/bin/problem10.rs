@@ -90,7 +90,7 @@ impl Ord for PrimeMultiple {
     fn cmp(&self, other: &Self) -> Ordering {
         match other.multiple.cmp(&self.multiple) {
             Ordering::Equal => other.prime.cmp(&self.prime),
-            ordering @ _ => ordering,
+            ordering => ordering,
         }
     }
 }
@@ -176,7 +176,7 @@ impl PrimeIter {
         }
     }
 
-    fn advance_next_offset(&mut self) -> () {
+    fn advance_next_offset(&mut self) {
         self.next_offset += 1;
         if self.next_offset == self.range_size {
             self.next_offset = 0;
@@ -210,7 +210,7 @@ impl PrimeIter {
 }
 
 fn mark_prime_multiples(
-    is_prime: &mut Vec<bool>,
+    is_prime: &mut [bool],
     range_start: u64,
     range_size: usize,
     prime: u64,

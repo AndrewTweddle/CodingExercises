@@ -100,6 +100,6 @@ fn add_if_binary_palindrome(n: u64, total: &mut u64) {
         rem >>= 1;
     }
     if bin_rev == n {
-        *total += n as u64;
+        *total += n;
     }
 }

@@ -1,5 +1,5 @@
 fn main() {
-    let smallest_multiple = (2..=20).reduce(|acc, i| lcm(acc, i)).unwrap();
+    let smallest_multiple = (2..=20).reduce(lcm).unwrap();
     println!("Smallest multiple of 2 to 20 is {}", smallest_multiple)
 }
 

@@ -13,8 +13,7 @@ fn main() {
 
     for target in 1..=200_usize {
         ways_by_max_denom.push([0; 8]);
-        for i in 0..8 {
-            let denom = DENOMINATIONS[i];
+        for (i, &denom) in DENOMINATIONS.iter().enumerate() {
             if denom > target {
                 break;
             };
@@ -30,7 +29,7 @@ fn main() {
         }
     }
 
-    let answer: usize = (0..8).into_iter().map(|i| ways_by_max_denom[200][i]).sum();
+    let answer: usize = (0..8).map(|i| ways_by_max_denom[200][i]).sum();
 
     println!("# of ways: {answer}");
 

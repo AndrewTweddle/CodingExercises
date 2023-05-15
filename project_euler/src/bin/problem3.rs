@@ -20,8 +20,8 @@ fn get_max_prime_factor_by_dividing_by_odds(n: u64) -> u64 {
     let mut max_prime_factor = 1;
 
     if n % 2 == 0 {
-        while n % 2 == 0 {
-            quotient = quotient / 2;
+        while quotient % 2 == 0 {
+            quotient /= 2;
         }
         max_prime_factor = 2
     }
@@ -32,10 +32,10 @@ fn get_max_prime_factor_by_dividing_by_odds(n: u64) -> u64 {
     while candidate_prime * candidate_prime <= quotient {
         if quotient % candidate_prime == 0 {
             max_prime_factor = candidate_prime;
-            quotient = quotient / candidate_prime;
+            quotient /= candidate_prime;
 
             while quotient % max_prime_factor == 0 {
-                quotient = quotient / max_prime_factor;
+                quotient /= max_prime_factor;
             }
         }
         candidate_prime += 2; // try next odd number
@@ -55,8 +55,7 @@ fn get_max_prime_factor_using_compact_prime_sieve(n: u64) -> u64 {
     *primes
         .iter()
         .rev()
-        .filter(|prime| n % *prime == 0)
-        .next()
+        .find(|prime| n % *prime == 0)
         .unwrap()
 }
 
@@ -70,7 +69,7 @@ impl Ord for PrimeMultiple {
     fn cmp(&self, other: &Self) -> Ordering {
         match other.multiple.cmp(&self.multiple) {
             Ordering::Equal => other.prime.cmp(&self.prime),
-            ordering @ _ => ordering,
+            ordering => ordering,
         }
     }
 }
