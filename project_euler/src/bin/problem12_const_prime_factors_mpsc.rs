@@ -14,14 +14,16 @@ const PRIMES: [u64; 11] = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31];
 //         5000    1.349901607s      T(2203200) =   2427046221600
 //        10000   14.083371034s     T(14753024) = 108825865948800
 
+type JoinHandleWithoutResult =  JoinHandle<Result<(), ()>>;
+
 fn main() {
     let start = Instant::now();
     for rep in 0..NUM_REPETITIONS {
-        let channels: Vec<(Receiver<u64>, JoinHandle<Result<(), ()>>)> = (0..NUM_THREADS)
+        let channels: Vec<(Receiver<u64>, JoinHandleWithoutResult)> = (0..NUM_THREADS)
             .map(|seq| {
                 let start_num: u64 = 2 + seq;
                 let (sender, receiver) = mpsc::sync_channel(1000);
-                let handle: JoinHandle<Result<(), ()>> = thread::spawn(move || {
+                let handle: JoinHandleWithoutResult = thread::spawn(move || {
                     for i in (start_num..).step_by(NUM_THREADS as usize) {
                         let n = if i % 2 == 0 { i / 2 } else { i };
                         let divs = count_divisors_using_prime_decomposition(n);

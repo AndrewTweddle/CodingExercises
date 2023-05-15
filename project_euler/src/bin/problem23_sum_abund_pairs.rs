@@ -8,7 +8,6 @@ fn main() {
     let start = Instant::now();
     for rep in 0..NUM_REPETITIONS {
         let abunds: Vec<usize> = (MIN_ABUNDANT_NUM..=MAX_NON_ABUNDANT_SUM)
-            .into_iter()
             .filter(|&n| sum_of_divs(n) > n)
             .collect();
 
@@ -46,7 +45,6 @@ fn sum_of_divs(n: usize) -> usize {
     // The following trick checks around sqrt(n) instead of (n-2) divisors.
     // This makes the biggest difference in performance.
     (2..n)
-        .into_iter()
         .take_while(|i| i * i <= n)
         .map(|div| {
             if n % div == 0 {

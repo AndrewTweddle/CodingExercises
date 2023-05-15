@@ -1,6 +1,6 @@
 use std::time::Instant;
 
-const NUM_REPETITIONS: u32 = 1000;
+const NUM_REPETITIONS: u32 = 100_000;
 const ZERO_BASED_INDEX: usize = 1_000_000_usize - 1;
 
 fn main() {
@@ -17,7 +17,7 @@ fn main() {
 
 fn get_lex_digits_at_target(mut target_index: usize, mut rem_digits: String) -> String {
     let mut lex_digits: String = String::from("");
-    while rem_digits.len() > 0 {
+    while !rem_digits.is_empty() {
         let (digit_index, next_target_index) =
             get_next_digit_index_and_remainder(rem_digits.len(), target_index);
         target_index = next_target_index;
@@ -39,7 +39,7 @@ fn count_perms(digits_left: usize) -> usize {
     if digits_left <= 1 {
         1
     } else {
-        (2..=digits_left).into_iter().product()
+        (2..=digits_left).product()
     }
 }
 

@@ -90,6 +90,8 @@ fn get_primes_up_to(n: u8) -> Vec<u8> {
         .collect()
 }
 
+// Disable clippy warning, since this way is twice as fast...
+#[allow(clippy::needless_range_loop)]
 fn multiply(a: &Vec<u128>, b: &Vec<u128>) -> Vec<u128> {
     let min_size_of_product = (a.len() - 1) * (b.len() - 1) + 1;
     let mut product = vec![0; min_size_of_product];

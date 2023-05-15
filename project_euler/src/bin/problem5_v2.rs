@@ -46,7 +46,7 @@ fn get_prime_exponents(n: u64, primes: &Vec<u64>) -> Vec<u32> {
     exponents
 }
 
-fn prime_exponents_to_value(primes: &Vec<u64>, exponents: &Vec<u32>) -> u64 {
+fn prime_exponents_to_value(primes: &[u64], exponents: &[u32]) -> u64 {
     primes
         .iter()
         .zip(exponents)

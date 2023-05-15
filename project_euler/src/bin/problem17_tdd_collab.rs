@@ -9,6 +9,8 @@ and 115 (one hundred and fifteen) contains 20 letters.
 
 The use of "and" when writing out numbers is in compliance with British usage.
  */
+#![allow(clippy::all)]
+
 use std::time::Instant;
 
 fn main() {

@@ -32,7 +32,7 @@ fn get_recurring_cycle_len(denominator: usize) -> Result<(usize, String), String
         index += 1;
         remainder *= 10;
         let quotient = remainder / denominator;
-        representation.push(('0' as u8 + quotient as u8) as char);
+        representation.push((b'0' + quotient as u8) as char);
         remainder %= denominator;
         if remainder == 0 {
             return Ok((1, representation));

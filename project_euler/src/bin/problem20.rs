@@ -13,7 +13,6 @@ fn main() {
     );
 
     let estimated_digits_in_answer: usize = (2..=100)
-        .into_iter()
         .map(|factor| (factor as f64).log10().ceil() / (decimal_digits_in_base as f64))
         .sum::<f64>()
         .ceil() as usize;
@@ -30,10 +29,10 @@ fn main() {
             // In practice this made the code slower...
             // if factor % 10 == 0 { factor /= 10; }
             let mut carry = 0_u128;
-            for pos in 0..factorial.len() {
-                let new_digit = factorial[pos] * factor + carry;
+            for digit in factorial.iter_mut() {
+                let new_digit = *digit * factor + carry;
                 carry = new_digit / BASE;
-                factorial[pos] = new_digit % BASE;
+                *digit = new_digit % BASE;
             }
             if carry > 0 {
                 factorial.push(carry);
@@ -48,7 +47,7 @@ fn main() {
                 .rev()
                 .skip(1)
                 .for_each(|digit| print!("{:0width$}", *digit, width = BASE_EXPONENT as usize));
-            println!("");
+            println!();
         }
 
         let mut sum_of_digits: u16 = 0;

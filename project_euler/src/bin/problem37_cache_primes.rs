@@ -63,6 +63,7 @@ fn main() {
         }
     }
 
+    #[allow(clippy::absurd_extreme_comparisons)]
     if NUM_REPETITIONS > 0 {
         let avg_duration = start_time.elapsed() / NUM_REPETITIONS;
         println!(
@@ -179,7 +180,7 @@ impl PrimeSearch {
             if n > 10 * self.max_prime {
                 self.max_prime = n;
             } else {
-                self.max_prime = 10 * self.max_prime;
+                self.max_prime *= 10;
             }
             let primes = get_primes_with_truncated_prime_pattern_up_to(self.max_prime);
             self.primes = primes;
@@ -251,8 +252,7 @@ fn get_primes_with_truncated_prime_pattern_up_to(max_prime: u64) -> Vec<u64> {
     primes.push(3);
 
     let mut prime: u64 = 5;
-    for byte_index in 0..sieve_count {
-        let byte = is_trunc_prime[byte_index];
+    for &byte in is_trunc_prime.iter().take(sieve_count) {
         if byte == 0 {
             prime += 24;
             continue;

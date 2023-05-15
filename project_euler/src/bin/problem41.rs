@@ -1,6 +1,6 @@
 use std::time::Instant;
 
-const REPETITIONS: u32 = 1000;
+const REPETITIONS: u32 = 100_000;
 
 struct DescendingPandigitalIter {
     num_digits: usize,
@@ -31,8 +31,7 @@ impl Iterator for DescendingPandigitalIter {
                 quotient /= i + 1;
             }
             let mut result: usize = 0;
-            for i in 0..self.num_digits {
-                let rem_index = rem_digits_index[i];
+            for rem_index in rem_digits_index {
                 let digit_index = digit_used
                     .iter()
                     .enumerate()
@@ -87,7 +86,7 @@ fn is_multidigit_prime(n: usize) -> bool {
             return true;
         }
     }
-    return true;
+    true
 }
 
 fn main() {
