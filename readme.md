@@ -185,34 +185,34 @@ This can be very useful for:
 
 ### 2022
 
-| Day                                      | Description                 | Part  | Date       | Solution                                                                 | Notes                                           |
-|------------------------------------------|-----------------------------|-------|------------|--------------------------------------------------------------------------|-------------------------------------------------|
-| [1](https://adventofcode.com/2022/day/1) | **Calorie Counting**        | 1     | 2022-12-01 | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day1_part1.py)          |                                                 |
-|                                          |                             |       |            | [Rust](AdventOfCode/aoc2022/src/bin/day1_part1.rs)                       |                                                 |
-|                                          |                             | 2     | 2022-12-01 | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day1_part2.py)          |                                                 |
-|                                          |                             |       |            | [Rust](AdventOfCode/aoc2022/src/bin/day1_part2.rs)                       | Duration: 107µs                                 |
-|                                          |                             |       |            | [Rust](AdventOfCode/aoc2022/src/bin/day1_part2_fast.rs)                  | Duration: 98µs                                  |
-| [2](https://adventofcode.com/2022/day/2) | **Rock Paper Scissors**     | 1     | 2022-12-02 | [Rust](AdventOfCode/aoc2022/src/bin/day2_part1.rs)                       |                                                 |
-|                                          |                             |       |            | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day2_part1.py)          | Succinct, but too much magic in formula!        |
-|                                          |                             | 2     | 2022-12-02 | [Rust](AdventOfCode/aoc2022/src/bin/day2_part2.rs)                       |                                                 |
-|                                          |                             |       |            | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day2_part2.py)          |                                                 |
-| [3](https://adventofcode.com/2022/day/3) | **Rucksack Reorganization** | 1     | 2022-12-03 | [Rust](AdventOfCode/aoc2022/src/bin/day3_part1.rs)                       |                                                 |
-|                                          |                             |       |            | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day3_part1.py)          | Using list comprehensions                       |
-|                                          |                             |       | 2022-12-04 | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day3_part1_for_loop.py) | Using for loop (longer, but more readable)      |
-|                                          |                             | 2     | 2022-12-03 | [Rust](AdventOfCode/aoc2022/src/bin/day3_part2.rs)                       |                                                 |
-|                                          |                             |       |            | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day3_part2.py)          | Using list comprehensions                       |
-|                                          |                             |       | 2022-12-04 | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day3_part2_for_loop.py) | Using for loop (longer, but more readable)      |
-| [4](https://adventofcode.com/2022/day/4) | **Camp Cleanup**            | 1 & 2 | 2022-12-04 | [Rust](AdventOfCode/aoc2022/src/bin/day4_part1and2.rs)                   |                                                 |
-|                                          |                             |       |            | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day4_part1and2.py)      |                                                 |
-| [5](https://adventofcode.com/2022/day/5) | **Supply Stacks**           | 1 & 2 | 2022-12-05 | [Rust](AdventOfCode/aoc2022/src/bin/day5_part1and2.rs)                   |                                                 |
-| [6](https://adventofcode.com/2022/day/6) | **Tuning Trouble**          | 1 & 2 | 2022-12-06 | [Rust](AdventOfCode/aoc2022/src/bin/day6_part1and2.rs)                   | Efficient. 43 LOC.                              |
-|                                          |                             |       |            | [Rust](AdventOfCode/aoc2022/src/bin/day6_part1and2_windows.rs)           | 23 LOC (excluding unit tests). Over 10x slower. |
-|                                          |                             |       |            | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day6_part1and2.py)      | Succinct. 9 LOC.                                |
-| [7](https://adventofcode.com/2022/day/7) | **No Space Left On Device** | 1 & 2 | 2023-04-23 | [Rust](AdventOfCode/aoc2022/src/bin/day7.rs)                             | Verbose.                                        |
-|                                          |                             |       | 2023-05-08 | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day7_part1and2.py)      |                                                 |
-| [8](https://adventofcode.com/2022/day/8) | **Treetop Tree House**      | 1 & 2 |            | [Rust](AdventOfCode/aoc2022/src/bin/day8.rs)                             |                                                 |
-| [9](https://adventofcode.com/2022/day/9) | **Rope Bridge**             | 1     | 2023-05-13 | [Rust](AdventOfCode/aoc2022/src/bin/day9_part1.rs)                       |                                                 |
-|                                          |                             | 2     | 2023-05-16 | [Rust](AdventOfCode/aoc2022/src/bin/day9_part2.rs)                       | Duration: 655µs (excl. I/O).                    |
+| Day | Description                                                    | Part  | Date       | Solution                                                                 | Notes                                           |
+|-----|----------------------------------------------------------------|-------|------------|--------------------------------------------------------------------------|-------------------------------------------------|
+| 1   | [Calorie Counting](https://adventofcode.com/2022/day/1)        | 1     | 2022-12-01 | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day1_part1.py)          |                                                 |
+|     |                                                                |       |            | [Rust](AdventOfCode/aoc2022/src/bin/day1_part1.rs)                       |                                                 |
+|     |                                                                | 2     | 2022-12-01 | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day1_part2.py)          |                                                 |
+|     |                                                                |       |            | [Rust](AdventOfCode/aoc2022/src/bin/day1_part2.rs)                       | Duration: 107µs                                 |
+|     |                                                                |       |            | [Rust](AdventOfCode/aoc2022/src/bin/day1_part2_fast.rs)                  | Duration: 98µs                                  |
+| 2   | [Rock Paper Scissors](https://adventofcode.com/2022/day/2)     | 1     | 2022-12-02 | [Rust](AdventOfCode/aoc2022/src/bin/day2_part1.rs)                       |                                                 |
+|     |                                                                |       |            | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day2_part1.py)          | Succinct, but too much magic in formula!        |
+|     |                                                                | 2     | 2022-12-02 | [Rust](AdventOfCode/aoc2022/src/bin/day2_part2.rs)                       |                                                 |
+|     |                                                                |       |            | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day2_part2.py)          |                                                 |
+| 3   | [Rucksack Reorganization](https://adventofcode.com/2022/day/3) | 1     | 2022-12-03 | [Rust](AdventOfCode/aoc2022/src/bin/day3_part1.rs)                       |                                                 |
+|     |                                                                |       |            | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day3_part1.py)          | Using list comprehensions                       |
+|     |                                                                |       | 2022-12-04 | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day3_part1_for_loop.py) | Using for loop (longer, but more readable)      |
+|     |                                                                | 2     | 2022-12-03 | [Rust](AdventOfCode/aoc2022/src/bin/day3_part2.rs)                       |                                                 |
+|     |                                                                |       |            | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day3_part2.py)          | Using list comprehensions                       |
+|     |                                                                |       | 2022-12-04 | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day3_part2_for_loop.py) | Using for loop (longer, but more readable)      |
+| 4   | [Camp Cleanup](https://adventofcode.com/2022/day/4)            | 1 & 2 | 2022-12-04 | [Rust](AdventOfCode/aoc2022/src/bin/day4_part1and2.rs)                   |                                                 |
+|     |                                                                |       |            | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day4_part1and2.py)      |                                                 |
+| 5   | [Supply Stacks](https://adventofcode.com/2022/day/5)           | 1 & 2 | 2022-12-05 | [Rust](AdventOfCode/aoc2022/src/bin/day5_part1and2.rs)                   |                                                 |
+| 6   | [Tuning Trouble](https://adventofcode.com/2022/day/6)          | 1 & 2 | 2022-12-06 | [Rust](AdventOfCode/aoc2022/src/bin/day6_part1and2.rs)                   | Efficient. 43 LOC.                              |
+|     |                                                                |       |            | [Rust](AdventOfCode/aoc2022/src/bin/day6_part1and2_windows.rs)           | 23 LOC (excluding unit tests). Over 10x slower. |
+|     |                                                                |       |            | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day6_part1and2.py)      | Succinct. 9 LOC.                                |
+| 7   | [No Space Left On Device](https://adventofcode.com/2022/day/7) | 1 & 2 | 2023-04-23 | [Rust](AdventOfCode/aoc2022/src/bin/day7.rs)                             | Verbose.                                        |
+|     |                                                                |       | 2023-05-08 | [Python](AdventOfCode/aoc2022/src/python/aoc2022_day7_part1and2.py)      |                                                 |
+| 8   | [Treetop Tree House](https://adventofcode.com/2022/day/8)      | 1 & 2 |            | [Rust](AdventOfCode/aoc2022/src/bin/day8.rs)                             |                                                 |
+| 9   | [Rope Bridge](https://adventofcode.com/2022/day/9)             | 1     | 2023-05-13 | [Rust](AdventOfCode/aoc2022/src/bin/day9_part1.rs)                       |                                                 |
+|     |                                                                | 2     | 2023-05-16 | [Rust](AdventOfCode/aoc2022/src/bin/day9_part2.rs)                       | Duration: 655µs (excl. I/O).                    |
 
 ## cryptopals crypto challenges
 
