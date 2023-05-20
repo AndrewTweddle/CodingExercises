@@ -1,7 +1,7 @@
 use std::fs;
 use std::time::Instant;
-use set1::base64::base64_to_bytes;
-use set1::ciphers::repeating_key_xor::get_best_key_sizes_and_likely_decryptions;
+use cryptopals::base64::base64_to_bytes;
+use cryptopals::ciphers::repeating_key_xor::get_best_key_sizes_and_likely_decryptions;
 
 const MAX_KEY_SIZE: usize = 40;
 const NUM_KEY_SIZES_TO_TRY: usize = 3;

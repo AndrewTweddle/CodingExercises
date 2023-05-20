@@ -1,4 +1,4 @@
-use set1::hex::hex_str_to_bytes;
+use cryptopals::hex::hex_str_to_bytes;
 use std::collections::HashMap;
 use std::fs;
 use std::time::Instant;

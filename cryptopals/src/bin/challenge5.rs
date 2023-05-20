@@ -1,5 +1,5 @@
-use set1::ciphers::repeating_key_xor::encrypt;
-use set1::hex::bytes_to_hex_str;
+use cryptopals::ciphers::repeating_key_xor::encrypt;
+use cryptopals::hex::bytes_to_hex_str;
 
 fn main() {
     let input = "Burning 'em, if you ain't quick and nimble\n\
