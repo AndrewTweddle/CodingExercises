@@ -36,7 +36,7 @@ fn main() {
             }
         })
         .collect();
-    candidates.sort_by_key(|candidate| -(*candidate).score);
+    candidates.sort_by_key(|candidate| -candidate.score);
 
     if let Some(best_candidate) = candidates.first() {
         println!("Best candidate:");

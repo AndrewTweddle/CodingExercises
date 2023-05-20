@@ -12,7 +12,7 @@ pub fn hex_str_to_bytes(hex_input: &str) -> Result<Vec<u8>, HexError> {
             'A'..='F' => Ok(hex_char as u8 - b'A' + 10),
             'a'..='f' => Ok(hex_char as u8 - b'a' + 10),
             '0'..='9' => Ok(hex_char as u8 - b'0'),
-            _ => Err(HexError::InvalidHexDigit(hex_char as char)),
+            _ => Err(HexError::InvalidHexDigit(hex_char)),
         }
     }
 
@@ -24,7 +24,7 @@ pub fn hex_str_to_bytes(hex_input: &str) -> Result<Vec<u8>, HexError> {
     let bytes = hex_values
         .chunks(2)
         .map(|chars_chunk| {
-            let byte0 = if chars_chunk.len() > 0 {
+            let byte0 = if !chars_chunk.is_empty() {
                 chars_chunk[0]
             } else {
                 0
@@ -42,12 +42,13 @@ pub fn hex_str_to_bytes(hex_input: &str) -> Result<Vec<u8>, HexError> {
 }
 
 pub fn bytes_to_hex_str(bytes: &[u8]) -> String {
-
     fn byte_to_hex_digits(byte: &u8) -> [u8; 2] {
-        [byte / 16, byte % 16].map(|nibble| if nibble < 10 {
-            b'0' + nibble
-        } else {
-            b'a' + nibble - 10
+        [byte / 16, byte % 16].map(|nibble| {
+            if nibble < 10 {
+                b'0' + nibble
+            } else {
+                b'a' + nibble - 10
+            }
         })
     }
 
