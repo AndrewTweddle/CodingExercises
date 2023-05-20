@@ -1,7 +1,7 @@
-use std::fs;
-use std::time::Instant;
 use cryptopals::base64::base64_to_bytes;
 use cryptopals::ciphers::repeating_key_xor::get_best_key_sizes_and_likely_decryptions;
+use std::fs;
+use std::time::Instant;
 
 const MAX_KEY_SIZE: usize = 40;
 const NUM_KEY_SIZES_TO_TRY: usize = 3;
@@ -24,7 +24,7 @@ fn main() {
     for (index, (key_size, plain_text)) in key_size_and_plain_text_candidates.iter().enumerate() {
         println!("{} - Key size: {}", index + 1, key_size);
         println!("  Plain text: {}", plain_text);
-        println!("");
+        println!();
     }
 
     println!("Duration: {:?}", start_time.elapsed());

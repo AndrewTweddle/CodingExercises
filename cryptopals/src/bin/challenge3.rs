@@ -1,4 +1,5 @@
 use cryptopals::hex::hex_str_to_bytes;
+use cryptopals::xor_bytes_with_key;
 use std::collections::HashMap;
 
 const ENCRYPTED_HEX: &str = "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736";
@@ -12,7 +13,7 @@ fn main() {
     let encrypted_bytes = hex_str_to_bytes(ENCRYPTED_HEX).unwrap();
     let best_key = (0..=255_u8)
         .map(|key| {
-            let decrypted_bytes = xor_bytes(&encrypted_bytes, key);
+            let decrypted_bytes = xor_bytes_with_key(&encrypted_bytes, key);
             let squared_devs = sum_of_squared_frequency_deviations(&decrypted_bytes);
             println!(
                 "Message attempted: {}",
@@ -25,7 +26,7 @@ fn main() {
         .min_by_key(|&(_, squared_deviation)| squared_deviation)
         .unwrap()
         .0;
-    let decrypted_bytes = xor_bytes(&encrypted_bytes, best_key);
+    let decrypted_bytes = xor_bytes_with_key(&encrypted_bytes, best_key);
 
     // First print the message in a failsafe way...
     let lossy_message = String::from_utf8_lossy(&decrypted_bytes);
@@ -34,10 +35,6 @@ fn main() {
     // Now attempt to convert to UTF8 (at the risk of failure, if there are invalid characters)...
     let message = String::from_utf8(decrypted_bytes).expect("Could not convert the bytes to UTF-8");
     println!("Message is: {}", message);
-}
-
-fn xor_bytes(bytes: &Vec<u8>, key: u8) -> Vec<u8> {
-    bytes.iter().map(|&byte| byte ^ key).collect::<Vec<u8>>()
 }
 
 // Take the squared deviation from the position in the sequence of letter frequencies...

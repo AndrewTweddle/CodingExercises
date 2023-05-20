@@ -1,5 +1,5 @@
-use thiserror::Error;
 use super::common::score_bytes_as_ascii_message;
+use thiserror::Error;
 
 pub fn encrypt(input: &str, key: &str) -> Vec<u8> {
     let key_iter = key.as_bytes().iter().cycle();
@@ -29,7 +29,7 @@ pub fn get_best_key_sizes_and_likely_decryptions(
                     key_size,
                     num_hamming_distance_samples,
                 )
-                    .unwrap(),
+                .unwrap(),
             )
         })
         .collect();
@@ -40,8 +40,7 @@ pub fn get_best_key_sizes_and_likely_decryptions(
         .iter()
         .take(num_candidate_decryptions)
         .map(|(key_size, _)| {
-            let decrypted_bytes =
-                decrypt_given_key_size(&encrypted_bytes, *key_size);
+            let decrypted_bytes = decrypt_given_key_size(encrypted_bytes, *key_size);
 
             (
                 *key_size,
@@ -51,13 +50,10 @@ pub fn get_best_key_sizes_and_likely_decryptions(
         .collect::<Vec<(usize, String)>>()
 }
 
-pub fn decrypt_given_key_size(
-    encrypted_bytes: &[u8],
-    key_size: usize,
-) -> Vec<u8> {
+pub fn decrypt_given_key_size(encrypted_bytes: &[u8], key_size: usize) -> Vec<u8> {
     // arrange into a matrix of width key_size, with each column a Vec<u8>
     let capacity = (encrypted_bytes.len() + key_size - 1) / key_size;
-    let mut bytes_in_columns = vec![Vec::<u8>::with_capacity(capacity); key_size as usize];
+    let mut bytes_in_columns = vec![Vec::<u8>::with_capacity(capacity); key_size];
     for chunk in encrypted_bytes.chunks(key_size) {
         for col in 0..chunk.len() {
             bytes_in_columns[col].push(chunk[col])
@@ -67,7 +63,7 @@ pub fn decrypt_given_key_size(
     let decrypted_columns: Vec<Vec<u8>> = bytes_in_columns
         .iter()
         .map(|column| {
-            let decrypted_column = (0_u8..255)
+            (0_u8..255)
                 .map(|key| {
                     let mapped_column = column
                         .iter()
@@ -78,9 +74,7 @@ pub fn decrypt_given_key_size(
                 })
                 .min_by_key(|(_, score)| -*score)
                 .map(|(candidate_column, _)| candidate_column)
-                .unwrap();
-
-            decrypted_column
+                .unwrap()
         })
         .collect();
 
@@ -120,8 +114,10 @@ pub enum MeanNormalizedHammingDistanceScoreError {
     #[error("At least 2 samples are required to get a normalized score")]
     TooFewSamples,
 
-    #[error("Key size ({key_size}) and number of samples ({num_samples}) \
-            too large for cipher length ({cipher_len})")]
+    #[error(
+        "Key size ({key_size}) and number of samples ({num_samples}) \
+            too large for cipher length ({cipher_len})"
+    )]
     KeySizeAndSamplesTooLargeForCipherLength {
         cipher_len: usize,
         key_size: usize,
@@ -142,8 +138,9 @@ pub fn get_mean_normalized_hamming_distance_score_for_key_size(
             MeanNormalizedHammingDistanceScoreError::KeySizeAndSamplesTooLargeForCipherLength {
                 cipher_len: cipher_bytes.len(),
                 num_samples,
-                key_size
-            });
+                key_size,
+            },
+        );
     }
     let num_pairs_of_samples = num_samples * (num_samples + 1) / 2;
     let mut hamming_distances: Vec<usize> = Vec::with_capacity(num_pairs_of_samples);

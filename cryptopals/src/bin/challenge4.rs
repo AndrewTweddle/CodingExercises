@@ -1,4 +1,5 @@
 use cryptopals::hex::hex_str_to_bytes;
+use cryptopals::xor_bytes_with_key;
 use std::collections::HashMap;
 use std::fs;
 use std::time::Instant;
@@ -15,7 +16,7 @@ fn main() {
                 hex_str_to_bytes(line.trim()).expect("Unable to convert hex to bytes");
             let (best_key, min_score) = (0..=255_u8)
                 .map(|key| {
-                    let decrypted_bytes = xor_bytes(&encrypted_bytes, key);
+                    let decrypted_bytes = xor_bytes_with_key(&encrypted_bytes, key);
                     let min_score = if USE_LETTER_FREQUENCY {
                         sum_of_squared_frequency_deviations(&decrypted_bytes) as i64
                     } else {
@@ -26,7 +27,7 @@ fn main() {
                 })
                 .min_by_key(|&(_, min_score)| min_score)
                 .unwrap();
-            let decrypted_bytes = xor_bytes(&encrypted_bytes, best_key);
+            let decrypted_bytes = xor_bytes_with_key(&encrypted_bytes, best_key);
             (line, decrypted_bytes, min_score)
         })
         .min_by_key(|&(_, _, min_score)| min_score)
@@ -45,10 +46,6 @@ fn main() {
     // Now attempt to convert to UTF8 (at the risk of failure, if there are invalid characters)...
     let message = String::from_utf8(decrypted_bytes).expect("Could not convert the bytes to UTF-8");
     println!("Message is: {}", message);
-}
-
-fn xor_bytes(bytes: &Vec<u8>, key: u8) -> Vec<u8> {
-    bytes.iter().map(|&byte| byte ^ key).collect::<Vec<u8>>()
 }
 
 // From: http://mathcenter.oxford.emory.edu/site/math125/englishLetterFreqs/
@@ -101,7 +98,7 @@ fn sum_of_squared_frequency_deviations(bytes: &Vec<u8>) -> u64 {
 }
 
 // Count the score of alphabetic characters
-fn get_alpha_score(bytes: &Vec<u8>) -> u64 {
+fn get_alpha_score(bytes: &[u8]) -> u64 {
     bytes
         .iter()
         .map(|&byte| {

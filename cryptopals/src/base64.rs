@@ -106,10 +106,8 @@ pub fn base64_to_bytes(base64_str: &str) -> Result<Vec<u8>, Base64ToBytesError> 
     // Add extra zero bytes at the end to make a multiple of 4 bytes
     let padding_bytes_required = 4 - six_bit_bytes.len() % 4;
     if padding_bytes_required != 4 {
-        six_bit_bytes.reserve(padding_bytes_required);
-        for _ in 0..padding_bytes_required {
-            six_bit_bytes.push(0);
-        }
+        let new_size = six_bit_bytes.len() + padding_bytes_required;
+        six_bit_bytes.resize(new_size, 0);
     }
 
     let mut bytes: Vec<u8> = six_bit_bytes
