@@ -1,5 +1,5 @@
-use set1::base64::base64_to_bytes;
-use set1::ciphers::aes::decrypt_aes_128_ecb;
+use cryptopals::base64::base64_to_bytes;
+use cryptopals::ciphers::aes::decrypt_aes_128_ecb;
 use std::fs;
 use std::time::Instant;
 

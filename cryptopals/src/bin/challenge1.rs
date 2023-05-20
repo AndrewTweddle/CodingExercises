@@ -1,5 +1,5 @@
-use set1::base64::bytes_to_base64;
-use set1::hex::hex_str_to_bytes;
+use cryptopals::base64::bytes_to_base64;
+use cryptopals::hex::hex_str_to_bytes;
 
 const TEST_INPUT_HEX_STR: &str =
     "49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d";

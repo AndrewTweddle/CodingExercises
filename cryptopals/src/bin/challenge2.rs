@@ -1,4 +1,4 @@
-use set1::hex::hex_str_to_bytes;
+use cryptopals::hex::hex_str_to_bytes;
 
 const BUFFER1: &str = "1c0111001f010100061a024b53535009181c";
 const BUFFER2: &str = "686974207468652062756c6c277320657965";
