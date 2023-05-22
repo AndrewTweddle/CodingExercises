@@ -57,7 +57,7 @@ impl Iterator for TenDigitPandigitalIter {
     type Item = usize;
 
     fn next(&mut self) -> Option<Self::Item> {
-        if self.n_fwd >= self.n_back {
+        if self.n_fwd + 1 >= self.n_back {
             None
         } else {
             self.n_fwd += 1;
@@ -68,7 +68,7 @@ impl Iterator for TenDigitPandigitalIter {
 
 impl DoubleEndedIterator for TenDigitPandigitalIter {
     fn next_back(&mut self) -> Option<Self::Item> {
-        if self.n_fwd >= self.n_back {
+        if self.n_back - 1 <= self.n_fwd {
             None
         } else {
             self.n_back -= 1;
@@ -139,5 +139,32 @@ mod tests {
     fn test_has_divisibility_property() {
         let n: usize = 1406357289;
         assert_eq!(has_sub_string_divisibility_property(n), true);
+    }
+
+    #[test]
+    #[ignore = "Runs too slowly in debug mode (but passes in release mode)"]
+    // To test in release mode:
+    // $ cargo test --release --bin problem43 tests::test_double_ended_iterator -- --ignored
+    fn test_double_ended_iterator() {
+        let mut pdi = TenDigitPandigitalIter::new();
+
+        // Iterate backwards
+        let last = pdi.next_back();
+        let penultimate = pdi.next_back();
+
+        // Iterate forwards
+        let first = pdi.next();
+        let third_last = (&mut pdi).last(); // using a reference, since last consumes the iterator
+
+        // Check forwards and backwards directions are both exhausted
+        let back_after_done = pdi.next_back();
+        let fwd_after_done = pdi.next();
+
+        assert_eq!(first, Some(1023456789));
+        assert_eq!(last, Some(9876543210));
+        assert_eq!(penultimate, Some(9876543201));
+        assert_eq!(third_last, Some(9876543120));
+        assert_eq!(back_after_done, None);
+        assert_eq!(fwd_after_done, None);
     }
 }
