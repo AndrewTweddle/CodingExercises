@@ -57,6 +57,14 @@ fn solve() -> Option<u64> {
         let max_j = (diff - 1) / 3;
         for j in 1..=max_j {
             let p_j = pentagonal_number(j);
+
+            // since: diff = P[i],
+            //   and: diff + P[j] = P[k]
+            //  then: P[i] + P[j] >= P[i+1],
+            //    so: P[j] >= P[i+1] - P[i] = 3i + 1
+            if p_j < 3 * i + 1 {
+                continue;
+            }
             let p_k = p_j + diff;
             if is_pentagonal(p_k) && is_pentagonal(p_j + p_k) {
                 //#[cfg(Debug)]
