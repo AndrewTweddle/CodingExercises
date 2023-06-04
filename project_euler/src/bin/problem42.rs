@@ -26,8 +26,8 @@ fn main() {
 // 8t + 1 = 4n(n+1) + 1 = 4n^2 + 4n + 1 = (2n+1)^2.
 fn is_triangular(t: u64) -> bool {
     let candidate_square = 8 * t + 1;
-    let n = int_sqrt(candidate_square);
-    n * n == candidate_square
+    let s = int_sqrt(candidate_square);
+    s * s == candidate_square
 }
 
 // From https://en.wikipedia.org/wiki/Integer_square_root#Using_bitwise_operations
