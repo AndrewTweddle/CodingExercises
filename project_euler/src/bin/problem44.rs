@@ -10,7 +10,10 @@ fn main() {
 
         if rep == 0 {
             println!("Answer: {answer}");
-            println!("Duration including printing answer to stdout: {:?}", start_time.elapsed());
+            println!(
+                "Duration including printing answer to stdout: {:?}",
+                start_time.elapsed()
+            );
             start_time = Instant::now();
         }
     }
@@ -102,7 +105,7 @@ fn is_pentagonal(p: u64) -> bool {
 // Then 3p = 3n(3n-1)/2 = (3n-1).[(3n-1) + 1] = T[3n-1]
 #[inline]
 fn invert_pentagonal(p: u64) -> Option<u64> {
-    invert_triangular(3 * p).and_then(|n| (n % 3 == 2).then_some((n+1)/3))
+    invert_triangular(3 * p).and_then(|n| (n % 3 == 2).then_some((n + 1) / 3))
 }
 
 // If t is triangular, then t = n(n+1)/2 for some integer n.

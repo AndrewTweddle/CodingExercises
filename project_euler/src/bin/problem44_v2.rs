@@ -1,5 +1,5 @@
-use std::time::Instant;
 use num::integer::Roots;
+use std::time::Instant;
 
 const NUM_REPETITIONS: u32 = 0;
 
@@ -11,7 +11,10 @@ fn main() {
 
         if rep == 0 {
             println!("Answer: {answer}");
-            println!("Duration including printing answer to stdout: {:?}", start_time.elapsed());
+            println!(
+                "Duration including printing answer to stdout: {:?}",
+                start_time.elapsed()
+            );
             start_time = Instant::now();
         }
     }
@@ -91,7 +94,7 @@ fn is_pentagonal(p: u64) -> bool {
 
 #[cfg(test)]
 mod tests {
-    use crate::{is_pentagonal};
+    use crate::is_pentagonal;
 
     #[test]
     fn test_is_pentagonal() {
