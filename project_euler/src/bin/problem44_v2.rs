@@ -1,4 +1,5 @@
 use std::time::Instant;
+use num::integer::Roots;
 
 const NUM_REPETITIONS: u32 = 0;
 
@@ -65,20 +66,9 @@ fn solve() -> Option<u64> {
             if p_j < 3 * i + 1 {
                 continue;
             }
+
             let p_k = p_j + diff;
             if is_pentagonal(p_k) && is_pentagonal(p_j + p_k) {
-                #[cfg(debug_assertions)]
-                {
-                    let sum = p_j + p_k;
-                    let k = invert_pentagonal(p_k).unwrap();
-                    let n = invert_pentagonal(sum).unwrap();
-
-                    println!("diff = P[{i}] = {diff}");
-                    println!("p_j = P[{j}] = {p_j}");
-                    println!("p_k = P[{k}] = {p_k}");
-                    println!("sum = P[{n}] = {sum}");
-                }
-
                 return Some(diff);
             }
         }
@@ -94,60 +84,20 @@ fn pentagonal_number(i: u64) -> u64 {
 
 #[inline]
 fn is_pentagonal(p: u64) -> bool {
-    invert_pentagonal(p).is_some()
-}
-
-// Let T[n] be the n-th triangular number: T[n] = n(n+1)/2
-// If p is pentagonal, then p = n(3n-1)/2 for some integer n.
-// Then 3p = 3n(3n-1)/2 = (3n-1).[(3n-1) + 1] = T[3n-1]
-#[inline]
-fn invert_pentagonal(p: u64) -> Option<u64> {
-    invert_triangular(3 * p).and_then(|n| (n % 3 == 2).then_some((n+1)/3))
-}
-
-// If t is triangular, then t = n(n+1)/2 for some integer n.
-// 8t + 1 = 4n(n+1) + 1 = 4n^2 + 4n + 1 = (2n+1)^2.
-#[inline]
-fn invert_triangular(t: u64) -> Option<u64> {
-    let candidate_square = 8 * t + 1;
-    let s = int_sqrt(candidate_square);
-    (s * s == candidate_square).then_some((s - 1) / 2)
-}
-
-// From https://en.wikipedia.org/wiki/Integer_square_root#Using_bitwise_operations
-#[inline]
-fn int_sqrt(n: u64) -> u64 {
-    if n < 2 {
-        return n;
-    }
-    let small_cand = int_sqrt(n >> 2) << 1;
-    let large_cand = small_cand + 1;
-    if large_cand * large_cand > n {
-        small_cand
-    } else {
-        large_cand
-    }
+    let m = 24 * p + 1;
+    let s = m.sqrt();
+    (s * s == m) && (s % 6 == 5)
 }
 
 #[cfg(test)]
 mod tests {
-    use crate::{invert_pentagonal, invert_triangular};
+    use crate::{is_pentagonal};
 
     #[test]
-    fn test_invert_triangular() {
-        let expected: [u64; 10] = [1, 3, 6, 10, 15, 21, 28, 36, 45, 55];
-        let calculated: Vec<u64> = (1..=60)
-            .filter_map(|t| invert_triangular(t).and(Some(t)))
-            .collect();
-        assert_eq!(&calculated, &expected);
-    }
-
-    #[test]
-    fn test_invert_pentagonal() {
+    fn test_is_pentagonal() {
         let expected: [u64; 10] = [1, 5, 12, 22, 35, 51, 70, 92, 117, 145];
-        let calculated: Vec<u64> = (1..=150)
-            .filter_map(|p| invert_pentagonal(p).and(Some(p)))
-            .collect();
-        assert_eq!(&calculated, &expected);
+        for p in 1..=145 {
+            assert_eq!(expected.contains(&p), is_pentagonal(p));
+        }
     }
 }
