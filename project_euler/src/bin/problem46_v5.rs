@@ -25,7 +25,27 @@ fn main() {
 fn solve() -> Option<u64> {
     (3..)
         .step_by(2)
-        .find(|&i| !is_odd_prime(i) && !composite_satisfies_conjecture(i))
+        .find(is_composite_but_does_not_satisfy_conjecture)
+}
+
+#[inline]
+fn is_composite_but_does_not_satisfy_conjecture(&n: &u64) -> bool {
+    if is_odd_prime(n) {
+        return false;
+    }
+
+    // It's a composite, so check the conjecture
+    for s in 1.. {
+        let twice_square = 2 * s * s;
+        if twice_square >= n - 2 {
+            return true;
+        }
+        let p = n - twice_square;
+        if is_odd_prime(p) {
+            return false;
+        }
+    }
+    true
 }
 
 #[inline]
@@ -58,19 +78,4 @@ fn is_odd_prime(n: u64) -> bool {
         }
     }
     true
-}
-
-#[inline]
-fn composite_satisfies_conjecture(n: u64) -> bool {
-    for s in 1.. {
-        let twice_square = 2 * s * s;
-        if twice_square >= n - 2 {
-            return false;
-        }
-        let p = n - twice_square;
-        if is_odd_prime(p) {
-            return true;
-        }
-    }
-    false
 }
