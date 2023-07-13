@@ -1,5 +1,3 @@
-use num::integer::Roots;
-use std::collections::HashSet;
 use std::time::Instant;
 
 const REPETITIONS: u32 = 1000;
@@ -25,12 +23,9 @@ fn main() {
 }
 
 fn solve() -> Option<u64> {
-    for i in (3..).step_by(2) {
-        if !is_odd_prime(i) && !composite_satisfies_conjecture(i) {
-            return Some(i);
-        }
-    }
-    None
+    (3..)
+        .step_by(2)
+        .find(|&i| !is_odd_prime(i) && !composite_satisfies_conjecture(i))
 }
 
 #[inline]
