@@ -2,7 +2,7 @@ use num::integer::Roots;
 use std::collections::HashSet;
 use std::time::Instant;
 
-const REPETITIONS: u32 = 100;
+const REPETITIONS: u32 = 1000;
 
 fn main() {
     let mut start_time = Instant::now();
@@ -67,30 +67,15 @@ fn is_odd_prime(n: u64) -> bool {
 
 #[inline]
 fn composite_satisfies_conjecture(n: u64) -> bool {
-    let s = (n - 3) / 3;
-    if is_square(s) {
-        return true;
-    }
-
-    for p in 3..n {
-        if !is_odd_prime(p) {
-            continue;
+    for s in 1.. {
+        let twice_square = 2 * s * s;
+        if twice_square >= n - 2 {
+            return false;
         }
-        let s = (n - p) / 2;
-        if is_square(s) {
+        let p = n - twice_square;
+        if is_odd_prime(p) {
             return true;
         }
     }
     false
-}
-
-#[inline]
-fn is_square(n: u64) -> bool {
-    let rem = n % 16;
-    if rem != 0 && rem != 1 && rem != 4 && rem != 9 {
-        return false;
-    }
-
-    let s = n.sqrt();
-    s * s == n
 }
