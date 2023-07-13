@@ -80,6 +80,11 @@ fn composite_satisfies_conjecture(n: u64, odd_primes: &[u64]) -> bool {
 
 #[inline]
 fn is_square(n: u64) -> bool {
+    let rem = n % 16;
+    if rem != 0 && rem != 1 && rem != 4 && rem != 9 {
+        return false;
+    }
+
     let s = n.sqrt();
     s * s == n
 }
