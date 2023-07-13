@@ -37,8 +37,8 @@ fn solve() -> Option<u64> {
 
 #[inline]
 fn is_odd_prime(n: u64) -> bool {
-    if n == 3 || n == 5 || n == 7 {
-        return true;
+    if n < 11 {
+        return n == 3 || n == 5 || n == 7;
     }
 
     // if n is prime, and greater than 3, then it must be of the form 6k+1 or 6k+5...
