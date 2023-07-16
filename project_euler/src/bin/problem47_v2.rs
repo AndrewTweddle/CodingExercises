@@ -5,7 +5,7 @@ fn main() {
 fn solve() -> u64 {
     let mut primes: Vec<u64> = Vec::with_capacity(1000);
     primes.extend([2, 3, 5, 7]);
-    let mut count_of_4_prime_divisor_ints = 0;
+    let mut count_of_ints_with_4_distinct_prime_factors = 0;
 
     for i in 8.. {
         let mut distinct_prime_factor_count = 0;
@@ -13,6 +13,7 @@ fn solve() -> u64 {
         for &p in &primes {
             if q % p == 0 {
                 distinct_prime_factor_count += 1;
+
                 q /= p;
                 while q % p == 0 {
                     q /= p;
@@ -22,14 +23,15 @@ fn solve() -> u64 {
                 }
 
                 // No point in continuing if more than 4 distinct prime factors encountered
-                if distinct_prime_factor_count > 4 {
+                if distinct_prime_factor_count == 4 {
+                    distinct_prime_factor_count += 1;
                     break;
                 }
             }
         }
         if distinct_prime_factor_count == 4 {
-            count_of_4_prime_divisor_ints += 1;
-            if count_of_4_prime_divisor_ints == 4 {
+            count_of_ints_with_4_distinct_prime_factors += 1;
+            if count_of_ints_with_4_distinct_prime_factors == 4 {
                 return i - 3;
             }
         } else {
@@ -38,7 +40,7 @@ fn solve() -> u64 {
             }
 
             // The sequence is broken, so start over...
-            count_of_4_prime_divisor_ints = 0;
+            count_of_ints_with_4_distinct_prime_factors = 0;
         }
     }
     // We should never get here...
