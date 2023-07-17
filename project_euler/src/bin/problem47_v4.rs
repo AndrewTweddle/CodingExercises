@@ -10,7 +10,7 @@ fn solve() -> u64 {
     let mut count_of_ints_with_4_distinct_prime_factors = 0;
 
     for i in 2.. {
-        let mut distinct_prime_factor_count = 1;  // initialize to a common outcome
+        let mut distinct_prime_factor_count = 1; // initialize to a common outcome
         if let Some(p) = primes.iter().find(|&p| i % p == 0) {
             let mut q = i / p;
             while q % p == 0 {
