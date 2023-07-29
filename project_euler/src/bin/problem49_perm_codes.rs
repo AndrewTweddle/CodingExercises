@@ -8,10 +8,10 @@ fn main() {
 fn solve() -> u64 {
     let mut perm_hash: HashMap<u32, Vec<u16>> = HashMap::new();
 
-    // 4 digit prime numbers are of the form 6n+/-1.
-    // 1002 is the smallest multiple of 6 that is a 4 digit number.
-    // For each such number, add it to a hash table, where each hash key
-    // is shared by all permutations
+    // 4 digit prime numbers are all of the form 6m +/-1.
+    // For each such number (if not divisible by 5) add it to a hash map, where the hash key
+    // is the same for all numbers that are permutations of one another (and unique to that set).
+    // Start from 1002, as it is the smallest value of 6m such that 6m-1 is a 4 digit number.
     for n in (1002..10_000).step_by(6) {
         add_to_hash(&mut perm_hash, (n - 1) as u16);
         add_to_hash(&mut perm_hash, (n + 1) as u16);
@@ -30,11 +30,13 @@ fn solve() -> u64 {
             for j in (i + 1)..(perm_count - 1) {
                 let perm2 = perms[j];
                 let perm3 = 2 * perm2 - perm1;
-                if perms.contains(&perm3) && is_prime(perm2) && is_prime(perm3)
-                    && (perm1 != 1487 || perm2 != 4817) {
-                    return (perm1 as u64) * 100_000_000
-                        + (perm2 as u64) * 10_000
-                        + (perm3 as u64);
+                if perms.contains(&perm3)
+                    && is_prime(perm2)
+                    && is_prime(perm3)
+                    && (perm1 != 1487 || perm2 != 4817)
+                {
+                    // return the first solution found, since the problem statement says it's unique
+                    return (perm1 as u64) * 100_000_000 + (perm2 as u64) * 10_000 + (perm3 as u64);
                 }
             }
         }
@@ -50,7 +52,7 @@ fn add_to_hash(perm_hash: &mut HashMap<u32, Vec<u16>>, n: u16) {
         let mut entry = perm_hash.entry(code);
         match entry {
             Entry::Vacant(_) => {
-                let mut new_vec = Vec::with_capacity(24);  // = 4! (when all 4 digits are unique)
+                let mut new_vec = Vec::with_capacity(24); // = 4! (when all 4 digits are unique)
                 new_vec.push(n);
                 entry.or_insert(new_vec);
             }
@@ -76,7 +78,9 @@ fn digits(mut n: u16) -> [u8; 4] {
 fn perm_code(n: u16) -> u32 {
     let mut code: u32 = 0;
     for d in digits(n) {
-        code += 1 << (2 * d); // Use 2 bits (0 - 3) per decimal digit,
+        // Use 3 bits per decimal digit to count the # of that digit in n.
+        // With 10 possible digits this uses 3 * 10 bits to form a unique number per set of digits.
+        code += 1 << (3 * d);
     }
     code
 }
