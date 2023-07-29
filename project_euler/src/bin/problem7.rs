@@ -86,7 +86,7 @@ fn get_primes_up_to_nth_prime(n: u64) -> Vec<u64> {
 
 fn get_nth_prime(n: u64) -> Option<u64> {
     let primes = get_primes_up_to_nth_prime(n);
-    primes.iter().rev().next().cloned()
+    primes.iter().next_back().cloned()
 }
 
 #[test]
