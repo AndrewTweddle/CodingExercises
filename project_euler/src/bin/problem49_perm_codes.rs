@@ -5,7 +5,13 @@ fn main() {
     solve_and_print_solution_and_time_more_runs_without_printing(solve, 1000);
 }
 
+// We can search for the first new solution, as the problem statement says there is only one other.
+// But to compare performance of different algorithms, it is better to search exhaustively.
+// Otherwise an algorithm may seem better simply because it searched in a luckier order.
+const EXHAUSTIVE_SEARCH: bool = false;
+
 fn solve() -> u64 {
+    let mut solution = 0;
     let mut perm_hash: HashMap<u32, Vec<u16>> = HashMap::new();
 
     // 4 digit prime numbers are all of the form 6m +/-1.
@@ -35,13 +41,19 @@ fn solve() -> u64 {
                     && is_prime(perm3)
                     && (perm1 != 1487 || perm2 != 4817)
                 {
-                    // return the first solution found, since the problem statement says it's unique
-                    return (perm1 as u64) * 100_000_000 + (perm2 as u64) * 10_000 + (perm3 as u64);
+                    solution = (perm1 as u64) * 100_000_000 + (perm2 as u64) * 10_000 + (perm3 as u64);
+                    if !EXHAUSTIVE_SEARCH {
+                        // use the first solution found, as the problem statement says it's unique
+                        return solution;
+                    }
                 }
             }
         }
     }
 
+    if EXHAUSTIVE_SEARCH {
+        return solution;
+    }
     panic!("No solution found")
 }
 
