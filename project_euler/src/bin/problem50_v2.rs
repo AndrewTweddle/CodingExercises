@@ -71,7 +71,7 @@ fn solve() -> u32 {
             }
         }
     }
-    0
+    panic!("No solution found!");
 }
 
 #[inline]
