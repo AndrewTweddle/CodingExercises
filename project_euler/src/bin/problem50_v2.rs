@@ -39,21 +39,20 @@ fn solve() -> u32 {
 
     // Search downwards by number of steps, so that we can exist as soon as a solution is found
     for num_steps in (6..=ix_of_cum_sum_leq_max).rev() {
-        let max_i = if num_steps % 2 == 0 {
+        let (skip_first, count) = if num_steps % 2 == 0 {
             // An even number of steps must always include the only even prime
-            num_steps
+            (0, 1)
         } else {
-            ix_of_cum_sum_leq_max - num_steps
+            (1, num_steps - 1)
         };
-        for &(i, _, lower_cum_sum) in &mut cum_primes.iter().take(max_i + 1) {
+        for &(i, _, lower_cum_sum) in &mut cum_primes.iter().skip(skip_first).take(count) {
             let j = i + num_steps;
             let upper_cum_sum = cum_primes[j].2;
             let sum_of_primes = upper_cum_sum - lower_cum_sum;
-            if let Ok(best_ix) =
-                cum_primes.binary_search_by(|&(_, prime, _)| prime.cmp(&(sum_of_primes as u32)))
+            if cum_primes
+                .binary_search_by(|&(_, prime, _)| prime.cmp(&(sum_of_primes as u32)))
+                .is_ok()
             {
-                let best_prime = cum_primes[best_ix].1;
-
                 // A solution has been found!
                 #[cfg(debug_assertions)]
                 {
@@ -64,11 +63,11 @@ fn solve() -> u32 {
                     println!(
                         "{} terms: {} = {}",
                         j - i,
-                        best_prime,
+                        sum_of_primes,
                         prime_sum_strs.join(" + "),
                     );
                 }
-                return best_prime;
+                return sum_of_primes as u32;
             }
         }
     }
