@@ -18,7 +18,7 @@ fn solve() -> u32 {
     let mut cum: u32 = 5;
 
     for n in (5..=MAX_N).step_by(6) {
-        if is_prime(n) {
+        if is_prime_near_multiple_of_6(n) {
             max_index += 1;
             cum += n;
             cum_primes.push((max_index, n, cum));
@@ -29,7 +29,7 @@ fn solve() -> u32 {
             }
         }
         let n2 = n + 2;
-        if is_prime(n2) && n2 <= MAX_N {
+        if is_prime_near_multiple_of_6(n2) && n2 <= MAX_N {
             max_index += 1;
             cum += n2;
             cum_primes.push((max_index, n2, cum));
@@ -81,13 +81,20 @@ fn solve() -> u32 {
 
 #[inline]
 fn is_prime(n: u32) -> bool {
-    if n % 2 == 0 || n % 3 == 0 {
-        return false;
+    if n <= 3 {
+        n >= 2
+    } else if n % 2 == 0 || n % 3 == 0 {
+        false
+    } else {
+        is_prime_near_multiple_of_6(n)
     }
+}
 
+#[inline]
+fn is_prime_near_multiple_of_6(n: u32) -> bool {
     let int_sqrt = n.sqrt();
 
-    // We already know it is not divisible by 2 or 3. So n has the form 6n +/- 1.
+    // n has the form 6n +/- 1. So we already know it is not divisible by 2 or 3.
     // If it is not prime, then one of its prime factors will also be of this form.
     for multiple_of_6 in 1.. {
         let factor = 6 * multiple_of_6 - 1;
