@@ -37,7 +37,7 @@ fn solve() -> u32 {
             Err(ix) => ix - 1,
         };
 
-    // Search downwards by number of steps, so that we can exist as soon as a solution is found
+    // Search downwards by number of steps, so that we can exit as soon as a solution is found
     for num_steps in (6..=ix_of_cum_sum_leq_max).rev() {
         let (skip_first, count) = if num_steps % 2 == 0 {
             // An even number of steps must always include the only even prime
