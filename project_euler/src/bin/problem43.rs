@@ -18,7 +18,7 @@ fn convert_to_ten_digit_pandigital(n: usize) -> Option<usize> {
             quotient /= base;
         }
 
-        let mut digit_used = vec![false; DIGIT_COUNT];
+        let mut digit_used = [false; DIGIT_COUNT];
         let mut result: usize = 0;
 
         for rem_index in rem_digits_index {

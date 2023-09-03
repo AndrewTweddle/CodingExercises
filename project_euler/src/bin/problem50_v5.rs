@@ -6,7 +6,6 @@ fn main() {
 
 type IndexPrimeAndCumSum = (usize, u32, u32);
 
-// Note: 1_000_000 = 6 * 166_666 + 4, so the last pair to check will be 999_995 and 999_997
 const MAX_N: u32 = 999_999;
 
 fn solve() -> u32 {

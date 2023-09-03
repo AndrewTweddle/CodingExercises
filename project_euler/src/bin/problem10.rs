@@ -248,7 +248,6 @@ fn test_prime_iter() {
     let prime_iter = PrimeIter::new(4);
     let mut primes = prime_iter.take(22);
 
-    // let expected_primes: [u64; 4] = [2, 3, 5, 7];
     let expected_primes: [u64; 22] = [
         2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79,
     ];
