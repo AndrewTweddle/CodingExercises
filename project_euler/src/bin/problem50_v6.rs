@@ -44,34 +44,42 @@ fn solve() -> u32 {
     if let Some((max_length, _)) =
         get_max_length_and_sum_of_consecutive_primes(&cum_primes, max_index)
     {
-        // Generate further primes, using the best length (B, say) found so far as a filter.
-        // Stop generating further primes when the sum of the last B primes is greater than MAX_N.
-        for n in ((last_n + 4)..=MAX_N).step_by(6) {
-            if is_prime_near_multiple_of_6(n) {
-                max_index += 1;
-                cum += n;
-                cum_primes.push((max_index, n, cum));
-                let cum_of_max_length = cum - cum_primes[max_index - max_length].2;
-                if cum_of_max_length >= MAX_N {
-                    break;
-                }
-            }
-            let n2 = n + 2;
-            if is_prime_near_multiple_of_6(n2) && n2 <= MAX_N {
-                max_index += 1;
-                cum += n2;
-                cum_primes.push((max_index, n2, cum));
-                let cum_of_max_length = cum - cum_primes[max_index - max_length].2;
-                if cum_of_max_length >= MAX_N {
-                    break;
-                }
-            }
-        }
+        let mut prev_max_length = max_length;
 
-        if let Some((_, prime)) =
-            get_max_length_and_sum_of_consecutive_primes(&cum_primes, max_index)
-        {
-            return prime;
+        loop {
+            // Generate further primes, using the best length (B, say) found so far as a filter.
+            // Stop generating further primes when the sum of the last B primes is greater than MAX_N.
+            for n in ((last_n + 4)..=MAX_N).step_by(6) {
+                if is_prime_near_multiple_of_6(n) {
+                    max_index += 1;
+                    cum += n;
+                    cum_primes.push((max_index, n, cum));
+                    let cum_of_max_length = cum - cum_primes[max_index - max_length].2;
+                    if cum_of_max_length >= MAX_N {
+                        break;
+                    }
+                }
+                let n2 = n + 2;
+                if is_prime_near_multiple_of_6(n2) && n2 <= MAX_N {
+                    max_index += 1;
+                    cum += n2;
+                    cum_primes.push((max_index, n2, cum));
+                    let cum_of_max_length = cum - cum_primes[max_index - max_length].2;
+                    if cum_of_max_length >= MAX_N {
+                        break;
+                    }
+                }
+            }
+
+            if let Some((new_max_length, prime)) =
+                get_max_length_and_sum_of_consecutive_primes(&cum_primes, max_index)
+            {
+                // No further improvements found, so no need to continue searching...
+                if new_max_length == prev_max_length {
+                    return prime;
+                }
+                prev_max_length = new_max_length;
+            }
         }
     }
 
