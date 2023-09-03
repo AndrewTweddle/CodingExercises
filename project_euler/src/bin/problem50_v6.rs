@@ -19,23 +19,24 @@ fn solve() -> u32 {
     let mut cum: u32 = 5;
     let mut last_n: u32 = 1;
 
+    // Generate primes until the sum of all primes exceeds 1 million
     for n in (5..=MAX_N).step_by(6) {
+        if cum + n > MAX_N {
+            break;
+        }
+
         if is_prime_near_multiple_of_6(n) {
             max_index += 1;
             cum += n;
             cum_primes.push((max_index, n, cum));
         }
         let n2 = n + 2;
+        last_n = n2;
+
         if is_prime_near_multiple_of_6(n2) && n2 <= MAX_N {
             max_index += 1;
             cum += n2;
             cum_primes.push((max_index, n2, cum));
-
-            // Don't generate more primes than necessary
-            if cum > MAX_N {
-                last_n = n2;
-                break;
-            }
         }
     }
     max_index -= 1;
