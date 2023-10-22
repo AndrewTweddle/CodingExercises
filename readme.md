@@ -248,6 +248,7 @@ This can be very useful for:
 | 8   | [Treetop Tree House](https://adventofcode.com/2022/day/8)      | 1 & 2 |            | [Rust](AdventOfCode/aoc2022/src/bin/day8.rs)                             |                                                 |
 | 9   | [Rope Bridge](https://adventofcode.com/2022/day/9)             | 1     | 2023-05-13 | [Rust](AdventOfCode/aoc2022/src/bin/day9_part1.rs)                       |                                                 |
 |     |                                                                | 2     | 2023-05-14 | [Rust](AdventOfCode/aoc2022/src/bin/day9_part2.rs)                       | Duration: 655µs (excl. I/O).                    |
+| 10  | [Cathode-Ray Tube](https://adventofcode.com/2022/day/10)       | 1     | 2023-10-22 | [Rust](AdventOfCode/aoc2022/src/bin/day10_part1.rs)                      |                                                 |
 
 ## cryptopals crypto challenges
 
