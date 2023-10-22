@@ -21,11 +21,11 @@ impl Entry<'_> {
         match self {
             Entry::File {
                 name: file_name,
-                size: _
+                size: _,
             } => file_name,
             Entry::Dir {
                 name: dir_name,
-                child_indices: _
+                child_indices: _,
             } => dir_name,
         }
     }
@@ -70,12 +70,11 @@ impl<'a> FileSystem<'a> {
             .find(|&(_, entry)| match entry {
                 Entry::Dir {
                     name: _,
-                    child_indices: Some(
-                        IndexRange {
+                    child_indices:
+                        Some(IndexRange {
                             first_index: start,
                             last_index: end,
-                        }
-                    ),
+                        }),
                 } => (*start <= entry_index) && (*end >= entry_index),
                 _ => false,
             })
@@ -85,15 +84,14 @@ impl<'a> FileSystem<'a> {
     fn cd_up(&mut self) -> Result<(), String> {
         if self.pwd_index == 0 {
             Err("Cannot cd to parent when at root directory".to_string())
+        } else if let Some(parent_index) = self.get_parent_index_of_entry_with_index(self.pwd_index)
+        {
+            self.pwd_index = parent_index;
+            #[cfg(debug_assertions)]
+            println!("cd ..  # {}", self.get_path_to_pwd());
+            Ok(())
         } else {
-            if let Some(parent_index) = self.get_parent_index_of_entry_with_index(self.pwd_index) {
-                self.pwd_index = parent_index;
-                #[cfg(debug_assertions)]
-                println!("cd ..  # {}", self.get_path_to_pwd());
-                Ok(())
-            } else {
-                Err("Cannot find parent to navigate up to".to_string())
-            }
+            Err("Cannot find parent to navigate up to".to_string())
         }
     }
 
@@ -188,7 +186,7 @@ impl<'a> FileSystem<'a> {
     }
 
     fn add_file_to_pwd(&mut self, file_name: &'a str, file_size: usize) -> Result<(), String> {
-        if let Some(_) = self.get_index_of_child_entry(file_name) {
+        if self.get_index_of_child_entry(file_name).is_some() {
             Err(format!(
                 "Cannot create a file named \"{}\" when an entry with that name already exists",
                 file_name
@@ -238,7 +236,7 @@ impl<'a> FileSystem<'a> {
             } else {
                 path = parent_entry.get_name().to_string() + "/" + path.as_str();
             }
-        };
+        }
         path
     }
 
@@ -303,44 +301,52 @@ fn get_min_dir_size_ge_min_size(file_sys: &FileSystem, min_dir_size: usize) -> u
 fn recursively_sum_entry_sizes<'a, F>(
     file_sys: &'a FileSystem,
     entry: &'a Entry,
-    dir_size_fn: &mut F
+    dir_size_fn: &mut F,
 ) -> usize
-    where F: FnMut(usize)
+where
+    F: FnMut(usize),
 {
-   match entry {
-       Entry::File {
-           name: _,
-           size: file_size,
-       } => *file_size,
-       Entry::Dir {
-           name: _,
-           child_indices: Some(ref indices),
-       } => {
-           let mut dir_size: usize = 0;
-           for i in indices.first_index..=indices.last_index {
-               let child_entry = &file_sys.entries[i];
-               dir_size += recursively_sum_entry_sizes(file_sys, child_entry, dir_size_fn)
-           }
-           dir_size_fn(dir_size);
-           dir_size
-       },
-       _ => 0
-   }
+    match entry {
+        Entry::File {
+            name: _,
+            size: file_size,
+        } => *file_size,
+        Entry::Dir {
+            name: _,
+            child_indices: Some(ref indices),
+        } => {
+            let mut dir_size: usize = 0;
+            for i in indices.first_index..=indices.last_index {
+                let child_entry = &file_sys.entries[i];
+                dir_size += recursively_sum_entry_sizes(file_sys, child_entry, dir_size_fn)
+            }
+            dir_size_fn(dir_size);
+            dir_size
+        }
+        _ => 0,
+    }
 }
 
 fn find_size_of_smallest_dir_freeing_enough_space(file_sys: &FileSystem) -> usize {
-    let total_used: usize = file_sys.entries.iter().map(|entry|  {
-        if let Entry::File { size: file_size, .. } = entry {
-            *file_size
-        } else {
-            0
-        }
-    }).sum();
+    let total_used: usize = file_sys
+        .entries
+        .iter()
+        .map(|entry| {
+            if let Entry::File {
+                size: file_size, ..
+            } = entry
+            {
+                *file_size
+            } else {
+                0
+            }
+        })
+        .sum();
 
     let free_space = TOTAL_DISK_SPACE - total_used;
     if free_space < UNUSED_DISK_SPACE_NEEDED {
         let space_to_free_up = UNUSED_DISK_SPACE_NEEDED - free_space;
-        get_min_dir_size_ge_min_size(&file_sys, space_to_free_up)
+        get_min_dir_size_ge_min_size(file_sys, space_to_free_up)
     } else {
         0
     }
@@ -355,19 +361,31 @@ fn main() {
 
     start_step = Instant::now();
     let file_sys = parse(&contents).unwrap();
-    println!("Time to parse instructions and construct the file sytem: {:?}", start_step.elapsed());
+    println!(
+        "Time to parse instructions and construct the file sytem: {:?}",
+        start_step.elapsed()
+    );
 
     start_step = Instant::now();
     let part1_answer = get_sum_of_dir_sizes_with_total_size_up_to_max_dir_size(&file_sys);
-    println!("Time to calculate part 1 answer: {:?}", start_step.elapsed());
+    println!(
+        "Time to calculate part 1 answer: {:?}",
+        start_step.elapsed()
+    );
 
     println!("\n2022 day 7 part 1 answer: {}\n", part1_answer);
 
     start_step = Instant::now();
     let part2_answer = find_size_of_smallest_dir_freeing_enough_space(&file_sys);
-    println!("Time to calculate part 2 answer: {:?}", start_step.elapsed());
+    println!(
+        "Time to calculate part 2 answer: {:?}",
+        start_step.elapsed()
+    );
 
     println!("\n2022 day 7 part 2 answer: {}\n", part2_answer);
 
-    println!("Total time to calculate part 1 & 2 answers: {:?}", start_total.elapsed());
+    println!(
+        "Total time to calculate part 1 & 2 answers: {:?}",
+        start_total.elapsed()
+    );
 }
