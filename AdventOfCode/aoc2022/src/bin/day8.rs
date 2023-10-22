@@ -34,10 +34,9 @@ fn calculate_visibility(trees: &mut Vec<Vec<Tree>>) {
     let row_count = trees.len();
     let col_count = trees.first().unwrap().len();
 
-    for r in 0..row_count {
+    for row in trees.iter_mut() {
         let mut max_left: i8 = -1;
         let mut max_right: i8 = -1;
-        let row = &mut trees[r];
         for c in 0..col_count {
             let left_tree = &mut row[c];
             left_tree.max_left = max_left;
@@ -64,7 +63,7 @@ fn calculate_visibility(trees: &mut Vec<Vec<Tree>>) {
     }
 }
 
-fn count_visible_trees(trees: &Vec<Vec<Tree>>) -> usize {
+fn count_visible_trees(trees: &[Vec<Tree>]) -> usize {
     trees.iter().map(|row| {
         row.iter().filter(|tree| tree.is_visible()).count()
     }).sum()
