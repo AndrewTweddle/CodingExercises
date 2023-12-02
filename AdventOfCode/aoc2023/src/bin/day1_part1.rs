@@ -1,7 +1,12 @@
+use aoc2023::read_and_solve_and_time_more_runs;
+
 fn main() {
-    let contents = std::fs::read_to_string("data/day1_input.txt").expect("Input file not readable");
-    let total = get_sum_of_calibration_values(&contents);
-    println!("Day 1 part 1 answer: {total}");
+    read_and_solve_and_time_more_runs(
+        "data/day1_input.txt",
+        "Day 1 part 1",
+        get_sum_of_calibration_values,
+        1000,
+    );
 }
 
 fn get_sum_of_calibration_values(contents: &str) -> u32 {
