@@ -1,5 +1,5 @@
 fn main() {
-    let contents = std::fs::read_to_string("data/day1_input.txt").expect("Input file not found");
+    let contents = std::fs::read_to_string("data/day1_input.txt").expect("Input file not readable");
     let total = get_sum_of_calibration_values(&contents);
     println!("Day 1 part 1 answer: {total}");
 }

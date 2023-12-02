@@ -253,9 +253,10 @@ This can be very useful for:
 
 ### 2023
 
-| Day | Description                                        | Part  | Date       | Solution                                           | Notes                                           |
-|-----|----------------------------------------------------|-------|------------|----------------------------------------------------|-------------------------------------------------|
-| 1   | [Trebuchet?!](https://adventofcode.com/2023/day/1) | 1     | 2023-12-01 | [Rust](AdventOfCode/aoc2023/src/bin/day1_part1.rs) |                                                 |
+| Day | Description                                        | Part | Date       | Solution                                           | Notes                                    |
+|-----|----------------------------------------------------|------|------------|----------------------------------------------------|------------------------------------------|
+| 1   | [Trebuchet?!](https://adventofcode.com/2023/day/1) | 1    | 2023-12-01 | [Rust](AdventOfCode/aoc2023/src/bin/day1_part1.rs) |                                          |
+|     |                                                    | 2    |            | [Rust](AdventOfCode/aoc2023/src/bin/day1_part2.rs) | Define an iterator over digits in a &str |
 
 ## cryptopals crypto challenges
 
