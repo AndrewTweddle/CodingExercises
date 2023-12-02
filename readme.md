@@ -11,15 +11,15 @@ I use these to:
 
 ## Links within this page
 
-| Link                                                                            | Source                                                      | Description                                  |
-|---------------------------------------------------------------------------------|-------------------------------------------------------------|----------------------------------------------|
-| [Project Euler](#project-euler-problems)                                        | [projecteuler.net](https://projecteuler.net)                | Coding challenges with a mathematical theme  |
-| [Advent of Code](#advent-of-code) ([2020](#2020), [2021](#2021), [2022](#2022)) | [adventofcode.com](https://adventofcode.com/)               | 25 days of coding challenges run in December |
-| [cryptopals](#cryptopals-crypto-challenges)                                     | [cryptopals.com](https://cryptopals.com/)                   | Cryptography challenges                      |
-| [CSES Problem Set](#cses-problem-set)                                           | [cses.fi/problemset/list](https://cses.fi/problemset/list/) | Competitive coding exercises                 |
-| [CodingDojo Katas](#katas-from-codingdojoorg)                                   | [CodingDojo.org](https://codingdojo.org/)                   |                                              |
-| [Miscellaneous](#miscellaneous)                                                 | Miscellaneous sources                                       |                                              |
-| [CTCI Exercises](#ctci)                                                         | The book "Cracking the Coding Interview"                    | Technical interview questions                |
+| Link                                                                                           | Source                                                      | Description                                  |
+|------------------------------------------------------------------------------------------------|-------------------------------------------------------------|----------------------------------------------|
+| [Project Euler](#project-euler-problems)                                                       | [projecteuler.net](https://projecteuler.net)                | Coding challenges with a mathematical theme  |
+| [Advent of Code](#advent-of-code) ([2020](#2020), [2021](#2021), [2022](#2022), [2023](#2023)) | [adventofcode.com](https://adventofcode.com/)               | 25 days of coding challenges run in December |
+| [cryptopals](#cryptopals-crypto-challenges)                                                    | [cryptopals.com](https://cryptopals.com/)                   | Cryptography challenges                      |
+| [CSES Problem Set](#cses-problem-set)                                                          | [cses.fi/problemset/list](https://cses.fi/problemset/list/) | Competitive coding exercises                 |
+| [CodingDojo Katas](#katas-from-codingdojoorg)                                                  | [CodingDojo.org](https://codingdojo.org/)                   |                                              |
+| [Miscellaneous](#miscellaneous)                                                                | Miscellaneous sources                                       |                                              |
+| [CTCI Exercises](#ctci)                                                                        | The book "Cracking the Coding Interview"                    | Technical interview questions                |
 
 ## Related repositories
 
@@ -250,6 +250,12 @@ This can be very useful for:
 |     |                                                                | 2     | 2023-05-14 | [Rust](AdventOfCode/aoc2022/src/bin/day9_part2.rs)                       | Duration: 655µs (excl. I/O).                    |
 | 10  | [Cathode-Ray Tube](https://adventofcode.com/2022/day/10)       | 1     | 2023-10-22 | [Rust](AdventOfCode/aoc2022/src/bin/day10_part1.rs)                      |                                                 |
 |     |                                                                | 2     | 2023-10-22 | [Rust](AdventOfCode/aoc2022/src/bin/day10_part2.rs)                      |                                                 |
+
+### 2023
+
+| Day | Description                                        | Part  | Date       | Solution                                          | Notes                                           |
+|-----|----------------------------------------------------|-------|------------|---------------------------------------------------|-------------------------------------------------|
+| 1   | [Trebuchet?!](https://adventofcode.com/2023/day/1) | 1     | 2023-12-01 | Rust](AdventOfCode/aoc2023/src/bin/day1_part1.rs) |                                                 |
 
 ## cryptopals crypto challenges
 
