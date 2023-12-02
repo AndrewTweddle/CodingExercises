@@ -5,7 +5,7 @@ fn main() {
         "data/day1_input.txt",
         "Day 1 part 1",
         get_sum_of_calibration_values,
-        1000,
+        10_000,
     );
 }
 

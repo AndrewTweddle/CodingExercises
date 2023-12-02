@@ -5,7 +5,7 @@ fn main() {
         "data/day1_input.txt",
         "Day 1 part 2 (iterator approach)",
         get_sum_of_calibration_values,
-        1000,
+        10_000,
     );
 }
 
@@ -32,8 +32,7 @@ impl<'a> DigitIter<'a> {
     }
 }
 
-const DIGIT_STRS: [&str; 10] = [
-    "dummy_zero",
+const DIGIT_STRS: [&str; 9] = [
     "one",
     "two",
     "three",
@@ -61,7 +60,7 @@ impl Iterator for DigitIter<'_> {
             for (num, num_str) in DIGIT_STRS.iter().enumerate() {
                 if rem_str.starts_with(num_str) {
                     self.digits_str = &rem_str[1..];
-                    return Some(num as u32);
+                    return Some(num as u32 + 1);
                 }
             }
 
