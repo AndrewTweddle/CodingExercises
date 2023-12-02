@@ -5,7 +5,7 @@ fn main() {
         "data/day1_input.txt",
         "Day 1 part 2 (simpler approach)",
         get_sum_of_calibration_values,
-        1000,
+        10_000,
     );
 }
 
@@ -22,7 +22,7 @@ fn get_sum_of_calibration_values(contents: &str) -> u32 {
                         .iter()
                         .enumerate()
                         .filter_map(|(digit, digit_str)| {
-                            sub_str.starts_with(digit_str).then_some(digit as u32)
+                            sub_str.starts_with(digit_str).then_some(digit as u32 + 1)
                         })
                         .next()
                 }
@@ -34,8 +34,7 @@ fn get_sum_of_calibration_values(contents: &str) -> u32 {
         .sum::<u32>()
 }
 
-const DIGIT_STRS: [&str; 10] = [
-    "dummy_zero",
+const DIGIT_STRS: [&str; 9] = [
     "one",
     "two",
     "three",
