@@ -29,23 +29,14 @@ fn get_sum_of_powers_of_cube_sets(contents: &str) -> u64 {
                 })
             });
             for (cube_colour, cube_count) in cube_set_iter {
-                match (cube_colour, cube_count) {
-                    ("red", count) => {
-                        if count > min_red {
-                            min_red = count;
-                        }
-                    }
-                    ("green", count) => {
-                        if count > min_green {
-                            min_green = count;
-                        }
-                    }
-                    ("blue", count) => {
-                        if count > min_blue {
-                            min_blue = count;
-                        }
-                    }
+                let min_count = match cube_colour {
+                    "red" => &mut min_red,
+                    "green" => &mut min_green,
+                    "blue" => &mut min_blue,
                     _ => panic!("Unexpected cube colour: {cube_colour}"),
+                };
+                if cube_count > *min_count {
+                    *min_count = cube_count;
                 }
             }
             min_red * min_green * min_blue

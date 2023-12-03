@@ -262,7 +262,7 @@ These can be used to easily calculate the average duration of solution algorithm
 |     |                                                       | 2    | 2023-12-01 | [Rust](AdventOfCode/aoc2023/src/bin/day1_part2.rs)        | 213µs    | Define an iterator over digits in a &str |
 |     |                                                       |      |            | [Rust](AdventOfCode/aoc2023/src/bin/day1_part2_simple.rs) | 247µs    | Shorter and simpler approach             |
 | 2   | [Cube Conundrum](https://adventofcode.com/2023/day/2) | 1    | 2023-12-02 | [Rust](AdventOfCode/aoc2023/src/bin/day2_part1.rs)        | 55µs     |                                          |
-|     |                                                       | 2    | 2023-12-02 | [Rust](AdventOfCode/aoc2023/src/bin/day2_part2.rs)        | 108µs    |                                          |
+|     |                                                       | 2    | 2023-12-02 | [Rust](AdventOfCode/aoc2023/src/bin/day2_part2.rs)        | 111µs    |                                          |
 
 _Note: Timings based on an i7-6700 CPU. Durations exclude I/O (reading the input file and writing the answer to the terminal) unless indicated._
 
