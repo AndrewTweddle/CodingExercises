@@ -1,5 +1,5 @@
-use std::str::FromStr;
 use aoc2023::read_and_solve_and_time_more_runs;
+use std::str::FromStr;
 
 fn main() {
     read_and_solve_and_time_more_runs(
@@ -20,21 +20,25 @@ fn get_sum_of_ids_of_possible_games(contents: &str) -> u32 {
         .filter_map(|ln| {
             let (prefix, draws_str) = ln.split_once(':').expect("No colon found in line");
             let game_id = u32::from_str(&prefix[5..]).expect("No game id found");
-            draws_str.split(';').all(|draw|
-                draw.split(',').all(|cube_set_str| {
-                    let (cube_count_str, cube_colour) = cube_set_str
-                        .trim()
-                        .split_once(' ')
-                        .expect("Pattern doesn't match count and colour separated by a space");
-                    let cube_count = u8::from_str(cube_count_str).expect("Could not parse count");
-                    match (cube_count, cube_colour) {
-                        (red_count, "red") => red_count <= MAX_RED_COUNT,
-                        (green_count, "green") => green_count <= MAX_GREEN_COUNT,
-                        (blue_count, "blue") => blue_count <= MAX_BLUE_COUNT,
-                        _ => panic!("Unmatched cube colour: {cube_colour}"),
-                    }
+            draws_str
+                .split(';')
+                .all(|draw| {
+                    draw.split(',').all(|cube_set_str| {
+                        let (cube_count_str, cube_colour) = cube_set_str
+                            .trim()
+                            .split_once(' ')
+                            .expect("Pattern doesn't match count and colour separated by a space");
+                        let cube_count =
+                            u8::from_str(cube_count_str).expect("Could not parse count");
+                        match (cube_count, cube_colour) {
+                            (red_count, "red") => red_count <= MAX_RED_COUNT,
+                            (green_count, "green") => green_count <= MAX_GREEN_COUNT,
+                            (blue_count, "blue") => blue_count <= MAX_BLUE_COUNT,
+                            _ => panic!("Unmatched cube colour: {cube_colour}"),
+                        }
+                    })
                 })
-            ).then_some(game_id)
+                .then_some(game_id)
         })
         .sum::<u32>()
 }
