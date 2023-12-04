@@ -256,16 +256,16 @@ This can be very useful for:
 Rust utility methods can be found in [lib.rs](AdventOfCode/aoc2023/src/lib.rs).
 These can be used to easily calculate the average duration of solution algorithms over many repetitions.
 
-| Day | Description                                              | Part | Date       | Solution                                                  | Duration | Notes                                                                                     |
-|-----|----------------------------------------------------------|------|------------|-----------------------------------------------------------|----------|-------------------------------------------------------------------------------------------|
-| 1   | [Trebuchet?!](https://adventofcode.com/2023/day/1)       | 1    | 2023-12-01 | [Rust](AdventOfCode/aoc2023/src/bin/day1_part1.rs)        | 72µs     |                                                                                           |
-|     |                                                          | 2    | 2023-12-01 | [Rust](AdventOfCode/aoc2023/src/bin/day1_part2.rs)        | 213µs    | Define an iterator over digits in a &str                                                  |
-|     |                                                          |      |            | [Rust](AdventOfCode/aoc2023/src/bin/day1_part2_simple.rs) | 247µs    | Shorter and simpler approach                                                              |
-|     |                                                          |      | 2023-12-02 | [Rust](AdventOfCode/aoc2023/src/bin/day1_part2_fast.rs)   | 175µs    | Faster but more verbose. Uses bytes not chars. Searches backwards to find the last digit. |
-| 2   | [Cube Conundrum](https://adventofcode.com/2023/day/2)    | 1    | 2023-12-02 | [Rust](AdventOfCode/aoc2023/src/bin/day2_part1.rs)        | 55µs     |                                                                                           |
-|     |                                                          | 2    | 2023-12-02 | [Rust](AdventOfCode/aoc2023/src/bin/day2_part2.rs)        | 111µs    |                                                                                           |
-| 4   | [Cube Scratchcards](https://adventofcode.com/2023/day/4) | 1    | 2023-12-04 | [Rust](AdventOfCode/aoc2023/src/bin/day4_part1.rs)        | 345µs    |                                                                                           |
-|     |                                                          | 2    | 2023-12-04 | [Rust](AdventOfCode/aoc2023/src/bin/day4_part2.rs)        | 303µs    |                                                                                           |
+| Day | Description                                           | Part | Date       | Solution                                                  | Duration | Notes                                                                                     |
+|-----|-------------------------------------------------------|------|------------|-----------------------------------------------------------|----------|-------------------------------------------------------------------------------------------|
+| 1   | [Trebuchet?!](https://adventofcode.com/2023/day/1)    | 1    | 2023-12-01 | [Rust](AdventOfCode/aoc2023/src/bin/day1_part1.rs)        | 72µs     |                                                                                           |
+|     |                                                       | 2    | 2023-12-01 | [Rust](AdventOfCode/aoc2023/src/bin/day1_part2.rs)        | 213µs    | Define an iterator over digits in a &str                                                  |
+|     |                                                       |      |            | [Rust](AdventOfCode/aoc2023/src/bin/day1_part2_simple.rs) | 247µs    | Shorter and simpler approach                                                              |
+|     |                                                       |      | 2023-12-02 | [Rust](AdventOfCode/aoc2023/src/bin/day1_part2_fast.rs)   | 175µs    | Faster but more verbose. Uses bytes not chars. Searches backwards to find the last digit. |
+| 2   | [Cube Conundrum](https://adventofcode.com/2023/day/2) | 1    | 2023-12-02 | [Rust](AdventOfCode/aoc2023/src/bin/day2_part1.rs)        | 55µs     |                                                                                           |
+|     |                                                       | 2    | 2023-12-02 | [Rust](AdventOfCode/aoc2023/src/bin/day2_part2.rs)        | 111µs    |                                                                                           |
+| 4   | [Scratchcards](https://adventofcode.com/2023/day/4)   | 1    | 2023-12-04 | [Rust](AdventOfCode/aoc2023/src/bin/day4_part1.rs)        | 345µs    |                                                                                           |
+|     |                                                       | 2    | 2023-12-04 | [Rust](AdventOfCode/aoc2023/src/bin/day4_part2.rs)        | 303µs    |                                                                                           |
 
 _Note: Timings based on an i7-6700 CPU. Durations exclude I/O (reading the input file and writing the answer to the terminal) unless indicated._
 
