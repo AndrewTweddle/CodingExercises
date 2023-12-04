@@ -4,7 +4,7 @@ use std::str::FromStr;
 fn main() {
     read_and_solve_and_time_more_runs(
         "data/day4_input.txt",
-        "Day 4 part 1",
+        "Day 4 part 2",
         get_total_scratchcards,
         10_000,
     );
