@@ -265,6 +265,7 @@ These can be used to easily calculate the average duration of solution algorithm
 | 2   | [Cube Conundrum](https://adventofcode.com/2023/day/2) | 1    | 2023-12-02 | [Rust](AdventOfCode/aoc2023/src/bin/day2_part1.rs)        | 55µs     |                                                                                           |
 |     |                                                       | 2    | 2023-12-02 | [Rust](AdventOfCode/aoc2023/src/bin/day2_part2.rs)        | 111µs    |                                                                                           |
 | 3   | [Gear Ratios](https://adventofcode.com/2023/day/3)    | 1    | 2023-12-04 | [Rust](AdventOfCode/aoc2023/src/bin/day3_part1.rs)        | 143µs    |                                                                                           |
+|     |                                                       | 2    | 2023-12-04 | [Rust](AdventOfCode/aoc2023/src/bin/day3_part2.rs)        | 115µs    |                                                                                           |
 | 4   | [Scratchcards](https://adventofcode.com/2023/day/4)   | 1    | 2023-12-04 | [Rust](AdventOfCode/aoc2023/src/bin/day4_part1.rs)        | 345µs    |                                                                                           |
 |     |                                                       | 2    | 2023-12-04 | [Rust](AdventOfCode/aoc2023/src/bin/day4_part2.rs)        | 303µs    |                                                                                           |
 
