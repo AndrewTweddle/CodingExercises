@@ -27,16 +27,11 @@ struct Mapping {
 
 impl Mapping {
     fn map(&self, input: u64) -> u64 {
-        if let Some(output) = self
-            .mapping_rules
+        self.mapping_rules
             .iter()
             .filter_map(|rule| rule.map(input))
             .next()
-        {
-            output
-        } else {
-            input
-        }
+            .unwrap_or(input)
     }
 }
 
@@ -53,7 +48,7 @@ fn solve(contents: &str) -> u64 {
 
     // Build up the mappings...
     for ln in line_iter {
-        if ln.trim().is_empty() {
+        if ln.is_empty() {
             continue;
         } else if ln.contains("map:") {
             mappings.push(Mapping {

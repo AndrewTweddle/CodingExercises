@@ -268,7 +268,7 @@ These can be used to easily calculate the average duration of solution algorithm
 |     |                                                                        | 2    | 2023-12-04 | [Rust](AdventOfCode/aoc2023/src/bin/day3_part2.rs)        | 115µs    |                                                                                           |
 | 4   | [Scratchcards](https://adventofcode.com/2023/day/4)                    | 1    | 2023-12-04 | [Rust](AdventOfCode/aoc2023/src/bin/day4_part1.rs)        | 345µs    |                                                                                           |
 |     |                                                                        | 2    | 2023-12-04 | [Rust](AdventOfCode/aoc2023/src/bin/day4_part2.rs)        | 303µs    |                                                                                           |
-| 5   | [If You Give A Seed A Fertilizer](https://adventofcode.com/2023/day/5) | 1    | 2023-12-05 | [Rust](AdventOfCode/aoc2023/src/bin/day5_part1.rs)        | 73µs     |                                                                                           |
+| 5   | [If You Give A Seed A Fertilizer](https://adventofcode.com/2023/day/5) | 1    | 2023-12-05 | [Rust](AdventOfCode/aoc2023/src/bin/day5_part1.rs)        | 75µs     |                                                                                           |
 
 _Note: Timings based on an i7-6700 CPU. Durations exclude I/O (reading the input file and writing the answer to the terminal) unless indicated._
 
