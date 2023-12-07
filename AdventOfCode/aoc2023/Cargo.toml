@@ -6,4 +6,5 @@ authors = ["Andrew Tweddle"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
-[dependencies]
+# [dependencies]
+# itertools = "0.12.0"
