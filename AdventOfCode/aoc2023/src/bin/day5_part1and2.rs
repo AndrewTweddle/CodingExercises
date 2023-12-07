@@ -1,24 +1,62 @@
 use aoc2023::read_and_solve_and_time_more_runs;
-use std::str::FromStr;
-
-enum Part {
-    One,
-    Two,
-}
+use std::str::{FromStr, Lines};
 
 fn main() {
     read_and_solve_and_time_more_runs(
         "data/day5_input.txt",
         "Day 5 part 1",
-        |contents| solve(contents, Part::One),
+        solve_part_one,
         10_000,
     );
     read_and_solve_and_time_more_runs(
         "data/day5_input.txt",
         "Day 5 part 2",
-        |contents| solve(contents, Part::Two),
+        solve_part_two,
         0,
     );
+}
+
+fn solve_part_one(contents: &str) -> Id {
+    let mut line_iter = contents.lines();
+    let seeds = get_numbers_in_seed_line(&mut line_iter);
+    let mappings = get_mappings(&mut line_iter);
+    get_min_location_id(seeds.iter().copied(), &mappings)
+}
+
+fn solve_part_two(contents: &str) -> Id {
+    let mut line_iter = contents.lines();
+    let seed_line_numbers = get_numbers_in_seed_line(&mut line_iter);
+    let mappings = get_mappings(&mut line_iter);
+
+    // Form ranges from pairs of numbers in the seed line:
+    let mut seed_ranges = Vec::new();
+    let mut range_start: Id = 0;
+
+    for (i, &seed) in seed_line_numbers.iter().enumerate() {
+        if i % 2 == 0 {
+            range_start = seed;
+        } else {
+            seed_ranges.push(range_start..(range_start + seed));
+        }
+    }
+
+    seed_ranges
+        .into_iter()
+        .map(|range| get_min_location_id(range.into_iter(), &mappings))
+        .min()
+        .expect("A minimum location id could be found from the seed ranges")
+}
+
+// ------------------------------------------------------------------------------------------------
+// Shared logic...
+// ------------------------------------------------------------------------------------------------
+
+fn get_numbers_in_seed_line(line_iter: &mut Lines) -> Vec<Id> {
+    let seed_line = line_iter.next().unwrap();
+    seed_line[7..]
+        .split(' ')
+        .map(|seed_str| Id::from_str(seed_str).expect("A seed was not a number"))
+        .collect::<Vec<Id>>()
 }
 
 type Id = u64;
@@ -53,13 +91,8 @@ impl Mapping {
     }
 }
 
-fn solve(contents: &str, part: Part) -> Id {
+fn get_mappings(line_iter: &mut Lines) -> Vec<Mapping> {
     let mut mappings = Vec::new();
-
-    let mut line_iter = contents.lines();
-    let seed_line = line_iter.next().unwrap();
-
-    // Build up the mappings...
     for ln in line_iter {
         if ln.is_empty() {
             continue;
@@ -90,33 +123,7 @@ fn solve(contents: &str, part: Part) -> Id {
                 });
         }
     }
-
-    let seed_line_iter = seed_line[7..]
-        .split(' ')
-        .map(|seed_str| Id::from_str(seed_str).expect("A seed was not a number"));
-
-    match part {
-        Part::One => get_min_location_id(seed_line_iter, &mappings),
-        Part::Two => {
-            // Form ranges from pairs of numbers in the seed line:
-            let mut seed_ranges = Vec::new();
-            let mut range_start: Id = 0;
-
-            for (i, seed) in seed_line_iter.enumerate() {
-                if i % 2 == 0 {
-                    range_start = seed;
-                } else {
-                    seed_ranges.push(range_start..(range_start + seed));
-                }
-            }
-
-            seed_ranges
-                .into_iter()
-                .map(|range| get_min_location_id(range.into_iter(), &mappings))
-                .min()
-                .expect("A minimum location id could be found from the seed ranges")
-        }
-    }
+    mappings
 }
 
 fn get_min_location_id(seed_iter: impl Iterator<Item = Id>, mappings: &[Mapping]) -> Id {
@@ -128,7 +135,7 @@ fn get_min_location_id(seed_iter: impl Iterator<Item = Id>, mappings: &[Mapping]
 
 #[cfg(test)]
 mod tests {
-    use super::{solve, Part};
+    use super::{solve_part_one, solve_part_two};
 
     const EXAMPLE: &str = "seeds: 79 14 55 13
 
@@ -166,13 +173,13 @@ humidity-to-location map:
 
     #[test]
     fn test_part1_example() {
-        let total = solve(EXAMPLE, Part::One);
+        let total = solve_part_one(EXAMPLE);
         assert_eq!(total, 35);
     }
 
     #[test]
     fn test_part2_example() {
-        let total = solve(EXAMPLE, Part::Two);
+        let total = solve_part_two(EXAMPLE);
         assert_eq!(total, 46);
     }
 }
