@@ -2,28 +2,18 @@ use aoc2023::read_and_solve_and_time_more_runs;
 use std::str::{FromStr, Lines};
 
 fn main() {
-    read_and_solve_and_time_more_runs(
-        "data/day5_input.txt",
-        "Day 5 part 1",
-        solve_part_one,
-        10_000,
-    );
-    read_and_solve_and_time_more_runs(
-        "data/day5_input.txt",
-        "Day 5 part 2",
-        solve_part_two,
-        0,
-    );
+    read_and_solve_and_time_more_runs("data/day5_input.txt", "Day 5 part 1", solve_part1, 10_000);
+    read_and_solve_and_time_more_runs("data/day5_input.txt", "Day 5 part 2", solve_part2, 0);
 }
 
-fn solve_part_one(contents: &str) -> Id {
+fn solve_part1(contents: &str) -> Id {
     let mut line_iter = contents.lines();
     let seeds = get_numbers_in_seed_line(&mut line_iter);
     let mappings = get_mappings(&mut line_iter);
     get_min_location_id(seeds.iter().copied(), &mappings)
 }
 
-fn solve_part_two(contents: &str) -> Id {
+fn solve_part2(contents: &str) -> Id {
     let mut line_iter = contents.lines();
     let seed_line_numbers = get_numbers_in_seed_line(&mut line_iter);
     let mappings = get_mappings(&mut line_iter);
@@ -48,16 +38,8 @@ fn solve_part_two(contents: &str) -> Id {
 }
 
 // ------------------------------------------------------------------------------------------------
-// Shared logic...
+// Shared logic
 // ------------------------------------------------------------------------------------------------
-
-fn get_numbers_in_seed_line(line_iter: &mut Lines) -> Vec<Id> {
-    let seed_line = line_iter.next().unwrap();
-    seed_line[7..]
-        .split(' ')
-        .map(|seed_str| Id::from_str(seed_str).expect("A seed was not a number"))
-        .collect::<Vec<Id>>()
-}
 
 type Id = u64;
 
@@ -89,6 +71,25 @@ impl Mapping {
             .next()
             .unwrap_or(input)
     }
+}
+
+fn get_min_location_id(seed_iter: impl Iterator<Item = Id>, mappings: &[Mapping]) -> Id {
+    seed_iter
+        .map(|seed| mappings.iter().fold(seed, |id, mapping| mapping.map(id)))
+        .min()
+        .expect("No seed could be mapped to a location")
+}
+
+// ------------------------------------------------------------------------------------------------
+// Shared parsing code
+// ------------------------------------------------------------------------------------------------
+
+fn get_numbers_in_seed_line(line_iter: &mut Lines) -> Vec<Id> {
+    let seed_line = line_iter.next().unwrap();
+    seed_line[7..]
+        .split(' ')
+        .map(|seed_str| Id::from_str(seed_str).expect("A seed was not a number"))
+        .collect::<Vec<Id>>()
 }
 
 fn get_mappings(line_iter: &mut Lines) -> Vec<Mapping> {
@@ -126,16 +127,13 @@ fn get_mappings(line_iter: &mut Lines) -> Vec<Mapping> {
     mappings
 }
 
-fn get_min_location_id(seed_iter: impl Iterator<Item = Id>, mappings: &[Mapping]) -> Id {
-    seed_iter
-        .map(|seed| mappings.iter().fold(seed, |id, mapping| mapping.map(id)))
-        .min()
-        .expect("No seed could be mapped to a location")
-}
+// ------------------------------------------------------------------------------------------------
+// Unit tests
+// ------------------------------------------------------------------------------------------------
 
 #[cfg(test)]
 mod tests {
-    use super::{solve_part_one, solve_part_two};
+    use super::{solve_part1, solve_part2};
 
     const EXAMPLE: &str = "seeds: 79 14 55 13
 
@@ -173,13 +171,13 @@ humidity-to-location map:
 
     #[test]
     fn test_part1_example() {
-        let total = solve_part_one(EXAMPLE);
+        let total = solve_part1(EXAMPLE);
         assert_eq!(total, 35);
     }
 
     #[test]
     fn test_part2_example() {
-        let total = solve_part_two(EXAMPLE);
+        let total = solve_part2(EXAMPLE);
         assert_eq!(total, 46);
     }
 }
