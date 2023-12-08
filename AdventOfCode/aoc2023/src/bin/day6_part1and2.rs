@@ -12,10 +12,10 @@ fn solve_part1(contents: &str) -> u64 {
         .expect("The input should have 2 lines");
     let time_iter = line1[5..]
         .split_whitespace()
-        .map(|time_str| u64::from_str(time_str).expect("The times should all be integers"));
+        .map(|time_str| u64::from_str(time_str).expect("The times should all be integers."));
     let distance_iter = line2[9..]
         .split_whitespace()
-        .map(|dist_str| u64::from_str(dist_str).expect("The distance should all be integers"));
+        .map(|dist_str| u64::from_str(dist_str).expect("The distances should all be integers."));
     time_iter
         .zip(distance_iter)
         .map(|(time, distance)| get_number_of_winning_charge_times(time, distance))
@@ -26,8 +26,16 @@ fn solve_part2(contents: &str) -> u64 {
     let (line1, line2) = contents
         .split_once('\n')
         .expect("The input should have 2 lines");
-    let race_time = line1[5..].trim().replace(' ', "").parse::<u64>().unwrap();
-    let record_distance = line2[9..].trim().replace(' ', "").parse::<u64>().unwrap();
+    let race_time = line1[5..]
+        .trim()
+        .replace(' ', "")
+        .parse::<u64>()
+        .expect("The race time could not be parsed.");
+    let record_distance = line2[9..]
+        .trim()
+        .replace(' ', "")
+        .parse::<u64>()
+        .expect("The record distance could not be parsed.");
     get_number_of_winning_charge_times(race_time, record_distance)
 }
 
@@ -45,14 +53,18 @@ fn get_number_of_winning_charge_times(race_time: u64, record_distance: u64) -> u
     let n: f64 = race_time as f64;
     let d: f64 = record_distance as f64;
     let discriminant = n * n - 4.0 * d;
-    if discriminant < 0.0 {
+    if discriminant <= 0.0 {
         // no solutions
         return 0;
     }
     let s = discriminant.sqrt();
     let start = (((n - s) / 2.0).floor() + 0.001) as u64 + 1;
     let end = (((n + s) / 2.0).ceil() + 0.001) as u64 - 1;
-    end - start + 1
+    if end > start {
+        end - start + 1
+    } else {
+        0
+    }
 }
 
 #[cfg(test)]
