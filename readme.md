@@ -272,8 +272,8 @@ These can be used to easily calculate the average duration of solution algorithm
 |     |                                                                        | 2    | 2023-12-06 | Shared with part 1                                        | 131s     | Processing 1,246,535,481 seeds one at a time is slow!                                     |
 | 6   | [Wait For It](https://adventofcode.com/2023/day/6)                     | 1    | 2023-12-07 | [Rust](AdventOfCode/aoc2023/src/bin/day6_part1and2.rs)    | 440ns    |                                                                                           |
 |     |                                                                        | 2    |            | Shared with part 1                                        | 1.583µs  |                                                                                           |
-| 7   | [Camel Cards](https://adventofcode.com/2023/day/7)                     | 1    | 2023-12-08 | [Rust](AdventOfCode/aoc2023/src/bin/day7_part1and2.rs)    | 185µs    |                                                                                           |
-|     |                                                                        | 2    |            | Shared with part 1                                        | 187µs    |                                                                                           |
+| 7   | [Camel Cards](https://adventofcode.com/2023/day/7)                     | 1    | 2023-12-08 | [Rust](AdventOfCode/aoc2023/src/bin/day7_part1and2.rs)    | 164µs    |                                                                                           |
+|     |                                                                        | 2    |            | Shared with part 1                                        | 170µs    |                                                                                           |
 
 _Note: Timings based on an i7-6700 CPU. Durations exclude I/O (reading the input file and writing the answer to the terminal) unless indicated._
 
