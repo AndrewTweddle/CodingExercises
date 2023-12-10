@@ -76,13 +76,13 @@ Distance:  9  40  200";
 
     #[test]
     fn test_part1_example() {
-        let total = solve_part1(EXAMPLE);
-        assert_eq!(total, 288);
+        let solution = solve_part1(EXAMPLE);
+        assert_eq!(solution, 288);
     }
 
     #[test]
     fn test_part2_example() {
-        let total = solve_part2(EXAMPLE);
-        assert_eq!(total, 71503);
+        let solution = solve_part2(EXAMPLE);
+        assert_eq!(solution, 71503);
     }
 }
