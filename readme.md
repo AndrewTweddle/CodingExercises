@@ -274,6 +274,7 @@ These can be used to easily calculate the average duration of solution algorithm
 |     |                                                                        | 2    |            | Shared with part 1                                        | 1.583µs  |                                                                                           |
 | 7   | [Camel Cards](https://adventofcode.com/2023/day/7)                     | 1    | 2023-12-08 | [Rust](AdventOfCode/aoc2023/src/bin/day7_part1and2.rs)    | 164µs    |                                                                                           |
 |     |                                                                        | 2    |            | Shared with part 1                                        | 170µs    |                                                                                           |
+| 8   | [Haunted Wasteland](https://adventofcode.com/2023/day/8)               | 1    | 2023-12-09 | [Rust](AdventOfCode/aoc2023/src/bin/day8_part1.rs)        | 144µs    | Pre-processing data takes 75µs. The calculation loop takes 69µs... under 3 ns per step!   |
 
 _Note: Timings based on an i7-6700 CPU. Durations exclude I/O (reading the input file and writing the answer to the terminal) unless indicated._
 
