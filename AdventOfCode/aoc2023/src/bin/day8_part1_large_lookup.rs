@@ -32,8 +32,8 @@ fn solve(contents: &str) -> u32 {
     // Skip blank line:
     line_iter.next();
 
-    // Parse the nodes into a compact set of rules
-    // Index 0 will correspond to "ZZZ", and the last index will correspond to
+    // Parse the nodes into a compact set of rules.
+    // Index 0 will correspond to "ZZZ", and the last index will correspond to "AAA".
     let rules = parse_navigation_rules(&mut line_iter);
 
     // Create a lookup table indexed by a combination of both the rule and the instruction,
