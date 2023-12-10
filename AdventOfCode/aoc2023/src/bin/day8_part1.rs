@@ -12,10 +12,12 @@ enum Instruction {
     Right = 1,
 }
 
+type IndexType = u16;
+
 #[derive(Default, Copy, Clone)]
 struct NavigationRule {
-    left_index: i32,
-    right_minus_left_index: i32,
+    left_index: IndexType,
+    right_index: IndexType,
 }
 
 fn solve(contents: &str) -> u32 {
@@ -33,16 +35,16 @@ fn solve(contents: &str) -> u32 {
     // Parse the nodes into a compact set of rules
     // Index 0 will correspond to "ZZZ", and the last index will correspond to
     let rules = parse_navigation_rules(&mut line_iter);
-
+    
     // solve
     calculate_steps(&instructions, &rules)
 }
 
 fn calculate_steps(instructions: &[Instruction], rules: &[NavigationRule]) -> u32 {
     let index_count = rules.len();
-    let instruction_count = instructions.len();
+    let initial_instruction_index = instructions.len() - 1;
 
-    let mut instruction_index = instruction_count;
+    let mut instruction_index = initial_instruction_index;
     let mut rule_index = index_count - 1; // Start at "AAA"
     let mut step_count = 0;
 
@@ -50,16 +52,20 @@ fn calculate_steps(instructions: &[Instruction], rules: &[NavigationRule]) -> u3
         step_count += 1;
 
         // get next instruction, and reposition next instruction index
-        instruction_index -= 1;
-        let right_multiplier = instructions[instruction_index] as i32;
+        let instruction = instructions[instruction_index];
         if instruction_index == 0 {
-            instruction_index = instruction_count;
+            instruction_index = initial_instruction_index;
+        } else {
+            instruction_index -= 1;
         }
+        
+        // get the next rule, and use it to determine the next index
+        let rule = rules[rule_index];
 
-        // get the next rule, and determine the next index
-        let rule = &rules[rule_index];
-
-        rule_index = (rule.left_index + right_multiplier * rule.right_minus_left_index) as usize;
+        rule_index = match instruction {
+            Instruction::Left => rule.left_index,
+            Instruction::Right => rule.right_index,
+        } as usize;
     }
 
     step_count
@@ -98,7 +104,7 @@ fn letter_triple_to_id(letter_triple: &str) -> i32 {
 #[derive(Default, Copy, Clone)]
 struct NodeIdToIndexLookup {
     is_node: bool,
-    index: i32,
+    index: IndexType,
 }
 
 fn parse_navigation_rules(line_iter: &mut Lines) -> Vec<NavigationRule> {
@@ -133,7 +139,7 @@ fn parse_navigation_rules(line_iter: &mut Lines) -> Vec<NavigationRule> {
         .filter(|lkp| lkp.is_node)
         .enumerate()
     {
-        lkp.index = index as i32;
+        lkp.index = index as IndexType;
     }
 
     // The last index assigned is to "AAA"
@@ -147,7 +153,7 @@ fn parse_navigation_rules(line_iter: &mut Lines) -> Vec<NavigationRule> {
         let left_index = id_to_index_lkp[node.left_id as usize].index;
         let right_index = id_to_index_lkp[node.right_id as usize].index;
         rules[index].left_index = left_index;
-        rules[index].right_minus_left_index = right_index - left_index;
+        rules[index].right_index = right_index;
     }
     rules
 }

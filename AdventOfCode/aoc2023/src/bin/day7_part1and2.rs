@@ -133,13 +133,13 @@ QQQJA 483";
 
     #[test]
     fn test_part1_example() {
-        let total = solve_part_1(EXAMPLE);
-        assert_eq!(total, 6440);
+        let solution = solve_part_1(EXAMPLE);
+        assert_eq!(solution, 6440);
     }
 
     #[test]
     fn test_part2_example() {
-        let total = solve_part_2(EXAMPLE);
-        assert_eq!(total, 5905);
+        let solution = solve_part_2(EXAMPLE);
+        assert_eq!(solution, 5905);
     }
 }

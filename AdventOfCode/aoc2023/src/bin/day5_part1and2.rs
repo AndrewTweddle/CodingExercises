@@ -171,13 +171,13 @@ humidity-to-location map:
 
     #[test]
     fn test_part1_example() {
-        let total = solve_part1(EXAMPLE);
-        assert_eq!(total, 35);
+        let solution = solve_part1(EXAMPLE);
+        assert_eq!(solution, 35);
     }
 
     #[test]
     fn test_part2_example() {
-        let total = solve_part2(EXAMPLE);
-        assert_eq!(total, 46);
+        let solution = solve_part2(EXAMPLE);
+        assert_eq!(solution, 46);
     }
 }
