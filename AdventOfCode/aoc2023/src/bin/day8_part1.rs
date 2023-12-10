@@ -12,12 +12,12 @@ enum Instruction {
     Right = 1,
 }
 
-type IndexType = u16;
+type Index = u16;
 
 #[derive(Default, Copy, Clone)]
 struct NavigationRule {
-    left_index: IndexType,
-    right_index: IndexType,
+    left_index: Index,
+    right_index: Index,
 }
 
 fn solve(contents: &str) -> u32 {
@@ -104,7 +104,7 @@ fn letter_triple_to_id(letter_triple: &str) -> i32 {
 #[derive(Default, Copy, Clone)]
 struct NodeIdToIndexLookup {
     is_node: bool,
-    index: IndexType,
+    index: Index,
 }
 
 fn parse_navigation_rules(line_iter: &mut Lines) -> Vec<NavigationRule> {
@@ -139,7 +139,7 @@ fn parse_navigation_rules(line_iter: &mut Lines) -> Vec<NavigationRule> {
         .filter(|lkp| lkp.is_node)
         .enumerate()
     {
-        lkp.index = index as IndexType;
+        lkp.index = index as Index;
     }
 
     // The last index assigned is to "AAA"
