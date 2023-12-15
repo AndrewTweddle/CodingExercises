@@ -38,15 +38,15 @@ fn solve(contents: &str) -> u32 {
 
     // Create a lookup table indexed by a combination of both the rule and the instruction,
     // and where each entry is the index of the next combination of a rule and an instruction.
-    let next_combined_index = create_combined_lookup_table(instructions, &rules);
+    let next_combined_index = create_combined_lookup_table(&instructions, &rules);
 
     // solve
     calculate_steps(&next_combined_index, rules.len())
 }
 
 fn create_combined_lookup_table(
-    instructions: Vec<Instruction>,
-    rules: &Vec<NavigationRule>,
+    instructions: &[Instruction],
+    rules: &[NavigationRule],
 ) -> Vec<usize> {
     let instruction_count = instructions.len();
     let rule_count = rules.len();
@@ -68,7 +68,7 @@ fn create_combined_lookup_table(
 fn calculate_steps(next_combined_index: &[usize], rule_count: usize) -> u32 {
     let mut step_count = 0;
     let mut i = rule_count - 1; // The combined index of "AAA" and the first instruction
-
+    
     while get_rule_index_from_combined_index(i, rule_count) != 0 {
         step_count += 1;
         unsafe {
