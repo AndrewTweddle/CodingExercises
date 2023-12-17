@@ -183,3 +183,7 @@ C# has introduced slices through the Span<T> type.
 Additionally, C# 11 introduced improved pattern matching over lists and related types, such as Span<T>.
 
 This made it convenient to use pattern matching in C# to provide a solution more similar to the F# functional bowling scorer.
+
+The pattern matcher also detects invalid patterns, which was explicitly excluded by the problem. However, it is simple enough to do.
+
+_TODO: Add unit tests to test the detection of invalid patterns of throws._
