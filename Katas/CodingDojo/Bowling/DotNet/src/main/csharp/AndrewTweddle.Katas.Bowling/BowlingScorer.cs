@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace AndrewTweddle.Katas.Bowling
+﻿namespace AndrewTweddle.Katas.Bowling
 {
     public class BowlingScorer: IBowlingScorer
     {

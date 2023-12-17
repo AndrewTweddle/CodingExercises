@@ -1,6 +1,4 @@
-﻿using System;
-using AndrewTweddle.Katas.Bowling;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using AndrewTweddle.Katas.Bowling;
 
 namespace AndrewTweddle.Katas.Test.Bowling
 {

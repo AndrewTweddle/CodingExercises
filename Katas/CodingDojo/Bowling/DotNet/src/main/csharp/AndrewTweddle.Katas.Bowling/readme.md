@@ -175,3 +175,11 @@ FunctionalBowlingScorer is much more succinct.
 The pattern matching logic creates a structure which is symbolic and almost visual.
 
 Pattern matching also makes it much easier to prevent invalid patterns of symbols (although this was explicitly excluded as a requirement for the kata).
+
+# Bowling Scorer (version 4.0): PatternBowlingScorer
+
+C# has introduced slices through the Span<T> type.
+
+Additionally, C# 11 introduced improved pattern matching over lists and related types, such as Span<T>.
+
+This made it convenient to use pattern matching in C# to provide a solution more similar to the F# functional bowling scorer.

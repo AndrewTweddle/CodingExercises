@@ -1,14 +1,13 @@
 ﻿using AndrewTweddle.Katas.Bowling;
-using AndrewTweddle.Katas.Bowling.FSharp;
 
 namespace AndrewTweddle.Katas.Test.Bowling
 {
     [TestClass]
-    public class WhenScoringAGameFunctionally: BaseForWhenScoringAGame
+    public class WhenScoringTheFinalFrameUsingPatternScorer : BaseForWhenScoringTheFinalFrame
     {
         protected override IBowlingScorer GetScorer()
         {
-            return new FunctionalBowlingScorer();
+            return new PatternBowlingScorer();
         }
     }
 }

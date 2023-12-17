@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace AndrewTweddle.Katas.Bowling
+﻿namespace AndrewTweddle.Katas.Bowling
 {
     /// <summary>
     /// A bowling scorer which "adapts" BowlingScorer3 
@@ -35,8 +32,6 @@ namespace AndrewTweddle.Katas.Bowling
     {
         private const int LAST_FRAME = 10;
         private readonly string symbols;
-
-        protected BowlingScorer3() {}
 
         public BowlingScorer3(string symbols)
         {
