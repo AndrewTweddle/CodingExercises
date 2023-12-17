@@ -18,6 +18,13 @@ public class PatternBowlingScorer: IBowlingScorer
         return ScoreRemainingFrames(1, new ReadOnlySpan<char>(throws));
     }
 
+    /// <summary>
+    /// Score remaining frames from a particular frame number (from 1 to 10) onwards.
+    /// </summary>
+    /// <param name="frame">The frame number of the first of the remaining frames</param>
+    /// <param name="remainingSymbols">A slice of remaining throws (char symbols)</param>
+    /// <returns>The score of the remaining frames</returns>
+    /// <exception cref="BowlingScorerException">Thrown when an invalid pattern of symbols is encountered</exception>
     private int ScoreRemainingFrames(int frame, ReadOnlySpan<char> remainingSymbols)
     {
         if (frame == 10)
@@ -65,9 +72,10 @@ public class PatternBowlingScorer: IBowlingScorer
         return pin switch
         {
             '-' => 0,
-            '/' or 'X' => 10,
+            // A spare should never be evaluated on its own, so don't match it.
+            'X' => 10,
             >= '0' and <= '9' => pin - '0',
-            _ => throw new ApplicationException($"Unrecognized character $pin")
+            _ => throw new ApplicationException($"Unrecognized character {pin}")
         };
     }
 }
