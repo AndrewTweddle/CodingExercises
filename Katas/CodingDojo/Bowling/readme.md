@@ -78,13 +78,13 @@ Actually all we need to know for each frame, is the range of indexes which will 
 
 ## Links
 
-[BowlingScorer.cs](DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer.cs)
+C# algorithm: [BowlingScorer.cs](DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer.cs)
 
 ## Implementation
 
 1. Trial implementation - discovered that I have to know where a frame begins (and the frame number), as an ending substring of "X33" could be the 10th or the 9th and 10th frames
 2. Set up [unit tests for the 10th frame issues](DotNet/src/test/csharp/AndrewTweddle.Katas.Test.Bowling/BaseForWhenScoringTheFinalFrame.cs) identified earlier, as well as the 'X33' pattern
-3. [Implementation](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer.cs)
+3. [Implementation](DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer.cs)
 4. Further [unit tests](DotNet/src/test/csharp/AndrewTweddle.Katas.Test.Bowling/BaseForWhenScoringAGame.cs)
 
 ## Compare with other solutions
@@ -145,7 +145,7 @@ I'd prefer to avoid low-level language details like that, as they will distract 
 
 ## Links
 
-[BowlingScorer2.cs](DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer2.cs)
+C# algorithm: [BowlingScorer2.cs](DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer2.cs)
 
 ## Goal
 
@@ -236,7 +236,7 @@ resilient to input errors and more informative when an input error is detected.
 
 ## Links
 
-[PatternBowlingScorer.cs](DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/PatternBowlingScorer.cs)
+C# algorithm: [PatternBowlingScorer.cs](DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/PatternBowlingScorer.cs)
 
 ## Discussion
 
