@@ -74,13 +74,18 @@ We need to do a pass through the array of characters to calculate the values for
 We could calculate frames at the same time.
 Actually all we need to know for each frame, is the range of indexes which will add values.
 
-### Implementation
+# Bowling Scorer (version 1.0): C# BowlingScorer
+
+## Links
+
+[BowlingScorer.cs](DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer.cs)
+
+## Implementation
 
 1. Trial implementation - discovered that I have to know where a frame begins (and the frame number), as an ending substring of "X33" could be the 10th or the 9th and 10th frames
 2. Set up [unit tests for the 10th frame issues](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/test/csharp/AndrewTweddle.Katas.Test.Bowling/BaseForWhenScoringTheFinalFrame.cs) identified earlier, as well as the 'X33' pattern
 3. [Implementation](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer.cs)
 4. Further [unit tests](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/test/csharp/AndrewTweddle.Katas.Test.Bowling/BaseForWhenScoringAGame.cs)
-
 
 ## Compare with other solutions
 
@@ -136,7 +141,11 @@ In C# it's possible, but not idiomatic. You also need to remember things like us
 to ensure that .Net doesn't move the item you're pointing to during a garbage collection.
 I'd prefer to avoid low-level language details like that, as they will distract from the intention of the code.
 
-# Bowling Scorer (version 2.0): BowlingScorer2
+# Bowling Scorer (version 2.0): C# BowlingScorer2
+
+## Links
+
+[BowlingScorer2.cs](DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer2.cs)
 
 ## Goal
 
@@ -157,18 +166,40 @@ In practice I'd have been happy making it an immutable member variable/property 
     1. Refactor out utility methods, such as IsStrike() and IsSpare().
     2. Separate the concerns of scoring a frame versus calculating the start of the next frame.
 
-# Bowling Scorer (version 3.0): FunctionalBowlingScorer
+# Bowling Scorer (version 3.0): C# BowlingScorer3
 
-I was very happy with the readable, logical structure of BowlingScorer2, which was neither stateful nor monolithic.
+## Links
+
+[BowlingScorer3.cs](DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer3.cs)
+
+## Design discussion
+
+This was a minor refactoring of BowlingScorer2.cs, 
+so that method signatures don't have to "thread" the "symbols" parameter through all the calls.
+
+Use a private readonly member variable so that the class is clearly immutable, 
+making it easier to reason about (and thread-safe).
+
+This was a tiny step in the direction of a functional programming approach.
+
+# Bowling Scorer (version 4.0): F# FunctionalBowlingScorer
+
+## Links
+
+[FunctionalBowlingScorer.fs](DotNet/src/main/fsharp/AndrewTweddle.Katas.Bowling.FSharp/FunctionalBowlingScorer.fs)
+
+## Discussion
+
+I was very happy with the readable, logical structure of BowlingScorer3, which was neither stateful nor monolithic.
 
 I wanted to see how the same algorithm would look in a functional language. 
-I could have used Scala, but I wanted to reuse the unit test logic, so needed to use a .Net language.
+I could have used Scala, but I wanted to reuse the unit test logic, which meant using a .Net language.
 So I hacked together an F# solution instead.
 
 The functional solution has half the lines of code. 
-If you exclude scaffolding code and only compare the core logic of both, it's less than a third of the length of BowlingScorer2.
+If you exclude scaffolding code and only compare the core logic of both, it's less than a third of the length of BowlingScorer2 and BowlingScorer3.
 
-BowlingScorer2 is verbose but very readable. There is a linguistic structure to the solution.
+BowlingScorer3 is verbose but very readable. There is a linguistic structure to the solution.
 Concerns are also neatly separated with each method having a single purpose.
 
 FunctionalBowlingScorer is much more succinct.
@@ -176,14 +207,45 @@ The pattern matching logic creates a structure which is symbolic and almost visu
 
 Pattern matching also makes it much easier to prevent invalid patterns of symbols (although this was explicitly excluded as a requirement for the kata).
 
-# Bowling Scorer (version 4.0): PatternBowlingScorer
+# Bowling Scorer (version 5.0): Rust pattern_scorer
 
-C# has introduced slices through the Span<T> type.
+## Links
 
-Additionally, C# 11 introduced improved pattern matching over lists and related types, such as Span<T>.
+[rust_bowl - Rust source code](rust_bowl/)
+[lib.rs - Rust helpers](rust_bowl/src/lib.rs)
+[PatternSolver - Rust](rust_bowl/src/pattern_scorer.rs)
+
+## Design discussion
+
+Rust also supports pattern matching, similar to many functional programming languages (especially those from the ML family).
+
+So I wanted to see how it would compare.
+
+However, I went a bit overboard with this one, translating the symbols into a Rust enum first and adding lots of extra validation (which the requirements excluded).
+
+This was partially to get practice with using the popular [thiserror crate](https://crates.io/crates/thiserror) for error definitions in Rust libraries.
+
+Unsurprisingly, this solution is more verbose than the others. 
+But it's not comparing the solutions on a level playing field, as the Rust bowling scorer should be much more 
+resilient to input errors and more informative when an input error is detected.
+
+
+# Bowling Scorer (version 6.0): C# PatternBowlingScorer
+
+## Links
+
+[PatternBowlingScorer.cs](DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/PatternBowlingScorer.cs)
+
+## Discussion
+
+C# has come along way since I wrote the original C# bowling scorers.
+
+The Span<T> type added slices to the language (though not as clean and succinct as Rust's slice syntax).
+
+Pattern matching has been added to the language. In particular, C# 11 introduced improved pattern matching over lists and related types, such as Span<T>.
 
 This made it convenient to use pattern matching in C# to provide a solution more similar to the F# functional bowling scorer.
 
-The pattern matcher also detects invalid patterns, which was explicitly excluded by the problem. However, it is simple enough to do.
+The pattern matcher also detects invalid patterns, which was explicitly excluded by the problem. However, it was simple enough to do, so I added it.
 
-_TODO: Add unit tests to test the detection of invalid patterns of throws._
+_TODO: Add unit tests to test the detection of invalid patterns of bowling throws._
