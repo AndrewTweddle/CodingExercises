@@ -8,14 +8,14 @@ I use these to:
 * compare languages or paradigms,
 * prepare for technical interviews, and (last but **not** least)
 * have fun solving coding puzzles!
-
+  
 ## Links within this page
 
 | Link                                                                                           | Source                                                      | Description                                  |
 |------------------------------------------------------------------------------------------------|-------------------------------------------------------------|----------------------------------------------|
 | [Project Euler](#project-euler-problems)                                                       | [projecteuler.net](https://projecteuler.net)                | Coding challenges with a mathematical theme  |
 | [Advent of Code](#advent-of-code) ([2020](#2020), [2021](#2021), [2022](#2022), [2023](#2023)) | [adventofcode.com](https://adventofcode.com/)               | 25 days of coding challenges run in December |
-| [cryptopals](#cryptopals-crypto-challenges)                                                    | [cryptopals.com](https://cryptopals.com/)                   | Cryptography challenges                      |
+| [cryptopals](#cryptopals-cryptography-challenges)                                              | [cryptopals.com](https://cryptopals.com/)                   | Cryptography challenges                      |
 | [CSES Problem Set](#cses-problem-set)                                                          | [cses.fi/problemset/list](https://cses.fi/problemset/list/) | Competitive coding exercises                 |
 | [CodingDojo Katas](#katas-from-codingdojoorg)                                                  | [CodingDojo.org](https://codingdojo.org/)                   |                                              |
 | [Miscellaneous](#miscellaneous)                                                                | Miscellaneous sources                                       |                                              |
@@ -279,7 +279,7 @@ These can be used to easily calculate the average duration of solution algorithm
 
 _Note: Timings based on an i7-6700 CPU. Durations exclude I/O (reading the input file and writing the answer to the terminal) unless indicated._
 
-## cryptopals crypto challenges
+## cryptopals cryptography challenges
 
 ### Solutions for [Set 1](https://cryptopals.com/sets/1)
 
