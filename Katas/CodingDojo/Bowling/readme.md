@@ -83,9 +83,9 @@ Actually all we need to know for each frame, is the range of indexes which will 
 ## Implementation
 
 1. Trial implementation - discovered that I have to know where a frame begins (and the frame number), as an ending substring of "X33" could be the 10th or the 9th and 10th frames
-2. Set up [unit tests for the 10th frame issues](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/test/csharp/AndrewTweddle.Katas.Test.Bowling/BaseForWhenScoringTheFinalFrame.cs) identified earlier, as well as the 'X33' pattern
+2. Set up [unit tests for the 10th frame issues](DotNet/src/test/csharp/AndrewTweddle.Katas.Test.Bowling/BaseForWhenScoringTheFinalFrame.cs) identified earlier, as well as the 'X33' pattern
 3. [Implementation](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer.cs)
-4. Further [unit tests](https://github.com/AndrewTweddle/CodingExercises/blob/master/Katas/src/test/csharp/AndrewTweddle.Katas.Test.Bowling/BaseForWhenScoringAGame.cs)
+4. Further [unit tests](DotNet/src/test/csharp/AndrewTweddle.Katas.Test.Bowling/BaseForWhenScoringAGame.cs)
 
 ## Compare with other solutions
 
@@ -170,7 +170,7 @@ In practice I'd have been happy making it an immutable member variable/property 
 
 ## Links
 
-[BowlingScorer3.cs](DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer3.cs)
+C# algorithm: [BowlingScorer3.cs](DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/BowlingScorer3.cs)
 
 ## Design discussion
 
@@ -186,7 +186,7 @@ This was a tiny step in the direction of a functional programming approach.
 
 ## Links
 
-[FunctionalBowlingScorer.fs](DotNet/src/main/fsharp/AndrewTweddle.Katas.Bowling.FSharp/FunctionalBowlingScorer.fs)
+F# algorithm: [FunctionalBowlingScorer.fs](DotNet/src/main/fsharp/AndrewTweddle.Katas.Bowling.FSharp/FunctionalBowlingScorer.fs)
 
 ## Discussion
 
@@ -211,9 +211,11 @@ Pattern matching also makes it much easier to prevent invalid patterns of symbol
 
 ## Links
 
-[rust_bowl - Rust source code](rust_bowl/)
-[lib.rs - Rust helpers](rust_bowl/src/lib.rs)
-[PatternSolver - Rust](rust_bowl/src/pattern_scorer.rs)
+Rust project: [rust_bowl/](rust_bowl/)
+
+Problem definition and error definitions: [lib.rs](rust_bowl/src/lib.rs)
+
+Rust algorithm: [pattern_scorer.rs](rust_bowl/src/pattern_scorer.rs)
 
 ## Design discussion
 
@@ -223,9 +225,9 @@ So I wanted to see how it would compare.
 
 However, I went a bit overboard with this one, translating the symbols into a Rust enum first and adding lots of extra validation (which the requirements excluded).
 
-This was partially to get practice with using the popular [thiserror crate](https://crates.io/crates/thiserror) for error definitions in Rust libraries.
+This was partially to get practice using the popular [thiserror](https://crates.io/crates/thiserror) crate for error definitions in Rust libraries.
 
-Unsurprisingly, this solution is more verbose than the others. 
+So, unsurprisingly, this solution is more verbose than the others. 
 But it's not comparing the solutions on a level playing field, as the Rust bowling scorer should be much more 
 resilient to input errors and more informative when an input error is detected.
 
@@ -244,8 +246,8 @@ The Span<T> type added slices to the language (though not as clean and succinct 
 
 Pattern matching has been added to the language. In particular, C# 11 introduced improved pattern matching over lists and related types, such as Span<T>.
 
-This made it convenient to use pattern matching in C# to provide a solution more similar to the F# functional bowling scorer.
+This made it convenient to use pattern matching in C# to provide a solution more like the F# functional bowling scorer.
 
-The pattern matcher also detects invalid patterns, which was explicitly excluded by the problem. However, it was simple enough to do, so I added it.
+The pattern matcher also detects some invalid patterns, which was explicitly excluded in the requirements. However, it was simple enough to do, so I added it.
 
 _TODO: Add unit tests to test the detection of invalid patterns of bowling throws._
