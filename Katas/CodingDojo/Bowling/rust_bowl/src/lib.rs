@@ -91,10 +91,6 @@ pub fn score_next_2_throws(throw1: &Throw, throw2: &Throw) -> Result<Score, Bowl
     }
 }
 
-pub trait BowlingScorer {
-    fn score(throws: &str) -> Result<Score, BowlingScorerError>;
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -154,7 +150,10 @@ mod tests {
     #[test]
     fn check_sum_of_2_throws_where_a_spare_follows_a_strike() {
         let score = score_next_2_throws(&Throw::Strike, &Throw::Spare);
-        assert_eq!(score, Err(BowlingScorerError::ThrowAfterAStrikeCannotBeASpare));
+        assert_eq!(
+            score,
+            Err(BowlingScorerError::ThrowAfterAStrikeCannotBeASpare)
+        );
     }
 
     #[test]
