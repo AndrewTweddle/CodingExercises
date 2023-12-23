@@ -24,5 +24,8 @@ pub extern "C" fn score_with_rust(throws: *const c_char) -> i32 {
                 .map_or(ThrowsErrorCode::InvalidPattern as i32, |score_u16| {
                     score_u16 as i32
                 })
+            // TODO: map each of the BowlingScorerError values to different error codes
         })
 }
+
+// TODO: Add unit tests for each of these error conditions
