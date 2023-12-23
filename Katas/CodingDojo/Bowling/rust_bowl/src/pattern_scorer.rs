@@ -1,12 +1,8 @@
 use super::*;
 
-struct PatternScorer;
-
-impl BowlingScorer for PatternScorer {
-    fn score(throws: &str) -> Result<Score, BowlingScorerError> {
-        let throws: Vec<Throw> = convert_symbols_to_throws(throws)?;
-        score_remaining_frames(&throws, 1, 0)
-    }
+pub fn score_bowling_throws(throws: &str) -> Result<Score, BowlingScorerError> {
+    let throws: Vec<Throw> = convert_symbols_to_throws(throws)?;
+    score_remaining_frames(&throws, 1, 0)
 }
 
 fn score_remaining_frames(
@@ -58,7 +54,7 @@ fn score_remaining_frames(
         (10, [Throw::Strike, throw2, throw3]) => {
             Ok(partial_score + 10 + score_next_2_throws(throw2, throw3)?)
         }
-        (10, [throw1, Throw::Spare, throw3]) if throw1.score() < 10  => {
+        (10, [throw1, Throw::Spare, throw3]) if throw1.score() < 10 => {
             Ok(partial_score + 10 + throw3.score())
         }
         (10, [throw1, throw2]) if throw1.score() < 10 => {
@@ -97,42 +93,42 @@ mod tests {
     #[test]
     fn test_all_strikes_score_300() {
         let throws = "X".repeat(12);
-        let score = PatternScorer::score(&throws);
+        let score = score_bowling_throws(&throws);
         assert_eq!(score, Ok(300));
     }
 
     #[test]
     fn test_a_repeating_strike_followed_by_two_gutter_balls_scores_50() {
         let throws = "X--".repeat(5);
-        let score = PatternScorer::score(&throws);
+        let score = score_bowling_throws(&throws);
         assert_eq!(score, Ok(50));
     }
 
     #[test]
     fn test_knocking_down_5_pins_on_every_throw_scores_150() {
         let throws = "5/".repeat(10) + "5";
-        let score = PatternScorer::score(&throws);
+        let score = score_bowling_throws(&throws);
         assert_eq!(score, Ok(150));
     }
 
     #[test]
     fn test_a_strike_then_spare_then_all_gutter_balls_scores_30() {
         let throws = "X5/".to_string() + "--".repeat(8).as_str();
-        let score = PatternScorer::score(&throws);
+        let score = score_bowling_throws(&throws);
         assert_eq!(score, Ok(30));
     }
 
     #[test]
     fn test_a_game_with_too_many_frames() {
         let throws = "54".repeat(11);
-        let score = PatternScorer::score(&throws);
+        let score = score_bowling_throws(&throws);
         assert_eq!(score, Err(BowlingScorerError::InvalidFrame(11)));
     }
 
     #[test]
     fn test_a_game_with_too_few_frames_and_with_a_strike_in_the_last_frame() {
         let throws = "54X";
-        let score = PatternScorer::score(&throws);
+        let score = score_bowling_throws(&throws);
         assert_eq!(
             score,
             Err(BowlingScorerError::NotEnoughThrowsAfterStrikeInFrame(2))
@@ -142,7 +138,7 @@ mod tests {
     #[test]
     fn test_a_game_with_too_few_frames_and_with_a_spare_in_the_last_frame() {
         let throws = "7254-/";
-        let score = PatternScorer::score(&throws);
+        let score = score_bowling_throws(&throws);
         assert_eq!(
             score,
             Err(BowlingScorerError::NoMoreThrowsAfterSpareInFrame(3))
@@ -152,21 +148,21 @@ mod tests {
     #[test]
     fn test_a_game_with_too_few_frames_and_with_no_spare_or_strike_in_the_last_frame() {
         let throws = "9-81726354";
-        let score = PatternScorer::score(&throws);
+        let score = score_bowling_throws(&throws);
         assert_eq!(score, Err(BowlingScorerError::NoMoreThrowsInFrame(6)));
     }
 
     #[test]
     fn test_a_game_with_too_few_frames_and_a_single_non_strike_throw_in_the_last_frame() {
         let throws = "9-8172635";
-        let score = PatternScorer::score(&throws);
+        let score = score_bowling_throws(&throws);
         assert_eq!(score, Err(BowlingScorerError::NotEnoughThrowsInFrame(5)));
     }
 
     #[test]
     fn test_a_game_with_a_frame_whose_first_throw_is_a_spare() {
         let throws = "54//".repeat(5);
-        let score = PatternScorer::score(&throws);
+        let score = score_bowling_throws(&throws);
         assert_eq!(
             score,
             Err(BowlingScorerError::FirstThrowOfAFrameCannotBeASpare(2))
@@ -176,7 +172,7 @@ mod tests {
     #[test]
     fn test_a_game_with_throws_in_a_frame_adding_up_to_10_but_not_marked_as_a_spare() {
         let throws = "5491".repeat(5);
-        let score = PatternScorer::score(&throws);
+        let score = score_bowling_throws(&throws);
         assert_eq!(
             score,
             Err(BowlingScorerError::ThrowsInFrameAddUpToTenOrMore(2, 10))
@@ -186,7 +182,7 @@ mod tests {
     #[test]
     fn test_a_game_with_throws_in_a_frame_adding_up_to_more_than_10() {
         let throws = "123456789/-".repeat(5);
-        let score = PatternScorer::score(&throws);
+        let score = score_bowling_throws(&throws);
         assert_eq!(
             score,
             Err(BowlingScorerError::ThrowsInFrameAddUpToTenOrMore(3, 11))
@@ -196,14 +192,14 @@ mod tests {
     #[test]
     fn test_a_game_with_a_strike_then_throw_then_spare_in_frame_10() {
         let throws = "--".repeat(9) + "X1/";
-        let score = PatternScorer::score(&throws);
+        let score = score_bowling_throws(&throws);
         assert_eq!(score, Ok(20));
     }
 
     #[test]
     fn test_a_game_with_a_strike_then_throw_then_strike_in_frame_10() {
         let throws = "--".repeat(9) + "X1X";
-        let score = PatternScorer::score(&throws);
+        let score = score_bowling_throws(&throws);
         assert_eq!(
             score,
             Err(BowlingScorerError::SecondThrowInFrameCannotBeAStrike(10))
@@ -213,7 +209,7 @@ mod tests {
     #[test]
     fn test_a_game_with_a_throw_then_spare_then_spare_in_frame_10() {
         let throws = "--".repeat(9) + "1//";
-        let score = PatternScorer::score(&throws);
+        let score = score_bowling_throws(&throws);
         assert_eq!(
             score,
             Err(BowlingScorerError::SpareCannotFollowASpareInFrame10)
@@ -223,7 +219,7 @@ mod tests {
     #[test]
     fn test_a_game_with_a_strike_then_two_throws_adding_to_10_in_frame_10() {
         let throws = "--".repeat(9) + "X19";
-        let score = PatternScorer::score(&throws);
+        let score = score_bowling_throws(&throws);
         assert_eq!(
             score,
             Err(BowlingScorerError::ThrowsInFrameAddUpToTenOrMore(10, 10)),
@@ -233,14 +229,14 @@ mod tests {
     #[test]
     fn test_a_game_with_a_spare_symbol_following_a_strike_in_frame_10() {
         let throws = "--".repeat(9) + "X/1";
-        let score = PatternScorer::score(&throws);
+        let score = score_bowling_throws(&throws);
         assert_eq!(score, Err(BowlingScorerError::FirstOf2ThrowsCannotBeASpare));
     }
 
     #[test]
     fn test_a_game_with_no_symbols_after_a_strike_in_frame_10() {
         let throws = "--".repeat(9) + "X";
-        let score = PatternScorer::score(&throws);
+        let score = score_bowling_throws(&throws);
         assert_eq!(
             score,
             Err(BowlingScorerError::NotEnoughThrowsAfterStrikeInFrame(10))
@@ -250,7 +246,7 @@ mod tests {
     #[test]
     fn test_a_game_with_one_too_few_symbols_after_a_strike_in_frame_10() {
         let throws = "--".repeat(9) + "X1";
-        let score = PatternScorer::score(&throws);
+        let score = score_bowling_throws(&throws);
         assert_eq!(
             score,
             Err(BowlingScorerError::NotEnoughThrowsAfterStrikeInFrame(10))
@@ -260,7 +256,7 @@ mod tests {
     #[test]
     fn test_a_game_with_symbols_after_a_spare_in_frame_10() {
         let throws = "--".repeat(9) + "1/";
-        let score = PatternScorer::score(&throws);
+        let score = score_bowling_throws(&throws);
         assert_eq!(
             score,
             Err(BowlingScorerError::NoMoreThrowsAfterSpareInFrame(10))
