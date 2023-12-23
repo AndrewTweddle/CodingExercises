@@ -217,6 +217,15 @@ Problem definition and error definitions: [lib.rs](rust_bowl/src/lib.rs)
 
 Rust algorithm: [pattern_scorer.rs](rust_bowl/src/pattern_scorer.rs)
 
+Rust C API: [c_api.rs](rust_bowl/src/c_api.rs)
+
+C# wrapper around Rust API: [RustBowlingScorer.cs](DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/RustBowlingScorer.cs)
+
+_Note: The C# wrapper allows a debug build of the Rust pattern scorer to be tested  
+using the common unit tests that are used to test all the other scorers.  
+This is in addition to the unit tests in the Rust project. 
+The Rust pattern scorer dll must first be built to `rust_bowl/target/debug/librust_bowl.so`._ 
+
 ## Design discussion
 
 Rust also supports pattern matching, similar to many functional programming languages (especially those from the ML family).
@@ -229,7 +238,7 @@ This was partially to get practice using the popular [thiserror](https://crates.
 
 So, unsurprisingly, this solution is more verbose than the others. 
 But it's not comparing the solutions on a level playing field, as the Rust bowling scorer should be much more 
-resilient to input errors and more informative when an input error is detected.
+resilient to input errors and more informative when such an error is encountered.
 
 
 # Bowling Scorer (version 6.0): C# PatternBowlingScorer
