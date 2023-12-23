@@ -221,10 +221,9 @@ Rust C API: [c_api.rs](rust_bowl/src/c_api.rs)
 
 C# wrapper around Rust API: [RustBowlingScorer.cs](DotNet/src/main/csharp/AndrewTweddle.Katas.Bowling/RustBowlingScorer.cs)
 
-_Note: The C# wrapper allows a debug build of the Rust pattern scorer to be tested  
-using the common unit tests that are used to test all the other scorers.  
-This is in addition to the unit tests in the Rust project. 
-The Rust pattern scorer dll must first be built to `rust_bowl/target/debug/librust_bowl.so`._ 
+_Note: The C# wrapper allows a debug build of the Rust pattern scorer to be tested using the common unit tests that are used to test all the other scorers. This is in addition to the unit tests in the Rust project._
+
+NB: The Rust pattern scorer dll must first be built to `rust_bowl/target/debug/librust_bowl.so`. 
 
 ## Design discussion
 
