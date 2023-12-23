@@ -3,6 +3,7 @@ use super::*;
 pub fn score_bowling_throws(throws: &str) -> Result<Score, BowlingScorerError> {
     let throws: Vec<Throw> = convert_symbols_to_throws(throws)?;
     score_remaining_frames(&throws, 1, 0)
+    // to test with faulty calculations, append: .map(|score| score + 1)
 }
 
 fn score_remaining_frames(

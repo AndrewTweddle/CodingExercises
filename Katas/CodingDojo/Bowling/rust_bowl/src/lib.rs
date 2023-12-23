@@ -1,4 +1,5 @@
 mod pattern_scorer;
+mod c_api;
 
 use thiserror::Error;
 
