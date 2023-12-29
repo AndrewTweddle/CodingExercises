@@ -1,3 +1,4 @@
+use std::iter;
 use aoc2023::read_and_solve_and_time_more_runs;
 
 fn main() {
@@ -32,8 +33,8 @@ fn solve(contents: &str) -> u64 {
         let mut is_parsing_number = false;
         let mut number_start_col = 0;
         let mut part_number: u64 = 0;
-
-        for (col_sub_1, ch) in ln.chars().chain(".".chars()).enumerate() {
+        
+        for (col_sub_1, ch) in ln.chars().chain(iter::once('.')).enumerate() {
             let col = col_sub_1 + 1;
             match ch {
                 '0'..='9' => {
