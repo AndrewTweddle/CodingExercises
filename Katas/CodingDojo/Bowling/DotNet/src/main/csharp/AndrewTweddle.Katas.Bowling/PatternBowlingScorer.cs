@@ -27,29 +27,21 @@ public class PatternBowlingScorer: IBowlingScorer
     /// <exception cref="BowlingScorerException">Thrown when an invalid pattern of symbols is encountered</exception>
     private int ScoreRemainingFrames(int frame, ReadOnlySpan<char> remainingSymbols)
     {
-        if (frame == 10)
-        {
-            return remainingSymbols switch
-            {
-                ['X', var throw2, var throw3] => 10 + ScoreNextTwoThrows(throw2, throw3),
-                ['/', ..] => throw new BowlingScorerException("Frame 10 starts with a spare"),
-                [_, 'X', ..] => throw new BowlingScorerException("Frame 10 has a strike as the second throw"),
-                [_, '/', var throw3] => 10 + PinToValue(throw3),
-                [var throw1, var throw2] => PinToValue(throw1) + PinToValue(throw2),
-                _ => throw new BowlingScorerException($"Unrecognized pattern in 10th frame: {remainingSymbols}")
-            };
-        }
         return remainingSymbols switch
         {
+            _ when frame > 10 => throw new BowlingScorerException("Too many frames"), 
+            ['X', var throw2, var throw3] when frame == 10 => 10 + ScoreNextTwoThrows(throw2, throw3),
             ['X', var throw1, var throw2, ..] =>
                 10 + ScoreNextTwoThrows(throw1, throw2) +
                 ScoreRemainingFrames(frame + 1, remainingSymbols.Slice(1)),
             ['/', ..] => throw new BowlingScorerException($"Frame {frame} has a spare as the first throw"),
             [_, 'X', ..] => throw new BowlingScorerException($"Frame {frame} has a strike as the second throw"),
-            [_, '/', var throw1, ..] =>
-                10 + PinToValue(throw1) + ScoreRemainingFrames(frame + 1, remainingSymbols.Slice(2)),
-            [var throw1, var throw2, .. var newRemainingSymbols] =>
-                ScoreNextTwoThrows(throw1, throw2) + ScoreRemainingFrames(frame + 1, newRemainingSymbols),
+            [_, '/', var throw3] when frame == 10 => 10 + PinToValue(throw3),
+            [_, '/', var throw3, ..] =>
+                10 + PinToValue(throw3) + ScoreRemainingFrames(frame + 1, remainingSymbols.Slice(2)),
+            [var throw1, var throw2] when frame == 10 => PinToValue(throw1) + PinToValue(throw2),
+            [var throw1, var throw2, .. var remainingThrows] =>
+                ScoreNextTwoThrows(throw1, throw2) + ScoreRemainingFrames(frame + 1, remainingThrows),
             _ => throw new BowlingScorerException(
                 $"Frame {frame} has an invalid pattern of remaining throws: {remainingSymbols}")
         };
