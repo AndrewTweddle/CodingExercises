@@ -65,7 +65,7 @@ fn solve(diagram: &str) -> Option<Energy> {
 //   #.#.#.#.#    11..15
 //   #########
 //
-// When we need all cells will also include the 4 x's, from left to right, in positions 15 to 18.
+// When we need all cells, we will also include the 4 x's, from left to right, in positions 15 to 18.
 const TOTAL_CELL_COUNT: usize = 19;
 const OCCUPIABLE_CELL_COUNT: usize = 15;
 const OCCUPIABLE_HALLWAY_SLOT_COUNT: u8 = 7;
@@ -180,8 +180,8 @@ const TARGET_POD_POSITIONS: PodPositions = [7, 11, 8, 12, 9, 13, 10, 14];
 #[rustfmt::skip]
 const CELL_INDEXES_TO_MAP_POSITIONS: [(usize, usize); OCCUPIABLE_CELL_COUNT] = [
     (1, 1), (1, 2),         (1, 4),         (1, 6),         (1, 8),         (1, 10), (1, 11),
-    (2, 3),         (2, 5),         (2, 7),         (2, 9),
-    (3, 3),         (3, 5),         (3, 7),         (3, 9),
+                    (2, 3),         (2, 5),         (2, 7),         (2, 9),
+                    (3, 3),         (3, 5),         (3, 7),         (3, 9),
 ];
 
 fn convert_diagram_to_pod_positions(diagram: &str) -> PodPositions {
