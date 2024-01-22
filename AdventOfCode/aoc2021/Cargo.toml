@@ -8,3 +8,6 @@ edition = "2021"
 [dependencies]
 lazy_static = "1.4.0"
 nalgebra = "0.30.0"
+num = "0.4.1"
+pathfinding = "4.8.2"
+petgraph = { version = "0.6.4", features = [] }
