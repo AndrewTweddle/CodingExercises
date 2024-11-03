@@ -11,9 +11,8 @@ fn main() {
             let word_value: u64 = line
                 .to_uppercase()
                 .bytes()
-                .filter_map(|byte| {
-                    byte.is_ascii_uppercase().then(|| (byte - b'A' + 1) as u64)
-                })
+                .filter(|byte| byte.is_ascii_uppercase())
+                .map(|byte| (byte - b'A' + 1) as u64)
                 .sum();
 
             is_triangular(word_value)
