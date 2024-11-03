@@ -1,6 +1,6 @@
 use std::time::Instant;
 
-const REPETITIONS: u32 = 1;
+const REPETITIONS: u32 = 10;
 const SMALLEST_TEN_DIGIT_PANDIGITAL_GENERATOR: usize = 9 * 8 * 7 * 6 * 5 * 4 * 3 * 2;
 const LARGEST_TEN_DIGIT_PANDIGITAL_GENERATOR: usize =
     (((((((9 * 9 + 8) * 8 + 7) * 7 + 6) * 6 + 5) * 5 + 4) * 4 + 3) * 3 + 2) * 2 + 1;
@@ -81,7 +81,7 @@ fn main() {
     let mut start_time = Instant::now();
     for rep in 0..=REPETITIONS {
         let answer: usize = TenDigitPandigitalIter::new()
-            .filter_map(|n| has_sub_string_divisibility_property(n).then_some(n))
+            .filter(|&n| has_sub_string_divisibility_property(n))
             .sum();
 
         if rep == 0 {

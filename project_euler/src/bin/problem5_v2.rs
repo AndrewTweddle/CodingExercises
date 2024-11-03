@@ -27,7 +27,7 @@ fn get_primes_up_to(n: u64) -> Vec<u64> {
         .collect()
 }
 
-fn get_prime_exponents(n: u64, primes: &Vec<u64>) -> Vec<u32> {
+fn get_prime_exponents(n: u64, primes: &[u64]) -> Vec<u32> {
     let num_primes = primes.len();
     let mut exponents = vec![0_u32; num_primes];
     if n <= 1 {

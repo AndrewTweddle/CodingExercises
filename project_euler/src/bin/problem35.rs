@@ -60,11 +60,11 @@ fn main() {
     }
 }
 
-fn digits_to_number(digits: &Vec<u8>) -> usize {
+fn digits_to_number(digits: &[u8]) -> usize {
     digits_to_permuted_number(digits, 0)
 }
 
-fn digits_to_permuted_number(digits: &Vec<u8>, rotation: usize) -> usize {
+fn digits_to_permuted_number(digits: &[u8], rotation: usize) -> usize {
     digits_to_permuted_number_in_base(digits, rotation, 10)
 }
 
@@ -88,7 +88,7 @@ fn permute_encoded_number(mut encoded_number: usize, rotation: usize, digit_coun
     digits_to_permuted_number_in_base(&digits, rotation, 4)
 }
 
-fn digits_to_permuted_number_in_base(digits: &Vec<u8>, rotation: usize, base: usize) -> usize {
+fn digits_to_permuted_number_in_base(digits: &[u8], rotation: usize, base: usize) -> usize {
     let digit_count = digits.len();
     let mut result: usize = 0;
     let mut power: usize = 1;
