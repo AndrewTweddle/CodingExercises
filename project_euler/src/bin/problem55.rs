@@ -27,7 +27,7 @@ fn count_iterations_until_not_lychrel(mut n: u128) -> Option<usize> {
         }
         n += r;
     }
-    return None;
+    None
 }
 
 #[inline(always)]
