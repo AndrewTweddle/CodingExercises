@@ -17,18 +17,18 @@ fn score_remaining_frames(
     match (frame, rem_throws) {
         // Validation patterns
         (frm, []) => Err(BowlingScorerError::NoMoreThrowsInFrame(frm)),
-        (frm, [last_throw]) if *last_throw != Throw::Strike => {
-            Err(BowlingScorerError::NotEnoughThrowsInFrame(frm))
-        }
-        (frm, [_, Throw::Spare]) => Err(BowlingScorerError::NoMoreThrowsAfterSpareInFrame(frm)),
         (frm, [Throw::Strike]) => Err(BowlingScorerError::NotEnoughThrowsAfterStrikeInFrame(frm)),
         (frm, [Throw::Strike, _]) => {
             Err(BowlingScorerError::NotEnoughThrowsAfterStrikeInFrame(frm))
         }
-        (frm, [Throw::Spare, ..]) => Err(BowlingScorerError::FirstThrowOfAFrameCannotBeASpare(frm)),
-        (frm, [first_throw, Throw::Strike]) if *first_throw != Throw::Strike => {
+        (frm, [_]) => {
+            Err(BowlingScorerError::NotEnoughThrowsInFrame(frm))
+        }
+        (frm, [first_throw, Throw::Strike, ..]) if *first_throw != Throw::Strike => {
             Err(BowlingScorerError::SecondThrowInFrameCannotBeAStrike(frm))
         }
+        (frm, [Throw::Spare, ..]) => Err(BowlingScorerError::FirstThrowOfAFrameCannotBeASpare(frm)),
+        (frm, [_, Throw::Spare]) => Err(BowlingScorerError::NoMoreThrowsAfterSpareInFrame(frm)),
         (frm, [Throw::Pins(pins1), Throw::Pins(pins2), ..]) if *pins1 + *pins2 >= 10 => {
             let sum_of_pins = *pins1 as Score + *pins2 as Score;
             Err(BowlingScorerError::ThrowsInFrameAddUpToTenOrMore(
@@ -36,8 +36,8 @@ fn score_remaining_frames(
                 sum_of_pins,
             ))
         }
-        (frm, [Throw::Strike, Throw::Pins(_), Throw::Strike]) => {
-            Err(BowlingScorerError::SecondThrowInFrameCannotBeAStrike(frm))
+        (10, [Throw::Strike, Throw::Pins(_), Throw::Strike]) => {
+            Err(BowlingScorerError::SecondThrowInFrameCannotBeAStrike(10))
         }
         (10, [Throw::Strike, Throw::Pins(pins1), Throw::Pins(pins2), ..])
             if *pins1 + *pins2 >= 10 =>
