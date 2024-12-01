@@ -11,15 +11,15 @@ I use these to:
   
 ## Links within this page
 
-| Link                                                                                           | Source                                                      | Description                                  |
-|------------------------------------------------------------------------------------------------|-------------------------------------------------------------|----------------------------------------------|
-| [Project Euler](#project-euler-problems)                                                       | [projecteuler.net](https://projecteuler.net)                | Coding challenges with a mathematical theme  |
-| [Advent of Code](#advent-of-code) ([2020](#2020), [2021](#2021), [2022](#2022), [2023](#2023)) | [adventofcode.com](https://adventofcode.com/)               | 25 days of coding challenges run in December |
-| [cryptopals](#cryptopals-cryptography-challenges)                                              | [cryptopals.com](https://cryptopals.com/)                   | Cryptography challenges                      |
-| [CSES Problem Set](#cses-problem-set)                                                          | [cses.fi/problemset/list](https://cses.fi/problemset/list/) | Competitive coding exercises                 |
-| [CodingDojo Katas](#katas-from-codingdojoorg)                                                  | [CodingDojo.org](https://codingdojo.org/)                   |                                              |
-| [Miscellaneous](#miscellaneous)                                                                | Miscellaneous sources                                       |                                              |
-| [CTCI Exercises](#ctci)                                                                        | The book "Cracking the Coding Interview"                    | Technical interview questions                |
+| Link                                                                                                          | Source                                                      | Description                                  |
+|---------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------|----------------------------------------------|
+| [Project Euler](#project-euler-problems)                                                                      | [projecteuler.net](https://projecteuler.net)                | Coding challenges with a mathematical theme  |
+| [Advent of Code](#advent-of-code) ([2020](#2020), [2021](#2021), [2022](#2022), [2023](#2023), [2024](#2024)) | [adventofcode.com](https://adventofcode.com/)               | 25 days of coding challenges run in December |
+| [cryptopals](#cryptopals-cryptography-challenges)                                                             | [cryptopals.com](https://cryptopals.com/)                   | Cryptography challenges                      |
+| [CSES Problem Set](#cses-problem-set)                                                                         | [cses.fi/problemset/list](https://cses.fi/problemset/list/) | Competitive coding exercises                 |
+| [CodingDojo Katas](#katas-from-codingdojoorg)                                                                 | [CodingDojo.org](https://codingdojo.org/)                   |                                              |
+| [Miscellaneous](#miscellaneous)                                                                               | Miscellaneous sources                                       |                                              |
+| [CTCI Exercises](#ctci)                                                                                       | The book "Cracking the Coding Interview"                    | Technical interview questions                |
 
 ## Related repositories
 
@@ -283,6 +283,19 @@ These can be used to easily calculate the average duration of solution algorithm
 |     |                                                                        |      | 2023-12-10 | [Rust](AdventOfCode/aoc2023/src/bin/day8_part1_large_lookup.rs) | 630µs   | Use a lookup table indexed by both an instruction and node index - 12 to 13ns per step.   |
 
 _Note: Timings based on an i7-6700 CPU. Durations exclude I/O (reading the input file and writing the answer to the terminal) unless indicated._
+
+### 2024
+
+Rust utility methods can be found in [lib.rs](AdventOfCode/aoc2023/src/lib.rs).
+These can be used to easily calculate the average duration of solution algorithms over many repetitions.
+
+| Day | Description                                               | Part | Date       | Solution                                              | Duration | Notes |
+|-----|-----------------------------------------------------------|------|------------|-------------------------------------------------------|----------|-------|
+| 1   | [Historian Hysteria](https://adventofcode.com/2024/day/1) | 1    | 2024-12-01 | [Rust](AdventOfCode/aoc2024_rs/src/bin/day1_part1.rs) | 191µs    |       |
+|     |                                                           | 2    |            | [Rust](AdventOfCode/aoc2024_rs/src/bin/day1_part2.rs) | 174µs    |       |
+
+_Note: Timings based on an i7-6700 CPU. Durations exclude I/O (reading the input file and writing the answer to the terminal) unless indicated._
+
 
 ## cryptopals cryptography challenges
 
