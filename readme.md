@@ -286,7 +286,7 @@ _Note: Timings based on an i7-6700 CPU. Durations exclude I/O (reading the input
 
 ### 2024
 
-Rust utility methods can be found in [lib.rs](AdventOfCode/aoc2023/src/lib.rs).
+Rust utility methods can be found in [lib.rs](AdventOfCode/aoc2024_rs/src/lib.rs).
 These can be used to easily calculate the average duration of solution algorithms over many repetitions.
 
 | Day | Description                                               | Part | Date       | Solution                                              | Duration | Notes |
