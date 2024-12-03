@@ -294,7 +294,7 @@ These can be used to easily calculate the average duration of solution algorithm
 | 1   | [Historian Hysteria](https://adventofcode.com/2024/day/1) | 1    | 2024-12-01 | [Rust](AdventOfCode/aoc2024_rs/src/bin/day1_part1.rs) | 191 µs   |                                                                                                   |
 |     |                                                           | 2    |            | [Rust](AdventOfCode/aoc2024_rs/src/bin/day1_part2.rs) | 174 µs   |                                                                                                   |
 | 2   | [Red-Nosed Reports](https://adventofcode.com/2024/day/2)  | 1    | 2024-12-02 | [Rust](AdventOfCode/aoc2024_rs/src/bin/day2_part1.rs) | 419 µs   |                                                                                                   |
-|     |                                                           | 2    |            | [Rust](AdventOfCode/aoc2024_rs/src/bin/day2_part2.rs) | 430 µs   | Iterated windows of 3 levels at a time, considering dampening the last level of each such triple. |
+|     |                                                           | 2    |            | [Rust](AdventOfCode/aoc2024_rs/src/bin/day2_part2.rs) | 433 µs   | Iterated windows of 3 levels at a time, considering dampening the last level of each such triple. |
 
 _Note: Timings based on an i7-6700 CPU. Durations exclude I/O (reading the input file and writing the answer to the terminal) unless indicated._
 
