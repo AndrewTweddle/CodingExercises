@@ -297,6 +297,8 @@ These can be used to easily calculate the average duration of solution algorithm
 |     |                                                           | 2    |            | [Rust](AdventOfCode/aoc2024_rs/src/bin/day2_part2.rs) | 433 µs   | Iterated windows of 3 levels at a time, considering dampening the last level of each such triple. |
 | 3   | [Mull It Over](https://adventofcode.com/2024/day/3)       | 1    | 2024-12-03 | [Rust](AdventOfCode/aoc2024_rs/src/bin/day3_part1.rs) | 834 µs   | Used regex                                                                                        |
 |     |                                                           | 2    |            | [Rust](AdventOfCode/aoc2024_rs/src/bin/day3_part2.rs) | 1.13 ms  |                                                                                                   |
+| 4   | [Ceres Search](https://adventofcode.com/2024/day/4)       | 1    | 2024-12-05 | [Rust](AdventOfCode/aoc2024_rs/src/bin/day4_part1.rs) | 332 µs   |                                                                                                   |
+|     |                                                           | 2    |            | [Rust](AdventOfCode/aoc2024_rs/src/bin/day4_part2.rs) | 136 µs   | Part 2 was easier than part 1!                                                                    |
 
 _Note: Timings based on an i7-6700 CPU. Durations exclude I/O (reading the input file and writing the answer to the terminal) unless indicated._
 
