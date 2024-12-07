@@ -59,7 +59,6 @@ fn solve(contents: &str) -> i64 {
                         let succ_precs = preceders.get_mut(successor).unwrap();
                         succ_precs.retain(|&pg| pg != page);
                     }
-                    successors.remove(&page);
                     preceders.remove(&page);
                 }
 
