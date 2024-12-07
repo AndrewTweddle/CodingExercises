@@ -26,7 +26,7 @@ fn solve(contents: &str) -> i64 {
                 .map(|page_str| page_str.parse::<i64>().unwrap())
                 .collect();
             let no_rules_violated = pages.iter().enumerate().all(|(i, &page)| {
-                (&pages[0..i])
+                pages[0..i]
                     .iter()
                     .all(|&other_page| !rules.contains(&(page, other_page)))
             });
