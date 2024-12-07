@@ -4,7 +4,7 @@ use std::collections::HashSet;
 const INPUT_FILE_PATH: &str = "data/day5_input.txt";
 
 fn main() {
-    read_and_solve_and_time_more_runs(INPUT_FILE_PATH, "Day 5 part 2", solve, 10);
+    read_and_solve_and_time_more_runs(INPUT_FILE_PATH, "Day 5 part 2", solve, 1000);
 }
 
 fn solve(contents: &str) -> i64 {
