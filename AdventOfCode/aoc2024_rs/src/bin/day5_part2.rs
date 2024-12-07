@@ -51,15 +51,7 @@ fn solve(contents: &str) -> i64 {
                 // Build up the sequence using a topological sort:
                 pages.clear();
 
-                loop {
-                    // Find any page which has no preceders, and add it to the "update":
-                    let maybe_no_prec = preceders.iter().find(|(_, precs)| precs.is_empty());
-                    if maybe_no_prec.is_none() {
-                        break;
-                    }
-                    let no_prec = maybe_no_prec.unwrap();
-
-                    let &page = no_prec.0;
+                while let Some((&page, _)) = preceders.iter().find(|(_, precs)| precs.is_empty()) {
                     pages.push(page);
 
                     // Remove the page from both maps, as its precedence constraints are satisfied:
