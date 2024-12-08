@@ -302,6 +302,7 @@ These can be used to easily calculate the average duration of solution algorithm
 | 5   | [Print Queue](https://adventofcode.com/2024/day/5)        | 1    |            | [Rust](AdventOfCode/aoc2024_rs/src/bin/day5_part1.rs)                  | 783 µs   |                                                                                                   |
 |     |                                                           | 2    | 2024-12-07 | [Rust](AdventOfCode/aoc2024_rs/src/bin/day5_part2.rs)                  | 5.1 ms   | Using a topological sort                                                                          |
 |     |                                                           |      |            | [Rust](AdventOfCode/aoc2024_rs/src/bin/day5_part2_in_place_sorting.rs) | 969 µs   | With in-place sorting: much faster!                                                               |
+| 6   | [Guard Gallivant](https://adventofcode.com/2024/day/6)    | 1    |            | [Rust](AdventOfCode/aoc2024_rs/src/bin/day6_part1.rs)                  | 88 µs    |                                                                                                   |
 
 _Note: Timings based on an i7-6700 CPU. Durations exclude I/O (reading the input file and writing the answer to the terminal) unless indicated._
 
