@@ -40,18 +40,17 @@ fn matches_test_value(test_value: usize, partial_value: usize, rem_nums: &[usize
     }
 }
 
-fn concat(partial_value: usize, next_num: usize) -> usize {
-    let mut concatenated = partial_value;
+fn concat(mut curr_num: usize, next_num: usize) -> usize {
     let mut digit_reducer = next_num;
     loop {
-        concatenated *= 10;
+        curr_num *= 10;
         digit_reducer /= 10;
         if digit_reducer == 0 {
             break;
         }
     }
-    concatenated += next_num;
-    concatenated
+    curr_num += next_num;
+    curr_num
 }
 
 #[cfg(test)]
