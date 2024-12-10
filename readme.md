@@ -304,6 +304,8 @@ These can be used to easily calculate the average duration of solution algorithm
 |     |                                                           |      |            | [Rust](AdventOfCode/aoc2024_rs/src/bin/day5_part2_in_place_sorting.rs) | 969 µs   | With in-place sorting: much faster!                                                               |
 | 6   | [Guard Gallivant](https://adventofcode.com/2024/day/6)    | 1    |            | [Rust](AdventOfCode/aoc2024_rs/src/bin/day6_part1.rs)                  | 88 µs    |                                                                                                   |
 |     |                                                           | 2    | 2024-12-09 | [Rust](AdventOfCode/aoc2024_rs/src/bin/day6_part2.rs)                  | 182 ms   |                                                                                                   |
+| 7   | [Bridge Repair](https://adventofcode.com/2024/day/7)      | 1    |            | [Rust](AdventOfCode/aoc2024_rs/src/bin/day7_part1.rs)                  | 1.7 ms   |                                                                                                   |
+|     |                                                           | 2    |            | [Rust](AdventOfCode/aoc2024_rs/src/bin/day7_part2.rs)                  | 52 ms    |                                                                                                   |
 
 _Note: Timings based on an i7-6700 CPU. Durations exclude I/O (reading the input file and writing the answer to the terminal) unless indicated._
 
