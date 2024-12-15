@@ -308,6 +308,8 @@ These can be used to easily calculate the average duration of solution algorithm
 |     |                                                              | 2    |            | [Rust](AdventOfCode/aoc2024_rs/src/bin/day7_part2.rs)                  | 52 ms    |                                                                                                   |
 | 8   | [Resonant Collinearity](https://adventofcode.com/2024/day/8) | 1    | 2024-12-14 | [Rust](AdventOfCode/aoc2024_rs/src/bin/day8_part1.rs)                  | 66 µs    |                                                                                                   |
 |     |                                                              | 2    |            | [Rust](AdventOfCode/aoc2024_rs/src/bin/day8_part2.rs)                  | 158 µs   |                                                                                                   |
+| 9   | [Disk Fragmenter](https://adventofcode.com/2024/day/9)       | 1    | 2024-12-15 | [Rust](AdventOfCode/aoc2024_rs/src/bin/day9_part1.rs)                  | 677 µs   |                                                                                                   |
+|     |                                                              | 2    |            | [Rust](AdventOfCode/aoc2024_rs/src/bin/day9_part2.rs)                  | 176 ms   | A very slow solution!                                                                             |
 
 _Note: Timings based on an i7-6700 CPU. Durations exclude I/O (reading the input file and writing the answer to the terminal) unless indicated._
 
