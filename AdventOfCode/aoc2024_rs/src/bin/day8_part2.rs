@@ -89,15 +89,13 @@ fn solve(contents: &str) -> usize {
             positions.iter().enumerate().flat_map(|(index, &pos2)| {
                 positions.iter().take(index).flat_map(move |&pos1| {
                     let offset = (pos2 - pos1).get_smallest_factor();
-                    let mx = max_x;
-                    let my = max_y;
                     (0..)
                         .map(move |i| pos1 - i * offset)
-                        .take_while(move |&pos| pos.is_valid(mx, my))
+                        .take_while(move |&pos| pos.is_valid(max_x, max_y))
                         .chain(
                             (1..)
                                 .map(move |i| pos1 + i * offset)
-                                .take_while(move |&pos| pos.is_valid(mx, my)),
+                                .take_while(move |&pos| pos.is_valid(max_x, max_y)),
                         )
                 })
             })
