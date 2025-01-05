@@ -312,6 +312,7 @@ These can be used to easily calculate the average duration of solution algorithm
 |     |                                                              | 2    |            | [Rust](AdventOfCode/aoc2024_rs/src/bin/day9_part2.rs)                  | 176 ms   | A very slow solution!                                                                             |
 | 10  | [Hoof It](https://adventofcode.com/2024/day/10)              | 1    | 2024-12-17 | [Rust](AdventOfCode/aoc2024_rs/src/bin/day10_part1.rs)                 | 697 µs   |                                                                                                   |
 |     |                                                              | 2    |            | [Rust](AdventOfCode/aoc2024_rs/src/bin/day10_part2.rs)                 | 102 ms   | Part 2 was easier than part 1!                                                                    |
+| 11  | [Plutonian Pebbles](https://adventofcode.com/2024/day/11)    | 1    | 2025-01-05 | [Rust](AdventOfCode/aoc2024_rs/src/bin/day11_part1.rs)                 | 4.6 ms   |                                                                                                   |
 
 _Note: Timings based on an i7-6700 CPU. Durations exclude I/O (reading the input file and writing the answer to the terminal) unless indicated._
 
