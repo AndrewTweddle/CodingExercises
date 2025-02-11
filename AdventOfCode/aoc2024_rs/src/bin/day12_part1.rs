@@ -106,73 +106,76 @@ fn solve(contents: &str) -> usize {
 
                 match (left_byte, byte, top_byte) {
                     (lb, cb, tb) if lb == cb && tb == cb => {
-                        // merge the left and top regions
-                        let left_sub_region_id = sub_region_map[r][c - 1].unwrap();
-
-                        // Add this cell to the left region
-                        let left_region =
-                            &mut regions[sub_region_to_region_map[left_sub_region_id]];
-                        left_region.area += 1;
-                        sub_region_map[r].push(Some(left_sub_region_id));
-
-                        // merge the left and top regions
-                        let top_sub_region_id = sub_region_map[r - 1][c].unwrap();
-                        merge_sub_regions(
-                            left_sub_region_id,
-                            top_sub_region_id,
-                            &mut sub_region_to_region_map,
+                        merge_left_and_top_region(
+                            r,
+                            c,
                             &mut regions,
+                            &mut sub_region_map,
+                            &mut sub_region_to_region_map,
                         );
                     }
                     (lb, cb, tb) if lb == cb => {
-                        // expand the left region to include the new cell
-                        let left_sub_region_id = sub_region_map[r][c - 1].unwrap();
-                        let left_region =
-                            &mut regions[sub_region_to_region_map[left_sub_region_id]];
-                        left_region.area += 1;
-                        left_region.perimeter += 1;
-                        sub_region_map[r].push(Some(left_sub_region_id));
+                        add_cell_to_left_region(
+                            r,
+                            c,
+                            &mut regions,
+                            &mut sub_region_map,
+                            &mut sub_region_to_region_map,
+                        );
 
-                        // Increase the perimeter of the top region
-                        if tb != b' ' {
-                            let top_sub_region_id = sub_region_map[r - 1][c].unwrap();
-                            regions[sub_region_to_region_map[top_sub_region_id]].perimeter += 1;
-                        }
+                        increase_perimeter_of_top_region(
+                            r,
+                            c,
+                            tb,
+                            &mut regions,
+                            &mut sub_region_map,
+                            &mut sub_region_to_region_map,
+                        );
                     }
                     (lb, cb, tb) if tb == cb => {
-                        // expand the top region to include the new cell
-                        let top_sub_region_id = sub_region_map[r - 1][c].unwrap();
-                        let top_region = &mut regions[sub_region_to_region_map[top_sub_region_id]];
-                        top_region.area += 1;
-                        top_region.perimeter += 1;
-                        sub_region_map[r].push(Some(top_sub_region_id));
+                        add_cell_to_top_region(
+                            r,
+                            c,
+                            &mut regions,
+                            &mut sub_region_map,
+                            &mut sub_region_to_region_map,
+                        );
 
-                        // Increase the perimeter of the left region
-                        if lb != b' ' {
-                            let left_sub_region_id = sub_region_map[r][c - 1].unwrap();
-                            regions[sub_region_to_region_map[left_sub_region_id]].perimeter += 1;
-                        }
+                        increase_perimeter_of_left_region(
+                            r,
+                            c,
+                            lb,
+                            &mut regions,
+                            &mut sub_region_map,
+                            &mut sub_region_to_region_map,
+                        );
                     }
                     (lb, _, tb) => {
-                        // Start a new sub-region and region at the current cell
-                        let new_region_id = regions.len();
-                        let mut new_region = Region::new(new_region_id, byte, 1, 2);
-                        sub_region_map[r].push(Some(new_region_id));
-                        new_region.sub_regions.push(new_region_id);
-                        regions.push(new_region);
-                        sub_region_to_region_map.push(new_region_id);
+                        add_cell_to_new_region(
+                            r,
+                            byte,
+                            &mut regions,
+                            &mut sub_region_map,
+                            &mut sub_region_to_region_map,
+                        );
 
-                        // Increase the perimeter of the left region
-                        if lb != b' ' {
-                            let left_sub_region_id = sub_region_map[r][c - 1].unwrap();
-                            regions[sub_region_to_region_map[left_sub_region_id]].perimeter += 1;
-                        }
+                        increase_perimeter_of_left_region(
+                            r,
+                            c,
+                            lb,
+                            &mut regions,
+                            &mut sub_region_map,
+                            &mut sub_region_to_region_map,
+                        );
 
-                        // Increase the perimeter of the top region
-                        if tb != b' ' {
-                            let top_sub_region_id = sub_region_map[r - 1][c].unwrap();
-                            regions[sub_region_to_region_map[top_sub_region_id]].perimeter += 1;
-                        }
+                        increase_perimeter_of_top_region(
+                            r,
+                            c,
+                            tb,
+                            &mut regions,
+                            &mut sub_region_map,
+                            &mut sub_region_to_region_map,
+                        );
                     }
                 }
             }
@@ -180,6 +183,31 @@ fn solve(contents: &str) -> usize {
     });
 
     regions.iter().map(|rgn| rgn.get_fence_price()).sum()
+}
+
+fn merge_left_and_top_region(
+    r: usize,
+    c: usize,
+    regions: &mut Vec<Region>,
+    sub_region_map: &mut Vec<Vec<Option<usize>>>,
+    sub_region_to_region_map: &mut Vec<usize>,
+) {
+    // merge the left and top regions
+    let left_sub_region_id = sub_region_map[r][c - 1].unwrap();
+
+    // Add this cell to the left region
+    let left_region = &mut regions[sub_region_to_region_map[left_sub_region_id]];
+    left_region.area += 1;
+    sub_region_map[r].push(Some(left_sub_region_id));
+
+    // merge the left and top regions
+    let top_sub_region_id = sub_region_map[r - 1][c].unwrap();
+    merge_sub_regions(
+        left_sub_region_id,
+        top_sub_region_id,
+        sub_region_to_region_map,
+        regions,
+    );
 }
 
 fn merge_sub_regions(
@@ -206,6 +234,80 @@ fn merge_sub_regions(
     let dst_region = &mut dst_range[dst_region_id];
     let src_region = &mut src_range[0];
     dst_region.merge(src_region, sub_region_to_region_map);
+}
+
+fn add_cell_to_left_region(
+    r: usize,
+    c: usize,
+    regions: &mut Vec<Region>,
+    sub_region_map: &mut Vec<Vec<Option<usize>>>,
+    sub_region_to_region_map: &mut Vec<usize>,
+) {
+    // expand the left region to include the new cell
+    let left_sub_region_id = sub_region_map[r][c - 1].unwrap();
+    let left_region = &mut regions[sub_region_to_region_map[left_sub_region_id]];
+    left_region.area += 1;
+    left_region.perimeter += 1;
+    sub_region_map[r].push(Some(left_sub_region_id));
+}
+
+fn add_cell_to_top_region(
+    r: usize,
+    c: usize,
+    regions: &mut Vec<Region>,
+    sub_region_map: &mut Vec<Vec<Option<usize>>>,
+    sub_region_to_region_map: &mut Vec<usize>,
+) {
+    // expand the top region to include the new cell
+    let top_sub_region_id = sub_region_map[r - 1][c].unwrap();
+    let top_region = &mut regions[sub_region_to_region_map[top_sub_region_id]];
+    top_region.area += 1;
+    top_region.perimeter += 1;
+    sub_region_map[r].push(Some(top_sub_region_id));
+}
+
+fn add_cell_to_new_region(
+    r: usize,
+    byte: u8,
+    regions: &mut Vec<Region>,
+    sub_region_map: &mut Vec<Vec<Option<usize>>>,
+    sub_region_to_region_map: &mut Vec<usize>,
+) {
+    // Start a new sub-region and region at the current cell
+    let new_region_id = regions.len();
+    let mut new_region = Region::new(new_region_id, byte, 1, 2);
+    sub_region_map[r].push(Some(new_region_id));
+    new_region.sub_regions.push(new_region_id);
+    regions.push(new_region);
+    sub_region_to_region_map.push(new_region_id);
+}
+
+fn increase_perimeter_of_left_region(
+    r: usize,
+    c: usize,
+    left_byte: u8,
+    regions: &mut Vec<Region>,
+    sub_region_map: &mut Vec<Vec<Option<usize>>>,
+    sub_region_to_region_map: &mut Vec<usize>,
+) {
+    if left_byte != b' ' {
+        let left_sub_region_id = sub_region_map[r][c - 1].unwrap();
+        regions[sub_region_to_region_map[left_sub_region_id]].perimeter += 1;
+    }
+}
+
+fn increase_perimeter_of_top_region(
+    r: usize,
+    c: usize,
+    top_byte: u8,
+    regions: &mut Vec<Region>,
+    sub_region_map: &mut Vec<Vec<Option<usize>>>,
+    sub_region_to_region_map: &mut Vec<usize>,
+) {
+    if top_byte != b' ' {
+        let top_sub_region_id = sub_region_map[r - 1][c].unwrap();
+        regions[sub_region_to_region_map[top_sub_region_id]].perimeter += 1;
+    }
 }
 
 #[cfg(test)]
