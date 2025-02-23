@@ -188,9 +188,9 @@ fn solve(contents: &str) -> usize {
 fn merge_left_and_top_region(
     r: usize,
     c: usize,
-    regions: &mut Vec<Region>,
-    sub_region_map: &mut Vec<Vec<Option<usize>>>,
-    sub_region_to_region_map: &mut Vec<usize>,
+    regions: &mut [Region],
+    sub_region_map: &mut [Vec<Option<usize>>],
+    sub_region_to_region_map: &mut [usize],
 ) {
     // merge the left and top regions
     let left_sub_region_id = sub_region_map[r][c - 1].unwrap();
@@ -239,9 +239,9 @@ fn merge_sub_regions(
 fn add_cell_to_left_region(
     r: usize,
     c: usize,
-    regions: &mut Vec<Region>,
-    sub_region_map: &mut Vec<Vec<Option<usize>>>,
-    sub_region_to_region_map: &mut Vec<usize>,
+    regions: &mut [Region],
+    sub_region_map: &mut [Vec<Option<usize>>],
+    sub_region_to_region_map: &mut [usize],
 ) {
     // expand the left region to include the new cell
     let left_sub_region_id = sub_region_map[r][c - 1].unwrap();
@@ -254,9 +254,9 @@ fn add_cell_to_left_region(
 fn add_cell_to_top_region(
     r: usize,
     c: usize,
-    regions: &mut Vec<Region>,
-    sub_region_map: &mut Vec<Vec<Option<usize>>>,
-    sub_region_to_region_map: &mut Vec<usize>,
+    regions: &mut [Region],
+    sub_region_map: &mut [Vec<Option<usize>>],
+    sub_region_to_region_map: &mut [usize],
 ) {
     // expand the top region to include the new cell
     let top_sub_region_id = sub_region_map[r - 1][c].unwrap();
@@ -270,7 +270,7 @@ fn add_cell_to_new_region(
     r: usize,
     byte: u8,
     regions: &mut Vec<Region>,
-    sub_region_map: &mut Vec<Vec<Option<usize>>>,
+    sub_region_map: &mut [Vec<Option<usize>>],
     sub_region_to_region_map: &mut Vec<usize>,
 ) {
     // Start a new sub-region and region at the current cell
@@ -286,9 +286,9 @@ fn increase_perimeter_of_left_region(
     r: usize,
     c: usize,
     left_byte: u8,
-    regions: &mut Vec<Region>,
-    sub_region_map: &mut Vec<Vec<Option<usize>>>,
-    sub_region_to_region_map: &mut Vec<usize>,
+    regions: &mut [Region],
+    sub_region_map: &mut [Vec<Option<usize>>],
+    sub_region_to_region_map: &mut [usize],
 ) {
     if left_byte != b' ' {
         let left_sub_region_id = sub_region_map[r][c - 1].unwrap();
@@ -300,9 +300,9 @@ fn increase_perimeter_of_top_region(
     r: usize,
     c: usize,
     top_byte: u8,
-    regions: &mut Vec<Region>,
-    sub_region_map: &mut Vec<Vec<Option<usize>>>,
-    sub_region_to_region_map: &mut Vec<usize>,
+    regions: &mut [Region],
+    sub_region_map: &mut [Vec<Option<usize>>],
+    sub_region_to_region_map: &mut [usize],
 ) {
     if top_byte != b' ' {
         let top_sub_region_id = sub_region_map[r - 1][c].unwrap();
