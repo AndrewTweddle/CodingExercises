@@ -307,8 +307,7 @@ fn update_side_counts_of_regions_in_target_line_compared_to_adjacent_line(
         .for_each(|(target_rgn, adjacent_rgn)| {
             let curr_rgn = match (target_rgn, adjacent_rgn) {
                 (Some(rgn1), Some(rgn2)) if rgn1 == rgn2 => None,
-                (Some(rgn1), Some(_)) => Some(rgn1),
-                (Some(rgn1), None) => Some(rgn1),
+                (Some(rgn1), _) => Some(rgn1),
                 (None, _) => None,
             };
             match (curr_rgn, last_rgn) {
