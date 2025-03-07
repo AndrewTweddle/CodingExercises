@@ -320,6 +320,7 @@ These can be used to easily calculate the average duration of solution algorithm
 |     |                                                              | 2    |            | [Rust](AdventOfCode/aoc2024_rs/src/bin/day13_part2.rs)                 |                    | 44 µs             | Essentially the same solution as part 1                                                           |
 | 14  | [Restroom Redoubt](https://adventofcode.com/2024/day/14)     | 1    | 2025-02-27 | [Rust](AdventOfCode/aoc2024_rs/src/bin/day14_part1.rs)                 |                    | 22 µs             |                                                                                                   |
 |     |                                                              | 2    | 2025-03-02 | [Rust](AdventOfCode/aoc2024_rs/src/bin/day14_part2.rs)                 |                    |                   | Wrote a terminal app (using ratatui) to step through MANY iterations until seeing the easter egg! |
+| 15  | [Warehouse Woes](https://adventofcode.com/2024/day/15)       | 1    | 2025-03-06 | [Rust](AdventOfCode/aoc2024_rs/src/bin/day15_part1.rs)                 |                    | 1.626 ms          |                                                                                                   |
 
 _Note: Timings based on an i7-6700 CPU and/or a MacBook Pro M4 Pro. Durations exclude I/O (reading the input file and writing the answer to the terminal) unless indicated._
 
