@@ -163,6 +163,7 @@ mod tests {
 
         assert_eq!(solve(contents), 2028);
     }
+    
     #[test]
     fn test_larger_example() {
         let contents = "##########
