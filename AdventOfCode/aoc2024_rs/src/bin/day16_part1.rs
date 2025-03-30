@@ -10,8 +10,7 @@ fn main() {
     read_and_solve_and_time_more_runs(INPUT_FILE_PATH, "Day 16 part 1", solve, 1000);
 }
 
-// Set up turn movements:
-
+// Set up data for turning actions:
 #[derive(Debug, Copy, Clone, PartialEq, Eq, Hash)]
 enum TurnDir {
     Left,
@@ -139,7 +138,7 @@ impl SearchNode {
         self.recalculate_f(end_pos);
     }
 
-    fn turn_to(&mut self, turn_dir: TurnDir, end_pos: Position) {
+    fn turn(&mut self, turn_dir: TurnDir, end_pos: Position) {
         self.state.dir.turn_to_the(turn_dir);
         self.g += COST_TO_TURN;
         self.recalculate_f(end_pos);
@@ -198,10 +197,6 @@ impl PartialOrd for SearchNode {
     }
 }
 
-type DirCost = [Option<usize>; 4];
-type ColumnSearchCost = Vec<DirCost>;
-type MinSearchCostGrid = Vec<ColumnSearchCost>;
-
 fn solve(contents: &str) -> Option<usize> {
     let mut line_iter = contents.lines();
     let (grid, start_pos, end_pos) = parse_grid_and_get_start_and_end_positions(&mut line_iter);
@@ -242,6 +237,10 @@ fn parse_grid_and_get_start_and_end_positions(
     )
 }
 
+type DirCost = [Option<usize>; 4];
+type ColumnSearchCost = Vec<DirCost>;
+type MinSearchCostGrid = Vec<ColumnSearchCost>;
+
 fn get_min_cost_path_using_astar_algorithm(
     grid: &[Vec<CellState>],
     start_pos: Position,
@@ -278,11 +277,11 @@ fn get_min_cost_path_using_astar_algorithm(
         // We consider 2 options:
         // a) turning left and stepping forward
         let mut left_node = curr_node.clone();
-        left_node.turn_to(TurnDir::Left, end_pos);
+        left_node.turn(TurnDir::Left, end_pos);
         left_node.advance(end_pos);
 
         // b) turning right and stepping forward
-        curr_node.turn_to(TurnDir::Right, end_pos);
+        curr_node.turn(TurnDir::Right, end_pos);
         curr_node.advance(end_pos);
 
         for next_node in [left_node, curr_node] {
