@@ -322,6 +322,7 @@ These can be used to easily calculate the average duration of solution algorithm
 |     |                                                              | 2    | 2025-03-02 | [Rust](AdventOfCode/aoc2024_rs/src/bin/day14_part2.rs)                 |                    |                   | Wrote a terminal app (using ratatui) to step through MANY iterations until seeing the easter egg! |
 | 15  | [Warehouse Woes](https://adventofcode.com/2024/day/15)       | 1    | 2025-03-06 | [Rust](AdventOfCode/aoc2024_rs/src/bin/day15_part1.rs)                 |                    | 1.626 ms          |                                                                                                   |
 |     |                                                              | 2    | 2025-03-12 | [Rust](AdventOfCode/aoc2024_rs/src/bin/day15_part2.rs)                 |                    | 2.690 ms          |                                                                                                   |
+| 16  | [Reindeer Maze](https://adventofcode.com/2024/day/16)        | 1    | 2025-03-29 | [Rust](AdventOfCode/aoc2024_rs/src/bin/day16_part1.rs)                 |                    | 846 µs            | Hand-coded A* search                                                                              |
 
 _Note: Timings based on an i7-6700 CPU and/or a MacBook Pro M4 Pro. Durations exclude I/O (reading the input file and writing the answer to the terminal) unless indicated._
 
