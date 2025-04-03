@@ -148,7 +148,27 @@ impl SearchNode {
         self.f = Self::calculate_f(self.state, self.g, end_pos);
     }
 
-    fn calculate_f(state: State, g: usize, end_pos: Position) -> usize {
+    fn calculate_f(mut state: State, g: usize, end_pos: Position) -> usize {
+        if state.pos == end_pos {
+            return g;
+        }
+        
+        // The next move will be a turn to the left or a turn to the right, 
+        // followed by advancing at least 1 space (but assume 1 space for calculation purposes).
+        // Calculate f after each of these two moves and choose the smaller value of f.
+        let mut left_turn_state = state.clone();
+        left_turn_state.dir.turn_to_the(TurnDir::Left);
+        left_turn_state.advance();
+        let left_turn_f = Self::calculate_f_after_next_move(state, g, end_pos);
+        
+        state.dir.turn_to_the(TurnDir::Right);
+        state.advance();
+        let right_turn_f = Self::calculate_f_after_next_move(state, g, end_pos);
+        
+        1 + COST_TO_TURN + left_turn_f.min(right_turn_f) 
+    }
+
+    fn calculate_f_after_next_move(state: State, g: usize, end_pos: Position) -> usize {
         let x_steps = end_pos.x.abs_diff(state.pos.x);
         let y_steps = state.pos.y.abs_diff(end_pos.y);
 
@@ -336,45 +356,45 @@ mod tests {
 
     #[test]
     fn test_example_1() {
-        let contents = "###############
-#.......#....E#
-#.#.###.#.###.#
-#.....#.#...#.#
-#.###.#####.#.#
-#.#.#.......#.#
-#.#.#####.###.#
-#...........#.#
-###.#.#####.#.#
-#...#.....#.#.#
-#.#.#.###.#.#.#
-#.....#...#.#.#
-#.###.#.#.#.#.#
-#S..#.....#...#
-###############";
+        let contents = "###############\n\
+                        #.......#....E#\n\
+                        #.#.###.#.###.#\n\
+                        #.....#.#...#.#\n\
+                        #.###.#####.#.#\n\
+                        #.#.#.......#.#\n\
+                        #.#.#####.###.#\n\
+                        #...........#.#\n\
+                        ###.#.#####.#.#\n\
+                        #...#.....#.#.#\n\
+                        #.#.#.###.#.#.#\n\
+                        #.....#...#.#.#\n\
+                        #.###.#.#.#.#.#\n\
+                        #S..#.....#...#\n\
+                        ###############";
 
         assert_eq!(solve(contents), Some(7036));
     }
 
     #[test]
     fn test_example_2() {
-        let contents = "#################
-#...#...#...#..E#
-#.#.#.#.#.#.#.#.#
-#.#.#.#...#...#.#
-#.#.#.#.###.#.#.#
-#...#.#.#.....#.#
-#.#.#.#.#.#####.#
-#.#...#.#.#.....#
-#.#.#####.#.###.#
-#.#.#.......#...#
-#.#.###.#####.###
-#.#.#...#.....#.#
-#.#.#.#####.###.#
-#.#.#.........#.#
-#.#.#.#########.#
-#S#.............#
-#################";
-
+        let contents = "#################\n\
+                        #...#...#...#..E#\n\
+                        #.#.#.#.#.#.#.#.#\n\
+                        #.#.#.#...#...#.#\n\
+                        #.#.#.#.###.#.#.#\n\
+                        #...#.#.#.....#.#\n\
+                        #.#.#.#.#.#####.#\n\
+                        #.#...#.#.#.....#\n\
+                        #.#.#####.#.###.#\n\
+                        #.#.#.......#...#\n\
+                        #.#.###.#####.###\n\
+                        #.#.#...#.....#.#\n\
+                        #.#.#.#####.###.#\n\
+                        #.#.#.........#.#\n\
+                        #.#.#.#########.#\n\
+                        #S#.............#\n\
+                        #################";
+        
         assert_eq!(solve(contents), Some(11048));
     }
 }
