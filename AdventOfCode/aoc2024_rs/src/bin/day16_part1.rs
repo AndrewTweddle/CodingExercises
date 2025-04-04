@@ -152,20 +152,20 @@ impl SearchNode {
         if state.pos == end_pos {
             return g;
         }
-        
-        // The next move will be a turn to the left or a turn to the right, 
+
+        // The next move will be a turn to the left or a turn to the right,
         // followed by advancing at least 1 space (but assume 1 space for calculation purposes).
         // Calculate f after each of these two moves and choose the smaller value of f.
-        let mut left_turn_state = state.clone();
+        let mut left_turn_state = state;
         left_turn_state.dir.turn_to_the(TurnDir::Left);
         left_turn_state.advance();
         let left_turn_f = Self::calculate_f_after_next_move(state, g, end_pos);
-        
+
         state.dir.turn_to_the(TurnDir::Right);
         state.advance();
         let right_turn_f = Self::calculate_f_after_next_move(state, g, end_pos);
-        
-        1 + COST_TO_TURN + left_turn_f.min(right_turn_f) 
+
+        1 + COST_TO_TURN + left_turn_f.min(right_turn_f)
     }
 
     fn calculate_f_after_next_move(state: State, g: usize, end_pos: Position) -> usize {
@@ -394,7 +394,7 @@ mod tests {
                         #.#.#.#########.#\n\
                         #S#.............#\n\
                         #################";
-        
+
         assert_eq!(solve(contents), Some(11048));
     }
 }
