@@ -326,6 +326,7 @@ These can be used to easily calculate the average duration of solution algorithm
 |     |                                                                | 1    | 2025-04-03 | [Rust](AdventOfCode/aoc2024_rs/src/bin/day16_part1_one_step.rs)        |                    | 1.16 ms           | Slower but simpler alternative for part 1. Move 1 step left, right or forward each turn.           |
 |     |                                                                | 2    | 2025-04-01 | [Rust](AdventOfCode/aoc2024_rs/src/bin/day16_part2.rs)                 |                    | 1.18 ms           | Using the slower approach of moving 1 step left, right or forward.                                 |
 | 17  | [Chronospatial Computer](https://adventofcode.com/2024/day/17) | 1    | 2025-04-08 | [Rust](AdventOfCode/aoc2024_rs/src/bin/day17_part1.rs)                 |                    | 486 ns            | Very simple.                                                                                       |
+|     |                                                                | 2    | 2025-04-11 | [Rust](AdventOfCode/aoc2024_rs/src/bin/day17_part2_brute_force.rs)     |                    | Times out         | Perf optimizations unlikely to be enough as the answer will have 46 to 48 bits, i.e. > 64 x 10^12. |
 
 _Note: Timings based on an i7-6700 CPU and/or a MacBook Pro M4 Pro. Durations exclude I/O (reading the input file and writing the answer to the terminal) unless indicated._
 
