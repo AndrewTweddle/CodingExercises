@@ -198,7 +198,7 @@ fn get_primes_with_truncated_prime_pattern_up_to(max_prime: u64) -> Vec<u64> {
 
     // Use a bit vector to track which numbers of the form 6k-1 (odd bits) or 6k+1 (even bits)
     // are composite.
-    let sieve_count = (((max_prime + 5) / 3 + 7) / 8) as usize;
+    let sieve_count = ((max_prime + 5) / 3).div_ceil(8) as usize;
     let mut is_composite: Vec<u8> = vec![0; sieve_count];
     let mut is_trunc_prime: Vec<u8> = vec![0; sieve_count];
 
