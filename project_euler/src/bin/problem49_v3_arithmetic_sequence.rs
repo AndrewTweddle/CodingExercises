@@ -25,7 +25,7 @@ const MAX_MULT_OF_6: i16 = 1666;
 // We can search for the first new solution, as the problem statement says there is only one other.
 // But to compare performance of different algorithms, it is better to search exhaustively.
 // Otherwise an algorithm may seem better simply because it searched in a luckier order.
-const EXHAUSTIVE_SEARCH: bool = false;
+const EXHAUSTIVE_SEARCH: bool = true;
 
 fn solve() -> u64 {
     let mut solution: u64 = 0;
