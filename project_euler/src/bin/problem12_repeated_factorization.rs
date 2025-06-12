@@ -20,7 +20,7 @@ fn main() {
                 count_divisors(i + 1)
             } else {
                 // if i+1 is even, count divisors of (i+1)/2
-                count_divisors((i + 1) / 2)
+                count_divisors(i.div_ceil(2))
             };
             // i and i+1 have no common factors except 1
             // (since common factors divide the difference, and the difference is 1).

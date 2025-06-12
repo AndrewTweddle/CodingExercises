@@ -123,7 +123,7 @@ struct BitArray {
 
 impl BitArray {
     fn with_capacity(n: usize, default_value: bool) -> Self {
-        let byte_count = (n + 63) / 64;
+        let byte_count = n.div_ceil(64);
         BitArray {
             bytes: Vec::<u64>::with_capacity(byte_count),
             default_value,

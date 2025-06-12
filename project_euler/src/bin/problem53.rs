@@ -15,7 +15,7 @@ fn solve_with_params(min_n: usize, max_n: usize, min_combinatorial: usize) -> us
     for n in min_n..=max_n {
         let mut r = 0;
         let mut c = 1;
-        while r < (n + 1) / 2 && c < min_combinatorial {
+        while r < n.div_ceil(2) && c < min_combinatorial {
             r += 1;
             c *= n + 1 - r;
             c /= r;

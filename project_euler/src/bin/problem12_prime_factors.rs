@@ -21,7 +21,7 @@ fn main() {
                 count_divisors_using_prime_decomposition(i + 1, &primes)
             } else {
                 // if i+1 is even, count divisors of (i+1)/2
-                count_divisors_using_prime_decomposition((i + 1) / 2, &primes)
+                count_divisors_using_prime_decomposition(i.div_ceil(2), &primes)
             };
             // i and i+1 have no common factors except 1
             // (since common factors divide their difference, and the difference is 1).
