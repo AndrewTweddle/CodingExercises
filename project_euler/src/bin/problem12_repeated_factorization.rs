@@ -29,8 +29,12 @@ fn main() {
             if divs_i * divs_i_plus_1 > NUM_DIVISORS {
                 if rep == 0 {
                     println!("T({}) = {}", i, triangular_num);
-                    println!("Divisor counts: {} * {} = {}", divs_i, divs_i_plus_1,
-                             divs_i * divs_i_plus_1);
+                    println!(
+                        "Divisor counts: {} * {} = {}",
+                        divs_i,
+                        divs_i_plus_1,
+                        divs_i * divs_i_plus_1
+                    );
                 }
                 break;
             }
@@ -48,8 +52,7 @@ fn count_divisors(mut n: u64) -> u64 {
         for prime in 2.. {
             // If n is a large prime number, then this could take a very long time to find.
             // Check if prime > square root of n. If so, n is the only remaining divisor.
-            if prime * prime > n
-            {
+            if prime * prime > n {
                 // Two divisors: 1 and n
                 div_count *= 2;
                 break;

@@ -1,5 +1,5 @@
-use std::time::Instant;
 use num_bigint::BigUint;
+use std::time::Instant;
 
 const NUM_REPETITIONS: u32 = 1000;
 
@@ -11,7 +11,11 @@ fn main() {
             factorial *= factor;
         }
 
-        let sum_of_digits: u64 = factorial.to_radix_be(10).iter().map(|&digit| digit as u64).sum();
+        let sum_of_digits: u64 = factorial
+            .to_radix_be(10)
+            .iter()
+            .map(|&digit| digit as u64)
+            .sum();
 
         if rep == 0 {
             println!("Factorial = {}", factorial);

@@ -191,7 +191,10 @@ impl PrimeSearch {
 
 fn get_primes_with_truncated_prime_pattern_up_to(max_prime: u64) -> Vec<u64> {
     #[cfg(debug_assertions)]
-    println!("get_primes_with_truncated_prime_pattern_up_to({})", max_prime);
+    println!(
+        "get_primes_with_truncated_prime_pattern_up_to({})",
+        max_prime
+    );
 
     #[cfg(debug_assertions)]
     let start_time = Instant::now();
@@ -245,7 +248,10 @@ fn get_primes_with_truncated_prime_pattern_up_to(max_prime: u64) -> Vec<u64> {
         }
     }
 
-    let prime_count = is_trunc_prime.iter().map(|byte| byte.count_ones() as usize).sum::<usize>();
+    let prime_count = is_trunc_prime
+        .iter()
+        .map(|byte| byte.count_ones() as usize)
+        .sum::<usize>();
     let mut primes = Vec::with_capacity(prime_count + 1);
 
     // although 2 is prime, it is not in the pattern required of truncated primes, so exclude it

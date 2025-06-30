@@ -15,10 +15,10 @@ fn main() {
     let num_repetitions = 500;
     for rep in 0..num_repetitions {
         let seed = 1_u128 << 125;
-        let representation: Vec<u128> = vec![seed % BASE, seed / BASE];     // 2 ^ 125
-        let representation = square(representation);                        // 2 ^ 250
-        let representation = square(representation);                        // 2 ^ 500
-        let representation = square(representation);                        // 2 ^ 1000
+        let representation: Vec<u128> = vec![seed % BASE, seed / BASE]; // 2 ^ 125
+        let representation = square(representation); // 2 ^ 250
+        let representation = square(representation); // 2 ^ 500
+        let representation = square(representation); // 2 ^ 1000
 
         let mut sum_of_digits: u16 = 0;
         for mut quotient in representation {
@@ -55,7 +55,7 @@ pub fn square(digits: Vec<u128>) -> Vec<u128> {
                     adjustment += result[index];
                     result[index] = adjustment % BASE;
                 }
-                adjustment /= BASE;  // carry
+                adjustment /= BASE; // carry
                 index += 1;
             }
         }

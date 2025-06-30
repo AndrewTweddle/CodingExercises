@@ -24,7 +24,7 @@ fn get_digit_count(x: u128) -> DigitCount {
     let mut digits = [0; 10];
     let mut q = x;
     let mut r;
-    
+
     while q != 0 {
         r = q % 10;
         digits[r as usize] += 1;
@@ -39,7 +39,7 @@ where
     T: std::fmt::Debug,
 {
     use std::time::Instant;
-    
+
     let mut start_time = Instant::now();
     for i in 0..=repetitions {
         let solution = solve();
@@ -49,12 +49,12 @@ where
                 "Solved (including writing to terminal) in {:?}",
                 start_time.elapsed()
             );
-            
+
             // Now restart the timer, so that the timings don't include I/O...
             start_time = Instant::now();
         }
     }
-    
+
     if repetitions > 0 {
         let avg_duration = start_time.elapsed() / repetitions;
         println!("Average duration (excl I/O) over {repetitions} further runs: {avg_duration:?}");

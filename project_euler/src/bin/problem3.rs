@@ -52,11 +52,7 @@ fn get_max_prime_factor_by_dividing_by_odds(n: u64) -> u64 {
 #[allow(unused)]
 fn get_max_prime_factor_using_compact_prime_sieve(n: u64) -> u64 {
     let primes = get_primes_using_compact_prime_sieve(n);
-    *primes
-        .iter()
-        .rev()
-        .find(|prime| n % *prime == 0)
-        .unwrap()
+    *primes.iter().rev().find(|prime| n % *prime == 0).unwrap()
 }
 
 #[derive(Eq)]

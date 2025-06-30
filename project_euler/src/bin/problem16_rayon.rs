@@ -1,5 +1,5 @@
-use std::time::Instant;
 use rayon::prelude::*;
+use std::time::Instant;
 
 fn main() {
     let start = Instant::now();
@@ -13,10 +13,10 @@ fn main() {
         let base: u128 = 10_000_000_000_000_000_000;
 
         let seed = 1_u128 << 125;
-        let representation: Vec<u128> = vec![seed % base, seed / base];     // 2 ^ 125
-        let representation = square(representation, base);                  // 2 ^ 250
-        let representation = square(representation, base);                  // 2 ^ 500
-        let representation = square(representation, base);                  // 2 ^ 1000
+        let representation: Vec<u128> = vec![seed % base, seed / base]; // 2 ^ 125
+        let representation = square(representation, base); // 2 ^ 250
+        let representation = square(representation, base); // 2 ^ 500
+        let representation = square(representation, base); // 2 ^ 1000
 
         let sum_of_digits: u16 = representation
             .par_iter()
@@ -53,13 +53,18 @@ pub fn square(digits: Vec<u128>, base: u128) -> Vec<u128> {
                 2 * digits[i] * digits[j]
             };
             while adjustment > 0 {
-                let digit = adjustment + if index < result.len() { result[index] } else { 0 };
+                let digit = adjustment
+                    + if index < result.len() {
+                        result[index]
+                    } else {
+                        0
+                    };
                 if index == result.len() {
                     result.push(digit % base);
                 } else {
                     result[index] = digit % base;
                 }
-                adjustment = digit / base;  // carry
+                adjustment = digit / base; // carry
                 index += 1;
             }
         }

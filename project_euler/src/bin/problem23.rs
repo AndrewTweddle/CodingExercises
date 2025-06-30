@@ -12,9 +12,7 @@ fn main() {
 
         #[allow(clippy::needless_range_loop)]
         for i in MIN_ABUNDANT_NUM..=MAX_NON_ABUNDANT_SUM {
-            let i_sum_divs = (1..i)
-                .filter(|&div| i % div == 0)
-                .sum::<usize>();
+            let i_sum_divs = (1..i).filter(|&div| i % div == 0).sum::<usize>();
             if i_sum_divs > i {
                 is_abund[i] = true;
             }

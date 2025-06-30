@@ -41,7 +41,8 @@ fn solve() -> u64 {
                     && is_prime(perm3)
                     && (perm1 != 1487 || perm2 != 4817)
                 {
-                    solution = (perm1 as u64) * 100_000_000 + (perm2 as u64) * 10_000 + (perm3 as u64);
+                    solution =
+                        (perm1 as u64) * 100_000_000 + (perm2 as u64) * 10_000 + (perm3 as u64);
                     if !EXHAUSTIVE_SEARCH {
                         // use the first solution found, as the problem statement says it's unique
                         return solution;
