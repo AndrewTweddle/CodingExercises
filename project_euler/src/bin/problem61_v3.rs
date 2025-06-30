@@ -8,7 +8,7 @@ type FigurateNumbersCycle = [u16; 6];
 
 fn solve() -> u64 {
     // We will always start with the triangular numbers (since the cycle can start anywhere),
-    // and they should be more numerous, so avoid having to look them up in a hash table.
+    // and they should be more numerous, so avoid having to look them up in the lookup table.
 
     // Store lookups from the first 2 to the last 2 digits, for each other type of figurate number
     let lookups = get_digit_lookups_by_figurate_number_type();
