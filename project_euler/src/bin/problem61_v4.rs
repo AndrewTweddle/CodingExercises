@@ -147,6 +147,7 @@ fn figurate(fig: u64, n: u64) -> u64 {
         _ => panic!("Invalid figurate number"),
     }
 }
+
 // Instead of storing the various pairs of digits, use 128 bits to store all digits.
 // 6 numbers x 4 decimal digits = 24 decimal digits, or 10 ^ 24.
 // And 10 ^ 3 < 2 ^ 10. So 10 ^ 24 = (10 ^ 3) ^ 8 < (2 ^ 10) ^ 8 = 2 ^ 80 < 2 ^ 128.
