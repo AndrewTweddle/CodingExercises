@@ -1,5 +1,5 @@
-use std::time::Instant;
 use num_bigint::BigUint;
+use std::time::Instant;
 
 const NUM_REPETITIONS: u32 = 100;
 

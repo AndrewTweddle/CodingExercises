@@ -54,7 +54,10 @@ fn main() {
     println!("Duration: {:?}", end_time);
 
     println!("# of primes below 1 million = {}", primes.len());
-    println!("# of circular primes below 1 million: {}", circular_primes.len());
+    println!(
+        "# of circular primes below 1 million: {}",
+        circular_primes.len()
+    );
     for p in circular_primes {
         println!("    {}", p);
     }

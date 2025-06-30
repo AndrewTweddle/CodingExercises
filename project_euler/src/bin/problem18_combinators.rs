@@ -43,11 +43,12 @@ fn get_max_sum_of_any_pathway(inputs: &[Vec<u64>]) -> u64 {
     paths.push(0);
     for input in inputs {
         paths = iter::once(0_u64)
-            .chain( paths
-                .windows(2)
-                .map(|pair| pair.iter().max().unwrap())
-                .zip(input)
-                .map(|(max, input)| max + input)
+            .chain(
+                paths
+                    .windows(2)
+                    .map(|pair| pair.iter().max().unwrap())
+                    .zip(input)
+                    .map(|(max, input)| max + input),
             )
             .chain(iter::once(0_u64))
             .collect();

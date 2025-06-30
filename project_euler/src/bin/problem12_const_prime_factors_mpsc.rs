@@ -14,7 +14,7 @@ const PRIMES: [u64; 11] = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31];
 //         5000    1.349901607s      T(2203200) =   2427046221600
 //        10000   14.083371034s     T(14753024) = 108825865948800
 
-type JoinHandleWithoutResult =  JoinHandle<Result<(), ()>>;
+type JoinHandleWithoutResult = JoinHandle<Result<(), ()>>;
 
 fn main() {
     let start = Instant::now();

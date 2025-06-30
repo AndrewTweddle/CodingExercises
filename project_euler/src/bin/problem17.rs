@@ -19,8 +19,7 @@ fn main() {
             + 10 * TWENTY_TO_NINETY_IN_TENS.len()
             // units part of 1..9, 20..29, 30..39, ..., 90..99 with zeroes blank:
             + 9 * one_to_nine_len;
-        let one_to_one_thousand_len
-            = one_to_nine_len
+        let one_to_one_thousand_len = one_to_nine_len
             // 100, 200, 300, ..., 900:
             + 9 * HUNDRED.len()
             // tens and units of 1..99, 101..199, 201..299, ..., 901..999:
@@ -32,10 +31,16 @@ fn main() {
                  + 9 * HUNDRED_AND.len())
             + ONE_THOUSAND.len();
         if rep == 0 {
-            println!("Letters in 1 to 1000 written in words: {}", one_to_one_thousand_len);
+            println!(
+                "Letters in 1 to 1000 written in words: {}",
+                one_to_one_thousand_len
+            );
         }
     }
     let duration = start.elapsed();
     println!("Total duration: {:?}", duration);
-    println!("Average duration per repetition: {:?}", duration / num_repetitions);
+    println!(
+        "Average duration per repetition: {:?}",
+        duration / num_repetitions
+    );
 }
