@@ -4,7 +4,7 @@ fn main() {
 
 type FigurateNumbersCycle = [u16; 6];
 
-fn solve() -> u64 {
+fn solve() -> u16 {
     // We will start with the octagonal numbers (since the cycle can start anywhere),
     // and they should be less numerous, so this should give fewer branches in the search tree.
 
@@ -13,7 +13,7 @@ fn solve() -> u64 {
     let graph_nodes = get_graph_nodes_and_edges();
 
     // Octagonal numbers are not included in the graph, but they form the first level of the search:
-    let min_sum: Option<u64> = (1_u64..)
+    let min_sum: Option<u16> = (1_u16..)
         .map(|n| figurate(8, n))
         .skip_while(|&fig_num| fig_num < 1010)
         .take_while(|&fig_num| fig_num < 10_000)
@@ -135,7 +135,7 @@ impl Edge {
 fn get_graph_nodes_and_edges() -> Graph {
     let mut first2_to_last2: Graph = [InlineVec::new(); 100];
     for fig in 0..5 {
-        for n in 1_u64.. {
+        for n in 1_u16.. {
             let fig_num = figurate(fig + 3, n);
             if fig_num < 1010 {
                 continue;
@@ -155,7 +155,7 @@ fn get_graph_nodes_and_edges() -> Graph {
     first2_to_last2
 }
 
-fn figurate(fig: u64, n: u64) -> u64 {
+fn figurate(fig: u16, n: u16) -> u16 {
     match fig {
         3 => n * (n + 1) / 2,
         4 => n * n,
@@ -176,7 +176,7 @@ fn find_min_sum_of_cyclic_figurate_numbers(
     fig_types_used: u8,
     graph_nodes: &Graph,
     expected_final_pair: u8,
-) -> Option<u64> {
+) -> Option<u16> {
     if level == 5 {
         convert_encoded_digits_to_cycle_sum_if_valid(encoded_digits, expected_final_pair)
     } else {
@@ -204,7 +204,7 @@ fn find_min_sum_of_cyclic_figurate_numbers(
 fn convert_encoded_digits_to_cycle_sum_if_valid(
     digits: u128,
     expected_final_pair: u8,
-) -> Option<u64> {
+) -> Option<u16> {
     // The last 2 digits must match the expected final pair
     if digits % 100 != expected_final_pair as u128 {
         return None;
@@ -228,7 +228,7 @@ fn convert_encoded_digits_to_cycle_sum_if_valid(
     if dup_found {
         None
     } else {
-        let cycle_sum: u64 = numbers.iter().map(|&n| n as u64).sum();
+        let cycle_sum: u16 = numbers.iter().map(|&n| n as u16).sum();
         Some(cycle_sum)
     }
 }
