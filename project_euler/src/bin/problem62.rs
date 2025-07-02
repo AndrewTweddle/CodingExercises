@@ -1,18 +1,21 @@
-use std::collections::HashMap;
+use rustc_hash::FxHashMap as HashMap;
 
 const TARGET_CUBE_COUNT: usize = 5;
+const BITS_PER_DIGIT_IN_CODE: u32 = 4;
+
+type CodeSize = u64;
+
 
 fn main() {
-    solve_and_print_solution_and_time_more_runs_without_printing(solve, 1000)
+    solve_and_print_solution_and_time_more_runs_without_printing(solve, 10_000)
 }
 
-fn solve() -> u128 {
-    let mut mult: u128 = 1;
-    let mut digit_count: u128 = 0;
-    let mut base = 1;
-    let mut cubes_by_permutation_code: HashMap<u128, Vec<u128>> = HashMap::new();
-    let mut permutation_codes_with_enough_cubes: Vec<u128> = Vec::new();
-
+fn solve() -> CodeSize {
+    let mut mult: CodeSize = 1;
+    let mut digit_count: CodeSize = 0;
+    let mut cubes_by_permutation_code: HashMap<CodeSize, Vec<CodeSize>> = HashMap::default();
+    let mut permutation_codes_with_enough_cubes: Vec<CodeSize> = Vec::new();
+    
     for i in 1.. {
         let cube = i * i * i;
 
@@ -40,25 +43,23 @@ fn solve() -> u128 {
             while cube > mult {
                 mult *= 10;
                 digit_count += 1;
-                base = digit_count + 1;
             }
             cubes_by_permutation_code.clear();
             permutation_codes_with_enough_cubes.clear();
-
-            if digit_count > 20 {
-                panic!("Too many digits");
+            
+            // A 15 digit number has 10 ^ 15 = (10 ^ 3) ^ 5 < (2^10) ^ 5 = 2 ^ 50 < 2 ^ 64.
+            if digit_count > 15 {
+                panic!("Using a u64, at most 15 digits are supported");
             }
         }
 
         // Convert the cube to a permutation code - a number representing the
         // count of the decimal digits in the cubic number.
         // All numbers sharing the same permutation code are permutations of one another.
-        // Use a base of digit_count + 1, so that each digit in the code will be more than
-        // the maximum count of any one digit (even if all digits are the same).
         let mut code = 0;
         let mut rem_digits = cube;
         for _ in 0..digit_count {
-            let digit = base.pow((rem_digits % 10) as u32);
+            let digit = 1 << (BITS_PER_DIGIT_IN_CODE * (rem_digits % 10) as u32);
             code += digit;
             rem_digits /= 10;
         }
