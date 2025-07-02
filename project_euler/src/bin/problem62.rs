@@ -5,9 +5,8 @@ const BITS_PER_DIGIT_IN_CODE: u32 = 4;
 
 type CodeSize = u64;
 
-
 fn main() {
-    solve_and_print_solution_and_time_more_runs_without_printing(solve, 10_000)
+    solve_and_print_solution_and_time_more_runs_without_printing(solve, 1000)
 }
 
 fn solve() -> CodeSize {
@@ -15,7 +14,7 @@ fn solve() -> CodeSize {
     let mut digit_count: CodeSize = 0;
     let mut cubes_by_permutation_code: HashMap<CodeSize, Vec<CodeSize>> = HashMap::default();
     let mut permutation_codes_with_enough_cubes: Vec<CodeSize> = Vec::new();
-    
+
     for i in 1.. {
         let cube = i * i * i;
 
@@ -46,7 +45,7 @@ fn solve() -> CodeSize {
             }
             cubes_by_permutation_code.clear();
             permutation_codes_with_enough_cubes.clear();
-            
+
             // A 15 digit number has 10 ^ 15 = (10 ^ 3) ^ 5 < (2^10) ^ 5 = 2 ^ 50 < 2 ^ 64.
             if digit_count > 15 {
                 panic!("Using a u64, at most 15 digits are supported");
