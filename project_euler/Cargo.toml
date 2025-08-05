@@ -10,7 +10,7 @@ inherits = "release"
 debug = true
 
 [dependencies]
-num-bigint = "0.4.0"
+num-bigint = "0.4.6"
 rayon = "1.5.0"
 proptest = "1.0.0"
 num = "0.4.0"
