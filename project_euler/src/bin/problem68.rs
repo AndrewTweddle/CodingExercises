@@ -268,6 +268,7 @@ fn try_possible_magic_numbers_in_descending_order(
     Outcome::Other
 }
 
+#[allow(clippy::too_many_arguments)]
 fn attempt_number_that_makes_line_sum_add_up_to_magic_number(
     position: usize,
     line: usize,
@@ -314,6 +315,7 @@ fn get_line_sum(line: usize, curr_layout: &Layout) -> u8 {
         .sum::<u8>()
 }
 
+#[allow(clippy::too_many_arguments)]
 fn try_multiple_numbers_in_position(
     position: usize,
     curr_layout: &mut Layout,
@@ -386,6 +388,7 @@ fn try_multiple_numbers_in_position(
     Outcome::Other
 }
 
+#[allow(clippy::too_many_arguments)]
 fn attempt_number_in_position(
     number: u8,
     position: usize,
