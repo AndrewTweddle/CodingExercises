@@ -1,6 +1,21 @@
+#set document(
+    title: [Problem 71: Ordered Fractions],
+    author: "Andrew Tweddle",
+    keywords: "Project Euler",
+    date: datetime(year: 2025, month: 08, day: 21)
+)
+#set math.equation(numbering: "(1)")
+#show link: underline
+
 = Problem 71: Ordered Fractions
 
-#set math.equation(numbering: "(1)")
+#align(center)[Andrew Tweddle \ 2025-08-21]
+
+== The problem statement
+
+See #link("Project Euler Problem 71")[https://projecteuler.net/problem=71].
+
+== My solution
 
 Consider a proper reduced fraction $n/d < 3/7$ with $d <= 1000000$.
 
@@ -21,7 +36,7 @@ Then:
 For $n$ to be an integer, this requires that $d + 2$ is divisible by $7$.
 
 A unit change in the numerator is more harmful than a unit change in the denominator.
-So maximize the denominator *subject* to the above condition.
+So maximize the denominator *subject to* the above condition.
 
 To maximize the denominator, $7d$, choose the largest value of $d <= 1000000$ such that $7 divides (d + 2)$.
 This is $d + 2 = 999999 = 7 times 142857$.
