@@ -141,6 +141,7 @@ fn solve() -> N {
 }
 
 #[derive(Copy, Clone, Debug, PartialEq, Eq)]
+#[allow(clippy::enum_variant_names)]
 enum Reduction {
     NotAFactor,
     SingleFactor,

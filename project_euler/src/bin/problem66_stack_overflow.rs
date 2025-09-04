@@ -28,7 +28,7 @@ fn solve_for_d_up_to(max_d: usize) -> usize {
 
     // Factorize sets of 3 integers at a time (storing the last 2 and calculating the next 1).
     // This is because D y^2 = (x^2 - 1) = (x - 1)(x + 1).
-    // So to get the factorization of x^2 - 1, we will calculate the factorization of x + 1,
+    // So to get the factorization of x^2 - 1, we will calculate the factorization of x + 1
     // and store it for later use (since x + 1 = (x + 2) - 1, we will re-use it in 2 loops' time.
     // We will then retrieve the factorization of x - 1, and combine these to get the prime
     // factorization of x^2 - 1.
@@ -42,7 +42,7 @@ fn solve_for_d_up_to(max_d: usize) -> usize {
         .iter()
         .enumerate()
         .rev()
-        .filter(|(_, &x)| x.is_none())
+        .filter(|&(_, &x)| x.is_none())
         .map(|(i, _)| i)
         .next()
         .unwrap();
@@ -124,7 +124,7 @@ fn search_for_d_updating_min_x_vals(
                     .enumerate()
                     .take(*max_unfilled_d)
                     .rev()
-                    .filter(|(_, &x)| x.is_none())
+                    .filter(|&(_, &x)| x.is_none())
                     .map(|(i, _)| i)
                     .next();
                 if let Some(new_max_unfilled_d) = new_max_unfilled_d {

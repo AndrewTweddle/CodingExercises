@@ -25,7 +25,7 @@ fn convert_to_ten_digit_pandigital(n: usize) -> Option<usize> {
             let digit_index = digit_used
                 .iter()
                 .enumerate()
-                .filter(|(_, &used)| !used)
+                .filter(|&(_, &used)| !used)
                 .nth(rem_index as usize)
                 .unwrap()
                 .0;

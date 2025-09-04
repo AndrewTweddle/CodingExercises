@@ -8,7 +8,7 @@ fn main() {
 }
 
 fn solve(contents: &str) -> usize {
-    let wins_for_player_1 = contents
+    contents
         .lines()
         .filter(|line| {
             let (p1_str, p2_str) = line.split_at(3 * CARDS_IN_HAND_COUNT);
@@ -16,8 +16,7 @@ fn solve(contents: &str) -> usize {
             let player2_hand = Hand::parse(p2_str.trim());
             player1_hand > player2_hand
         })
-        .count();
-    wins_for_player_1
+        .count()
 }
 
 const CARDS_IN_HAND_COUNT: usize = 5;
