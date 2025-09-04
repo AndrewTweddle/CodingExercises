@@ -234,7 +234,7 @@ fn convert_encoded_digits_to_cycle_sum_if_valid(
     if dup_found {
         None
     } else {
-        let cycle_sum: u16 = numbers.iter().map(|&n| n).sum();
+        let cycle_sum: u16 = numbers.iter().copied().sum();
         Some(cycle_sum)
     }
 }

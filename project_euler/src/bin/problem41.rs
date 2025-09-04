@@ -35,7 +35,7 @@ impl Iterator for DescendingPandigitalIter {
                 let digit_index = digit_used
                     .iter()
                     .enumerate()
-                    .filter(|(_, &used)| !used)
+                    .filter(|&(_, &used)| !used)
                     .nth(rem_index as usize)
                     .unwrap()
                     .0;

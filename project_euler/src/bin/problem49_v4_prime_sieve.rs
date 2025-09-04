@@ -54,7 +54,7 @@ fn get_primes_and_hash_codes() -> Vec<PrimeAndHashCode> {
         .iter()
         .enumerate()
         .skip(1000)
-        .filter(|(_, &isp)| isp)
+        .filter(|&(_, &isp)| isp)
         .map(|(index, _)| {
             let prime = index as u16;
             let hash_code = perm_code(prime);

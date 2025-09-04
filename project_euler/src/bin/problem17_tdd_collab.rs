@@ -18,12 +18,14 @@ fn main() {
 
     let num_repetitions = 1000;
     for _ in 0..num_repetitions {
+        #[allow(unused_variables)]
         let total_letters: usize = (1..=1000)
             .into_iter()
             .map(|i| get_pascal_case_string(i)
                 .expect("You overflowed our function.")
                 .len())
             .sum();
+        #[cfg(debug_assertions)]
         println!("Total letters: {}", total_letters);
     }
     let duration = start.elapsed();
@@ -82,7 +84,7 @@ pub fn get_number_for_pascal_case_string(pc_string: &str) -> Result<u16, &'stati
             .iter()
             .enumerate()
             .skip(1)
-            .find(|(_, &small_str)| hundreds_str == small_str);
+            .find(|&(_, &small_str)| hundreds_str == small_str);
         let found_hundreds = hundreds_pair.map(|(index, _)| index as u16);
         return match found_hundreds {
             Some(hundreds) => {
@@ -112,13 +114,13 @@ pub fn get_number_for_pascal_case_string(pc_string: &str) -> Result<u16, &'stati
         .iter()
         .enumerate()
         .skip(1)
-        .find(|(_, &tens_str)| pc_string.starts_with(tens_str));
+        .find(|&(_, tens_str)| pc_string.starts_with(tens_str));
 
     let found_small_number = SMALL_NUMBER_NAMES
         .iter()
         .enumerate()
         .skip(1)
-        .find(|(_, &small_str)| pc_string == if tens_pair.is_some() {
+        .find(|&(_, small_str)| pc_string == if tens_pair.is_some() {
             tens_pair.unwrap().1.to_string() + small_str
         } else {
             small_str.to_string()

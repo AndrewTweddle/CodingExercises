@@ -42,15 +42,15 @@ fn main() {
 fn solve() -> Option<Solution> {
     for n_hex in MIN_HEX_N.. {
         let h = hex(n_hex);
-        if let Some(n_pen) = invert_pentagonal(h) {
-            if let Some(n_tri) = invert_triangular(h) {
-                return Some(Solution {
-                    n_tri,
-                    n_pen,
-                    n_hex,
-                    answer: h,
-                });
-            }
+        if let Some(n_pen) = invert_pentagonal(h)
+            && let Some(n_tri) = invert_triangular(h)
+        {
+            return Some(Solution {
+                n_tri,
+                n_pen,
+                n_hex,
+                answer: h,
+            });
         }
     }
     None
