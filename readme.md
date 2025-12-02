@@ -11,15 +11,15 @@ I use these to:
   
 ## Links within this page
 
-| Link                                                                                                          | Source                                                      | Description                                  |
-|---------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------|----------------------------------------------|
-| [Project Euler](#project-euler-problems)                                                                      | [projecteuler.net](https://projecteuler.net)                | Coding challenges with a mathematical theme  |
-| [Advent of Code](#advent-of-code) ([2020](#2020), [2021](#2021), [2022](#2022), [2023](#2023), [2024](#2024)) | [adventofcode.com](https://adventofcode.com/)               | 25 days of coding challenges run in December |
-| [cryptopals](#cryptopals-cryptography-challenges)                                                             | [cryptopals.com](https://cryptopals.com/)                   | Cryptography challenges                      |
-| [CSES Problem Set](#cses-problem-set)                                                                         | [cses.fi/problemset/list](https://cses.fi/problemset/list/) | Competitive coding exercises                 |
-| [CodingDojo Katas](#katas-from-codingdojoorg)                                                                 | [CodingDojo.org](https://codingdojo.org/)                   |                                              |
-| [Miscellaneous](#miscellaneous)                                                                               | Miscellaneous sources                                       |                                              |
-| [CTCI Exercises](#ctci)                                                                                       | The book "Cracking the Coding Interview"                    | Technical interview questions                |
+| Link                                                                                                                         | Source                                                      | Description                                  |
+|------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------|----------------------------------------------|
+| [Project Euler](#project-euler-problems)                                                                                     | [projecteuler.net](https://projecteuler.net)                | Coding challenges with a mathematical theme  |
+| [Advent of Code](#advent-of-code) ([2020](#2020), [2021](#2021), [2022](#2022), [2023](#2023), [2024](#2024), [2025](#2025)) | [adventofcode.com](https://adventofcode.com/)               | 25 days of coding challenges run in December |
+| [cryptopals](#cryptopals-cryptography-challenges)                                                                            | [cryptopals.com](https://cryptopals.com/)                   | Cryptography challenges                      |
+| [CSES Problem Set](#cses-problem-set)                                                                                        | [cses.fi/problemset/list](https://cses.fi/problemset/list/) | Competitive coding exercises                 |
+| [CodingDojo Katas](#katas-from-codingdojoorg)                                                                                | [CodingDojo.org](https://codingdojo.org/)                   |                                              |
+| [Miscellaneous](#miscellaneous)                                                                                              | Miscellaneous sources                                       |                                              |
+| [CTCI Exercises](#ctci)                                                                                                      | The book "Cracking the Coding Interview"                    | Technical interview questions                |
 
 ## Related repositories
 
@@ -362,6 +362,17 @@ These can be used to easily calculate the average duration of solution algorithm
 
 _Note: Timings based on an i7-6700 CPU and/or a MacBook Pro M4 Pro. Durations exclude I/O (reading the input file and writing the answer to the terminal) unless indicated._
 
+### 2025
+
+Rust utility methods can be found in [lib.rs](AdventOfCode/aoc2025_rs/src/lib.rs).
+These can be used to easily calculate the average duration of solution algorithms over many repetitions.
+
+| Day | Description                                            | Part | Date       | Solution                                              | Duration | Notes                                                              |
+|-----|--------------------------------------------------------|------|------------|-------------------------------------------------------|----------|--------------------------------------------------------------------|
+| 1   | [Secret Entrance](https://adventofcode.com/2025/day/1) | 1    | 2025-12-01 | [Rust](AdventOfCode/aoc2025_rs/src/bin/day1_part1.rs) | 29 µs    |                                                                    |
+|     |                                                        | 2    | 2025-12-01 | [Rust](AdventOfCode/aoc2025_rs/src/bin/day1_part2.rs) | 29 µs    | At first I forgot that the % operator can return negative numbers. |
+
+_Note: Timings are on a MacBook Pro M4 Pro. Durations exclude I/O (reading the input file and writing the answer to the terminal) unless indicated._
 
 ## cryptopals cryptography challenges
 
