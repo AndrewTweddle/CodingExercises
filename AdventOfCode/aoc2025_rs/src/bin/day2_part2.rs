@@ -48,11 +48,14 @@ fn expand_set_with_repeating_numbers_in_range_with_digit_count(
         return;
     }
 
-    // The repeater is the number to multiply a sequence of digits by to repeat it digit_count times
+    // The repeater is the number to multiply a sequence of
+    // `digit_count` digits by to repeat it enough times
+    // so that it covers all the digits of `start`.
     let mut repeater = 1;
     let first_pow_10 = 10_u64.pow(digit_count as u32);
 
-    // Find the power of 10 that extracts the last set of up to digit_count digits from `start`
+    // Find the power of 10 that extracts the last set
+    // of up to `digit_count` digits from `start`
     let mut last_pow_10 = 1;
     while last_pow_10 * first_pow_10 <= start {
         last_pow_10 *= first_pow_10;
