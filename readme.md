@@ -367,10 +367,12 @@ _Note: Timings based on an i7-6700 CPU and/or a MacBook Pro M4 Pro. Durations ex
 Rust utility methods can be found in [lib.rs](AdventOfCode/aoc2025_rs/src/lib.rs).
 These can be used to easily calculate the average duration of solution algorithms over many repetitions.
 
-| Day | Description                                            | Part | Date       | Solution                                              | Duration | Notes                                                              |
-|-----|--------------------------------------------------------|------|------------|-------------------------------------------------------|----------|--------------------------------------------------------------------|
-| 1   | [Secret Entrance](https://adventofcode.com/2025/day/1) | 1    | 2025-12-01 | [Rust](AdventOfCode/aoc2025_rs/src/bin/day1_part1.rs) | 29 µs    |                                                                    |
-|     |                                                        | 2    | 2025-12-01 | [Rust](AdventOfCode/aoc2025_rs/src/bin/day1_part2.rs) | 29 µs    | At first I forgot that the % operator can return negative numbers. |
+| Day | Description                                            | Part | Date       | Solution                                                      | Duration | Notes                                                                                 |
+|-----|--------------------------------------------------------|------|------------|---------------------------------------------------------------|----------|---------------------------------------------------------------------------------------|
+| 1   | [Secret Entrance](https://adventofcode.com/2025/day/1) | 1    | 2025-12-01 | [Rust](AdventOfCode/aoc2025_rs/src/bin/day1_part1.rs)         | 29 µs    |                                                                                       |
+|     |                                                        | 2    | 2025-12-01 | [Rust](AdventOfCode/aoc2025_rs/src/bin/day1_part2.rs)         | 29 µs    | I forgot that the % operator can return negative numbers. Use `rem_euclid` in future. |
+| 2   | [Gift Shop](https://adventofcode.com/2025/day/2)       | 1    | 2025-12-02 | [Rust](AdventOfCode/aoc2025_rs/src/bin/day2_part1.rs)         | 491 ns   |                                                                                       |
+|     |                                                        |      |            | [Rust](AdventOfCode/aoc2025_rs/src/bin/day2_part1_shorter.rs) | 468 ns   | More succinct and slightly faster too                                                 |
 
 _Note: Timings are on a MacBook Pro M4 Pro. Durations exclude I/O (reading the input file and writing the answer to the terminal) unless indicated._
 
