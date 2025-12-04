@@ -3,7 +3,7 @@ use aoc2025_rs::load_and_solve_and_benchmark;
 const INPUT_FILE_PATH: &str = "data/day3_input.txt";
 
 fn main() {
-    load_and_solve_and_benchmark(INPUT_FILE_PATH, "Day 3 part 2", solve, 1000);
+    load_and_solve_and_benchmark(INPUT_FILE_PATH, "Day 3 part 2", solve, 10_000);
 }
 
 fn solve(contents: &str) -> u64 {
@@ -15,9 +15,7 @@ fn solve(contents: &str) -> u64 {
                 digits[12] = b - b'0';
                 for i in 0..12 {
                     if digits[i] < digits[i + 1] {
-                        for j in i..12 {
-                            digits[j] = digits[j + 1];
-                        }
+                        digits.copy_within(i + 1..13, i);
                         break;
                     }
                 }
