@@ -33,7 +33,6 @@ pub fn load_and_solve_and_benchmark<S, T>(
 pub fn benchmark<S, T>(solve: S, contents: &str, repetitions: u32)
 where
     S: Fn(&str) -> T,
-    T: std::fmt::Debug,
 {
     let start_time = Instant::now();
     for _ in 0..repetitions {
