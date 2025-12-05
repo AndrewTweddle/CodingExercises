@@ -1,3 +1,4 @@
+use std::hint::black_box;
 use std::time::Instant;
 
 pub fn load_and_solve_and_benchmark<S, T>(
@@ -9,30 +10,34 @@ pub fn load_and_solve_and_benchmark<S, T>(
     S: Fn(&str) -> T,
     T: std::fmt::Debug,
 {
-    // first read file contents into memory, so that timings don't include file I/O
+    // The first timing includes file I/O
+    let start_time = Instant::now();
+
+    // first read the file contents into memory so that benchmarks don't include file I/O
     let contents = std::fs::read_to_string(file_path).expect("Input file not readable");
 
-    solve_and_benchmark(problem_desc, || solve(&contents), repetitions);
+    // Solve once and print out the solution and its duration (including file I/O)
+    let solution = solve(&contents);
+    println!("{problem_desc}: {solution:?}");
+    println!(
+        "Solved (including writing to terminal) in {:?}",
+        start_time.elapsed()
+    );
+
+    // Benchmark many runs of the solver (excluding file I/O)
+    if repetitions > 0 {
+        benchmark(solve, &contents, repetitions);
+    }
 }
 
-pub fn solve_and_benchmark<S, T>(problem_desc: &str, solve: S, repetitions: u32)
+pub fn benchmark<S, T>(solve: S, contents: &str, repetitions: u32)
 where
-    S: Fn() -> T,
+    S: Fn(&str) -> T,
     T: std::fmt::Debug,
 {
-    let mut start_time = Instant::now();
-    for i in 0..=repetitions {
-        let solution = solve();
-        if i == 0 {
-            println!("{problem_desc}: {solution:?}");
-            println!(
-                "Solved (including writing to terminal) in {:?}",
-                start_time.elapsed()
-            );
-
-            // Now restart the timer, so that the timings don't include I/O...
-            start_time = Instant::now();
-        }
+    let start_time = Instant::now();
+    for _ in 0..repetitions {
+        black_box(solve(black_box(contents)));
     }
 
     if repetitions > 0 {
