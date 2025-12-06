@@ -6,7 +6,7 @@ const INPUT_FILE_PATH: &str = "data/day4_input.txt";
 type Grid = Vec<Vec<bool>>;
 
 fn main() {
-    load_and_solve_and_benchmark(INPUT_FILE_PATH, "Day 4 part 1", solve, 100);
+    load_and_solve_and_benchmark(INPUT_FILE_PATH, "Day 4 part 2", solve, 100);
 }
 
 fn solve(contents: &str) -> usize {

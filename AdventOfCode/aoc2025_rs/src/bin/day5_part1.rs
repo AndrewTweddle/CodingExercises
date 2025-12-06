@@ -3,7 +3,7 @@ use aoc2025_rs::load_and_solve_and_benchmark;
 const INPUT_FILE_PATH: &str = "data/day5_input.txt";
 
 fn main() {
-    load_and_solve_and_benchmark(INPUT_FILE_PATH, "Day 5 part 1", solve, 10);
+    load_and_solve_and_benchmark(INPUT_FILE_PATH, "Day 5 part 1", solve, 1000);
 }
 
 fn solve(contents: &str) -> usize {

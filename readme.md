@@ -379,6 +379,7 @@ These can be used to easily calculate the average duration of solution algorithm
 | 4   | [Printing Department](https://adventofcode.com/2025/day/4) | 1    | 2025-12-05 | [Rust](AdventOfCode/aoc2025_rs/src/bin/day4_part1.rs)         | 47 µs    |                                                                                       |
 |     |                                                            | 2    |            | [Rust](AdventOfCode/aoc2025_rs/src/bin/day4_part2.rs)         | 1.75 ms  |                                                                                       |
 | 5   | [Cafeteria](https://adventofcode.com/2025/day/5)           | 1    |            | [Rust](AdventOfCode/aoc2025_rs/src/bin/day5_part1.rs)         | 156 µs   |                                                                                       |
+| 5   | [Cafeteria](https://adventofcode.com/2025/day/5)           | 1    |            | [Rust](AdventOfCode/aoc2025_rs/src/bin/day5_part1.rs)         | 73 µs    |                                                                                       |
 
 _Note: Timings are on a MacBook Pro M4 Pro. Durations exclude I/O (reading the input file and writing the answer to the terminal) unless indicated._
 
