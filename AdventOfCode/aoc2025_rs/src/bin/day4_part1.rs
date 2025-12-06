@@ -19,7 +19,7 @@ fn solve(contents: &str) -> usize {
         }))
         .collect();
     let col_count = grid[1].len();
-    grid[0].extend(iter::repeat(false).take(col_count));
+    grid[0].extend(iter::repeat_n(false, col_count));
     grid.push(vec![false; col_count]);
 
     (1..grid.len() - 1)
