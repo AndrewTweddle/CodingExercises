@@ -383,6 +383,7 @@ These can be used to easily calculate the average duration of solution algorithm
 | 6   | [Trash Compactor](https://adventofcode.com/2025/day/6)     | 1    | 2025-12-06 | [Rust](AdventOfCode/aoc2025_rs/src/bin/day6_part1.rs)         | 35 µs    |                                                                                       |
 |     |                                                            | 2    |            | [Rust](AdventOfCode/aoc2025_rs/src/bin/day6_part2.rs)         | 20 µs    |                                                                                       |
 | 7   | [Laboratories](https://adventofcode.com/2025/day/7)        | 1    | 2025-12-07 | [Rust](AdventOfCode/aoc2025_rs/src/bin/day7_part1.rs)         | 27 µs    |                                                                                       |
+|     |                                                            | 2    |            | [Rust](AdventOfCode/aoc2025_rs/src/bin/day7_part2.rs)         | 19 µs    |                                                                                       |
 
 _Note: Timings are on a MacBook Pro M4 Pro. Durations exclude I/O (reading the input file and writing the answer to the terminal) unless indicated._
 
