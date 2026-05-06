@@ -42,6 +42,8 @@ fn solve_for_n_up_to(n: usize) -> usize {
     memo[n][n - 1]
 }
 
+use std::hint::black_box;
+
 fn solve_and_print_solution_and_time_more_runs_without_printing<S, T>(solve: S, repetitions: u32)
 where
     S: Fn() -> T,
@@ -51,7 +53,7 @@ where
 
     let mut start_time = Instant::now();
     for i in 0..=repetitions {
-        let solution = solve();
+        let solution = black_box(solve());
         if i == 0 {
             println!("Solution: {solution:?}");
             println!(
